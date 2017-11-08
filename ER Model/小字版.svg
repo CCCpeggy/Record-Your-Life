@@ -1,0 +1,2187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 由 Microsoft Visio, SVG Export 產生 RecordYourLife.svg Page-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="16.0354in" height="22.8858in"
+		viewBox="0 0 1154.55 1647.78" xml:space="preserve" color-interpolation-filters="sRGB" class="st16">
+	<v:documentProperties v:langID="1028" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvNoAutoConnect" v:prompt="" v:val="VT0(0):26"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#5b9bd5;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st2 {fill:#ffffff;font-family:新細明體;font-size:0.833336em}
+		.st3 {stroke:#5b9bd5;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st4 {fill:#ffffff;font-family:Calibri;font-size:0.833336em}
+		.st5 {font-size:1em;text-decoration:underline}
+		.st6 {marker-start:url(#mrkr25-50);stroke:#5592c9;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st7 {fill:#5592c9;fill-opacity:1;stroke:#5592c9;stroke-opacity:1;stroke-width:0.13368983957219}
+		.st8 {marker-start:url(#mrkr29-60);stroke:#5592c9;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st9 {marker-end:url(#mrkr29-129);stroke:#5592c9;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st10 {fill:#5b9bd5}
+		.st11 {stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st12 {marker-end:url(#mrkr29-187);stroke:#5692c9;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st13 {fill:#5692c9;fill-opacity:1;stroke:#5692c9;stroke-opacity:1;stroke-width:0.13368983957219}
+		.st14 {stroke:#5592c9;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st15 {marker-end:url(#mrkr25-392);stroke:#5592c9;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st16 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend25">
+			<path d="M 1.5 -0.75 L 1.5 0.75 M 2.25 -0.75 L 2.25 0.75 " style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+		</g>
+		<marker id="mrkr25-50" class="st7" v:arrowType="25" v:arrowSize="3" orient="auto" markerUnits="strokeWidth"
+				overflow="visible">
+			<use xlink:href="#lend25" transform="scale(7.48) "/>
+		</marker>
+		<g id="lend29">
+			<path
+					d="M 2.25 0.75 C 1.83579 0.75 1.5 0.414214 1.5 0 1.5 -0.414214 1.83579 -0.75 2.25 -0.75 2.66421 -0.75 3 -0.414214 3 0 3 0.414214 2.66421 0.75 2.25 0.75 Z M 0 -0.75 L 1.5 0 L 0 0.75 M 1.5 0 L 0 0 "
+					style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+		</g>
+		<marker id="mrkr29-60" class="st7" v:arrowType="29" v:arrowSize="3" v:setback="21.72" refX="21.72" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend29" transform="scale(7.48) "/>
+		</marker>
+		<marker id="mrkr29-129" class="st7" v:arrowType="29" v:arrowSize="3" v:setback="22.44" refX="-22.44" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend29" transform="scale(-7.48,-7.48) "/>
+		</marker>
+		<marker id="mrkr29-187" class="st13" v:arrowType="29" v:arrowSize="3" v:setback="22.44" refX="-22.44" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend29" transform="scale(-7.48,-7.48) "/>
+		</marker>
+		<marker id="mrkr25-392" class="st7" v:arrowType="25" v:arrowSize="3" orient="auto" markerUnits="strokeWidth"
+				overflow="visible">
+			<use xlink:href="#lend25" transform="scale(-7.48,-7.48) "/>
+		</marker>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<v:userDefs>
+			<v:ud v:nameU="msvThemeOrder" v:val="VT0(0):26"/>
+		</v:userDefs>
+		<title>頁-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="連接器" v:index="0"/>
+		<g id="shape1-1" v:mID="1" v:groupContext="shape" transform="translate(896.095,-1465.37)">
+			<title>實體</title>
+			<desc>理財類別</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(理財類別)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(理財類別)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="36.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>理財類別</text>		</g>
+		<g id="group2-4" transform="translate(1051.51,-1475.29)" v:mID="2" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ICON)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(-0.58376327216091,0.35433070866142)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(3):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.58376327216091,0.35433070866142)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0MM,9MM)):40"/>
+			</v:userDefs>
+			<title>屬性</title>
+			<desc>ICON</desc>
+			<g id="shape3-5" v:mID="3" v:groupContext="shape">
+				<title>工作表.3</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.58376327216091,0.35433070866142)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L-42.03 1622.27" class="st3"/>
+			</g>
+			<g id="shape2-8" v:mID="2" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.06" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>ICON</text>			</g>
+		</g>
+		<g id="group8-11" transform="translate(910.268,-1578.76)" v:mID="8" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(名稱)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.59055118110236,-0.59055117359312)):40"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.59055118110236,-0.59055117359312)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(15MM,0MM)):40"/>
+			</v:userDefs>
+			<title>屬性.8</title>
+			<desc>名稱</desc>
+			<g id="shape9-12" v:mID="9" v:groupContext="shape">
+				<title>工作表.9</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.59055118110236,-0.59055117359312)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L42.52 1690.3" class="st3"/>
+			</g>
+			<g id="shape8-15" v:mID="8" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>名稱</text>			</g>
+		</g>
+		<g id="group10-18" transform="translate(786.047,-1475.29)" v:mID="10" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.5284414879175,0.35433070866142)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.5284414879175,0.35433070866142)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,9MM)):40"/>
+			</v:userDefs>
+			<title>屬性.10</title>
+			<desc>ID</desc>
+			<g id="shape11-19" v:mID="11" v:groupContext="shape">
+				<title>工作表.11</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.5284414879175,0.35433070866142)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L110.05 1622.27" class="st3"/>
+			</g>
+			<g id="shape10-22" v:mID="10" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="shape12-26" v:mID="12" v:groupContext="shape" transform="translate(895.606,-1217.34)">
+			<title>實體.12</title>
+			<desc>理財</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(理財)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(理財)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>理財</text>		</g>
+		<g id="group13-29" transform="translate(1022.68,-1227.26)" v:mID="13" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(金額)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(-0.19006248475934,0.35433070866142)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(3):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.19006248475934,0.35433070866142)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0MM,9MM)):40"/>
+			</v:userDefs>
+			<title>屬性.13</title>
+			<desc>金額</desc>
+			<g id="shape14-30" v:mID="14" v:groupContext="shape">
+				<title>工作表.14</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.19006248475934,0.35433070866142)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L-13.68 1622.27" class="st3"/>
+			</g>
+			<g id="shape13-33" v:mID="13" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>金額</text>			</g>
+		</g>
+		<g id="group21-36" transform="translate(909.78,-1146.05)" v:mID="21" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.59055118110236,0.99015748031496)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.59055118110236,0.99015748031496)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(15MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.21</title>
+			<desc>ID</desc>
+			<g id="shape22-37" v:mID="22" v:groupContext="shape">
+				<title>工作表.22</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.59055118110236,0.99015748031496)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L42.52 1576.49" class="st3"/>
+			</g>
+			<g id="shape21-40" v:mID="21" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="group25-44" transform="translate(945.213,-1465.37)" v:mID="25" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器</title>
+			<g id="shape25-45" v:mID="25" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1710.85" class="st6"/>
+			</g>
+		</g>
+		<g id="shape24-51" v:mID="24" v:groupContext="shape" transform="translate(916.866,-1351.28)">
+			<title>關聯.24</title>
+			<desc>所屬</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(所屬)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="25.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>所屬</text>		</g>
+		<g id="group35-54" transform="translate(945.213,-1288.2)" v:mID="35" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.35</title>
+			<g id="shape35-55" v:mID="35" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1636.92 L7.09 1636.56 L7.09 1584.71" class="st8"/>
+			</g>
+		</g>
+		<g id="shape40-61" v:mID="40" v:groupContext="shape" transform="translate(161.936,-1488.05)">
+			<title>實體.40</title>
+			<desc>課表</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(課表)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(課表)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>課表</text>		</g>
+		<g id="group41-64" transform="translate(118.928,-1578.76)" v:mID="41" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(開始日)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.0364119586159,-0.27559054367186)):40"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.0364119586159,-0.27559054367186)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(21.370235934664MM,0MM)):40"/>
+			</v:userDefs>
+			<title>屬性.41</title>
+			<desc>開始日</desc>
+			<g id="shape42-65" v:mID="42" v:groupContext="shape">
+				<title>工作表.42</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.0364119586159,-0.27559054367186)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L74.62 1667.62" class="st3"/>
+			</g>
+			<g id="shape41-68" v:mID="41" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="27.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>開始日</text>			</g>
+		</g>
+		<g id="group43-71" transform="translate(212.919,-1578.76)" v:mID="43" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(天數)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.30353958748027,-0.27559054367186)):40"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.30353958748027,-0.27559054367186)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(10.89932180724MM,0MM)):40"/>
+			</v:userDefs>
+			<title>屬性.4</title>
+			<desc>天數</desc>
+			<g id="shape44-72" v:mID="44" v:groupContext="shape">
+				<title>工作表.44</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.30353958748027,-0.27559054367186)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L21.85 1667.62" class="st3"/>
+			</g>
+			<g id="shape43-75" v:mID="43" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>天數</text>			</g>
+		</g>
+		<g id="group45-78" transform="translate(289.007,-1530.57)" v:mID="45" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(是否主要)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(-0.19006248475934,0.12893273674378)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(3):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.19006248475934,0.12893273674378)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0MM,4.6688311688312MM)):40"/>
+			</v:userDefs>
+			<title>屬性.6</title>
+			<desc>是否主要</desc>
+			<g id="shape46-79" v:mID="46" v:groupContext="shape">
+				<title>工作表.46</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.19006248475934,0.12893273674378)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L-13.68 1638.5" class="st3"/>
+			</g>
+			<g id="shape45-82" v:mID="45" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="22.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>是否主要</text>			</g>
+		</g>
+		<g id="group47-85" transform="translate(63.2126,-1507.89)" v:mID="47" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(名稱)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.3711648112951,0.28573132903842)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.3711648112951,0.28573132903842)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,7.6818181818183MM)):40"/>
+			</v:userDefs>
+			<title>屬性.47</title>
+			<desc>名稱</desc>
+			<g id="shape48-86" v:mID="48" v:groupContext="shape">
+				<title>工作表.48</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.3711648112951,0.28573132903842)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L98.72 1627.21" class="st3"/>
+			</g>
+			<g id="shape47-89" v:mID="47" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>名稱</text>			</g>
+		</g>
+		<g id="group49-92" transform="translate(90.5816,-1422.85)" v:mID="49" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.2181158714952,0.90551181102362)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.2181158714952,0.90551181102362)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.49</title>
+			<desc>ID</desc>
+			<g id="shape50-93" v:mID="50" v:groupContext="shape">
+				<title>工作表.50</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.2181158714952,0.90551181102362)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L87.7 1582.58" class="st3"/>
+			</g>
+			<g id="shape49-96" v:mID="49" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="shape51-100" v:mID="51" v:groupContext="shape" transform="translate(424.63,-1558.91)">
+			<title>實體.51</title>
+			<desc>MC</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(MC)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(MC)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="49.75" y="1615.35" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>MC</text>		</g>
+		<g id="group60-103" transform="translate(408.502,-1476.71)" v:mID="60" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.84953737546732,1.1417322834646)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.84953737546732,1.1417322834646)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(17.960212201592MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.60</title>
+			<desc>ID</desc>
+			<g id="shape61-104" v:mID="61" v:groupContext="shape">
+				<title>工作表.61</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.84953737546732,1.1417322834646)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L61.17 1565.57" class="st3"/>
+			</g>
+			<g id="shape60-107" v:mID="60" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="shape147-111" v:mID="147" v:groupContext="shape" transform="translate(516.756,-1217.34)">
+			<title>實體.147</title>
+			<desc>日期</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(日期)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(日期)"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):5"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>日期</text>		</g>
+		<g id="shape148-114" v:mID="148" v:groupContext="shape" transform="translate(739.701,-1227.26)">
+			<title>關聯</title>
+			<desc>有</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(有)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="30.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>有</text>		</g>
+		<g id="group149-117" transform="translate(630.142,-1233.81)" v:mID="149" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(0):32"/>
+			</v:userDefs>
+			<title>動態連接器.149</title>
+			<g id="shape149-118" v:mID="149" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1640.69 L126.05 1640.69" class="st6"/>
+			</g>
+		</g>
+		<g id="group154-123" transform="translate(810.567,-1245.69)" v:mID="154" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(0):32"/>
+			</v:userDefs>
+			<title>動態連接器.154</title>
+			<g id="shape154-124" v:mID="154" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1640.69 L73.82 1640.69" class="st9"/>
+			</g>
+		</g>
+		<g id="shape164-130" v:mID="164" v:groupContext="shape" transform="translate(510.803,-1358.65)">
+			<title>關聯.164</title>
+			<desc>有</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(有)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="30.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>有</text>		</g>
+		<g id="group165-133" transform="translate(542.126,-1288.2)" v:mID="165" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.165</title>
+			<g id="shape165-134" v:mID="165" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1575.2" class="st6"/>
+			</g>
+		</g>
+		<g id="group175-139" transform="translate(517.323,-1393.95)" v:mID="175" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.175</title>
+			<g id="shape175-140" v:mID="175" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1494.04" class="st9"/>
+			</g>
+		</g>
+		<g id="group180-145" transform="translate(289.007,-1476.71)" v:mID="180" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(是否取代)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(-0.19006248475934,0.50132938599901)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(3):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.19006248475934,0.50132938599901)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0MM,11.824675324675MM)):40"/>
+			</v:userDefs>
+			<title>屬性.180</title>
+			<desc>是否取代</desc>
+			<g id="shape181-146" v:mID="181" v:groupContext="shape">
+				<title>工作表.181</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.19006248475934,0.50132938599901)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L-13.68 1611.68" class="st3"/>
+			</g>
+			<g id="shape180-149" v:mID="180" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="22.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>是否取代</text>			</g>
+		</g>
+		<g id="shape187-152" v:mID="187" v:groupContext="shape" transform="translate(162.425,-1287.78)">
+			<title>實體.187</title>
+			<desc>星期</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(星期)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(星期)"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(1):5"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st10"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78" class="st11"/>
+			<path d="M7.56 1640.69 L105.82 1640.69 L105.82 1584 L7.56 1584 L7.56 1640.69" class="st11"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>星期</text>		</g>
+		<g id="group188-157" transform="translate(56.6929,-1297.7)" v:mID="188" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.4685039370079,0.35433070866142)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.4685039370079,0.35433070866142)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,9MM)):40"/>
+			</v:userDefs>
+			<title>屬性.188</title>
+			<desc>ID</desc>
+			<g id="shape189-158" v:mID="189" v:groupContext="shape">
+				<title>工作表.189</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.4685039370079,0.35433070866142)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L105.73 1622.27" class="st3"/>
+			</g>
+			<g id="shape188-161" v:mID="188" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="group190-165" transform="translate(77.3858,-1227.26)" v:mID="190" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(時間)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.2753687479206,0.84055118110236)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.2753687479206,0.84055118110236)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.190</title>
+			<desc>時間</desc>
+			<g id="shape191-166" v:mID="191" v:groupContext="shape">
+				<title>工作表.191</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.2753687479206,0.84055118110236)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L91.83 1587.26" class="st3"/>
+			</g>
+			<g id="shape190-169" v:mID="190" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>時間</text>			</g>
+		</g>
+		<g id="group193-172" transform="translate(212.031,-1488.05)" v:mID="193" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.193</title>
+			<g id="shape193-173" v:mID="193" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1683.64" class="st6"/>
+			</g>
+		</g>
+		<g id="shape192-178" v:mID="192" v:groupContext="shape" transform="translate(183.685,-1401.17)">
+			<title>關聯.192</title>
+			<desc>有</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(有)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="30.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>有</text>		</g>
+		<g id="group198-181" transform="translate(212.031,-1401.17)" v:mID="198" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.198</title>
+			<g id="shape198-182" v:mID="198" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1679.08" class="st12"/>
+			</g>
+		</g>
+		<g id="group209-188" transform="translate(516.756,-1288.2)" v:mID="209" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(2.4067721398722):32"/>
+			</v:userDefs>
+			<title>動態連接器.209</title>
+			<g id="shape209-189" v:mID="209" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1647.78 L-93.67 1563.14" class="st6"/>
+			</g>
+		</g>
+		<g id="shape208-194" v:mID="208" v:groupContext="shape" transform="translate(367.937,-1358.65)">
+			<title>關聯.208</title>
+			<desc>有</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(有)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="30.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>有</text>		</g>
+		<g id="group214-197" transform="translate(384.225,-1395.88)" v:mID="214" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(2.4392623939042):32"/>
+			</v:userDefs>
+			<title>動態連接器.214</title>
+			<g id="shape214-198" v:mID="214" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1647.78 L-100.34 1562.87" class="st9"/>
+			</g>
+		</g>
+		<g id="shape219-203" v:mID="219" v:groupContext="shape" transform="translate(160.654,-1095.45)">
+			<title>實體.219</title>
+			<desc>課堂</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(課堂)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(課堂)"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(1):5"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st10"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78" class="st11"/>
+			<path d="M7.56 1640.69 L105.82 1640.69 L105.82 1584 L7.56 1584 L7.56 1640.69" class="st11"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>課堂</text>		</g>
+		<g id="group239-208" transform="translate(47.2677,-1107.35)" v:mID="239" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.5748031496063,0.33902012248469)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.5748031496063,0.33902012248469)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,8.7666666666667MM)):40"/>
+			</v:userDefs>
+			<title>屬性.239</title>
+			<desc>ID</desc>
+			<g id="shape240-209" v:mID="240" v:groupContext="shape">
+				<title>工作表.240</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.5748031496063,0.33902012248469)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L113.39 1623.37" class="st3"/>
+			</g>
+			<g id="shape239-212" v:mID="239" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="group249-216" transform="translate(212.031,-1287.78)" v:mID="249" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.249</title>
+			<g id="shape249-217" v:mID="249" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1676.13" class="st6"/>
+			</g>
+		</g>
+		<g id="shape248-222" v:mID="248" v:groupContext="shape" transform="translate(183.685,-1208.41)">
+			<title>關聯.248</title>
+			<desc>有</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(有)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="30.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>有</text>		</g>
+		<g id="group254-225" transform="translate(212.031,-1208.41)" v:mID="254" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.254</title>
+			<g id="shape254-226" v:mID="254" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1678.65" class="st9"/>
+			</g>
+		</g>
+		<g id="shape259-231" v:mID="259" v:groupContext="shape" transform="translate(162.425,-873.992)">
+			<title>實體.259</title>
+			<desc>科目</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(科目)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(科目)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>科目</text>		</g>
+		<g id="group260-234" transform="translate(49.0394,-885.898)" v:mID="260" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.5748031496063,0.33902012248469)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.5748031496063,0.33902012248469)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,8.7666666666667MM)):40"/>
+			</v:userDefs>
+			<title>屬性.260</title>
+			<desc>ID</desc>
+			<g id="shape261-235" v:mID="261" v:groupContext="shape">
+				<title>工作表.261</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.5748031496063,0.33902012248469)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L113.39 1623.37" class="st3"/>
+			</g>
+			<g id="shape260-238" v:mID="260" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="group262-242" transform="translate(84.027,-787.535)" v:mID="262" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(科目)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.4035763911864,1.2007874015748)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.4035763911864,1.2007874015748)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.262</title>
+			<desc>科目</desc>
+			<g id="shape263-243" v:mID="263" v:groupContext="shape">
+				<title>工作表.263</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.4035763911864,1.2007874015748)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L101.06 1561.32" class="st3"/>
+			</g>
+			<g id="shape262-246" v:mID="262" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>科目</text>			</g>
+		</g>
+		<g id="group264-249" transform="translate(190.772,-773.362)" v:mID="264" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(老師)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.45679386230567,1.3976377952756)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.45679386230567,1.3976377952756)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(13.846153846154MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.264</title>
+			<desc>老師</desc>
+			<g id="shape265-250" v:mID="265" v:groupContext="shape">
+				<title>工作表.265</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.45679386230567,1.3976377952756)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L32.89 1547.15" class="st3"/>
+			</g>
+			<g id="shape264-253" v:mID="264" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>老師</text>			</g>
+		</g>
+		<g id="shape271-256" v:mID="271" v:groupContext="shape" transform="translate(500.811,-869.669)">
+			<title>實體.271</title>
+			<desc>考試</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(考試)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(考試)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>考試</text>		</g>
+		<g id="group272-259" transform="translate(573.449,-991.559)" v:mID="272" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.035507828101173,-0.70866140981359)):40"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.035507828101173,-0.70866140981359)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(10.300632911392MM,0MM)):40"/>
+			</v:userDefs>
+			<title>屬性.272</title>
+			<desc>ID</desc>
+			<g id="shape273-260" v:mID="273" v:groupContext="shape">
+				<title>工作表.273</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.035507828101173,-0.70866140981359)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L2.56 1698.8" class="st3"/>
+			</g>
+			<g id="shape272-263" v:mID="272" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="group276-267" transform="translate(514.984,-763.37)" v:mID="276" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(老師)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.59055118110236,1.4763779527559)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.59055118110236,1.4763779527559)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(15MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.276</title>
+			<desc>老師</desc>
+			<g id="shape277-268" v:mID="277" v:groupContext="shape">
+				<title>工作表.277</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.59055118110236,1.4763779527559)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L42.52 1541.48" class="st3"/>
+			</g>
+			<g id="shape276-271" v:mID="276" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>老師</text>			</g>
+		</g>
+		<g id="group279-274" transform="translate(274.039,-1095.45)" v:mID="279" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.58800260354757):32"/>
+			</v:userDefs>
+			<title>動態連接器.279</title>
+			<g id="shape279-275" v:mID="279" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1647.78 L48.8 1680.31" class="st14"/>
+			</g>
+		</g>
+		<g id="shape278-278" v:mID="278" v:groupContext="shape" transform="translate(304.441,-1024.16)">
+			<title>關聯.278</title>
+			<desc>所屬</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(所屬)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="25.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>所屬</text>		</g>
+		<g id="group284-281" transform="translate(356.904,-1036.42)" v:mID="284" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.58774194931132):32"/>
+			</v:userDefs>
+			<title>動態連接器.284</title>
+			<g id="shape284-282" v:mID="284" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1647.78 L143.91 1743.66" class="st14"/>
+			</g>
+		</g>
+		<g id="group290-285" transform="translate(500.811,-888.094)" v:mID="290" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(3.1415926535898):32"/>
+			</v:userDefs>
+			<title>動態連接器.290</title>
+			<g id="shape290-286" v:mID="290" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M-10.86 1640.69 L-11.22 1640.69 L-69.09 1640.69" class="st8"/>
+			</g>
+		</g>
+		<g id="shape289-291" v:mID="289" v:groupContext="shape" transform="translate(360.85,-869.669)">
+			<title>關聯.289</title>
+			<desc>所屬</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(所屬)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="25.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>所屬</text>		</g>
+		<g id="group313-294" transform="translate(545.102,-1217.34)" v:mID="313" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.313</title>
+			<g id="shape313-295" v:mID="313" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1708.72" class="st6"/>
+			</g>
+		</g>
+		<g id="shape312-300" v:mID="312" v:groupContext="shape" transform="translate(516.756,-1105.37)">
+			<title>關聯.312</title>
+			<desc>有</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(有)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="30.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>有</text>		</g>
+		<g id="group328-303" transform="translate(545.102,-1105.37)" v:mID="328" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.328</title>
+			<g id="shape328-304" v:mID="328" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1801.39" class="st9"/>
+			</g>
+		</g>
+		<g id="group333-309" transform="translate(610.654,-793.559)" v:mID="333" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(名稱)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(-0.19093190987041,1.0570866141732)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(3):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.19093190987041,1.0570866141732)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.333</title>
+			<desc>名稱</desc>
+			<g id="shape334-310" v:mID="334" v:groupContext="shape">
+				<title>工作表.334</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.19093190987041,1.0570866141732)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L-13.75 1571.67" class="st3"/>
+			</g>
+			<g id="shape333-313" v:mID="333" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>名稱</text>			</g>
+		</g>
+		<g id="group335-316" transform="translate(419.315,-795.543)" v:mID="335" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(成績)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.359114206424,1.0295275590551)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.359114206424,1.0295275590551)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.335</title>
+			<desc>成績</desc>
+			<g id="shape336-317" v:mID="336" v:groupContext="shape">
+				<title>工作表.336</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.359114206424,1.0295275590551)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L97.86 1573.65" class="st3"/>
+			</g>
+			<g id="shape335-320" v:mID="335" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>成績</text>			</g>
+		</g>
+		<g id="group337-323" transform="translate(630.142,-916.583)" v:mID="337" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(內容)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(-0.22145672858231,0.09348878321194)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(3):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.22145672858231,0.09348878321194)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0MM,4.1815384615384MM)):40"/>
+			</v:userDefs>
+			<title>屬性.337</title>
+			<desc>內容</desc>
+			<g id="shape338-324" v:mID="338" v:groupContext="shape">
+				<title>工作表.338</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.22145672858231,0.09348878321194)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L-15.94 1641.05" class="st3"/>
+			</g>
+			<g id="shape337-327" v:mID="337" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>內容</text>			</g>
+		</g>
+		<g id="shape339-330" v:mID="339" v:groupContext="shape" transform="translate(183.685,-1002.33)">
+			<title>關聯.339</title>
+			<desc>所屬</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(所屬)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="25.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>所屬</text>		</g>
+		<g id="group351-333" transform="translate(225.11,-1053.05)" v:mID="351" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(1.6027139635052):32"/>
+			</v:userDefs>
+			<title>動態連接器.351</title>
+			<g id="shape351-334" v:mID="351" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M-6.41 1647.78 L-7.41 1616.6" class="st9"/>
+			</g>
+		</g>
+		<g id="group356-339" transform="translate(212.031,-944.858)" v:mID="356" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.356</title>
+			<g id="shape356-340" v:mID="356" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1590.31" class="st6"/>
+			</g>
+		</g>
+		<g id="group371-345" transform="translate(275.811,-890.256)" v:mID="371" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(0):32"/>
+			</v:userDefs>
+			<title>動態連接器.371</title>
+			<g id="shape371-346" v:mID="371" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1640.69 L88.04 1640.69" class="st6"/>
+			</g>
+		</g>
+		<g id="shape376-351" v:mID="376" v:groupContext="shape" transform="translate(697.465,-637.441)">
+			<title>實體.376</title>
+			<desc>行程</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(行程)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(行程)"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):5"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>行程</text>		</g>
+		<g id="group377-354" transform="translate(587.622,-657.283)" v:mID="377" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.5255905511811,0.27952755905512)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.5255905511811,0.27952755905512)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,7.8MM)):40"/>
+			</v:userDefs>
+			<title>屬性.377</title>
+			<desc>ID</desc>
+			<g id="shape378-355" v:mID="378" v:groupContext="shape">
+				<title>工作表.378</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.5255905511811,0.27952755905512)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L109.84 1627.65" class="st3"/>
+			</g>
+			<g id="shape377-358" v:mID="377" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="group381-362" transform="translate(743.528,-563.315)" v:mID="381" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(名稱)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.33436350599514,1.0295275590551)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.33436350599514,1.0295275590551)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(11.585160202361MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.381</title>
+			<desc>名稱</desc>
+			<g id="shape382-363" v:mID="382" v:groupContext="shape">
+				<title>工作表.382</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.33436350599514,1.0295275590551)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L24.07 1573.65" class="st3"/>
+			</g>
+			<g id="shape381-366" v:mID="381" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>名稱</text>			</g>
+		</g>
+		<g id="group383-369" transform="translate(615.969,-563.315)" v:mID="383" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(是否中斷)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.359114206424,1.0295275590551)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.359114206424,1.0295275590551)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.383</title>
+			<desc>是否中斷</desc>
+			<g id="shape384-370" v:mID="384" v:groupContext="shape">
+				<title>工作表.384</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.359114206424,1.0295275590551)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L97.86 1573.65" class="st3"/>
+			</g>
+			<g id="shape383-373" v:mID="383" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="22.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>是否中斷</text>			</g>
+		</g>
+		<g id="group385-376" transform="translate(791.15,-731.409)" v:mID="385" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(時間)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(-0.048210081727618,-0.32086613422304)):40"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.048210081727618,-0.32086613422304)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0MM,0MM)):40"/>
+			</v:userDefs>
+			<title>屬性.385</title>
+			<desc>時間</desc>
+			<g id="shape386-377" v:mID="386" v:groupContext="shape">
+				<title>工作表.386</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.048210081727618,-0.32086613422304)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L-3.47 1670.88" class="st3"/>
+			</g>
+			<g id="shape385-380" v:mID="385" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>時間</text>			</g>
+		</g>
+		<g id="shape387-383" v:mID="387" v:groupContext="shape" transform="translate(715.181,-963.638)">
+			<title>關聯.387</title>
+			<desc>有</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(有)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="30.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>有</text>		</g>
+		<g id="group398-386" transform="translate(723.402,-995.069)" v:mID="398" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(1.9680676001395):32"/>
+			</v:userDefs>
+			<title>動態連接器.398</title>
+			<g id="shape398-387" v:mID="398" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1647.78 L-93.26 1425.51" class="st15"/>
+			</g>
+		</g>
+		<g id="group403-393" transform="translate(743.528,-963.638)" v:mID="403" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.403</title>
+			<g id="shape403-394" v:mID="403" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1891.89" class="st9"/>
+			</g>
+		</g>
+		<g id="shape408-399" v:mID="408" v:groupContext="shape" transform="translate(926.929,-901.913)">
+			<title>實體.408</title>
+			<desc>提醒</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(提醒)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(提醒)"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):5"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>提醒</text>		</g>
+		<g id="group409-402" transform="translate(817.087,-921.756)" v:mID="409" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.5255905511811,0.27952755905512)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.5255905511811,0.27952755905512)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(30MM,7.8MM)):40"/>
+			</v:userDefs>
+			<title>屬性.409</title>
+			<desc>ID</desc>
+			<g id="shape410-403" v:mID="410" v:groupContext="shape">
+				<title>工作表.410</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.5255905511811,0.27952755905512)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L109.84 1627.65" class="st3"/>
+			</g>
+			<g id="shape409-406" v:mID="409" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="group411-410" transform="translate(1015.51,-992.173)" v:mID="411" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(重複)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.012892810600109,-0.26935694787133)):40"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.012892810600109,-0.26935694787133)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(6.6642164069391MM,0MM)):40"/>
+			</v:userDefs>
+			<title>屬性.411</title>
+			<desc>重複</desc>
+			<g id="shape412-411" v:mID="412" v:groupContext="shape">
+				<title>工作表.412</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.012892810600109,-0.26935694787133)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L0.93 1667.17" class="st3"/>
+			</g>
+			<g id="shape411-414" v:mID="411" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>重複</text>			</g>
+		</g>
+		<g id="group413-417" transform="translate(887.953,-992.173)" v:mID="413" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(重負單位)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(1.0031643028897,-0.26935694787133)):40"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.0031643028897,-0.26935694787133)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(20.954131137901MM,0MM)):40"/>
+			</v:userDefs>
+			<title>屬性.413</title>
+			<desc>重負單位</desc>
+			<g id="shape414-418" v:mID="414" v:groupContext="shape">
+				<title>工作表.414</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(1.0031643028897,-0.26935694787133)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L72.23 1667.17" class="st3"/>
+			</g>
+			<g id="shape413-421" v:mID="413" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="22.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>重負單位</text>			</g>
+		</g>
+		<g id="group415-424" transform="translate(1051.51,-911.835)" v:mID="415" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(日期)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(-0.15551184669255,0.35433070866142)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(3):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.15551184669255,0.35433070866142)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0MM,9MM)):40"/>
+			</v:userDefs>
+			<title>屬性.415</title>
+			<desc>日期</desc>
+			<g id="shape416-425" v:mID="416" v:groupContext="shape">
+				<title>工作表.416</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.15551184669255,0.35433070866142)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L-11.2 1622.27" class="st3"/>
+			</g>
+			<g id="shape415-428" v:mID="415" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>日期</text>			</g>
+		</g>
+		<g id="group433-431" transform="translate(926.929,-972.78)" v:mID="433" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(2.5019853666993):32"/>
+			</v:userDefs>
+			<title>動態連接器.433</title>
+			<g id="shape433-432" v:mID="433" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M-8.71 1641.3 L-9 1641.08 L-128.4 1552.26" class="st8"/>
+			</g>
+		</g>
+		<g id="shape432-437" v:mID="432" v:groupContext="shape" transform="translate(745.087,-1055.34)">
+			<title>關聯.432</title>
+			<desc>有</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(有)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="30.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>有</text>		</g>
+		<g id="group438-440" transform="translate(760.223,-1091.75)" v:mID="438" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(2.3737585558392):32"/>
+			</v:userDefs>
+			<title>動態連接器.438</title>
+			<g id="shape438-441" v:mID="438" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1647.78 L-130.08 1522.19" class="st15"/>
+			</g>
+		</g>
+		<g id="shape443-446" v:mID="443" v:groupContext="shape" transform="translate(952.583,-524.055)">
+			<title>實體.443</title>
+			<desc>便條</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(便條)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(便條)"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):5"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>便條</text>		</g>
+		<g id="group444-449" transform="translate(998.646,-446.315)" v:mID="444" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.32666503287736,1.0797244094488)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.32666503287736,1.0797244094488)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(11.725949878739MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.444</title>
+			<desc>ID</desc>
+			<g id="shape445-450" v:mID="445" v:groupContext="shape">
+				<title>工作表.445</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.32666503287736,1.0797244094488)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L23.52 1570.04" class="st3"/>
+			</g>
+			<g id="shape444-453" v:mID="444" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="group448-457" transform="translate(1012.82,-621.638)" v:mID="448" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(內容)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.20938230427875,-0.37106298461674)):40"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.20938230427875,-0.37106298461674)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(10.270816491512MM,0MM)):40"/>
+			</v:userDefs>
+			<title>屬性.448</title>
+			<desc>內容</desc>
+			<g id="shape449-458" v:mID="449" v:groupContext="shape">
+				<title>工作表.449</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.20938230427875,-0.37106298461674)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L15.08 1674.5" class="st3"/>
+			</g>
+			<g id="shape448-461" v:mID="448" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>內容</text>			</g>
+		</g>
+		<g id="shape452-464" v:mID="452" v:groupContext="shape" transform="translate(849.827,-598.961)">
+			<title>關聯.452</title>
+			<desc>所屬</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(所屬)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="25.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>所屬</text>		</g>
+		<g id="group458-467" transform="translate(876.549,-636.626)" v:mID="458" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(3.1415926535898):32"/>
+			</v:userDefs>
+			<title>動態連接器.458</title>
+			<g id="shape458-468" v:mID="458" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1640.69 L-54.48 1640.69" class="st9"/>
+			</g>
+		</g>
+		<g id="group476-473" transform="translate(976.535,-901.913)" v:mID="476" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.476</title>
+			<g id="shape476-474" v:mID="476" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1658.64 L7.09 1659 L7.09 1719.78" class="st8"/>
+			</g>
+		</g>
+		<g id="shape475-479" v:mID="475" v:groupContext="shape" transform="translate(948.189,-778.89)">
+			<title>關聯.475</title>
+			<desc>所屬</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(所屬)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="25.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>所屬</text>		</g>
+		<g id="group481-482" transform="translate(978.732,-780.471)" v:mID="481" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.481</title>
+			<g id="shape481-483" v:mID="481" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1833.33" class="st15"/>
+			</g>
+		</g>
+		<g id="group487-488" transform="translate(890.561,-605.936)" v:mID="487" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.12599568216401):32"/>
+			</v:userDefs>
+			<title>動態連接器.487</title>
+			<g id="shape487-489" v:mID="487" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M0 1650.94 L62.02 1658.79" class="st15"/>
+			</g>
+		</g>
+		<g id="shape492-494" v:mID="492" v:groupContext="shape" transform="translate(637.228,-1558.91)">
+			<title>實體.492</title>
+			<desc>日記</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbEntity)"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Weak" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Composite" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="EntityName" v:prompt="" v:val="VT4(日記)"/>
+				<v:ud v:nameU="EntityNameSpace" v:prompt="" v:val="VT4(日記)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="1612.35" width="113.39" height="70.8661"/>
+			<path d="M0 1647.78 L113.39 1647.78 L113.39 1576.91 L0 1576.91 L0 1647.78 Z" class="st1"/>
+			<text x="46.69" y="1615.5" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>日記</text>		</g>
+		<g id="group493-497" transform="translate(686.835,-1493.15)" v:mID="493" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(ID)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(1):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(0.32882125689345,0.91338582677166)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.32882125689345,0.91338582677166)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(10.786516853933MM,18MM)):40"/>
+			</v:userDefs>
+			<title>屬性.493</title>
+			<desc>ID</desc>
+			<g id="shape494-498" v:mID="494" v:groupContext="shape">
+				<title>工作表.494</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(0.32882125689345,0.91338582677166)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L23.68 1582.02" class="st3"/>
+			</g>
+			<g id="shape493-501" v:mID="493" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="38.18" y="1625.27" class="st4" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/><tspan
+							class="st5">ID</tspan></text>			</g>
+		</g>
+		<g id="shape495-505" v:mID="495" v:groupContext="shape" transform="translate(615.969,-1360.2)">
+			<title>關聯.495</title>
+			<desc>有</desc>
+			<v:userDefs>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbRelationshipNode)"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="Identifying" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="RelationshipName" v:prompt="" v:val="VT4(有)"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="1622.27" width="70.87" height="51.0236"/>
+			<path d="M35.43 1647.78 L70.87 1622.27 L35.43 1596.76 L0 1622.27 L35.43 1647.78 Z" class="st1"/>
+			<text x="30.43" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>有</text>		</g>
+		<g id="group496-508" transform="translate(654.945,-1558.91)" v:mID="496" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.496</title>
+			<g id="shape496-509" v:mID="496" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1658.64 L7.09 1659 L7.09 1803.12" class="st8"/>
+			</g>
+		</g>
+		<g id="group501-514" transform="translate(615.969,-1380.61)" v:mID="501" v:groupContext="group" v:layerMember="0">
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="ShowMulti" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-0.78539816339745):32"/>
+				<v:ud v:nameU="BeginAngle" v:prompt="" v:val="VT0(-1.5707963267949):32"/>
+			</v:userDefs>
+			<title>動態連接器.501</title>
+			<g id="shape501-515" v:mID="501" v:groupContext="groupContent" v:layerMember="0">
+				<path d="M7.09 1647.78 L7.09 1740.19" class="st15"/>
+			</g>
+		</g>
+		<g id="group512-520" transform="translate(786.047,-1558.91)" v:mID="512" v:groupContext="group">
+			<v:userDefs>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4()"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Multivalue" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Derived" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Required" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvStructureType" v:prompt="" v:val="VT4(Callout)"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt=""/>
+				<v:ud v:nameU="msvSDCalloutNoHighlight" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvShapeCategories" v:prompt="" v:val="VT4(Database;DbAttribute)"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(4):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(12.115384615385MM,0MM)):40"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+				<v:ud v:nameU="AttributeName" v:prompt="" v:val="VT4(內容)"/>
+				<v:ud v:nameU="PrimaryKey" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="msvSDTargetIntersection" v:prompt="" v:val="VT7(PNT(-0.49212601992089,0.43410692347366)):40"/>
+				<v:ud v:nameU="Side" v:prompt="" v:val="VT0(3):26"/>
+				<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.49212601992089,0.43410692347366)):40"/>
+				<v:ud v:nameU="WHBoxIntersection" v:prompt="" v:val="VT7(PNT(0MM,10.105263157895MM)):40"/>
+			</v:userDefs>
+			<title>屬性.512</title>
+			<desc>內容</desc>
+			<g id="shape513-521" v:mID="513" v:groupContext="shape">
+				<title>工作表.513</title>
+				<v:userDefs>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(7.5MM,-14.4MM)):40"/>
+					<v:ud v:nameU="LeaderEnd" v:prompt="" v:val="VT7(PNT(-0.49212601992089,0.43410692347366)):40"/>
+				</v:userDefs>
+				<path d="M42.52 1622.27 L-35.43 1616.52" class="st3"/>
+			</g>
+			<g id="shape512-524" v:mID="512" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="1622.27" width="85.04" height="51.0236"/>
+				<path d="M85.04 1622.27 A42.5197 25.5118 -180 1 0 0 1622.27 A42.5197 25.5118 -180 1 0 85.04 1622.27 Z" class="st1"/>
+				<text x="32.52" y="1625.42" class="st2" v:langID="1028"><v:paragraph v:horizAlign="1"/><v:tabList/>內容</text>			</g>
+		</g>
+	</g>
+</svg>

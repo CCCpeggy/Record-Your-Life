@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.example.info.settings.DatePreference
+        android:key="Reminder_Date"
+        android:title="選擇提醒日期"
+        android:defaultValue="2017-01-01"/>
+
+    <PreferenceCategory android:title="重複">
+
+        <SwitchPreference
+            android:id="@+id/IsRepeat_Switch"
+            android:defaultValue="false"
+            android:key="IsRepeat_Switch"
+            android:title="重複提醒" />
+        <ListPreference
+            android:dependency="IsRepeat_Switch"
+            android:entries="@array/pref_reminder_repeattype"
+            android:entryValues="@array/pref_reminder_repeattype_opts"
+            android:defaultValue="0"
+            android:key="Repeat_Type_List"
+            android:title="重複單位" />
+
+    </PreferenceCategory>
+</PreferenceScreen>
