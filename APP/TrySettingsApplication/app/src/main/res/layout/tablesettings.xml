@@ -17,16 +17,17 @@
 
             <TextView
                 android:id="@+id/textView"
+                android:id="@+id/name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="名稱" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/name_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"/>
 
         </TableRow>
 
@@ -35,15 +36,17 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/days_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="天數" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/days_sp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:entries="@array/pref_table_days"
+                android:entryValues="@array/pref_table_days"/>
 
         </TableRow>
 
@@ -53,7 +56,7 @@
 
 
             <Switch
-                android:id="@+id/switch1"
+                android:id="@+id/ismain_sw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
@@ -66,17 +69,17 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/startTime_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="開始日" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/startTime_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="date" />
+                android:inputType="none" />
 
         </TableRow>
 
@@ -85,17 +88,17 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/endTime_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="結束日" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/endTime_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="date" />
+                android:inputType="none" />
 
         </TableRow>
 
@@ -105,7 +108,7 @@
 
 
             <Switch
-                android:id="@+id/switch2"
+                android:id="@+id/iscover_sw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
@@ -117,11 +120,4 @@
 
     </TableLayout>
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="10"
-        android:progress="3" />
 </LinearLayout>

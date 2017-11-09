@@ -22,7 +22,6 @@ import android.widget.TextView;
 
 public class TableActivity extends AppCompatActivity {
 
-
     private SQLiteDatabase db=null;
     private String SQLiteDB_Path="student_project.db";
     int Table_id=1;

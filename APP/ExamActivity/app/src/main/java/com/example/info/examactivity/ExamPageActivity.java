@@ -9,6 +9,7 @@ import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -72,6 +73,8 @@ public class ExamPageActivity extends AppCompatActivity {
         Score_et=(EditText) findViewById(R.id.Score_et);
         Complete_btn=(Button)findViewById(R.id.btn_Complete);
         Delete_btn=(Button)findViewById(R.id.btn_Delete);
+
+        Date_et.setInputType(InputType.TYPE_NULL);
 
         Date_et.setOnClickListener(DatePick_Listener);
         Complete_btn.setOnClickListener(Complete_btn_Listener);
