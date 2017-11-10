@@ -50,15 +50,22 @@ public class MainActivity extends AppCompatActivity {
         Table=new All_Table(SQLiteDB_Path,db,1);
         //All_Table Table=new All_Table(SQLiteDB_Path,db,"測試",2,0,"2017-11-06","2017-12-30",0,new String [][]{{"國文","國文"},{"國文","國文"}},new String []{"08:00","09:00"},new String []{"09:00","10:00"});
 
+        updateSpinner();
+
+        Table_id=Table.getMain_id();
+        setSpinnerByValue(name,Table_id,Table.getAllTableCursors(),0);
+
+    }
+
+    public void onActivityResult(int requestCode,int resultCode,Intent data) {
+        updateSpinner();
+    }
+
+    public void updateSpinner(){
         Cursor cursor=Table.getAllTableCursors();
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{"課表名稱"}, new int[]{android.R.id.text1}, 0);
         name.setAdapter(adapter);
-        //name.setOnItemClickListener(List_listener2);
         name.setOnItemSelectedListener(List_listener);
-
-        Table_id=Table.getMain_id();
-        setSpinnerByValue(name,Table_id,cursor,0);
-
     }
 
     @Override

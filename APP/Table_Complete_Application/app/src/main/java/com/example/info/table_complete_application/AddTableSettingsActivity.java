@@ -45,6 +45,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
     ListView ClassTime;
     TableDbTable TableDb;
     ClassWeekDbTable ClassWeekDb;
+    WeekDbTable WeekDb;
     Cursor cursor;
     int Table_id=-100;
     List<Map<String,String>> Time;
@@ -79,14 +80,19 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         OpOrCrDb();
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
         ClassWeekDb.OpenOrCreateTb();
-        ClassWeekDb.deleteAllRow();
-        ClassWeekDb.AddClassWeekData();
+        //ClassWeekDb.deleteAllRow();
+        //ClassWeekDb.AddClassWeekData();
 
 
         TableDb=new TableDbTable(SQLiteDB_Path,db);
         TableDb.OpenOrCreateTb();
-        TableDb.deleteAllRow();
-        TableDb.AddTalbeData();
+        //TableDb.deleteAllRow();
+        //TableDb.AddTalbeData();
+
+        WeekDb=new WeekDbTable(SQLiteDB_Path,db);
+        WeekDb.OpenOrCreateTb();
+        //WeekDb.deleteAllRow();
+        //WeekDb.AddWeekData();
 
         Time=new ArrayList<Map<String, String>>();
 
@@ -211,6 +217,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
                 ,isCover.isChecked()?1:0);
         Table_id=TableDb.getTable_id(Name.getText().toString());
         insertClassWeeks();
+        insertWeek();
     }
 
 
@@ -272,6 +279,11 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         }
         if(isMain.isChecked()&&Table_id!=TableDb.getMain_id()) {
             check_main();
+            return false;
+        }
+        if(Time.size()<1){
+            Toast.makeText(AddTableSettingsActivity.this,"需增加課堂",Toast.LENGTH_LONG).show();
+            Log.w("課堂錯誤","需增加課堂");
             return false;
         }
         if(!check_time()){
@@ -432,12 +444,21 @@ public class AddTableSettingsActivity extends AppCompatActivity {
             insertClassWeek(item.get("start_time"),item.get("end_time"));
         }
     }
+    private void insertWeek(){
+        Calendar cal=StringtoCalendar(Start_date.getText().toString());
+        int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK)-1;
+        for(int i=0;i<Integer.parseInt(Days.getSelectedItem().toString());i++){
+
+            WeekDb.insertWeekData(Table_id,dayOfWeek+i);
+        }
+    }
     private Button.OnClickListener Completebtn_Listener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (!check())return;
             saveValue();
             openSubjectSettings();
+            finish();
         }
     };
 

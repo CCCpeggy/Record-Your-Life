@@ -1,6 +1,7 @@
 package com.example.info.table_complete_application;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     Button Complete_btn;
     WeekDbTable WeekDb;
     ClassDbTable ClassDb;
+    ClassWeekDbTable ClassWeekDb;
     private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +48,9 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         OpOrCrDb();
         ClassDb=new ClassDbTable(SQLiteDB_Path,db);
         WeekDb=new WeekDbTable(SQLiteDB_Path,db);
-        ClassDb.deleteAllRow();
-        ClassDb.AddClassData();
-        WeekDb.deleteAllRow();
-        WeekDb.AddWeekData();
+        ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
+        //ClassDb.deleteAllRow();
+        //ClassDb.AddClassData();
 
         getIntentData();
         viewTable(row,col);
@@ -130,7 +131,16 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     private Button.OnClickListener Complete_btn_Listener=new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            
+            Cursor ClassWeek_cursor= ClassWeekDb.getCursor(Table_id);
+            ClassWeek_cursor.moveToFirst();
+            Cursor Week_cursor=WeekDb.getCursor("課表ID = "+Table_id);
+            do{
+                Week_cursor.moveToFirst();
+                do {
+                    int Week_id=Week_cursor.getInt(0) , ClassWeek_id=ClassWeek_cursor.getInt(0);
+                    ClassDb.insertClassData(ClassWeek_id,Week_id,1);
+                }while (Week_cursor.moveToNext());
+            }while (ClassWeek_cursor.moveToNext());
             finish();
         }
     };

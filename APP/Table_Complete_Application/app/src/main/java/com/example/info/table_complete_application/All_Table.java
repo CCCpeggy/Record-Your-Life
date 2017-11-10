@@ -82,7 +82,7 @@ public class All_Table extends TableDbTable {
 
 
     public void AddTableData(){
-        ClassDb.deleteAllRow();
+        /*ClassDb.deleteAllRow();
         ClassDb.AddClassData();
         SubjectDb.deleteAllRow();
         SubjectDb.AddSubjectData();
@@ -91,7 +91,7 @@ public class All_Table extends TableDbTable {
         WeekDb.deleteAllRow();
         WeekDb.AddWeekData();
         super.deleteAllRow();
-        super.AddTalbeData();
+        super.AddTalbeData();*/
     }
 
     public Cursor getAllTableCursors() {
