@@ -1,23 +1,23 @@
-package com.example.info.examactivity;
+package com.example.info.table_complete_application;
+
+/**
+ * Created by info on 2017/11/5.
+ */
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-/**
- * Created by info on 2017/11/3.
- */
-
 public class WeekDbTable {
     private  String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    private final static String SQLiteTable_Name= "課表_星期3"; //資料表的名字
-    private final static String CREATE_WEEK_TABLE=
-            "CREATE TABLE if not exists '課表_星期3'" +
-            "(_id INTEGER  PRIMARY KEY NOT NULL" +
-            ",'第幾天' INTEGER NOT NULL"+
-            ",'課表ID' INTEGER NOT NULL)";
+    public  String SQLiteTable_Name= "課表_星期2"; //資料表的名字
+    public String CREATE_WEEK_TABLE=
+            "CREATE TABLE if not exists '"+SQLiteTable_Name+"'" +
+                    "(_id INTEGER PRIMARY KEY NOT NULL" +
+                    ",'第幾天' INTEGER NOT NULL"+
+                    ",'課表ID' INTEGER NOT NULL)";
     public WeekDbTable(String path, SQLiteDatabase Database) {
         SQLiteDB_Path = path;
         db = Database;
@@ -79,7 +79,19 @@ public class WeekDbTable {
     }
 
     public Cursor getCursor(int Table_id,int days){
-        return db.rawQuery(String.format("SELECT *  FROM '%s' WHERE (課表ID=%s AND 第幾天 = %s)",SQLiteTable_Name,Table_id,days),null);
+        return getCursor(String.format("課表ID=%d AND 第幾天 = %d",Table_id,days));
+    }
+
+    public int getWeek_id(int Table_id,int days){
+        Cursor cursor=getCursor(Table_id,days);
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+    }
+
+    public Cursor getCursor(String where_cmd){
+        String cmd=String.format("SELECT *  FROM '%s' WHERE %s",SQLiteTable_Name,where_cmd);
+        Log.v("WeekDbTable.getCursor",cmd);
+        return db.rawQuery(cmd,null);
     }
 
     public void deleteAllRow(){

@@ -1,4 +1,5 @@
-package com.example.info.examactivity;
+package com.example.info.table_complete_application;
+
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 /**
- * Created by info on 2017/11/1.
+ * Created by info on 2017/11/5.
  */
 
 public class ClassDbTable {
@@ -86,7 +87,9 @@ public class ClassDbTable {
         return db.rawQuery(String.format("SELECT *  FROM '%s'  WHERE _id = %s AND 星期ID = %s",SQLiteTable_Name, ClassWeek_id,Week_id),null);
     }
 
-
+    public Cursor getCursor(String where_cmd){
+        return db.rawQuery(String.format("SELECT *  FROM '%s' WHERE %s",SQLiteTable_Name,where_cmd),null);
+    }
 
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);

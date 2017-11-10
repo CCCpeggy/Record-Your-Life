@@ -1,4 +1,4 @@
-package com.example.info.examactivity;
+package com.example.info.table_complete_application;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 /**
- * Created by info on 2017/11/3.
+ * Created by info on 2017/11/9.
  */
 
 public class ClassWeekDbTable {
@@ -47,14 +47,35 @@ public class ClassWeekDbTable {
         }
     }
 
-    public void updateClassWeekData(int id,int table_id,String time_start,String time_end){
+    public void updateStartTime(int id,String time_start){
         try {
             ContentValues row = new ContentValues();
-            row.put("課表ID", table_id);
+            row.put("開始時間",time_start);
+            db.update(SQLiteTable_Name, row, "_id=" + id, null);
+            Log.v("更新資料列", String.format("在%s更新一筆資料：%s,%s", SQLiteTable_Name,"開始時間",time_start));
+        } catch (Exception e) {
+            Log.e("#004", "資料列更新失敗");
+        }
+    }
+
+    public void updateEndTime(int id,String time_end){
+        try {
+            ContentValues row = new ContentValues();
+            row.put("結束時間",time_end);
+            db.update(SQLiteTable_Name, row, "_id=" + id, null);
+            Log.v("更新資料列", String.format("在%s更新一筆資料：%s,%s", SQLiteTable_Name,"結束時間",time_end));
+        } catch (Exception e) {
+            Log.e("#004", "資料列更新失敗");
+        }
+    }
+
+    public void updateTime(int id,String time_start,String time_end){
+        try {
+            ContentValues row = new ContentValues();
             row.put("開始時間",time_start);
             row.put("結束時間",time_end);
             db.update(SQLiteTable_Name, row, "_id=" + id, null);
-            Log.v("更新資料列", String.format("在%s更新一筆資料：%s,%s", SQLiteTable_Name,"課表ID", table_id,"開始時間",time_start,"結束時間",time_end));
+            Log.v("更新資料列", String.format("在%s更新一筆資料：%s,%s", SQLiteTable_Name,"開始時間",time_start,"結束時間",time_end));
         } catch (Exception e) {
             Log.e("#004", "資料列更新失敗");
         }
@@ -86,12 +107,37 @@ public class ClassWeekDbTable {
         return db.rawQuery(String.format("SELECT *  FROM '%s' WHERE 課表ID=%s",SQLiteTable_Name,Table_id),null);
     }
 
+    public Cursor getCursor(String where_cmd){
+        String cmd=String.format("SELECT *  FROM '%s' WHERE %s ",SQLiteTable_Name,where_cmd);
+        Log.v("ClassWeekDb.getCursor",cmd);
+        return db.rawQuery(cmd,null);
+    }
+
+    public int getClassWeek_id(int Table_id,String Start_Time){
+        Cursor cursor=getCursor(String.format("課表ID = %d AND 開始時間 = '%s'",Table_id,Start_Time));
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+    }
+
     public int getTable_id(int ClassWeek_id){
         Cursor cursor=db.rawQuery(String.format("SELECT *  FROM '%s' WHERE _id=%d",SQLiteTable_Name,ClassWeek_id),null);
         cursor.moveToFirst();
         if(cursor.getCount()>0)
             return cursor.getInt(1);
         return 0;
+    }
+
+    public void updateClassWeekData(int id,int table_id,String time_start,String time_end){
+        try {
+            ContentValues row = new ContentValues();
+            row.put("課表ID", table_id);
+            row.put("開始時間",time_start);
+            row.put("結束時間",time_end);
+            db.update(SQLiteTable_Name, row, "_id=" + id, null);
+            Log.v("更新資料列", String.format("在%s更新一筆資料：%s,%s", SQLiteTable_Name,"課表ID", table_id,"開始時間",time_start,"結束時間",time_end));
+        } catch (Exception e) {
+            Log.e("#004", "資料列更新失敗");
+        }
     }
 
     public void deleteAllRow(){

@@ -1,4 +1,4 @@
-package com.example.info.examactivity;
+package com.example.info.table_complete_application;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 /**
- * Created by info on 2017/11/3.
+ * Created by info on 2017/11/5.
  */
 
 public class TableDbTable {
@@ -53,6 +53,22 @@ public class TableDbTable {
         }
     }
 
+    public void insertTableData(String name,String days,int isMain,String schedule_start,String schedule_end,int isReplace){ //不用第一的ID
+        try {
+            ContentValues row = new ContentValues();
+            row.put("課表名稱", name);
+            row.put("課表天數", days);
+            row.put("主要", isMain);
+            row.put("課表開始日", schedule_start);
+            row.put("課表結束日", schedule_end);
+            row.put("時間重複時是否取代", isReplace);
+            db.insert(SQLiteTable_Name, null, row);
+            Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s", SQLiteTable_Name, "課表名稱", name, "課表天數", days,"主要", isMain,"課表開始日2", schedule_start,"課表結束日2", schedule_end,"時間重複時是否取代", isReplace));
+        } catch (Exception e) {
+            Log.e("#003", "資料列新增失敗");
+        }
+    }
+
     public void updateTableData(int id,String name,String days,int isMain,String schedule_start,String schedule_end,int isReplace){
         try {
             ContentValues row = new ContentValues();
@@ -63,7 +79,7 @@ public class TableDbTable {
             row.put("課表結束日", schedule_end);
             row.put("時間重複時是否取代", isReplace);
             db.update(SQLiteTable_Name, row, "_id=" + id, null);
-            Log.v("更新資料列", String.format("在%s更新一筆資料：%s,%s,%s,%s,%s,%s", SQLiteTable_Name,"課表名稱",name,"課表天數",days,"主要",isMain,"課表開始日2",schedule_start,"課表結束日2",schedule_end,"時間重複時是否取代",isReplace));
+            Log.v("更新資料列", String.format("在%s更新一筆資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s", SQLiteTable_Name,"課表名稱",name,"課表天數",days,"主要",isMain,"課表開始日",schedule_start,"課表結束日",schedule_end,"時間重複時是否取代",isReplace));
         } catch (Exception e) {
             Log.e("#004", "資料列更新失敗");
         }
@@ -91,7 +107,48 @@ public class TableDbTable {
     }
 
     public Cursor getCursor(){
-        return db.rawQuery(String.format("SELECT *  FROM '%s'",SQLiteTable_Name),null);
+        String cmd=String.format("SELECT *  FROM '%s' ",SQLiteTable_Name);
+        Log.v("TableDbTable.getCursor",cmd);
+        return db.rawQuery(cmd,null);
+    }
+
+    public Cursor getCursor(int Table_id){
+        return getCursor("_id = "+Table_id);
+    }
+
+    public Cursor getCursor(String where_cmd){
+        String cmd=String.format("SELECT *  FROM '%s' WHERE %s",SQLiteTable_Name,where_cmd);
+        Log.v("WeekDbTable.getCursor",cmd);
+        return db.rawQuery(cmd,null);
+    }
+
+    public int getTable_id(String Name){
+        Cursor cursor=getCursor("課表名稱= '"+Name+"'");
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+    }
+
+    public int getMain_id(){
+        Cursor cursor=getMain();
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+    }
+
+    public void updateMain_id(){
+        Cursor cursor=getMain();
+        cursor.moveToFirst();
+        updateTableData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),0,cursor.getString(4),cursor.getString(5),cursor.getInt(6));
+    }
+
+    public String getMain_Name(){
+        Cursor cursor=getMain();
+        cursor.moveToFirst();
+        return cursor.getString(1);
+    }
+
+    public Cursor getMain(){
+        Cursor cursor=getCursor("主要= "+1);
+        return cursor;
     }
 
     public void deleteAllRow(){
@@ -100,4 +157,5 @@ public class TableDbTable {
 
 
 }
+
 

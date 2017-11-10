@@ -1,4 +1,4 @@
-package com.example.info.examactivity;
+package com.example.info.table_complete_application;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 /**
- * Created by info on 2017/11/1.
+ * Created by info on 2017/11/5.
  */
 
 public class SubjectDbTable {
@@ -78,17 +78,19 @@ public class SubjectDbTable {
         return db.rawQuery(String.format("SELECT *  FROM '%s' ",SQLiteTable_Name),null);
     }
     public Cursor getCursor(int Subject_id){
-        return db.rawQuery(String.format("SELECT *  FROM '%s WHERE _id=%d",SQLiteTable_Name,Subject_id),null);
+        return db.rawQuery(String.format("SELECT *  FROM '%s' WHERE _id=%d",SQLiteTable_Name,Subject_id),null);
     }
 
     public String getSubjectName(int Subject_id){
-        Cursor cursor =db.rawQuery(String.format("SELECT *  FROM '%s WHERE _id=%d",SQLiteTable_Name,Subject_id),null);
+        Cursor cursor =db.rawQuery(String.format("SELECT *  FROM '%s' WHERE _id=%d",SQLiteTable_Name,Subject_id),null);
+        cursor.moveToFirst();
         return cursor.getString(1);
     }
 
-    public String getSubjectID(String Subject_Name){
-        Cursor cursor =db.rawQuery(String.format("SELECT *  FROM '%s WHERE 科目名稱=%s",SQLiteTable_Name,Subject_Name),null);
-        return cursor.getString(1);
+    public int getSubjectID(String Subject_Name){
+        Cursor cursor =db.rawQuery(String.format("SELECT *  FROM '%s' WHERE 科目名稱='%s'",SQLiteTable_Name,Subject_Name),null);
+        cursor.moveToFirst();
+        return cursor.getInt(0);
     }
 
 
@@ -98,3 +100,4 @@ public class SubjectDbTable {
 
 
 }
+
