@@ -136,7 +136,7 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     Cursor cursor;
-    public void UpdateAdapter_Exam(){
+        public void UpdateAdapter_Exam(){
         try{
             cursor=ExamDb.getCursor();
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"考試日期", "考試名稱"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
@@ -148,7 +148,7 @@ public class ExamActivity extends AppCompatActivity {
             Log.e("#004","清單更新失敗");
         }
 
-    }
+        }
     private ListView.OnItemClickListener List_listener=new ListView.OnItemClickListener(){
 
         @Override

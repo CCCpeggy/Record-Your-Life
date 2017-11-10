@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:stretchColumns="1">
 
         <TableRow
@@ -16,7 +17,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView"
                 android:id="@+id/name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"/>
+                android:inputType="textPersonName" />
 
         </TableRow>
 
@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/pref_table_days"
-                android:entryValues="@array/pref_table_days"/>
+                android:entryValues="@array/pref_table_days" />
 
         </TableRow>
 
@@ -115,6 +115,37 @@
                 android:text="覆蓋"
                 android:textColor="@android:color/darker_gray"
                 tools:textColor="?android:attr/textColorTertiary" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="加入節"
+                android:layout_column="1"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/classtime_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="時間選擇" />
+
+            <ListView
+                android:id="@+id/classtime_lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ListView>
 
         </TableRow>
 

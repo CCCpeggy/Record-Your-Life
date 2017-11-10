@@ -53,7 +53,7 @@ public class TableDbTable {
         }
     }
 
-    public void updateTableData(int id,String name,String days,int isMain,String schedule_start,String schedule_end,int isReplace){
+    public void updateTableData(int id,String name,int days,int isMain,String schedule_start,String schedule_end,int isReplace){
         try {
             ContentValues row = new ContentValues();
             row.put("課表名稱", name);
@@ -122,7 +122,7 @@ public class TableDbTable {
     public void updateMain_id(){
         Cursor cursor=getMain();
         cursor.moveToFirst();
-        updateTableData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),0,cursor.getString(4),cursor.getString(5),cursor.getInt(6));
+        updateTableData(cursor.getInt(0),cursor.getString(1),cursor.getInt(2),0,cursor.getString(4),cursor.getString(5),cursor.getInt(6));
     }
 
     public String getMain_Name(){
