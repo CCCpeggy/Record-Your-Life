@@ -1,15 +1,14 @@
 package com.example.info.trysettingsapplication;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -17,23 +16,28 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
-import java.util.Set;
+import java.util.Map;
 
 /**
- * Created by info on 2017/11/8.
+ * Created by info on 2017/11/9.
  */
 
-public class TableActivity extends AppCompatActivity {
+public class AddTableSettingsActivity extends AppCompatActivity {
     private SQLiteDatabase db=null;
     private String SQLiteDB_Path="student_project.db";
     EditText Start_date,End_date,Name;
@@ -43,14 +47,15 @@ public class TableActivity extends AppCompatActivity {
     TableDbTable TableDb;
     ClassWeekDbTable ClassWeekDb;
     Cursor cursor;
-    int Table_id=1;
+    int Table_id=-100;
+    List<Map<String,String>> Time;
+    Button Addbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tablesettings);
 
         initView();
-        getValue();
     }
     private void initView(){
         Start_date = (EditText) findViewById(R.id.startTime_et);
@@ -60,34 +65,35 @@ public class TableActivity extends AppCompatActivity {
         isCover=(Switch) findViewById(R.id.iscover_sw);
         isMain=(Switch)findViewById(R.id.ismain_sw);
         ClassTime =(ListView)findViewById(R.id.classtime_lv);
+        Addbtn=(Button)findViewById(R.id.button);
 
         Start_date.setInputType(InputType.TYPE_NULL);
         End_date.setInputType(InputType.TYPE_NULL);
 
         Start_date.setOnClickListener(DatePick_Listener);
         End_date.setOnClickListener(DatePick_Listener);
+        Addbtn.setOnClickListener(Button_Listener);
 
         OpOrCrDb();
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
         ClassWeekDb.OpenOrCreateTb();
-        //ClassWeekDb.deleteAllRow();
-        //ClassWeekDb.AddClassWeekData();
+        ClassWeekDb.deleteAllRow();
+        ClassWeekDb.AddClassWeekData();
 
-        UpdateAdapter();
 
         TableDb=new TableDbTable(SQLiteDB_Path,db);
         TableDb.OpenOrCreateTb();
-        //TableDb.deleteAllRow();
-        //TableDb.AddTalbeData();
+        TableDb.deleteAllRow();
+        TableDb.AddTalbeData();
+
+        Time=new ArrayList<Map<String, String>>();
+
     }
 
     public void UpdateAdapter() {
         try {
-            cursor = ClassWeekDb.getCursor(Table_id);
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"開始時間", "結束時間"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
+            SimpleAdapter adapter=new SimpleAdapter(AddTableSettingsActivity.this,Time,android.R.layout.simple_list_item_2,new String[]{"start_time","end_time"},new int[]{android.R.id.text1, android.R.id.text2});            ClassTime.setAdapter(adapter);
             ClassTime.setAdapter(adapter);
-            ClassTime.setOnItemClickListener(List_listener);
-            ClassTime.setOnItemSelectedListener(List_listener2);
             Log.v("UpdateAdapter", String.format("UpdateAdapter() 更新成功"));
 
         } catch (Exception e) {
@@ -95,23 +101,51 @@ public class TableActivity extends AppCompatActivity {
         }
 
     }
-    int ClassWeek_id;
-    private ListView.OnItemSelectedListener List_listener2=new ListView.OnItemSelectedListener(){
-
+    int i=8;
+    private Button.OnClickListener Button_Listener= new Button.OnClickListener() {
         @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Cursor ClassWeek_cursor=(Cursor)parent.getSelectedItem();
-            Log.v("132", ClassWeek_cursor.getCount()+"");
-            ClassWeek_cursor.moveToFirst();
-            ClassWeek_id=ClassWeek_cursor.getInt(0);
-        }
+        public void onClick(View v) {
+            final Map<String,String> item=new HashMap<String, String>();
 
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
+            Calendar c =Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+            TimePickerDialog timePicker=new TimePickerDialog(AddTableSettingsActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    String end_time=  String.format("%02d:%02d", hourOfDay, minute);
+                    Log.v("選擇時間",String.format("結束時間=%s",end_time));
+                    item.put("end_time",end_time);
+                    UpdateAdapter();
+                }
+            }, hour, minute, true);
+            timePicker.setTitle("結束時間");
+            timePicker.show();
 
+            c =Calendar.getInstance();
+            hour = c.get(Calendar.HOUR_OF_DAY);
+            minute = c.get(Calendar.MINUTE);
+            // Create a new instance of TimePickerDialog and return it
+            timePicker= new TimePickerDialog(AddTableSettingsActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    String start_time= String.format("%02d:%02d", hourOfDay, minute);
+                    Log.v("選擇時間",String.format("開始時間=%s",start_time));
+                    item.put("start_time",start_time);
+                    //Time.add(item);
+                    UpdateAdapter();
+                }
+            }, hour, minute, true);
+            timePicker.setTitle("開始時間");
+            timePicker.show();
+
+
+            Time.add(item);
+            UpdateAdapter();
         }
     };
 
+    int ClassWeek_id;
     private ListView.OnItemClickListener List_listener=new ListView.OnItemClickListener(){
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -124,10 +158,10 @@ public class TableActivity extends AppCompatActivity {
             Calendar c = StringtoTCalendar(ClassWeek_cursor.getString(3));
             int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
-            TimePickerDialog timePicker=new TimePickerDialog(TableActivity.this, new TimePickerDialog.OnTimeSetListener() {
+            TimePickerDialog timePicker=new TimePickerDialog(AddTableSettingsActivity.this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    String end_time= String.format("%02d:%02d", hourOfDay, minute);
+                    String end_time=  hourOfDay + ":" + minute;
                     Log.v("選擇時間",String.format("結束時間=%s",end_time));
                     ClassWeekDb.updateEndTime(ClassWeek_id,end_time);
                     UpdateAdapter();
@@ -140,10 +174,10 @@ public class TableActivity extends AppCompatActivity {
             hour = c.get(Calendar.HOUR_OF_DAY);
             minute = c.get(Calendar.MINUTE);
             // Create a new instance of TimePickerDialog and return it
-             timePicker= new TimePickerDialog(TableActivity.this, new TimePickerDialog.OnTimeSetListener() {
+            timePicker= new TimePickerDialog(AddTableSettingsActivity.this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                    String start_time=  String.format("%02d:%02d", hourOfDay, minute);
+                    String start_time=  hourOfDay + ":" + minute;
                     Log.v("選擇時間",String.format("開始時間=%s",start_time));
                     ClassWeekDb.updateStartTime(ClassWeek_id,start_time);
                     UpdateAdapter();
@@ -167,32 +201,21 @@ public class TableActivity extends AppCompatActivity {
     }
 
     private void saveValue(){
-        TableDb.updateTableData(
-                Table_id
-                ,Name.getText().toString()
+        TableDb.insertTableData(
+                Name.getText().toString()
                 ,Days.getSelectedItem().toString()
                 ,(isMain.isChecked()?1:0)
                 ,Start_date.getText().toString()
                 ,End_date.getText().toString()
                 ,isCover.isChecked()?1:0);
+        Table_id=TableDb.getTable_id(Name.getText().toString());
+        insertClassWeeks();
     }
 
-    private void getValue(){
-        //_id, 課表名稱, 課表天數, 主要, 課表開始日, 課表結束日, 時間重複時是否取代
-        Cursor cursor = TableDb.getCursor(Table_id);
-        cursor.moveToFirst();
-        Start_date.setText(cursor.getString(4));
-        End_date.setText(cursor.getString(5));
-        Name.setText(cursor.getString(1));
-        Days.setSelection(cursor.getInt(2)-1);
-        isMain.setChecked(cursor.getInt(3)==1);
-        isCover.setChecked(cursor.getInt(6)==1);
-
-    }
 
     private void check_main(){
 
-        AlertDialog.Builder builder =new AlertDialog.Builder(TableActivity.this);
+        AlertDialog.Builder builder =new AlertDialog.Builder(AddTableSettingsActivity.this);
         builder.setTitle("確認視窗")
                 .setMessage("是否取代"+TableDb.getMain_Name()+"作為主要課表")
                 .setPositiveButton("確定", new DialogInterface.OnClickListener() {
@@ -216,29 +239,33 @@ public class TableActivity extends AppCompatActivity {
     }
 
     private boolean check(){
-                /*,Name.getText().toString()
-                ,Days.getSelectedItem().toString()
-                ,(isMain.isChecked()?1:0)
-                ,Start_time.getText().toString()
-                ,End_time.getText().toString()
-                ,isCover.isChecked()?1:0);*/
         if(TableDb.getCursor(String.format("課表名稱='%s' AND _id !=%d ",Name.getText().toString(),Table_id)).getCount()>0){
-            Toast.makeText(TableActivity.this,"課表名稱已存在",Toast.LENGTH_LONG).show();
+            Toast.makeText(AddTableSettingsActivity.this,"課表名稱已存在",Toast.LENGTH_LONG).show();
             Log.w("課表名稱錯誤","課表名稱已存在");
             return false;
         } //補習班 學校
+        if(Name.getText().toString().equals("")){
+            Toast.makeText(AddTableSettingsActivity.this,"課表名稱為空",Toast.LENGTH_LONG).show();
+            Log.w("課表名稱錯誤","課表名稱為空");
+            return false;
+        }
+        if(Start_date.getText().toString().equals("")){
+            Toast.makeText(AddTableSettingsActivity.this,"課表開始日期不可為空",Toast.LENGTH_LONG).show();
+            Log.w("課表開始日期錯誤","課表開始日期不可為空");
+            return false;
+        }
         if(!IsStringtoCalendar(Start_date.getText().toString())){
-            Toast.makeText(TableActivity.this,"課表開始日期格式錯誤",Toast.LENGTH_LONG).show();
+            Toast.makeText(AddTableSettingsActivity.this,"課表開始日期格式錯誤",Toast.LENGTH_LONG).show();
             Log.w("課表開始日期錯誤","課表開始日期格式錯誤");
             return false;
         }
-        if(!IsStringtoCalendar(End_date.getText().toString())){
-            Toast.makeText(TableActivity.this,"課表結束日期格式錯誤",Toast.LENGTH_LONG).show();
+        if(!End_date.getText().toString().equals("")&&!IsStringtoCalendar(End_date.getText().toString())){
+            Toast.makeText(AddTableSettingsActivity.this,"課表結束日期格式錯誤",Toast.LENGTH_LONG).show();
             Log.w("課表結束日期錯誤","課表結束日期格式錯誤");
             return false;
         }
-        if (End_date.getText().toString().equals("")||!compareDate(Start_date.getText().toString(),End_date.getText().toString())){
-            Toast.makeText(TableActivity.this,"課表日期錯誤",Toast.LENGTH_LONG).show();
+        if (!End_date.getText().toString().equals("")&&!compareDate(Start_date.getText().toString(),End_date.getText().toString())){
+            Toast.makeText(AddTableSettingsActivity.this,"課表日期錯誤",Toast.LENGTH_LONG).show();
             Log.w("課表日期錯誤","課表日期錯誤");
             return false;
         }
@@ -246,13 +273,12 @@ public class TableActivity extends AppCompatActivity {
             check_main();
             return false;
         }
-
-        try{
-
-        }catch (Exception e){
-            Toast.makeText(TableActivity.this,"　",Toast.LENGTH_LONG).show();
+        if(!check_time()){
+            Toast.makeText(AddTableSettingsActivity.this,"課表時間錯誤",Toast.LENGTH_LONG).show();
+            Log.w("課表時間錯誤","課表時間錯誤");
             return false;
         }
+
         return true;
     }
 
@@ -286,14 +312,14 @@ public class TableActivity extends AppCompatActivity {
             EditText et=(EditText)v;
             DatePickerDialog dataPick;
             if (v==Start_date){
-                dataPick=new DatePickerDialog(TableActivity.this,datepicker,
+                dataPick=new DatePickerDialog(AddTableSettingsActivity.this,datepicker,
                         m_Calendar.get(Calendar.YEAR),
                         m_Calendar.get(Calendar.MONTH),
                         m_Calendar.get(Calendar.DAY_OF_MONTH));
                 dataPick.show();
             }
             else{
-                dataPick=new DatePickerDialog(TableActivity.this,datepicker2,
+                dataPick=new DatePickerDialog(AddTableSettingsActivity.this,datepicker2,
                         m_Calendar.get(Calendar.YEAR),
                         m_Calendar.get(Calendar.MONTH),
                         m_Calendar.get(Calendar.DAY_OF_MONTH));
@@ -341,7 +367,7 @@ public class TableActivity extends AppCompatActivity {
         try{
             Calendar.setTime(sdf.parse(date));
         }catch (Exception e){
-            Toast.makeText(TableActivity.this,"日期格式不符合 yyyy-MM-dd",Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddTableSettingsActivity.this,"日期格式不符合 yyyy-MM-dd",Toast.LENGTH_SHORT).show();
         }
         return Calendar;
     }
@@ -352,7 +378,7 @@ public class TableActivity extends AppCompatActivity {
         try{
             Calendar.setTime(sdf.parse(date));
         }catch (Exception e){
-            Toast.makeText(TableActivity.this,"時間格式不符合 hh:mm",Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddTableSettingsActivity.this,"時間格式不符合 hh:mm",Toast.LENGTH_SHORT).show();
         }
         return Calendar;
     }
@@ -368,6 +394,36 @@ public class TableActivity extends AppCompatActivity {
         if(cal.get(Calendar.MONTH)>cal2.get(Calendar.MONTH))return false;
         if(cal.get(Calendar.MONTH)<cal2.get(Calendar.MONTH))return true;
         return !(cal.get(Calendar.DATE)>cal2.get(Calendar.DATE));
+    }
+
+    private boolean compareTime(String starttime,String endtime){
+        Calendar cal=StringtoTCalendar(starttime);
+        Calendar cal2=StringtoTCalendar(endtime);
+        Log.v("傳入日期",String.format("HOUR=%d/%d,MINUTE=%d/%d"
+                ,cal.get(Calendar.HOUR),cal2.get(Calendar.HOUR)
+                ,cal.get(Calendar.MINUTE),cal2.get(Calendar.MINUTE)));
+
+        if(cal.get(Calendar.HOUR)>cal2.get(Calendar.HOUR))return false;
+        if(cal.get(Calendar.HOUR)<cal2.get(Calendar.HOUR))return true;
+        return (cal.get(Calendar.MINUTE)<=cal2.get(Calendar.MINUTE));
+    }
+
+    private boolean check_time(){
+        String tmp_endTime="00:00";
+        for (Map<String, String> item:Time) {
+            if(!compareTime(item.get("start_time"),item.get("end_time"))) return false;
+            if(!compareTime(tmp_endTime,item.get("start_time")))return false;
+            tmp_endTime=item.get("end_time");
+        }
+        return true;
+    }
+    private void insertClassWeek(String start_time,String end_time){
+        ClassWeekDb.insertClassWeekData(Table_id,start_time,end_time);
+    }
+    private void insertClassWeeks(){
+        for (Map<String, String> item:Time) {
+            insertClassWeek(item.get("start_time"),item.get("end_time"));
+        }
     }
 
 }

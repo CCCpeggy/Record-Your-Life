@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.info.trysettingsapplication">
+    package="com.example.info.table_complete_application">
 
     <application
         android:allowBackup="true"
@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".TableSettingsActivity" />
         <activity android:name=".AddTableSettingsActivity" />
+        <activity android:name=".AddSubjectTableActivity" />
     </application>
 
 </manifest>

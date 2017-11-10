@@ -1,8 +1,7 @@
-package com.example.info.tableapplication;
+package com.example.info.table_complete_application;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.icu.util.Calendar;
 import android.util.Log;
 
 /**
@@ -20,11 +19,21 @@ public class All_Table extends TableDbTable {
 
     public All_Table(String path, SQLiteDatabase Database,int id) {
         super(path, Database);
+
+
         initAllTable(path,Database);
         AddTableData();
         setTable(id);
     }
 
+    public All_Table(String path, SQLiteDatabase Database) {
+        super(path, Database);
+
+        initAllTable(path,Database);
+        AddTableData();
+
+        setTable(getMain_id());
+    }
     public All_Table(String path, SQLiteDatabase Database,String TableName,int days,int isMain,String schedule_start,String schedule_end,int isReplace,String[][] subject,String time_start[],String time_end[]) {
         super(path, Database);
         initAllTable(path,Database);
@@ -177,6 +186,7 @@ public class All_Table extends TableDbTable {
         }
         return Tables;
     }
+
 
     public Cursor getClassWeekCursor(){
         return ClassWeekDb.getCursor("課表ID = "+Table_id);

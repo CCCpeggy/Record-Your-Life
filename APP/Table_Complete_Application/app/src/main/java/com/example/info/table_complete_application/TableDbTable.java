@@ -1,13 +1,13 @@
-package com.example.info.trysettingsapplication;
-
-/**
- * Created by info on 2017/11/9.
- */
+package com.example.info.table_complete_application;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+/**
+ * Created by info on 2017/11/5.
+ */
 
 public class TableDbTable {
 
@@ -69,7 +69,6 @@ public class TableDbTable {
         }
     }
 
-
     public void updateTableData(int id,String name,String days,int isMain,String schedule_start,String schedule_end,int isReplace){
         try {
             ContentValues row = new ContentValues();
@@ -116,7 +115,6 @@ public class TableDbTable {
     public Cursor getCursor(int Table_id){
         return getCursor("_id = "+Table_id);
     }
-
 
     public Cursor getCursor(String where_cmd){
         String cmd=String.format("SELECT *  FROM '%s' WHERE %s",SQLiteTable_Name,where_cmd);

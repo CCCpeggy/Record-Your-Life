@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,TableActivity.class);
+                Intent intent=new Intent(MainActivity.this,TableSettingsActivity.class);
                 startActivity(intent);
             }
         });
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,AddTableActivity.class);
+                Intent intent=new Intent(MainActivity.this,AddTableSettingsActivity.class);
                 startActivity(intent);
             }
         });
