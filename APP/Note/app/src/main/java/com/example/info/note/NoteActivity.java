@@ -166,7 +166,7 @@ public class NoteActivity extends AppCompatActivity {
             cursor.moveToPosition(position);
             int Click_ID=cursor.getInt(0);
             try{
-                
+
                 Log.v("刪除資料列",String.format("在%s刪除一筆資料：%s=%d",NoteDb.SQLiteTable_Name,"ID",Click_ID));
             }catch (Exception e){
                 Log.e("#006","資料列刪除失敗");
