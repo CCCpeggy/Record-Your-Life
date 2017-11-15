@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://C:\Users\CN\Desktop\alert_dialog_demo-master\AlertDailogDemo.iml" filepath="C:\Users\CN\Desktop\alert_dialog_demo-master\AlertDailogDemo.iml" />
+      <module fileurl="file://C:\Users\CN\Desktop\alert_dialog_demo-master\alert_dialog_demo.iml" filepath="C:\Users\CN\Desktop\alert_dialog_demo-master\alert_dialog_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alert_dialog_demo-master.iml" filepath="$PROJECT_DIR$/alert_dialog_demo-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>
