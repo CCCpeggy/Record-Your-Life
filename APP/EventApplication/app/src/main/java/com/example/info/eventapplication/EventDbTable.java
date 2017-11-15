@@ -77,8 +77,8 @@ public class EventDbTable {
 
     public void AddEventData(){
         String  Name[]={"光棍節","中秋節","第二次段考","第二次模擬考","端午節","運動會","國慶四天連假","教師節"};
-        String  Start_day[]={"2017-11-11","2017-10-04","2017-07-28","2017-12-19","2017-05-30","2017-10-27","2017-10-07","2017-09-28"};
-        String  End_day[]=  {"2017-11-11","2017-10-04","2017-07-29","2017-12-20","2017-05-30","2017-10-27","2017-10-10","2017-09-28"};
+        String  Start_day[]={"2017-11-11","2017-10-04","2017-11-28","2017-12-19","2017-05-30","2017-10-27","2017-10-07","2017-09-28"};
+        String  End_day[]=  {"2017-11-11","2017-10-04","2017-11-29","2017-12-20","2017-05-30","2017-10-27","2017-10-10","2017-09-28"};
         String  Remark[]={"Noooo","約個烤肉","範圍：","範圍：","訂了粽子","比自由式","準備考試","約同學會"};
         for(int i=0;i<Name.length;i++){
             insertEventData(Name[i],Start_day[i],End_day[i],Remark[i]);
@@ -86,7 +86,9 @@ public class EventDbTable {
     }
 
     public Cursor getCursor(){
-        return db.rawQuery(String.format("SELECT *  FROM '%s'",SQLiteTable_Name),null);
+        Cursor cursor=db.rawQuery(String.format("SELECT *  FROM '%s'",SQLiteTable_Name),null);
+        cursor.moveToFirst();
+        return cursor;
     }
 
     public Cursor getCursor(String Where_cmd){
@@ -115,13 +117,13 @@ public class EventDbTable {
         int month=cal.get(Calendar.MONTH)+1;
         int date=cal.get(Calendar.DAY_OF_MONTH);
 
-        String cmd=String.format("((YEAR < '%d') OR ",year,month,date);
-        cmd +=String.format("(YEAR = '%d' AND MONTH < '%d') OR ",year,month,date);
-        cmd +=String.format("(YEAR = '%d' AND MONTH = '%d' AND  DATE <= '%d')) AND ",year,month,date);
+        String cmd=String.format("((YEAR < '%04d') OR ",year,month,date);
+        cmd +=String.format("(YEAR = '%04d' AND MONTH < '%02d') OR ",year,month,date);
+        cmd +=String.format("(YEAR = '%04d' AND MONTH = '%02d' AND  DATE <= '%02d')) AND ",year,month,date);
 
-        cmd +=String.format("((END_YEAR > '%d') OR ",year,month,date);
-        cmd +=String.format("(END_YEAR = '%d' AND END_MONTH > '%d') OR ",year,month,date);
-        cmd +=String.format("(END_YEAR = '%d' AND END_MONTH = '%d' AND  END_DATE >= '%d'))",year,month,date);
+        cmd +=String.format("((END_YEAR > '%04d') OR ",year,month,date);
+        cmd +=String.format("(END_YEAR = '%04d' AND END_MONTH > '%02d') OR ",year,month,date);
+        cmd +=String.format("(END_YEAR = '%04d' AND END_MONTH = '%02d' AND  END_DATE >= '%02d'))",year,month,date);
         //String cmd=String.format("YEAR <= '%d'",year,month,date);
         Log.v(SQLiteTable_Name+"_cmd",cmd);
         return getCursorHasDay(cmd);
