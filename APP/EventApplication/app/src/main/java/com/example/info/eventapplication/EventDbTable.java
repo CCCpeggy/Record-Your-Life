@@ -130,7 +130,8 @@ public class EventDbTable {
     }
 
     public Cursor getCursorHasDay(String Where_cmd){
-        String cmd="SELECT *,";
+        String cmd="SELECT ";
+        cmd+=String.format("%s AS '%s',%s AS '%s',%s AS '%s',%s AS '%s',","_id","_id","日子名稱","日子名稱","日期開始","日期開始","日期結束","日期結束");
         cmd+=String.format("%s AS %s,%s AS %s,%s AS %s,","strftime('%Y',日期開始)","YEAR","strftime('%m',日期開始) ","MONTH"," strftime('%d',日期開始) ","DATE");
         cmd+=String.format("%s AS %s,%s AS %s,%s AS %s ","strftime('%Y',日期結束)","END_YEAR","strftime('%m',日期結束) ","END_MONTH"," strftime('%d',日期結束) ","END_DATE");
         cmd+="FROM '"+SQLiteTable_Name+"' WHERE "+Where_cmd;

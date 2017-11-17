@@ -29,7 +29,7 @@ public class EventActivity extends AppCompatActivity {
     EventDbTable EventDb;
     ListView EventList;
     CalendarView calView;
-    private final static int ADDEVENTPAGE=1895;
+    private final static int ADDEVENTPAGE=1895,CHANGEEVENTPAGE=1494;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,13 +77,15 @@ public class EventActivity extends AppCompatActivity {
 
             if (!extra.isEmpty()) {
                 switch (requestCode) {
-                    /*case LISTPAGE_QAQQ:
+                    case CHANGEEVENTPAGE:
                         int Selected_id = extra.getInt("SELECTED_ID");
-                        Changed_title = extra.getString("CHANGED_TITLE");
-                        Changed_content = extra.getString("CHANGED_CONTENT");
-                        NoteDb.updateNoteData( Selected_id,Changed_title,Changed_content);
+                        Name = extra.getString("NAME");
+                        Start_date= extra.getString("STARTDATE");
+                        End_date= extra.getString("ENDDATE");
+                        Remark= extra.getString("REMARK");
+                        EventDb.updateEventData( Selected_id,Name ,Start_date,End_date,Remark);
 
-                        break;*/
+                        break;
                     case ADDEVENTPAGE:
                         Name = extra.getString("NAME");
                         Start_date= extra.getString("STARTDATE");
@@ -122,11 +124,12 @@ public class EventActivity extends AppCompatActivity {
         }
 
     }
-
+    String date_selected;
     private CalendarView.OnDateChangeListener CalViewListener=new CalendarView.OnDateChangeListener() {
         @Override
         public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
             String date=String.format("%04d-%02d-%02d",year,(month+1),dayOfMonth);
+            date_selected=date;
             UpdateAdapter(date);
         }
     };
@@ -156,13 +159,14 @@ public class EventActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            Cursor cursor=EventDb.getCursorByDay(date_selected);
             cursor.moveToPosition(position);
             int Selected_ID=cursor.getInt(0);
-            Intent intent  = new Intent(NoteActivity.this,NotePageActivity.class);
+            Log.v("Selected_ID",cursor.getInt(0)+"");
+            Intent intent  = new Intent(EventActivity.this,ChangEventActivity.class);
             intent.putExtra("SELECTED_ID",Selected_ID);
-            intent.putExtra("SELECTED_TITLE",cursor.getString(1));
-            intent.putExtra("SELECTED_CONTENT",cursor.getString(2));
-            startActivityForResult(intent,LISTPAGE_QAQQ);
+            startActivityForResult(intent,CHANGEEVENTPAGE);
         }
     };
 

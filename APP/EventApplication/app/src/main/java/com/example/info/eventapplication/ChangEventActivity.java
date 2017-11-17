@@ -70,6 +70,7 @@ public class ChangEventActivity extends AppCompatActivity {
         Event_id=extra.getInt("SELECTED_ID");
 
         Cursor cursor =EventDb.getCursor(Event_id);
+        cursor.moveToFirst();
         Name.setText(cursor.getString(1));
         Start_date.setText(cursor.getString(2));
         End_date.setText(cursor.getString(3));
@@ -137,7 +138,7 @@ public class ChangEventActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if(!compareDate(Start_date.getText().toString(),End_date.getText().toString()))return;
-            intent.putExtra("ID",Name.getText().toString());
+            intent.putExtra("ID",Event_id);
             intent.putExtra("NAME",Name.getText().toString());
             intent.putExtra("STARTDATE",Start_date.getText().toString());
             intent.putExtra("ENDDATE",End_date.getText().toString());
@@ -151,6 +152,7 @@ public class ChangEventActivity extends AppCompatActivity {
     private boolean compareDate(String startdate,String enddate){
         Calendar cal=StringtoCalendar(startdate);
         Calendar cal2=StringtoCalendar(enddate);
+        if (cal.equals("")||cal2.equals(""))return false;
         Log.v("傳入日期",String.format("YEAR=%d/%d,MONTH=%d/%d,DATE=%d/%d",cal.get(Calendar.YEAR),cal2.get(Calendar.YEAR)
                 ,cal.get(Calendar.MONTH),cal2.get(Calendar.MONTH)
                 ,cal.get(Calendar.DATE),cal2.get(Calendar.DATE)));
@@ -168,6 +170,7 @@ public class ChangEventActivity extends AppCompatActivity {
             Calendar.setTime(sdf.parse(date));
         }catch (Exception e){
             Toast.makeText(ChangEventActivity.this,"日期格式不符合 yyyy-MM-dd",Toast.LENGTH_SHORT).show();
+            return null;
         }
         return Calendar;
     }
