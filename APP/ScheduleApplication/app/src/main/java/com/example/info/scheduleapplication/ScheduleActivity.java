@@ -44,6 +44,8 @@ public class ScheduleActivity extends AppCompatActivity {
     private void initDateBase(){
         OpOrCrDb();
         A_Day_Table Table=new A_Day_Table(SQLiteDB_Path,db,"2017-11-17");
+        Table.getTable_cursor();
+        Table.outputAllWeekIds();
     }
 
     //打開或新增資料庫
