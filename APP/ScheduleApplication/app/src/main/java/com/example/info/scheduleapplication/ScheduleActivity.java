@@ -1,16 +1,28 @@
 package com.example.info.scheduleapplication;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Spinner;
+import android.widget.TableLayout;
 
 public class ScheduleActivity extends AppCompatActivity {
 
+
+    private SQLiteDatabase db=null;
+    private String SQLiteDB_Path="student_project.db";
+    int Week_id;
+    TableLayout layout;
+    All_Table Table;
+
+    private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +38,24 @@ public class ScheduleActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        initDateBase();
+    }
+
+    private void initDateBase(){
+        OpOrCrDb();
+        A_Day_Table Table=new A_Day_Table(SQLiteDB_Path,db,"2017-11-17");
+        Table.getTable_cursor();
+        Table.outputAllWeekIds();
+    }
+
+    //打開或新增資料庫
+    private void OpOrCrDb(){
+        try{
+            db=openOrCreateDatabase(SQLiteDB_Path,MODE_PRIVATE,null);
+            Log.v("資料庫","資料庫載入成功");
+        }catch (Exception ex){
+            Log.e("#001","資料庫載入錯誤");
+        }
     }
 
     @Override
