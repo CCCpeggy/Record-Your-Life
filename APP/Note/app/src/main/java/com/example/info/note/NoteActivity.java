@@ -134,12 +134,15 @@ public class NoteActivity extends AppCompatActivity {
         try{
             cursor=NoteDb.getCursor();
             if(cursor !=  null && cursor.getCount()>0){
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"便條標題", "便條內容"}, new int[]{android. R.id.text1,android.R.id.text2}, 0);
-            listView01.setAdapter(adapter);
-            listView01.setOnItemLongClickListener(List_Long_Listener);
-            listView01.setOnItemClickListener(List_listener);
-            Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
-        }
+                //ListView格式自訂
+                SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.listviewitem_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{R.id.text1,R.id.text2}, 0);
+                //ListView格式預設
+                //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"便條標題", "便條內容"}, new int[]{android. R.id.text1,android.R.id.text2}, 0);
+                listView01.setAdapter(adapter);
+                listView01.setOnItemLongClickListener(List_Long_Listener);
+                listView01.setOnItemClickListener(List_listener);
+                Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
+            }
         }catch (Exception e){
             Log.e("#004","清單更新失敗");
         }
