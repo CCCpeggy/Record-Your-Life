@@ -39,8 +39,8 @@ public class ExamActivity extends AppCompatActivity {
         OpOrCrDb();
         ExamDb = new ExamDbTable(SQLiteDB_Path,db);
         ExamDb.OpenOrCreateTb();
-        //ExamDb.deleteAllRow();
-        //ExamDb.AddExamData();
+        ExamDb.deleteAllRow();
+        ExamDb.AddExamData();
         UpdateAdapter_Exam();
     }
 

@@ -1,6 +1,8 @@
 package com.example.info.note;
 
+import android.app.SearchManager;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,6 +18,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+import android.support.v7.widget.SearchView;
 //修改內容
 
 public class NoteActivity extends AppCompatActivity {
@@ -34,7 +37,31 @@ public class NoteActivity extends AppCompatActivity {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_activity_actions, menu);
-        return super.onCreateOptionsMenu(menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(NoteActivity.this,query,Toast.LENGTH_SHORT).show();
+                UpdateAdapter_Note(query);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                UpdateAdapter_Note( newText);
+                return false;
+            }
+        });
+
+        // 顯示完成鈕
+        //searchView.setSubmitButtonEnabled(true);
+
+
+        return true;
     }
 
     //動作按鈕回應
@@ -44,6 +71,8 @@ public class NoteActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_search:
                 Toast toast１ =Toast.makeText(this,"Search",Toast.LENGTH_LONG);
+
+
                 toast１.show();
                 return true;
             case R.id.action_settings:
@@ -54,6 +83,11 @@ public class NoteActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    @Override
+    protected void onNewIntent(Intent intent)
+    {
+        //handleIntent(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +96,14 @@ public class NoteActivity extends AppCompatActivity {
 
         initView();
 
+        //handleIntent(getIntent());
+
         //其餘動作
         OpOrCrDb();
         NoteDb=new NoteDbTable(SQLiteDB_Path,db);
         NoteDb.OpenOrCreateTb();
-        NoteDb.deleteAllRow();
-        NoteDb.AddNoteData();
+        //NoteDb.deleteAllRow();
+        //NoteDb.AddNoteData();
 
         //AddNoteData();
 
@@ -170,6 +206,22 @@ public class NoteActivity extends AppCompatActivity {
             listView01.setOnItemClickListener(List_listener);
             Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
         }
+        }catch (Exception e){
+            Log.e("#004","清單更新失敗");
+        }
+
+    }
+
+    public void UpdateAdapter_Note(String Search_word){
+        try{
+            cursor=NoteDb.getCursor(" 便條標題 LIKE '%"+Search_word+"%'");
+            if(cursor !=  null && cursor.getCount()>0){
+                SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"便條標題", "便條內容"}, new int[]{android. R.id.text1,android.R.id.text2}, 0);
+                listView01.setAdapter(adapter);
+                listView01.setOnItemLongClickListener(List_Long_Listener);
+                listView01.setOnItemClickListener(List_listener);
+                Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
+            }
         }catch (Exception e){
             Log.e("#004","清單更新失敗");
         }
