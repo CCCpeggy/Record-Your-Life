@@ -1,5 +1,6 @@
 package com.example.info.scheduleapplication;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -43,9 +44,10 @@ public class ScheduleActivity extends AppCompatActivity {
 
     private void initDateBase(){
         OpOrCrDb();
-        A_Day_Table Table=new A_Day_Table(SQLiteDB_Path,db,"2017-11-17");
-        Table.getTable_cursor();
+        A_Day_Table Table=new A_Day_Table(SQLiteDB_Path,db,"2017-11-22");
+        Cursor Week_cursor=Table.getWeek_cursor();
         Table.outputAllWeekIds();
+
     }
 
     //打開或新增資料庫

@@ -22,7 +22,7 @@ public class A_Day_Table  extends WeekDbTable{
     ClassWeekDbTable ClassWeekDb;
     TableDbTable TableDb;
     private int DayOfWeek /*星期幾*/;
-    private List<Integer> WeekIds;
+    private List<Integer> weekIds;
 
     public A_Day_Table(String path, SQLiteDatabase Database,String date) {
         super(path,Database);
@@ -30,8 +30,9 @@ public class A_Day_Table  extends WeekDbTable{
         initAllDb(path,Database);
         AddTableData();
         setDays(date);
+        getWeekId();
 
-        WeekIds=new ArrayList<Integer>();
+        weekIds=new ArrayList<Integer>();
     }
 
     public void initAllDb(String path, SQLiteDatabase db){
@@ -68,10 +69,24 @@ public class A_Day_Table  extends WeekDbTable{
         setDays(DayOfWeek(date));
     }
 
-    public void getTable_cursor(){
+    public Cursor getWeek_cursor(){
+        Cursor Week_cursor;
+        String Ids_string="";
+        boolean not_start=false;
+        for (int i:weekIds) {
+            if(not_start)Ids_string+=",";
+            else not_start=!not_start;
+            Ids_string+=i;
+        }
+        Week_cursor=super.getCursor("_id IN ("+Ids_string+")" );
+        return Week_cursor;
+    }
+
+    private List<Integer> getWeekId(){
+        List<Integer> WeekIds=new ArrayList<Integer>();
         //取得所有課表
         Cursor Table_cursor= TableDb.getCursor();
-        if(Table_cursor.getCount()<=0)return;
+        if(Table_cursor.getCount()<=0) return null;
         Table_cursor.moveToFirst();
         //一一尋找week
         do{
@@ -82,10 +97,11 @@ public class A_Day_Table  extends WeekDbTable{
             tmp_week_cursor.moveToFirst();
             WeekIds.add(tmp_week_cursor.getInt(0));
         }while (Table_cursor.moveToNext());
+        return WeekIds;
     }
 
     public void outputAllWeekIds(){
-        for (int i : WeekIds){
+        for (int i : weekIds){
             Log.v("List<Integer> WeekIds",i+"");
         }
     }
