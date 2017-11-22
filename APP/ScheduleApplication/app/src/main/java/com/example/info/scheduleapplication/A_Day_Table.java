@@ -30,9 +30,9 @@ public class A_Day_Table  extends WeekDbTable{
         initAllDb(path,Database);
         AddTableData();
         setDays(date);
-        getWeekId();
 
         weekIds=new ArrayList<Integer>();
+        weekIds=getWeekId();
     }
 
     public void initAllDb(String path, SQLiteDatabase db){
@@ -135,5 +135,60 @@ public class A_Day_Table  extends WeekDbTable{
         }
         return Calendar;
     }
+
+    //多個課表
+    public String[][][] TablesClassInDay(){
+        if(weekIds.size()<=0)return null;
+        String [][][]Tables=new String[weekIds.size()][][];
+        int i=0;
+        for (int id:weekIds){
+            Tables[i]=OneTableClassInDay(id);
+            i++;
+        }
+        return Tables;
+    }
+
+    //0科目名稱 1開始時間 2結束時間
+    public String[][] OneTableClassInDay(int Week_id){
+        String Table[][]=new String[3][];
+        if(weekIds.size()<=0)return null;
+        //int Week_id=weekIds.get(0);
+        Cursor ClassCursor = ClassDb.getCursor("星期ID = "+Week_id);
+        if(ClassCursor.getCount()<=0)return null;
+        ClassCursor.moveToFirst();
+        int i=0;
+        do{
+            if(i==0){
+                int count=ClassCursor.getCount();
+                Table[0]=new String[count];
+                Table[1]=new String[count];
+                Table[2]=new String[count];
+            }
+            Table[0][i]=getClassSubject(ClassCursor);
+            Table[1][i]=ClassWeekDb.getByIndex(ClassCursor.getInt(0),2);
+            Table[2][i]=ClassWeekDb.getByIndex(ClassCursor.getInt(0),3);
+            Log.v("Class Table",String.format("[0]%s,[1]%s,[2]%s",Table[0][i],Table[1][i],Table[2][i]));
+            i++;
+        }while (ClassCursor.moveToNext());
+
+        return Table;
+    }
+
+
+    public String getClassSubject(int ClassWeek_id,int Week_id){
+        Cursor ClassCursor=getClassCursor(ClassWeek_id,Week_id);
+        ClassCursor.moveToFirst();
+        return SubjectDb.getSubjectName(ClassCursor.getInt(2));
+    }
+
+    public String getClassSubject(Cursor ClassCursor){
+        return SubjectDb.getSubjectName(ClassCursor.getInt(2));
+    }
+
+    public Cursor getClassCursor(int ClassWeek_id,int Week_id){
+        return ClassDb.getCursor("_id = "+ClassWeek_id+" AND 星期ID ="+Week_id);
+    }
+
+
 
 }

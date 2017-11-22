@@ -8,6 +8,21 @@
     tools:context="com.example.info.scheduleapplication.ScheduleActivity"
     tools:showIn="@layout/activity_schedule">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:id="@+id/Ly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+        </TableLayout>
+    </ScrollView>
 
 
 </LinearLayout>

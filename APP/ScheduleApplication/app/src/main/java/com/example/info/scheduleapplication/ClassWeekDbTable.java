@@ -127,6 +127,14 @@ public class ClassWeekDbTable {
         return 0;
     }
 
+    public String getByIndex(int ClassWeek_id,int index){
+        Cursor cursor=db.rawQuery(String.format("SELECT *  FROM '%s' WHERE _id=%d",SQLiteTable_Name,ClassWeek_id),null);
+        cursor.moveToFirst();
+        if(cursor.getCount()>0)
+            return cursor.getString(index);
+        return null;
+    }
+
     public void updateClassWeekData(int id,int table_id,String time_start,String time_end){
         try {
             ContentValues row = new ContentValues();
