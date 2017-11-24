@@ -82,6 +82,10 @@ public class WeekDbTable {
         return getCursor(String.format("課表ID=%d AND 第幾天 = %d",Table_id,days));
     }
 
+    public Cursor getCursor(String col,String Where_cmd){
+        return db.rawQuery(String.format("SELECT distinct  %s  FROM '%s' WHERE %s",col,SQLiteTable_Name,Where_cmd),null);
+    }
+
     public int getWeek_id(int Table_id,int days){
         Cursor cursor=getCursor(Table_id,days);
         cursor.moveToFirst();

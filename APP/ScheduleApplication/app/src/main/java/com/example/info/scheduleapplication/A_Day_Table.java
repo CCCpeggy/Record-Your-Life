@@ -174,6 +174,27 @@ public class A_Day_Table  extends WeekDbTable{
         return Table;
     }
 
+    public String[] getTableName(){
+        String Ids_string="";
+        boolean not_start=false;
+        for (int i:weekIds) {
+            if(not_start)Ids_string+=",";
+            else not_start=!not_start;
+            Ids_string+=i;
+        }
+        Cursor tmp_cursor= super.getCursor("課表ID","_id IN ("+Ids_string+")");
+        if (tmp_cursor.getCount()<=0)return null;
+        Log.v("tmp_cursor.getCount()",tmp_cursor.getCount()+"");
+        String[] Name=new String[tmp_cursor.getCount()];
+        tmp_cursor.moveToFirst();
+        int i=0;
+        do{
+            Name[i]=TableDb.getTable_name( tmp_cursor.getInt(0));
+            i++;
+        }while(tmp_cursor.moveToNext());
+        return Name;
+    }
+
 
     public String getClassSubject(int ClassWeek_id,int Week_id){
         Cursor ClassCursor=getClassCursor(ClassWeek_id,Week_id);

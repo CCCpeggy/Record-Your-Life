@@ -130,6 +130,12 @@ public class TableDbTable {
         return cursor.getInt(0);
     }
 
+    public String getTable_name(int id){
+        Cursor cursor=getCursor("_id= "+id);
+        cursor.moveToFirst();
+        return cursor.getString(1);
+    }
+
     public int getMain_id(){
         Cursor cursor=getMain();
         cursor.moveToFirst();

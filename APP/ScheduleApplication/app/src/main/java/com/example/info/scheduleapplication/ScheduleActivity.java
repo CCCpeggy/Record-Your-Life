@@ -1,5 +1,6 @@
 package com.example.info.scheduleapplication;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 public class ScheduleActivity extends AppCompatActivity {
 
@@ -27,6 +30,7 @@ public class ScheduleActivity extends AppCompatActivity {
     int Week_id;
     TableLayout layout;
     A_Day_Table Table;
+
 
     private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
     @Override
@@ -46,9 +50,44 @@ public class ScheduleActivity extends AppCompatActivity {
         });
         initDateBase();
         String Class[][][]=Table.TablesClassInDay();
+        String Tables[]=Table.getTableName();
         if(Class!=null)
-            viewTable(Class[0][0].length,Class[0][0]);
+            viewTable(Class[0][0].length,Class[0],Tables[0]);
 
+    }
+
+    private void addnode(String Time_String,String Name_String){
+        addnode( Time_String,Name_String,255,255,255);
+    }
+
+    private void addchildnode(String Time_String,String Name_String){
+        addchildnode( Time_String,Name_String,255,255,255);
+    }
+
+    private void addnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
+        LinearLayout slayout;
+        slayout=(LinearLayout)findViewById(R.id.SchLayout);
+        LayoutInflater inflater=(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout nodeLayout=(LinearLayout) inflater.inflate(R.layout.node,null,true);
+        nodeLayout.setBackgroundColor(Color.argb(255, colorR,colorG,colorB));
+        TextView time = (TextView) nodeLayout.findViewById(R.id.time_tv);
+        time.setText(Time_String);
+        TextView name = (TextView) nodeLayout.findViewById(R.id.name_tv);
+        name.setText(Name_String);
+        slayout.addView(nodeLayout);
+    }
+
+    private void addchildnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
+        LinearLayout slayout;
+        slayout=(LinearLayout)findViewById(R.id.SchLayout);
+        LayoutInflater inflater=(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout nodeLayout=(LinearLayout) inflater.inflate(R.layout.nodechild,null,true);
+        nodeLayout.setBackgroundColor(Color.argb(255, colorR,colorG,colorB));
+        TextView time = (TextView) nodeLayout.findViewById(R.id.time_tv);
+        time.setText(Time_String);
+        TextView name = (TextView) nodeLayout.findViewById(R.id.name_tv);
+        name.setText(Name_String);
+        slayout.addView(nodeLayout);
     }
 
     private void initDateBase(){
@@ -69,32 +108,14 @@ public class ScheduleActivity extends AppCompatActivity {
         }
     }
 
-    public void viewTable(int row, String[] subject){
-
-        //TableLayout
-
-        layout=(TableLayout)findViewById(R.id.Ly);
-        layout.removeAllViewsInLayout();
-        layout.setGravity(1);
-
+    public void viewTable(int row, String[][] subject,String name){
+        addnode(subject[1][0],name,230,200,80);
         for(int i=0;i<row;i++) {
-            TableRow tr=new TableRow(this);
-            tr.setGravity(16);
-            layout.setColumnShrinkable(i,true);
-            //tr.setPadding(0,0,0,3);
-            //tr.setBackgroundColor(Color.parseColor("#AAAAAA"));
-            layout.addView(tr,new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.MATCH_PARENT));
-            //for (int j=0;j<col;j++){
-                Log.v("subject",i+"");
-                LinearLayout tw_ly=new LinearLayout(this);
-                tw_ly.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                tw_ly.setPadding(MARGIN,0,MARGIN,0);
-                tr.addView(tw_ly);
-                tw_ly.addView(AddButton(subject[i],i,i%2==0),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
-            //}
+            addchildnode(subject[1][i],subject[0][i],230,200,80);
         }
 
     }
+
 
     public Button AddButton(String text, int id, boolean color){
         Button btn=new Button(this);
