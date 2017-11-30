@@ -21,6 +21,7 @@ import android.widget.SimpleCursorAdapter;
  */
 public class MyWidgetActivityConfigureActivity extends Activity {
 
+
     private static final String PREFS_NAME = "com.example.info.appwidgetapplication.MyWidgetActivity";
     private static final String PREF_PREFIX_KEY = "MYWIDGET_NOTE_ID";
     private static final String PREF_PREFIX_CONTENT = "MYWIDGET_CONTENT";
@@ -72,7 +73,6 @@ public class MyWidgetActivityConfigureActivity extends Activity {
     static String loadTitlePref(Context context, int appWidgetId) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
         String Content= prefs.getString(PREF_PREFIX_CONTENT + appWidgetId, null);
-
         if ( Content!=null) {
             return Content;
         } else {
@@ -80,14 +80,21 @@ public class MyWidgetActivityConfigureActivity extends Activity {
         }
     }
 
+    /*static String loadTitlePref(Context context, int appWidgetId) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
+        String Content= prefs.getString(PREF_PREFIX_CONTENT + appWidgetId, null);
+
+        if ( Content!=null) {
+            return Content;
+        } else {
+            return context.getString(R.string.appwidget_text);
+        }
+    }*/
+
     static void deleteTitlePref(Context context, int appWidgetId) {
         SharedPreferences.Editor prefs = context.getSharedPreferences(PREFS_NAME, 0).edit();
         prefs.remove(PREF_PREFIX_KEY + appWidgetId);
         prefs.apply();
-    }
-
-    public void updateDate(){
-
     }
 
     @Override
@@ -115,12 +122,15 @@ public class MyWidgetActivityConfigureActivity extends Activity {
             return;
         }
 
+        initDatabase();
+        UpdateAdapter_Note();
+    }
+    public void initDatabase(){
         OpOrCrDb();
         NoteDb = new NoteDbTable(SQLiteDB_Path, db);
         NoteDb.OpenOrCreateTb();
-        NoteDb.deleteAllRow();
-        NoteDb.AddNoteData();
-        UpdateAdapter_Note();
+        //NoteDb.deleteAllRow();
+        //NoteDb.AddNoteData();
 
     }
 

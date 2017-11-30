@@ -3,7 +3,13 @@ package com.example.info.appwidgetapplication;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.RemoteViews;
+
+import static android.content.Context.MODE_APPEND;
+import static android.content.Context.MODE_PRIVATE;
+import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 /**
  * Implementation of App Widget functionality.
@@ -11,8 +17,7 @@ import android.widget.RemoteViews;
  */
 public class MyWidgetActivity extends AppWidgetProvider {
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,int appWidgetId) {
 
         CharSequence widgetText = MyWidgetActivityConfigureActivity.loadTitlePref(context, appWidgetId);
         // Construct the RemoteViews object
@@ -22,6 +27,7 @@ public class MyWidgetActivity extends AppWidgetProvider {
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
+
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
@@ -48,7 +54,6 @@ public class MyWidgetActivity extends AppWidgetProvider {
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
     }
-
 
 
 }

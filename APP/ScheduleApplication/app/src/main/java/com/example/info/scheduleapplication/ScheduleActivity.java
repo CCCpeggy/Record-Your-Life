@@ -95,7 +95,7 @@ public class ScheduleActivity extends AppCompatActivity {
         Table=new A_Day_Table(SQLiteDB_Path,db,"2017-11-22");
         //Cursor Week_cursor=Table.getWeek_cursor();
         Table.outputAllWeekIds();
-        
+
     }
 
     //打開或新增資料庫
