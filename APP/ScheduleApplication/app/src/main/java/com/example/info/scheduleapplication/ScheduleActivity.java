@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,6 +23,10 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.sql.Struct;
+import java.util.Locale;
 
 public class ScheduleActivity extends AppCompatActivity {
 
@@ -29,8 +35,10 @@ public class ScheduleActivity extends AppCompatActivity {
     private String SQLiteDB_Path="student_project.db";
     int Week_id;
     TableLayout layout;
-    A_Day_Table Table;
-
+    A_Day_Table TableClass;
+    ScheduleDbTable ScheduleDb;
+    TablesClass tablesClass;
+    ScheduleClass Schedules;
 
     private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
     @Override
@@ -49,11 +57,85 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         });
         initDateBase();
-        String Class[][][]=Table.TablesClassInDay();
-        String Tables[]=Table.getTableName();
-        if(Class!=null)
-            viewTable(Class[0][0].length,Class[0],Tables[0]);
 
+        Schedules=ScheduleDb.getScheduleClass("2017-11-22");
+        for(item array: Schedules.items){
+            Log.v("Schedule","[Name]"+array.Name+"[Time]"+array.Time);
+        }
+
+        tablesClass=TableClass.getTablesClass();
+        updateView();
+    }
+
+    LinearLayout.OnClickListener TableClick= new LinearLayout.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.findViewById()
+        }
+    };
+
+    public void updateView(){
+        viewScheduleAndTables(tablesClass,Schedules);
+    }
+    public void viewTable(int row, Table table) {
+        addnode(table.classes[0].start_time, table.Name,table.colorR,table.colorG,table.colorB);
+        for (int i = 0; i < row; i++) {
+            addchildnode(table.classes[i].start_time, table.classes[i].Subject,table.colorR,table.colorG,table.colorB);
+        }
+    }
+
+    private void viewScheduleAndTables(TablesClass Tables,ScheduleClass Schedule){
+        //i is Table's positioin ,j is Schedul's position
+        int i,j;
+        for(i=0,j=0;i<Tables.Tables.length&&j<Schedule.items.length;){
+            Table table=Tables.Tables[i];
+            item Schedule_item=Schedule.items[j];
+
+            String table_time=table.classes[0].start_time;
+            String schedule_time=Schedule_item.Time;
+            if( compareTime(table_time,schedule_time)){
+                j=viewScheduleAndTable(table,Schedule,j);
+                i++;
+            }
+            else{
+                addnode(schedule_time,Schedule_item.Name);
+                j++;
+            }
+        }
+        for(;i<Tables.Tables.length;i++){
+            viewTable(Tables.Tables[i].classes.length, Tables.Tables[i]);
+        }
+        for(;j<Schedule.items.length;j++) {
+            item Schedule_item=Schedule.items[j];
+            String schedule_time=Schedule_item.Time;
+            addnode(schedule_time,Schedule_item.Name);
+        }
+    }
+
+    private int viewScheduleAndTable(Table table,ScheduleClass Schedule,int Schedule_position){
+        addnode(table.classes[0].start_time, table.Name,table.colorR,table.colorG,table.colorB);
+        if(!table.isOpen)return Schedule_position;
+        int i;
+        for(i=0;i<table.classes.length && Schedule_position<Schedule.items.length;){
+            Class Oneclass=table.classes[i];
+            item Schedule_item=Schedule.items[Schedule_position];
+            String table_time=Oneclass.start_time;
+            String schedule_time=Schedule_item.Time;
+            if( compareTime(table_time,schedule_time)){
+                addchildnode(table_time,Oneclass.Subject,table.colorR,table.colorG,table.colorB);
+                i++;
+            }
+            else{
+                addnode(schedule_time,Schedule_item.Name,table.colorR,table.colorG,table.colorB);
+                Schedule_position++;
+            }
+        }
+        for(;i<table.classes.length ;i++){
+            Class Oneclass=table.classes[i];
+            String table_time=Oneclass.start_time;
+            addchildnode(table_time,Oneclass.Subject,table.colorR,table.colorG,table.colorB);
+        }
+        return Schedule_position;
     }
 
     private void addnode(String Time_String,String Name_String){
@@ -64,7 +146,8 @@ public class ScheduleActivity extends AppCompatActivity {
         addchildnode( Time_String,Name_String,255,255,255);
     }
 
-    private void addnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
+    private void addnode(String Time_String,String Name_String,String Table_index,int colorR,int colorG,int colorB){
+        Log.v("addnode",String.format("Time_String=%s,Name_String=%s, colorR=%d,colorG=%d,colorB=%d",Time_String,Name_String,colorR,colorG,colorB));
         LinearLayout slayout;
         slayout=(LinearLayout)findViewById(R.id.SchLayout);
         LayoutInflater inflater=(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -74,10 +157,20 @@ public class ScheduleActivity extends AppCompatActivity {
         time.setText(Time_String);
         TextView name = (TextView) nodeLayout.findViewById(R.id.name_tv);
         name.setText(Name_String);
+        Button btn= (Button) nodeLayout.findViewById(R.id.bt);
+        Button btn2= (Button) nodeLayout.findViewById(R.id.bt2);
+        btn2.setText();
+        name.setText(Name_String);
         slayout.addView(nodeLayout);
     }
 
+    private void addnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
+        addnode( Time_String,Name_String,"",255,255,255);
+    }
+
+
     private void addchildnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
+        Log.v("addnode",String.format("Time_String=%s,Name_String=%s, colorR=%d,colorG=%d,colorB=%d",Time_String,Name_String,colorR,colorG,colorB));
         LinearLayout slayout;
         slayout=(LinearLayout)findViewById(R.id.SchLayout);
         LayoutInflater inflater=(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -92,10 +185,14 @@ public class ScheduleActivity extends AppCompatActivity {
 
     private void initDateBase(){
         OpOrCrDb();
-        Table=new A_Day_Table(SQLiteDB_Path,db,"2017-11-22");
+        TableClass=new A_Day_Table(SQLiteDB_Path,db,"2017-11-22");
         //Cursor Week_cursor=Table.getWeek_cursor();
-        Table.outputAllWeekIds();
+        TableClass.outputAllWeekIds();
 
+        ScheduleDb=new ScheduleDbTable(SQLiteDB_Path,db);
+        ScheduleDb.OpenOrCreateTb();
+        ScheduleDb.deleteAllRow();
+        ScheduleDb.AddScheduleData();
     }
 
     //打開或新增資料庫
@@ -108,13 +205,7 @@ public class ScheduleActivity extends AppCompatActivity {
         }
     }
 
-    public void viewTable(int row, String[][] subject,String name){
-        addnode(subject[1][0],name,230,200,80);
-        for(int i=0;i<row;i++) {
-            addchildnode(subject[1][i],subject[0][i],230,200,80);
-        }
 
-    }
 
 
     public Button AddButton(String text, int id, boolean color){
@@ -162,4 +253,28 @@ public class ScheduleActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    //date2>date1 is true
+    private boolean compareTime(String time1,String time2){
+        Calendar cal=StringtoCalendarByTime(time1);
+        Calendar cal2=StringtoCalendarByTime(time2);
+        if (cal.equals("")||cal2.equals(""))return false;
+        Log.v("傳入日期",String.format("HOUR=%d/%d,MINUTE=%d/%d",cal.get(Calendar.HOUR_OF_DAY),cal2.get(Calendar.HOUR_OF_DAY)
+                ,cal.get(Calendar.MINUTE),cal2.get(Calendar.MINUTE)));
+        if(cal.get(Calendar.HOUR_OF_DAY)>cal2.get(Calendar.HOUR_OF_DAY))return false;
+        if(cal.get(Calendar.HOUR_OF_DAY)<cal2.get(Calendar.HOUR_OF_DAY))return true;
+        return !(cal.get(Calendar.MINUTE)>cal2.get(Calendar.MINUTE));
+    }
+
+    private Calendar StringtoCalendarByTime(String time){
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.TAIWAN);
+        Calendar Calendar= android.icu.util.Calendar.getInstance();
+        try{
+            Calendar.setTime(sdf.parse(time));
+        }catch (Exception e){
+            Log.v("時間格式不符合",time);
+        }
+        return Calendar;
+    }
+
 }
