@@ -70,11 +70,18 @@ public class ScheduleActivity extends AppCompatActivity {
     LinearLayout.OnClickListener TableClick= new LinearLayout.OnClickListener() {
         @Override
         public void onClick(View v) {
-            v.findViewById()
+            Button btn=(Button) v.findViewById(R.id.bt2);
+            if(btn.getText().toString().equals(""))return;
+            int index=Integer.parseInt( btn.getText().toString());
+            tablesClass.Tables[index].isOpen=! tablesClass.Tables[index].isOpen;
+            updateView();
         }
     };
 
     public void updateView(){
+        LinearLayout slayout;
+        slayout=(LinearLayout)findViewById(R.id.SchLayout);
+        slayout.removeAllViewsInLayout();
         viewScheduleAndTables(tablesClass,Schedules);
     }
     public void viewTable(int row, Table table) {
@@ -94,7 +101,7 @@ public class ScheduleActivity extends AppCompatActivity {
             String table_time=table.classes[0].start_time;
             String schedule_time=Schedule_item.Time;
             if( compareTime(table_time,schedule_time)){
-                j=viewScheduleAndTable(table,Schedule,j);
+                j=viewScheduleAndTable(i,table,Schedule,j);
                 i++;
             }
             else{
@@ -112,8 +119,8 @@ public class ScheduleActivity extends AppCompatActivity {
         }
     }
 
-    private int viewScheduleAndTable(Table table,ScheduleClass Schedule,int Schedule_position){
-        addnode(table.classes[0].start_time, table.Name,table.colorR,table.colorG,table.colorB);
+    private int viewScheduleAndTable(int table_index,Table table,ScheduleClass Schedule,int Schedule_position){
+        addnode(table.classes[0].start_time, table.Name,table_index+"",table.colorR,table.colorG,table.colorB);
         if(!table.isOpen)return Schedule_position;
         int i;
         for(i=0;i<table.classes.length && Schedule_position<Schedule.items.length;){
@@ -139,7 +146,7 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private void addnode(String Time_String,String Name_String){
-        addnode( Time_String,Name_String,255,255,255);
+        addnode( Time_String,Name_String,"",255,255,255);
     }
 
     private void addchildnode(String Time_String,String Name_String){
@@ -157,15 +164,17 @@ public class ScheduleActivity extends AppCompatActivity {
         time.setText(Time_String);
         TextView name = (TextView) nodeLayout.findViewById(R.id.name_tv);
         name.setText(Name_String);
-        Button btn= (Button) nodeLayout.findViewById(R.id.bt);
+        nodeLayout.setOnClickListener(TableClick);
+        /*Button btn= (Button) nodeLayout.findViewById(R.id.bt);
+        btn.setOnClickListener(TableClick);*/
         Button btn2= (Button) nodeLayout.findViewById(R.id.bt2);
-        btn2.setText();
+        btn2.setText(Table_index);
         name.setText(Name_String);
         slayout.addView(nodeLayout);
     }
 
     private void addnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
-        addnode( Time_String,Name_String,"",255,255,255);
+        addnode( Time_String,Name_String,"",colorR,colorG,colorB);
     }
 
 
