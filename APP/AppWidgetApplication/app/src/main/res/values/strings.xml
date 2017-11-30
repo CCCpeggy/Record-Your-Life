@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AppWidgetApplication</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="configure">Configure</string>
+    <string name="appwidget_text">便條</string>
+    <string name="appwidget_notfount">找不到</string>
+    <string name="configure">便條</string>
     <string name="add_widget">Add widget</string>
 </resources>

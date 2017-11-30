@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-public class ScheduleDb {
+public class ScheduleDbTable {
     private  String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
     private final static String SQLiteTable_Name= "行程"; //資料表的名字
@@ -15,7 +15,7 @@ public class ScheduleDb {
                     "'行程名稱' TEXT," +
                     "'行程開始時間' TEXT NOT NULL," +
                     "'行程開始日期' TEXT NOT NULL)";
-    public ScheduleDb(String path, SQLiteDatabase Database) {
+    public ScheduleDbTable(String path, SQLiteDatabase Database) {
         SQLiteDB_Path = path;
         db = Database;
     }
