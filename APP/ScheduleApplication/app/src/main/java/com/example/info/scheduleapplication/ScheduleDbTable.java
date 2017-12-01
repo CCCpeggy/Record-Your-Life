@@ -102,9 +102,9 @@ public class ScheduleDbTable {
 
     public ScheduleClass getScheduleClass(String date){
         Cursor tmp_cursor= getCursor(date);
-        if (tmp_cursor.getCount()<=0)return null;
         Log.v("tmp_cursor.getCount()",tmp_cursor.getCount()+"");
         ScheduleClass schedule=new ScheduleClass(tmp_cursor.getCount());
+        if (tmp_cursor.getCount()<=0)return schedule;
         tmp_cursor.moveToFirst();
         int i=0;
         do{

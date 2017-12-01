@@ -4,34 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.info.scheduleapplication.ScheduleActivity"
     tools:showIn="@layout/activity_schedule">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        tools:style="@style/Animation.AppCompat.Dialog">
+
+        <Button
+            android:id="@+id/btn_previous"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.32"
+            android:text="V" />
+
+        <TextView
+            android:id="@+id/date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.32"
+            android:text="V" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="horizontal|vertical">
 
-        <LinearLayout
+        <TableLayout
             android:id="@+id/SchLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="15dp"></LinearLayout>
-    </ScrollView>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TableLayout
-            android:id="@+id/Ly"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp">
+            android:padding="15dp"
+            android:collapseColumns="0">
 
         </TableLayout>
     </ScrollView>

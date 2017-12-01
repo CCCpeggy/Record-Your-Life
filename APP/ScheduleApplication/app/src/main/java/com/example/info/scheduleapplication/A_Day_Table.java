@@ -30,9 +30,6 @@ public class A_Day_Table  extends WeekDbTable{
         initAllDb(path,Database);
         AddTableData();
         setDays(date);
-
-        weekIds=new ArrayList<Integer>();
-        weekIds=getWeekId();
     }
 
     public void initAllDb(String path, SQLiteDatabase db){
@@ -63,6 +60,8 @@ public class A_Day_Table  extends WeekDbTable{
 
     public void setDays(int days){
         DayOfWeek=days;
+        weekIds=new ArrayList<Integer>();
+        weekIds=getWeekId();
     }
 
     public void setDays(String date){
@@ -92,10 +91,18 @@ public class A_Day_Table  extends WeekDbTable{
         do{
             int days=getDays(Table_cursor,4);
             Cursor tmp_week_cursor=super.getCursor(Table_cursor.getInt(0),days);
+            Cursor tmp_week_cursor2=super.getCursor(Table_cursor.getInt(0),days+7);
             //判斷week是否存在
-            if(tmp_week_cursor.getCount()<=0)continue;
-            tmp_week_cursor.moveToFirst();
-            WeekIds.add(tmp_week_cursor.getInt(0));
+            if(tmp_week_cursor.getCount()<=0&&tmp_week_cursor2.getCount()<=0)continue;
+            if(tmp_week_cursor2.getCount()<=0){
+                tmp_week_cursor.moveToFirst();
+                WeekIds.add(tmp_week_cursor.getInt(0));
+            }
+            else{
+                tmp_week_cursor2.moveToFirst();
+                WeekIds.add(tmp_week_cursor2.getInt(0));
+            }
+
         }while (Table_cursor.moveToNext());
         return WeekIds;
     }
@@ -192,9 +199,9 @@ public class A_Day_Table  extends WeekDbTable{
 
     //多個課表
     public TablesClass getTablesClass(){
-        if(weekIds.size()<=0)return null;
         Log.v("weekIds.size()",weekIds.size()+"");
         TablesClass Tables=new TablesClass(weekIds.size());
+        if(weekIds.size()<=0)return Tables;
         int i=0;
         for (int id:weekIds){
             Tables.Tables[i]=getClass(id);

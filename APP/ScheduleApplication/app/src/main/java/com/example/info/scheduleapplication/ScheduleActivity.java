@@ -39,7 +39,9 @@ public class ScheduleActivity extends AppCompatActivity {
     ScheduleDbTable ScheduleDb;
     TablesClass tablesClass;
     ScheduleClass Schedules;
-
+    String Now_date;
+    TextView date_tv;
+    Button Next_btn,Pre_btn;
     private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,18 +58,20 @@ public class ScheduleActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        Next_btn=(Button)findViewById(R.id.btn_next);
+        Pre_btn=(Button)findViewById(R.id.btn_previous);
+        Next_btn.setOnClickListener(onClickListener);
+        Pre_btn.setOnClickListener(onClickListener);
+        Now_date= TodayDate();
+        date_tv=(TextView)findViewById(R.id.date_tv);
+        date_tv.setText(Now_date);
+
         initDateBase();
 
-        Schedules=ScheduleDb.getScheduleClass("2017-11-22");
-        for(item array: Schedules.items){
-            Log.v("Schedule","[Name]"+array.Name+"[Time]"+array.Time);
-        }
-
-        tablesClass=TableClass.getTablesClass();
-        updateView();
+        ChangeDate(Now_date);
     }
 
-    LinearLayout.OnClickListener TableClick= new LinearLayout.OnClickListener() {
+    TableRow.OnClickListener TableClick= new TableRow.OnClickListener() {
         @Override
         public void onClick(View v) {
             Button btn=(Button) v.findViewById(R.id.bt2);
@@ -78,18 +82,45 @@ public class ScheduleActivity extends AppCompatActivity {
         }
     };
 
+    Button.OnClickListener onClickListener= new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Calendar calendar=StringtoCalendar(Now_date);
+            switch (v.getId()){
+                case R.id.btn_next:
+                    calendar.add(Calendar.DAY_OF_MONTH,1);
+                    break;
+                case R.id.btn_previous:
+                    calendar.add(Calendar.DAY_OF_MONTH,-1);
+                    break;
+            }
+            ChangeDate(DatetoString(calendar));
+        }
+    };
+
+    private void ChangeDate(String s) {
+        Now_date=s;
+        date_tv.setText(s);
+        Schedules=null;
+        Schedules= ScheduleDb.getScheduleClass(Now_date);
+        TableClass.setDays(Now_date);
+        tablesClass=null;
+        tablesClass=TableClass.getTablesClass();
+        updateView();
+    }
+
     public void updateView(){
         LinearLayout slayout;
         slayout=(LinearLayout)findViewById(R.id.SchLayout);
         slayout.removeAllViewsInLayout();
         viewScheduleAndTables(tablesClass,Schedules);
-    }
+    }/*
     public void viewTable(int row, Table table) {
         addnode(table.classes[0].start_time, table.Name,table.colorR,table.colorG,table.colorB);
         for (int i = 0; i < row; i++) {
             addchildnode(table.classes[i].start_time, table.classes[i].Subject,table.colorR,table.colorG,table.colorB);
         }
-    }
+    }*/
 
     private void viewScheduleAndTables(TablesClass Tables,ScheduleClass Schedule){
         //i is Table's positioin ,j is Schedul's position
@@ -101,6 +132,7 @@ public class ScheduleActivity extends AppCompatActivity {
             String table_time=table.classes[0].start_time;
             String schedule_time=Schedule_item.Time;
             if( compareTime(table_time,schedule_time)){
+                Log.v("i",i+"");
                 j=viewScheduleAndTable(i,table,Schedule,j);
                 i++;
             }
@@ -110,7 +142,8 @@ public class ScheduleActivity extends AppCompatActivity {
             }
         }
         for(;i<Tables.Tables.length;i++){
-            viewTable(Tables.Tables[i].classes.length, Tables.Tables[i]);
+            Table table=Tables.Tables[i];
+            viewScheduleAndTable(i,table,Schedule,j);
         }
         for(;j<Schedule.items.length;j++) {
             item Schedule_item=Schedule.items[j];
@@ -155,18 +188,16 @@ public class ScheduleActivity extends AppCompatActivity {
 
     private void addnode(String Time_String,String Name_String,String Table_index,int colorR,int colorG,int colorB){
         Log.v("addnode",String.format("Time_String=%s,Name_String=%s, colorR=%d,colorG=%d,colorB=%d",Time_String,Name_String,colorR,colorG,colorB));
-        LinearLayout slayout;
-        slayout=(LinearLayout)findViewById(R.id.SchLayout);
+        TableLayout slayout;
+        slayout=(TableLayout)findViewById(R.id.SchLayout);
         LayoutInflater inflater=(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout nodeLayout=(LinearLayout) inflater.inflate(R.layout.node,null,true);
+        TableRow nodeLayout=(TableRow) inflater.inflate(R.layout.node,null,true);
         nodeLayout.setBackgroundColor(Color.argb(255, colorR,colorG,colorB));
         TextView time = (TextView) nodeLayout.findViewById(R.id.time_tv);
         time.setText(Time_String);
         TextView name = (TextView) nodeLayout.findViewById(R.id.name_tv);
         name.setText(Name_String);
         nodeLayout.setOnClickListener(TableClick);
-        /*Button btn= (Button) nodeLayout.findViewById(R.id.bt);
-        btn.setOnClickListener(TableClick);*/
         Button btn2= (Button) nodeLayout.findViewById(R.id.bt2);
         btn2.setText(Table_index);
         name.setText(Name_String);
@@ -183,7 +214,7 @@ public class ScheduleActivity extends AppCompatActivity {
         LinearLayout slayout;
         slayout=(LinearLayout)findViewById(R.id.SchLayout);
         LayoutInflater inflater=(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout nodeLayout=(LinearLayout) inflater.inflate(R.layout.nodechild,null,true);
+        TableRow nodeLayout=(TableRow) inflater.inflate(R.layout.nodechild,null,true);
         nodeLayout.setBackgroundColor(Color.argb(255, colorR,colorG,colorB));
         TextView time = (TextView) nodeLayout.findViewById(R.id.time_tv);
         time.setText(Time_String);
@@ -194,7 +225,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
     private void initDateBase(){
         OpOrCrDb();
-        TableClass=new A_Day_Table(SQLiteDB_Path,db,"2017-11-22");
+        TableClass=new A_Day_Table(SQLiteDB_Path,db,Now_date);
         //Cursor Week_cursor=Table.getWeek_cursor();
         TableClass.outputAllWeekIds();
 
@@ -284,6 +315,27 @@ public class ScheduleActivity extends AppCompatActivity {
             Log.v("時間格式不符合",time);
         }
         return Calendar;
+    }
+
+    private Calendar StringtoCalendar(String date){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
+        Calendar Calendar= android.icu.util.Calendar.getInstance();
+        try{
+            Calendar.setTime(sdf.parse(date));
+        }catch (Exception e){
+            Log.v("日期格式不符合",date);
+        }
+        return Calendar;
+    }
+
+    private String TodayDate(){
+        Calendar cal=Calendar.getInstance();
+        return DatetoString(cal);
+    }
+
+    private String DatetoString(Calendar cal){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
+        return sdf.format(cal);
     }
 
 }
