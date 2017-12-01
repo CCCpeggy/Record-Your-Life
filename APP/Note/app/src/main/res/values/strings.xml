@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Note</string>
+    <string-array name="replace_type">
+        <item>天</item>
+        <item>星期</item>
+        <item>月</item>
+        <item>年</item>
+    </string-array>
 </resources>

@@ -19,6 +19,7 @@
         <activity android:name=".NotePageActivity" />
         <activity android:name=".NewNotePageActivity" />
         <activity android:name=".ReminderActivity"></activity>
+        <activity android:name=".RemindersActivity"></activity>
     </application>
 
 </manifest>

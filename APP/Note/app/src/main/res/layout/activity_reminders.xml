@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     android:stretchColumns="0,1"
-    tools:context="com.example.info.note.ReminderActivity">
+    tools:context="com.example.info.note.RemindersActivity$ReminderActivity">
 
 
     <ListView

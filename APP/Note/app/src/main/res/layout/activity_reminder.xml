@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     android:stretchColumns="0,1"
-    tools:context="com.example.info.note.ReminderActivity">
+    tools:context="com.example.info.note.RemindersActivity$ReminderActivity">
 
     <TableRow
         android:layout_width="match_parent"
@@ -14,14 +14,14 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/reminder_tv"
+            android:id="@+id/date_tv"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:text="日期" />
 
         <EditText
-            android:id="@+id/reminder_et"
+            android:id="@+id/date_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -35,14 +35,14 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/isreplace_tv"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:text="是否重複" />
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/isreplace_sw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -54,16 +54,30 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/replacetype_tv"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:gravity="center_vertical"
             android:text="提醒單位" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/replacetype_sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:entries="@array/replace_type"/>
 
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/btn_Complete2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="2"
+            android:text="完成" />
     </TableRow>
 </TableLayout>

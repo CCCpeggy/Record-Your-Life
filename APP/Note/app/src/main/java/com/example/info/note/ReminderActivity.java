@@ -1,6 +1,5 @@
 package com.example.info.note;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -10,37 +9,52 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
+import android.widget.Switch;
 
 public class ReminderActivity extends AppCompatActivity {
     Intent intent;
     int id;
     Cursor cursor;
-    Note_Reminder_DbTable NoteReminderDb;
-    ListView listView01;
+    ReminderDbTable ReminderDb;
     private SQLiteDatabase db=null;
     private String SQLiteDB_Path="student_project.db";
+    EditText date;
+    Switch isReplace;
+    Spinner ReplaceType;
+    Button Complete_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reminders);
-        initView();
+        setContentView(R.layout.activity_reminder);
 
         intent=getIntent();
         Bundle extra=intent.getExtras();
-        id=extra.getInt("NOTEID");
+        id=extra.getInt("REMINDERID");
 
-        UpdateAdapter_Note();
-        ClickMe();
+        initView();
     }
     private void initView(){
-        listView01=(ListView)findViewById(R.id.reminder_lv);
+        date=(EditText)findViewById(R.id.date_et);
+        isReplace=(Switch)findViewById(R.id.isreplace_sw);
+        ReplaceType=(Spinner) findViewById(R.id.replacetype_sp);
+        Complete_btn=(Button)findViewById(R.id.btn_Complete2);
+
         OpOrCrDb();
-        NoteReminderDb=new Note_Reminder_DbTable(SQLiteDB_Path,db);
-        NoteReminderDb.OpenOrCreateTb();
-        NoteReminderDb.deleteAllRow();
-        NoteReminderDb.AddNoteReminderData();
+        ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
+        ReminderDb.OpenOrCreateTb();
+        Cursor cursor=ReminderDb.getCursor(id);
+        cursor.moveToFirst();
+        date.setText(cursor.getString(1));
+        isReplace.setChecked(cursor.getInt(2)==1);
+        ReplaceType.setSelection(cursor.getInt(3));
+        Complete_btn.setOnClickListener(Complete_btn_Listener);
     }
     //打開或新增資料庫
     private void OpOrCrDb(){
@@ -60,20 +74,11 @@ public class ReminderActivity extends AppCompatActivity {
         notificationManager.notify(0,mBuilder.build());
     }
 
-    public void UpdateAdapter_Note(){
-        try{
-            cursor=NoteReminderDb.getCursorByNoteID(id);
-            if(cursor !=  null && cursor.getCount()>0){
-                //ListView格式自訂
-                SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{"_id"}, new int[]{android.R.id.text1}, 0);
-                //ListView格式預設
-                //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"便條標題", "便條內容"}, new int[]{android. R.id.text1,android.R.id.text2}, 0);
-                listView01.setAdapter(adapter);
-                Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
-            }
-        }catch (Exception e){
-            Log.e("#004","清單更新失敗");
+    Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ReminderDb.updateReminderData(id,date.getText().toString(),isReplace.isChecked()?1:0 ,ReplaceType.getSelectedItemPosition());
+            finish();;
         }
-
-    }
+    };
 }

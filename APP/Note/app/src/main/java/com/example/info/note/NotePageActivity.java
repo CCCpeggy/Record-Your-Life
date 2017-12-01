@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 /**
  * Created by info on 2017/10/25.
@@ -64,7 +63,7 @@ public class NotePageActivity extends AppCompatActivity {
     private Button.OnClickListener btn_Reminder_Listener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent  = new Intent(NotePageActivity.this,ReminderActivity.class);
+            Intent intent  = new Intent(NotePageActivity.this,RemindersActivity.class);
             intent.putExtra("NOTEID",id);
             startActivity(intent);
         }

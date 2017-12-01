@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:stretchColumns="1">
+                android:stretchColumns="0,1">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -28,7 +28,8 @@
                     <TextView
                         android:id="@+id/name_tv"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:gravity="center_vertical"
                         android:text="名稱" />
 
                     <EditText
@@ -47,7 +48,8 @@
                     <TextView
                         android:id="@+id/days_tv"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:gravity="center_vertical"
                         android:text="天數" />
 
                     <Spinner
@@ -64,12 +66,17 @@
                     android:layout_height="match_parent">
 
 
+                    <TextView
+                        android:id="@+id/ismain_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:gravity="center_vertical"
+                        android:text="主要" />
                     <Switch
                         android:id="@+id/ismain_sw"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_span="2"
-                        android:text="主要"
+                        
                         android:textColor="?android:attr/textColorTertiary" />
                 </TableRow>
 
@@ -79,8 +86,8 @@
 
                     <TextView
                         android:id="@+id/startTime_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:gravity="center_vertical"
                         android:text="開始日" />
 
                     <EditText
@@ -99,13 +106,15 @@
                     <TextView
                         android:id="@+id/endTime_tv"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:gravity="center_vertical"
                         android:text="結束日" />
 
                     <EditText
                         android:id="@+id/endTime_et"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:gravity="center_vertical"
                         android:ems="10"
                         android:inputType="none" />
 
@@ -115,13 +124,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-
+                    <TextView
+                        android:id="@+id/iscover_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:gravity="center_vertical"
+                        android:text="覆蓋"/>
+                    
                     <Switch
                         android:id="@+id/iscover_sw"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_span="2"
-                        android:text="覆蓋"
+                        android:layout_height="45dp"
+                        android:gravity="center_vertical"
                         android:textColor="@android:color/darker_gray"
                         tools:textColor="?android:attr/textColorTertiary" />
 
@@ -147,7 +161,8 @@
                     <TextView
                         android:id="@+id/classtime_tv"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
                         android:text="時間選擇" />
 
                     <ListView
