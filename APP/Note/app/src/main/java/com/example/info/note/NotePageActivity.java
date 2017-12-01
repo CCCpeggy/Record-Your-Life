@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class NotePageActivity extends AppCompatActivity {
     EditText et,et2;
-    Button btn_Complete,btn_Delete;
+    Button btn_Complete,btn_Delete,btn_Reminder;
     Intent intent;
     private final static int RESULT_DELETE=200;
     int id;
@@ -28,9 +28,11 @@ public class NotePageActivity extends AppCompatActivity {
         et2=(EditText) findViewById(R.id.et2);
         btn_Complete=(Button)findViewById(R.id.btn_Complete) ;
         btn_Delete=(Button)findViewById(R.id.btn_Delete);
+        btn_Reminder=(Button)findViewById(R.id.btn_reminder);
 
         btn_Complete.setOnClickListener(btn_Complete_Listener);
         btn_Delete.setOnClickListener(btn_Delete_Listener);
+        btn_Reminder.setOnClickListener(btn_Reminder_Listener);
 
         intent=getIntent();
         Bundle extra=intent.getExtras();
@@ -57,6 +59,14 @@ public class NotePageActivity extends AppCompatActivity {
             Log.v("回傳資料",String.format("回傳資料：%s=%d","SELECTED_ID",id));
             setResult(RESULT_DELETE,intent);
             finish();
+        }
+    };
+    private Button.OnClickListener btn_Reminder_Listener= new Button.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent  = new Intent(NotePageActivity.this,ReminderActivity.class);
+            intent.putExtra("NOTEID",id);
+            startActivity(intent);
         }
     };
 }

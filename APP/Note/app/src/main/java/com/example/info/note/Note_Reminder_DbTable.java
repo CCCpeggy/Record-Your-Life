@@ -12,12 +12,11 @@ import android.util.Log;
 public class Note_Reminder_DbTable {
     private  String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    public String SQLiteTable_Name= "便條_提醒_清單"; //資料表的名字
+    public String SQLiteTable_Name= "便條_提醒_清單2"; //資料表的名字
     private String CREATE_Dairy_TABLE=
             "CREATE TABLE if not exists '"+SQLiteTable_Name+"'(" +
                     "_id INTEGER  PRIMARY KEY NOT NULL," +
-                    "'課表' INTEGER NOT NULL," +
-                    "'日記內容' TEXT)";
+                    "'便條ID' INTEGER NOT NULL)";
     public Note_Reminder_DbTable(String path, SQLiteDatabase Database) {
         SQLiteDB_Path = path;
         db = Database;
@@ -36,7 +35,7 @@ public class Note_Reminder_DbTable {
     public void insertNoteReminderData(int note){ //不用第一的ID
         try {
             ContentValues row = new ContentValues();
-            row.put("提醒ID", note);
+            row.put("便條ID", note);
             db.insert(SQLiteTable_Name, null, row);
             Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s", SQLiteTable_Name,"便條ID",note));
         } catch (Exception e) {
@@ -47,7 +46,7 @@ public class Note_Reminder_DbTable {
     public void updateNoteReminderData(int id,int note){
         try {
             ContentValues row = new ContentValues();
-            row.put("提醒ID", note);
+            row.put("便條ID", note);
             db.update(SQLiteTable_Name, row, "_id=" + id, null);
             Log.v("更新資料列", String.format("在%s更新一筆資料：%s=%s", SQLiteTable_Name,"便條ID",note));
         } catch (Exception e) {
@@ -83,6 +82,10 @@ public class Note_Reminder_DbTable {
 
     public Cursor getCursor(int id){
         return getCursor("_id = "+id);
+    }
+
+    public Cursor getCursorByNoteID(int id){
+        return getCursor("便條ID = "+id);
     }
 
     public void deleteAllRow(){

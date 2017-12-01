@@ -19,14 +19,21 @@
     <EditText
         android:id="@+id/et2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="296dp"
         android:ems="10"
         android:gravity="top|left"
         android:linksClickable="false"
         android:longClickable="false"
         android:inputType="textMultiLine"
         android:text="Name" />
+
+    <Button
+        android:id="@+id/btn_reminder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:minHeight="177dp"
+        android:text="提醒" />
 
     <Button
         android:id="@+id/btn_Complete"
