@@ -71,8 +71,8 @@ public class ReminderDbTable {
 
     public void AddReminderData(){
         String date[]={"2017-10-16","2017-10-17","2017-10-18","2017-10-19","2017-10-20","2017-10-21","2017-10-22","2017-10-23","2017-10-24","2017-10-25","2017-10-26","2017-10-27","2017-10-28","2017-10-29","2017-10-30","2017-10-31","2017-11-01","2017-11-02","2017-11-03"};
-        int isReplace[]={1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,1,0};
-        int ReplaceType[]={0,0,1,2,1,0,0,3,1,0,0,0,0,0,2,3,2,0,1,2};
+        int isReplace[]={1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,1};
+        int ReplaceType[]={0,0,1,2,1,0,0,3,1,0,0,0,0,0,2,3,2,0,1};
         for(int i=0;i< date.length ;i++){
             insertReminderData(date[i],isReplace[i],ReplaceType[i]);
         }
@@ -108,12 +108,6 @@ public class ReminderDbTable {
 
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);
-    }
-
-    public void deleteRows(String Where_cmd){
-        String cmd=String.format("DELETE * FROM '%s' WHERE %s",SQLiteTable_Name,Where_cmd);
-        Log.v("DeleteRow",cmd);
-        db.execSQL(cmd);
     }
 
 

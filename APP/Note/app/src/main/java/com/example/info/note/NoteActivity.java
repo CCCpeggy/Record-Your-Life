@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 //修改內容
 
 public class NoteActivity extends AppCompatActivity {
@@ -21,6 +23,8 @@ public class NoteActivity extends AppCompatActivity {
     private final static int LISTPAGE_QAQQ=0,NEWLISTPAGE_QAQQ=1;
     final private static int RESULT_DELETE=200;
     private String SQLiteDB_Path="student_project.db";
+    Note_Reminder_DbTable NoteReminderDb;
+    ReminderDbTable ReminderDb;
     NoteDbTable NoteDb;
     ListView listView01;
     Button btnAdd;
@@ -39,7 +43,15 @@ public class NoteActivity extends AppCompatActivity {
         NoteDb.deleteAllRow();
         NoteDb.AddNoteData();
 
-        //AddNoteData();
+        NoteReminderDb=new Note_Reminder_DbTable(SQLiteDB_Path,db);
+        NoteReminderDb.OpenOrCreateTb();
+        NoteReminderDb.deleteAllRow();
+        NoteReminderDb.AddNoteReminderData();
+
+        ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
+        ReminderDb.OpenOrCreateTb();
+        ReminderDb.deleteAllRow();
+        ReminderDb.AddReminderData();
 
         UpdateAdapter_Note();
     }
@@ -64,6 +76,14 @@ public class NoteActivity extends AppCompatActivity {
             NoteDb.deleteNoteData(Selected_id);
             UpdateAdapter_Note();
         }
+        if(resultCode==RESULT_CANCELED&&requestCode==NEWLISTPAGE_QAQQ){
+            Bundle extra= data.getExtras();
+            if(extra.isEmpty())return;
+            ArrayList<Integer> reminder_ids=extra.getIntegerArrayList("REMINDERIDS");
+            for(int i:reminder_ids){
+                ReminderDb.deleteReminderData(i);
+            }
+        }
         if(resultCode==RESULT_OK) {
             Bundle extra= data.getExtras();
             String Changed_title ;
@@ -81,8 +101,13 @@ public class NoteActivity extends AppCompatActivity {
                     case NEWLISTPAGE_QAQQ:
                         Changed_title = extra.getString("CHANGED_TITLE");
                         Changed_content = extra.getString("CHANGED_CONTENT");
+                        ArrayList<Integer> reminder_ids=extra.getIntegerArrayList("REMINDERIDS");
                         NoteDb.insertNoteData(Changed_title,Changed_content);
-
+                        Cursor Note_cursor=NoteDb.getCursor();
+                        Note_cursor.moveToLast();
+                        for (int Reminder_id:reminder_ids){
+                            NoteReminderDb.insertNoteReminderData(Reminder_id,Note_cursor.getInt(0));
+                        }
                         break;
                 }
                 UpdateAdapter_Note();

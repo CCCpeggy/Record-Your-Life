@@ -32,12 +32,13 @@ public class Note_Reminder_DbTable {
         }
     }
 
-    public void insertNoteReminderData(int note){ //不用第一的ID
+    public void insertNoteReminderData(int reminder_id,int note){ //不用第一的ID
         try {
             ContentValues row = new ContentValues();
+            row.put("_id", reminder_id);
             row.put("便條ID", note);
             db.insert(SQLiteTable_Name, null, row);
-            Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s", SQLiteTable_Name,"便條ID",note));
+            Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s,%s=%s", SQLiteTable_Name,"_id",reminder_id,"便條ID",note));
         } catch (Exception e) {
             Log.e("#003", "資料列新增失敗");
         }
@@ -54,7 +55,7 @@ public class Note_Reminder_DbTable {
         }
     }
 
-    public void deleteNoteReminderData(int Delete_id) { //不用改
+    public void deleteNoteReminderData(int Delete_id) {
         try {
             db.delete(SQLiteTable_Name, "_id=" + Delete_id, null);
             Log.v("刪除資料列", String.format("在%s刪除一筆資料：%s=%d", SQLiteTable_Name, "_id", Delete_id));
@@ -63,10 +64,21 @@ public class Note_Reminder_DbTable {
         }
     }
 
+    public void deleteNoteReminderDataByNoteID(int Note_id) {
+        try {
+            db.delete(SQLiteTable_Name, "便條ID=" + Note_id, null);
+            Log.v("刪除資料列", String.format("在%s刪除一筆資料：%s=%d", SQLiteTable_Name, "便條ID", Note_id));
+        } catch (Exception ex) {
+            Log.e("#005", "刪除資料列錯誤");
+        }
+    }
+
+
     public void AddNoteReminderData(){
-        int note[]={18,11,6,10,7,5,16,7,10,8,2,19,17,16,8,9,3,7,1};
+        int reminder[]={2,3,4,5,6, 8,9,10,12,13, 15,16,17,18,20, 21,25,26,27,28};
+        int note[]={18,11,6,10,7 ,5,16,7,10,8 ,2,19,17,16,8 ,9,3,7,1};
         for(int i=0;i< note.length ;i++){
-            insertNoteReminderData(note[i]);
+            insertNoteReminderData(reminder[i],note[i]);
         }
     }
 
