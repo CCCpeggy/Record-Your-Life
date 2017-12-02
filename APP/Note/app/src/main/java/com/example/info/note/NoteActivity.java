@@ -1,9 +1,19 @@
 package com.example.info.note;
 
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
+import android.os.Build;
+import android.provider.Settings;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +25,8 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 //修改內容
 
 public class NoteActivity extends AppCompatActivity {
@@ -54,6 +66,7 @@ public class NoteActivity extends AppCompatActivity {
         ReminderDb.AddReminderData();
 
         UpdateAdapter_Note();
+
     }
 
     private void initView() {
@@ -64,7 +77,6 @@ public class NoteActivity extends AppCompatActivity {
         //監控事件
         btnAdd.setOnClickListener(btnAddClick);
     }
-
 
     @Override
     public void onActivityResult(int requestCode,int resultCode,Intent data){

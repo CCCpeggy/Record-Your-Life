@@ -23,6 +23,11 @@
         <activity android:name=".AddReminderActivity"></activity>
         <activity android:name=".RemindersActivity2"></activity>
         <activity android:name=".AddReminderActivity2"></activity>
+        <receiver android:name="AlarmReceiver">
+            <intent-filter>
+                <action android:name="net.macdidi.broadcast01.action.MYBROADCAST01" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

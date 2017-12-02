@@ -1,10 +1,14 @@
 package com.example.info.note;
 
+import android.app.AlarmManager;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
+
+import java.util.Locale;
 
 public class AddReminderActivity extends AppCompatActivity {
     Intent intent;
@@ -26,6 +33,7 @@ public class AddReminderActivity extends AppCompatActivity {
     Switch isReplace;
     Spinner ReplaceType;
     Button Complete_btn;
+    NoteDbTable NoteDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +46,18 @@ public class AddReminderActivity extends AppCompatActivity {
 
         initView();
     }
+
+    private Calendar StringtoCalendar(String date,String time){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddhh:mm", Locale.TAIWAN);
+        Calendar Calendar= android.icu.util.Calendar.getInstance();
+        try{
+            Calendar.setTime(sdf.parse(date+time));
+        }catch (Exception e){
+            Toast.makeText(AddReminderActivity.this,"yyyy-MM-ddhh:mm",Toast.LENGTH_SHORT).show();
+        }
+        return Calendar;
+    }
+
     private void initView(){
         date=(EditText)findViewById(R.id.date_et);
         isReplace=(Switch)findViewById(R.id.isreplace_sw);
@@ -50,6 +70,8 @@ public class AddReminderActivity extends AppCompatActivity {
         ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
         ReminderDb.OpenOrCreateTb();
         Complete_btn.setOnClickListener(Complete_btn_Listener);
+        NoteDb=new NoteDbTable(SQLiteDB_Path,db);
+        NoteDb.OpenOrCreateTb();
     }
     //打開或新增資料庫
     private void OpOrCrDb(){
@@ -60,17 +82,18 @@ public class AddReminderActivity extends AppCompatActivity {
             Log.e("#001","資料庫載入錯誤");
         }
     }
-    private void ClickMe(){
-        NotificationCompat.Builder mBuilder=(NotificationCompat.Builder)new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Test")
-                .setContentText("This is test")
-                .setAutoCancel(true)
-                .setTicker("111")
-                .setSubText("22")
-                .setOngoing(false);
-        NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0,mBuilder.build());
+    private void setReminder(Context context,String date,String time,int reminderId){
+        Calendar cal=StringtoCalendar(date,time);
+        String BROADCAST_ACTION="net.macdidi.broadcast01.action.MYBROADCAST01";
+        Cursor Note_cursor=NoteDb.getCursor(id);
+        Note_cursor.moveToFirst();
+        Intent intent=new Intent(BROADCAST_ACTION);
+        intent.putExtra("REMINDERID",reminderId);
+        intent.putExtra("TITLE",Note_cursor.getString(1));
+        intent.putExtra("CONTENT",Note_cursor.getString(2));
+        PendingIntent sender=PendingIntent.getBroadcast(context,0,intent,0);
+        AlarmManager alarm= (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis()+5000,3000,sender);
     }
 
     Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
@@ -80,6 +103,7 @@ public class AddReminderActivity extends AppCompatActivity {
             Cursor cursor=ReminderDb.getCursor();
             cursor.moveToLast();
             NoteReminderDb.insertNoteReminderData(cursor.getInt(0),id);
+            setReminder(AddReminderActivity.this,date.getText().toString(),"08:00",cursor.getInt(0));
             setResult(RESULT_OK,intent);
             finish();
         }
