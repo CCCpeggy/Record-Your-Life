@@ -88,6 +88,12 @@ public class ReminderDbTable {
         return db.rawQuery(cmd,null);
     }
 
+    public String getRemindDateCursor(int Reminder_id){
+        Cursor cursor=getCursor("_id = "+Reminder_id);
+        cursor.moveToFirst();
+        return cursor.getString(1);
+    }
+
     public Cursor getCursor(int id){
         return getCursor("_id = "+id);
     }

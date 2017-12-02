@@ -117,8 +117,10 @@ public class NoteActivity extends AppCompatActivity {
                         NoteDb.insertNoteData(Changed_title,Changed_content);
                         Cursor Note_cursor=NoteDb.getCursor();
                         Note_cursor.moveToLast();
+                        int Note_id=Note_cursor.getInt(0);
                         for (int Reminder_id:reminder_ids){
-                            NoteReminderDb.insertNoteReminderData(Reminder_id,Note_cursor.getInt(0));
+                            NoteReminderDb.insertNoteReminderData(Reminder_id,Note_id);
+                            setReminder(NoteActivity.this,ReminderDb.getRemindDateCursor(Reminder_id),"04:13",Changed_title,Changed_content,Reminder_id);
                         }
                         break;
                 }
@@ -126,7 +128,27 @@ public class NoteActivity extends AppCompatActivity {
             }
         }
     }
-
+    private void setReminder(Context context,String date,String time,String tilte,String content,int reminderId){
+        Calendar cal=StringtoCalendar(date,time);
+        String BROADCAST_ACTION="net.macdidi.broadcast01.action.MYBROADCAST01";
+        Intent intent=new Intent(BROADCAST_ACTION);
+        intent.putExtra("REMINDERID",reminderId);
+        intent.putExtra("TITLE",tilte);
+        intent.putExtra("CONTENT",content);
+        PendingIntent sender=PendingIntent.getBroadcast(context,0,intent,0);
+        AlarmManager alarm= (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis()+5000,3000,sender);
+    }
+    private Calendar StringtoCalendar(String date,String time){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddhh:mm", Locale.TAIWAN);
+        Calendar Calendar= android.icu.util.Calendar.getInstance();
+        try{
+            Calendar.setTime(sdf.parse(date+time));
+        }catch (Exception e){
+            Toast.makeText(NoteActivity.this,"yyyy-MM-ddhh:mm",Toast.LENGTH_SHORT).show();
+        }
+        return Calendar;
+    }
 
     //打開或新增資料庫
     private void OpOrCrDb(){
