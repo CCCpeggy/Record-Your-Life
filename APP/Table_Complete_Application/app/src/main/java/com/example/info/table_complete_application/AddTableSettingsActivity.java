@@ -392,12 +392,12 @@ public class AddTableSettingsActivity extends AppCompatActivity {
     }
 
     private Calendar StringtoTCalendar(String date){
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.TAIWAN);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.TAIWAN);
         Calendar Calendar= android.icu.util.Calendar.getInstance();
         try{
             Calendar.setTime(sdf.parse(date));
         }catch (Exception e){
-            Toast.makeText(AddTableSettingsActivity.this,"時間格式不符合 hh:mm",Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddTableSettingsActivity.this,"時間格式不符合 HH:mm",Toast.LENGTH_SHORT).show();
         }
         return Calendar;
     }
@@ -408,11 +408,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         Log.v("傳入日期",String.format("YEAR=%d/%d,MONTH=%d/%d,DATE=%d/%d",cal.get(Calendar.YEAR),cal2.get(Calendar.YEAR)
                 ,cal.get(Calendar.MONTH),cal2.get(Calendar.MONTH)
                 ,cal.get(Calendar.DATE),cal2.get(Calendar.DATE)));
-        if(cal.get(Calendar.YEAR)>cal2.get(Calendar.YEAR))return false;
-        if(cal.get(Calendar.YEAR)<cal2.get(Calendar.YEAR))return true;
-        if(cal.get(Calendar.MONTH)>cal2.get(Calendar.MONTH))return false;
-        if(cal.get(Calendar.MONTH)<cal2.get(Calendar.MONTH))return true;
-        return !(cal.get(Calendar.DATE)>cal2.get(Calendar.DATE));
+        return !cal2.before(cal);
     }
 
     private boolean compareTime(String starttime,String endtime){
@@ -422,9 +418,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
                 ,cal.get(Calendar.HOUR_OF_DAY),cal2.get(Calendar.HOUR_OF_DAY)
                 ,cal.get(Calendar.MINUTE),cal2.get(Calendar.MINUTE)));
 
-        if(cal.get(Calendar.HOUR_OF_DAY)>cal2.get(Calendar.HOUR_OF_DAY))return false;
-        if(cal.get(Calendar.HOUR_OF_DAY)<cal2.get(Calendar.HOUR_OF_DAY))return true;
-        return (cal.get(Calendar.MINUTE)<=cal2.get(Calendar.MINUTE));
+        return !cal2.before(cal);
     }
 
     private boolean check_time(){

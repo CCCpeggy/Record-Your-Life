@@ -10,4 +10,9 @@
         <item>6</item>
         <item>7</item>
     </string-array>
+    <string name="custom_dialog">客製化對話框</string>
+    <string name="ok">確定</string>
+    <string name="input_ur_name">請輸入</string>
+    <string name="hi">老師是</string>
+    <string name="sub">科目是</string>
 </resources>
