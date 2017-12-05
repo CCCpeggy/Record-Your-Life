@@ -35,12 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void initView(){
         customDialog = (Button) findViewById(R.id.custom_dialog);
-        setButtonEvent();
-    }
-
-    public void setButtonEvent(){
         customDialog.setOnClickListener(buttonListener);
     }
+
 
 
     private void customDialogEvent() {

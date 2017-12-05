@@ -1,5 +1,8 @@
 package com.example.info.table_complete_application;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,14 +11,27 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.info.table_complete_application.Table.ClassDbTable;
+import com.example.info.table_complete_application.Table.ClassWeekDbTable;
+import com.example.info.table_complete_application.Table.SubjectDbTable;
+import com.example.info.table_complete_application.Table.WeekDbTable;
 
 /**
  * Created by info on 2017/11/10.
@@ -31,17 +47,18 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     WeekDbTable WeekDb;
     ClassDbTable ClassDb;
     ClassWeekDbTable ClassWeekDb;
+    SubjectDbTable SubjectDb;
     private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subjectselecting);
-/*
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(FloatingButton);
-*/
+
         Complete_btn=(Button)findViewById(R.id.Complete_btn);
         Complete_btn.setOnClickListener(Complete_btn_Listener);
 
@@ -49,8 +66,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         ClassDb=new ClassDbTable(SQLiteDB_Path,db);
         WeekDb=new WeekDbTable(SQLiteDB_Path,db);
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
-        //ClassDb.deleteAllRow();
-        //ClassDb.AddClassData();
+        SubjectDb=new SubjectDbTable(SQLiteDB_Path,db);
 
         getIntentData();
         viewTable(row,col);
@@ -76,13 +92,12 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     private View.OnClickListener FloatingButton= new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            AddSubjectDialogEvent(AddSubjectTableActivity.this);
         }
     };
 
-    public void viewTable(int row,int col){
-
-        //TableLayout
+    public void viewTable(int row,int col)
+    {
 
         layout=(TableLayout)findViewById(R.id.Ly);
         layout.removeAllViewsInLayout();
@@ -125,6 +140,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
             int row=btn.getId()/10;
             int col=btn.getId()%10;
             Log.v("點了Table",String.format("row=%d,col=%d",row,col));
+            SelectSubjectDialogEvent(AddSubjectTableActivity.this);
         }
     };
 
@@ -144,5 +160,70 @@ public class AddSubjectTableActivity extends AppCompatActivity {
             finish();
         }
     };
+
+    private void AddSubjectDialogEvent(Context context) {
+        final View item = LayoutInflater.from(context).inflate(R.layout.item_layout, null);
+        new AlertDialog.Builder(context)
+                .setTitle(R.string.input_ur_name)
+                .setView(item)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        EditText editText = (EditText)item.findViewById(R.id.edit_text);
+                        EditText editText1 = (EditText)item.findViewById(R.id.edit_text2);
+
+                        String name = editText.getText().toString();
+                        String teacher = editText1.getText().toString();
+
+                        if(TextUtils.isEmpty(name)||TextUtils.isEmpty(teacher)){
+                            Toast.makeText(getApplicationContext(), R.string.input_ur_name, Toast.LENGTH_SHORT).show();
+                        } else {
+                            SubjectDb.insertSubjectData(name,teacher);
+                            Cursor cursor=SubjectDb.getCursor();
+                            cursor.moveToLast();
+                            int  NewSubject_id= cursor.getInt(0);
+                            Log.v("加入了NewSubject_id",NewSubject_id+"");
+                        }
+                    }
+                })
+                .setNegativeButton("取消", null)
+                .show();
+    }
+
+    private void SelectSubjectDialogEvent(Context context) {
+        final View item = LayoutInflater.from(context).inflate(R.layout.listview_layout, null);
+        ListView list = (ListView) item.findViewById(R.id.listview);
+        UpdateAdapter(list);
+        new AlertDialog.Builder(context)
+                .setTitle(R.string.input_title)
+                .setView(item)
+                .setNegativeButton("取消", null)
+                .show();
+    }
+
+    public void UpdateAdapter(ListView listView) {
+        try {
+            Cursor cursor=SubjectDb.getCursor();
+            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{"科目名稱"}, new int[]{android.R.id.text1}, 0);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(List_listener);
+            Log.v("UpdateAdapter", String.format("UpdateAdapter() 更新成功"));
+
+        } catch (Exception e) {
+            Log.e("#004", "清單更新失敗");
+        }
+
+    }
+
+    ListView.OnItemClickListener List_listener= new ListView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            TextView Text=(TextView) view.findViewById(android.R.id.text1);
+            String Subject_name=Text.getText().toString();
+            Log.v("選擇了",Subject_name);
+        }
+    };
+
+
 
 }

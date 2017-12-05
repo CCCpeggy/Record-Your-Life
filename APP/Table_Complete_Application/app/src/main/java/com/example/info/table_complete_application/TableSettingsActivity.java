@@ -25,6 +25,9 @@ import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.info.table_complete_application.Table.ClassWeekDbTable;
+import com.example.info.table_complete_application.Table.TableDbTable;
+
 import java.util.Locale;
 
 /**
@@ -88,7 +91,7 @@ public class TableSettingsActivity extends AppCompatActivity {
     public void UpdateAdapter() {
         try {
             cursor = ClassWeekDb.getCursor(Table_id);
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"開始時間", "結束時間"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
+            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.tabletime_layout, cursor, new String[]{"開始時間", "結束時間"}, new int[]{R.id.text1, R.id.text2}, 0);
             ClassTime.setAdapter(adapter);
             ClassTime.setOnItemClickListener(List_listener);
             ClassTime.setOnItemSelectedListener(List_listener2);
@@ -220,12 +223,6 @@ public class TableSettingsActivity extends AppCompatActivity {
     }
 
     private boolean check(){
-                /*,Name.getText().toString()
-                ,Days.getSelectedItem().toString()
-                ,(isMain.isChecked()?1:0)
-                ,Start_time.getText().toString()
-                ,End_time.getText().toString()
-                ,isCover.isChecked()?1:0);*/
         if(TableDb.getCursor(String.format("課表名稱='%s' AND _id !=%d ",Name.getText().toString(),Table_id)).getCount()>0){
             Toast.makeText(TableSettingsActivity.this,"課表名稱已存在",Toast.LENGTH_LONG).show();
             Log.w("課表名稱錯誤","課表名稱已存在");

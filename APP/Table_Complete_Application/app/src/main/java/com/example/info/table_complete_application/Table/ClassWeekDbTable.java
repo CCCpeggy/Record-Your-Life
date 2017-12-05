@@ -1,4 +1,4 @@
-package com.example.info.table_complete_application;
+package com.example.info.table_complete_application.Table;
 
 import android.content.ContentValues;
 import android.database.Cursor;

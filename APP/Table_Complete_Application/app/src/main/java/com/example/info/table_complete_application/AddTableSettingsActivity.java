@@ -26,6 +26,10 @@ import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.info.table_complete_application.Table.ClassWeekDbTable;
+import com.example.info.table_complete_application.Table.TableDbTable;
+import com.example.info.table_complete_application.Table.WeekDbTable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -100,7 +104,8 @@ public class AddTableSettingsActivity extends AppCompatActivity {
 
     public void UpdateAdapter() {
         try {
-            SimpleAdapter adapter=new SimpleAdapter(AddTableSettingsActivity.this,Time,android.R.layout.simple_list_item_2,new String[]{"start_time","end_time"},new int[]{android.R.id.text1, android.R.id.text2});            ClassTime.setAdapter(adapter);
+            SimpleAdapter adapter=new SimpleAdapter(AddTableSettingsActivity.this,Time,R.layout.tabletime_layout,new String[]{"start_time","end_time"},new int[]{R.id.text1, R.id.text2});
+            ClassTime.setAdapter(adapter);
             ClassTime.setAdapter(adapter);
             Log.v("UpdateAdapter", String.format("UpdateAdapter() 更新成功"));
 
