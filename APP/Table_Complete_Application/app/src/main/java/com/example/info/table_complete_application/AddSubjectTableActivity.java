@@ -48,6 +48,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     ClassDbTable ClassDb;
     ClassWeekDbTable ClassWeekDb;
     SubjectDbTable SubjectDb;
+    String TableSuject[][];
     private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +70,10 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         SubjectDb=new SubjectDbTable(SQLiteDB_Path,db);
 
         getIntentData();
+        TableSuject=new String[row][];
         viewTable(row,col);
+
+
     }
 
     private void OpOrCrDb(){
@@ -104,6 +108,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         layout.setGravity(1);
 
         for(int i=0;i<row;i++) {
+            TableSuject[i]=new String[col];
             TableRow tr=new TableRow(this);
             tr.setGravity(16);
             layout.setColumnShrinkable(i,true);
@@ -124,22 +129,20 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         btn.setText(text);
         btn.setGravity(17);
         btn.setId(id);
-       /* if(color)
-            btn.setBackgroundColor(Color.parseColor("#CCCCCC"));
-        else
-            btn.setBackgroundColor(Color.parseColor("#EEEEEE"));*/
         btn.setPadding(PADDING_LEFTRIGHT,PADDING_TOPBOTTOM,PADDING_LEFTRIGHT,PADDING_TOPBOTTOM);
         btn.setOnClickListener(Table_Class_Listener);
         return btn;
     }
-
+    int tmp_row;
+    int tmp_col;
+    Button tmp_btn;
     private Button.OnClickListener Table_Class_Listener=new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Button btn=(Button)v;
-            int row=btn.getId()/10;
-            int col=btn.getId()%10;
-            Log.v("點了Table",String.format("row=%d,col=%d",row,col));
+            tmp_btn=(Button)v;
+            tmp_row=tmp_btn.getId()/10;
+            tmp_col=tmp_btn.getId()%10;
+            Log.v("點了Table",String.format("row=%d,col=%d",tmp_row,tmp_col));
             SelectSubjectDialogEvent(AddSubjectTableActivity.this);
         }
     };
@@ -150,12 +153,15 @@ public class AddSubjectTableActivity extends AppCompatActivity {
             Cursor ClassWeek_cursor= ClassWeekDb.getCursor(Table_id);
             ClassWeek_cursor.moveToFirst();
             Cursor Week_cursor=WeekDb.getCursor("課表ID = "+Table_id);
+            int row=0,col;
             do{
+                col=0;
                 Week_cursor.moveToFirst();
                 do {
-                    int Week_id=Week_cursor.getInt(0) , ClassWeek_id=ClassWeek_cursor.getInt(0);
+                    int Week_id=Week_cursor.getInt(0) , ClassWeek_id=ClassWeek_cursor.getInt(0)/*,Subject_id=SubjectDb.getSubjectID(TableSuject[row][col++])*/;
                     ClassDb.insertClassData(ClassWeek_id,Week_id,1);
                 }while (Week_cursor.moveToNext());
+                row++;
             }while (ClassWeek_cursor.moveToNext());
             finish();
         }
@@ -198,6 +204,15 @@ public class AddSubjectTableActivity extends AppCompatActivity {
                 .setTitle(R.string.input_title)
                 .setView(item)
                 .setNegativeButton("取消", null)
+                .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(!tmp_Subject_name.isEmpty()) {
+                            tmp_btn.setText(tmp_Subject_name);
+                            TableSuject[tmp_row][tmp_col] =tmp_Subject_name;
+                        }
+                    }
+                })
                 .show();
     }
 
@@ -205,6 +220,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         try {
             Cursor cursor=SubjectDb.getCursor();
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{"科目名稱"}, new int[]{android.R.id.text1}, 0);
+            listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(List_listener);
             Log.v("UpdateAdapter", String.format("UpdateAdapter() 更新成功"));
@@ -214,13 +230,13 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         }
 
     }
-
+    String tmp_Subject_name;
     ListView.OnItemClickListener List_listener= new ListView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             TextView Text=(TextView) view.findViewById(android.R.id.text1);
-            String Subject_name=Text.getText().toString();
-            Log.v("選擇了",Subject_name);
+            tmp_Subject_name=Text.getText().toString();
+            Log.v("選擇了",tmp_Subject_name);
         }
     };
 
