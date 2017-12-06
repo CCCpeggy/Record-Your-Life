@@ -3,9 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Alert.iml" filepath="$PROJECT_DIR$/Alert.iml" />
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/../../../../../CN/Desktop/alert_dialog_demo-master/AlertDailogDemo.iml" filepath="$PROJECT_DIR$/../../../../../CN/Desktop/alert_dialog_demo-master/AlertDailogDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../../../CN/Desktop/alert_dialog_demo-master/alert_dialog_demo.iml" filepath="$PROJECT_DIR$/../../../../../CN/Desktop/alert_dialog_demo-master/alert_dialog_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/alert_dialog_demo-master.iml" filepath="$PROJECT_DIR$/alert_dialog_demo-master.iml" />
+=======
+      <module fileurl="file://C:\Users\CN\Desktop\alert_dialog_demo-master\AlertDailogDemo.iml" filepath="C:\Users\CN\Desktop\alert_dialog_demo-master\AlertDailogDemo.iml" />
+      <module fileurl="file://C:\Users\CN\Desktop\alert_dialog_demo-master\alert_dialog_demo.iml" filepath="C:\Users\CN\Desktop\alert_dialog_demo-master\alert_dialog_demo.iml" />
+>>>>>>> 4219db0ad39e75b31c2f5b5768ea293a68634b59
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
