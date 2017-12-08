@@ -5,151 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#DDDDDD"
     tools:context="com.ct.daan.recordingyourlife.MainActivity">
 
 
-    <LinearLayout
+    <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
-        android:paddingBottom="20dp"
-        android:paddingTop="15dp"
-        android:background="@drawable/layout_style">
+        android:id="@+id/tablayout"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    </android.support.design.widget.TabLayout>
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/pager">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:paddingVertical="5dp">
-
-                <Button
-                    android:id="@+id/button1"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/button_style"
-                    android:drawableTop="@drawable/calendar"
-                    android:elevation="10dp"
-                    android:paddingTop="20dp" />
-
-
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/button_style"
-                    android:drawableTop="@drawable/note"
-                    android:paddingTop="20dp" />
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/button_style"
-                    android:drawableTop="@drawable/diary"
-                    android:paddingTop="20dp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:paddingVertical="0dp">
-
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="日曆" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="便條" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="日記" />
-            </TableRow>
-
-        </TableLayout>
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:paddingVertical="5dp">
-
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp"
-                    android:background="@drawable/button_style"
-                    android:drawableTop="@drawable/test"
-                    android:paddingTop="20dp" />
-
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp"
-                    android:background="@drawable/button_style"
-                    android:drawableTop="@drawable/timetable"
-                    android:paddingTop="20dp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:paddingVertical="0dp">
-
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="考試" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="課表" />
-
-            </TableRow>
-
-        </TableLayout>
-    </LinearLayout>
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>
