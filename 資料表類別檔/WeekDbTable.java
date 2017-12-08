@@ -1,4 +1,4 @@
-package com.example.info.table_complete_application;
+package com.example.info.table_complete_application.Table;
 
 /**
  * Created by info on 2017/11/5.
