@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     TableLayout layout;
     Spinner name;
     All_Table Table;
+    final int ADDTABLEPAGE=5189,SETTINGTABLEPAGE=5947;
     private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
 
     @Override
@@ -57,12 +58,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
     public void onActivityResult(int requestCode,int resultCode,Intent data) {
         updateSpinner();
     }
 
+
     public void updateSpinner(){
         Cursor cursor=Table.getAllTableCursors();
+        Log.v("updateSpinner","updateSpinner()執行");
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{"課表名稱"}, new int[]{android.R.id.text1}, 0);
         name.setAdapter(adapter);
         name.setOnItemSelectedListener(List_listener);
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent intent=new Intent(MainActivity.this,TableSettingsActivity.class);
             intent.putExtra("TABLE_ID",Table_id);
-            startActivity(intent);
+            startActivityForResult(intent,SETTINGTABLEPAGE);
             return true;
         }
 
@@ -194,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent intent=new Intent(MainActivity.this,AddTableSettingsActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,ADDTABLEPAGE);
         }
     };
 

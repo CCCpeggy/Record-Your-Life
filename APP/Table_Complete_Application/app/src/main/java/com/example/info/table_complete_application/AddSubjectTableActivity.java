@@ -158,8 +158,8 @@ public class AddSubjectTableActivity extends AppCompatActivity {
                 col=0;
                 Week_cursor.moveToFirst();
                 do {
-                    int Week_id=Week_cursor.getInt(0) , ClassWeek_id=ClassWeek_cursor.getInt(0)/*,Subject_id=SubjectDb.getSubjectID(TableSuject[row][col++])*/;
-                    ClassDb.insertClassData(ClassWeek_id,Week_id,1);
+                    int Week_id=Week_cursor.getInt(0) , ClassWeek_id=ClassWeek_cursor.getInt(0),Subject_id=SubjectDb.getSubjectID(TableSuject[row][col++]);
+                    ClassDb.insertClassData(ClassWeek_id,Week_id,Subject_id);
                 }while (Week_cursor.moveToNext());
                 row++;
             }while (ClassWeek_cursor.moveToNext());
