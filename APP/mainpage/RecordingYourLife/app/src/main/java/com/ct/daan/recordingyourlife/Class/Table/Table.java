@@ -1,8 +1,9 @@
-package com.ct.daan.recordingyourlife.Class;
+package com.ct.daan.recordingyourlife.Class.Table;
+
 
 public class Table{
     public String Name="123";
-    public Class classes[];
+    public Class[] classes;
     public int colorR=200;
     public int colorG=200;
     public int colorB=200;

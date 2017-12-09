@@ -7,7 +7,6 @@ import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +18,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.ct.daan.recordingyourlife.Class.Class;
-import com.ct.daan.recordingyourlife.Class.ScheduleClass;
-import com.ct.daan.recordingyourlife.Class.Table;
-import com.ct.daan.recordingyourlife.Class.TablesClass;
-import com.ct.daan.recordingyourlife.Class.item;
+import com.ct.daan.recordingyourlife.Class.Table.Class;
+import com.ct.daan.recordingyourlife.Class.Schedule.ScheduleClass;
+import com.ct.daan.recordingyourlife.Class.Table.Table;
+import com.ct.daan.recordingyourlife.Class.Table.TablesClass;
+import com.ct.daan.recordingyourlife.Class.Schedule.item;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.Table.A_Day_Table;
 import com.ct.daan.recordingyourlife.Table.ScheduleDbTable;
@@ -370,8 +369,10 @@ public class ScheduleActivity extends Fragment{
     Button.OnClickListener AddSchedule_Listener=new Button.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            String Name="";
+            String Date="";
+            String Time="";
+            ScheduleDb.insertScheduleData(Name,Date,Time);
         }
-    });
+    };
 }

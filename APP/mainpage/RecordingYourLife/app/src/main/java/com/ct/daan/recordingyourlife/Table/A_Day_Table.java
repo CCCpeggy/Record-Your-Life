@@ -6,9 +6,9 @@ import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.util.Log;
 
-import com.ct.daan.recordingyourlife.Class.Table;
-import com.ct.daan.recordingyourlife.Class.TablesClass;
-import com.ct.daan.recordingyourlife.Class.Class;
+import com.ct.daan.recordingyourlife.Class.Table.Table;
+import com.ct.daan.recordingyourlife.Class.Table.TablesClass;
+import com.ct.daan.recordingyourlife.Class.Table.Class;
 
 import java.util.ArrayList;
 import java.util.List;

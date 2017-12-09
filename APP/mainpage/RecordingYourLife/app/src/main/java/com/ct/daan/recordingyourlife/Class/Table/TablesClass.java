@@ -1,8 +1,4 @@
-package com.ct.daan.recordingyourlife.Class;
-
-/**
- * Created by info on 2017/11/30.
- */
+package com.ct.daan.recordingyourlife.Class.Table;
 
 public class TablesClass {
     public Table[] Tables;

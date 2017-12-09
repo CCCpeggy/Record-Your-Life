@@ -1,4 +1,4 @@
-package com.ct.daan.recordingyourlife.Class;
+package com.ct.daan.recordingyourlife.Class.Schedule;
 
 public class item{
     public String Name;

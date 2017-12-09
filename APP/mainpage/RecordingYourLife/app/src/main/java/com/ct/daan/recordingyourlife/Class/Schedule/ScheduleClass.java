@@ -1,4 +1,4 @@
-package com.ct.daan.recordingyourlife.Class;
+package com.ct.daan.recordingyourlife.Class.Schedule;
 
 /**
  * Created by info on 2017/11/30.

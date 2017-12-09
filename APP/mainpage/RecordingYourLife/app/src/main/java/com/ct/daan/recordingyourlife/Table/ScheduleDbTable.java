@@ -5,8 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.ct.daan.recordingyourlife.Class.ScheduleClass;
-import com.ct.daan.recordingyourlife.Class.item;
+import com.ct.daan.recordingyourlife.Class.Schedule.ScheduleClass;
+import com.ct.daan.recordingyourlife.Class.Schedule.item;
 
 public class ScheduleDbTable {
     private String SQLiteDB_Path = null;

@@ -1,4 +1,4 @@
-package com.ct.daan.recordingyourlife.Class;
+package com.ct.daan.recordingyourlife.Class.Table;
 
 public class Class{
     public String start_time;
