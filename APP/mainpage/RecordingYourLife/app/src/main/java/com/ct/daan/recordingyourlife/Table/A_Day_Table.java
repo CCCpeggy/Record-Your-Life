@@ -200,7 +200,7 @@ public class A_Day_Table  extends WeekDbTable{
         return Table;
     }
 
-    //多個課表
+    //取得多個課表
     public TablesClass getTablesClass(){
         Log.v("weekIds.size()",weekIds.size()+"");
         TablesClass Tables=new TablesClass(weekIds.size());
@@ -210,6 +210,8 @@ public class A_Day_Table  extends WeekDbTable{
             Tables.Tables[i]=getClass(id);
             i++;
         }
+        Log.v("123121","1");
+        //排序課表
         for(i=0;i<Tables.Tables.length-1;i++){
             for(int j=i+1;j<Tables.Tables.length;j++){
                 Log.v("Date", String.format("date1=%s,date2=%s", Tables.Tables[i].classes[0].start_time,Tables.Tables[j].classes[0].start_time));

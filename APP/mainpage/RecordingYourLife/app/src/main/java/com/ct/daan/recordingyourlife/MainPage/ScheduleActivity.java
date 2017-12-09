@@ -54,6 +54,7 @@ public class ScheduleActivity extends Fragment{
     TextView date_tv;
     Button Next_btn,Pre_btn;
     Context context;
+    View v;
     private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
 
     private OnFragmentInteractionListener mListener;
@@ -120,8 +121,10 @@ public class ScheduleActivity extends Fragment{
     }
 
     public void updateView(){
+        Log.v("123121","2");
         LinearLayout slayout;
-        slayout=(LinearLayout)getView().findViewById(R.id.SchLayout);
+        slayout=(LinearLayout)v.findViewById(R.id.SchLayout);
+        Log.v("123121","3");
         slayout.removeAllViewsInLayout();
         viewScheduleAndTables(tablesClass,Schedules);
     }
@@ -193,8 +196,7 @@ public class ScheduleActivity extends Fragment{
     private void addnode(String Time_String,String Name_String,String Table_index,int colorR,int colorG,int colorB){
         Log.v("addnode",String.format("Time_String=%s,Name_String=%s, colorR=%d,colorG=%d,colorB=%d",Time_String,Name_String,colorR,colorG,colorB));
         TableLayout slayout;
-        slayout=(TableLayout)getView().findViewById(R.id.SchLayout);
-        slayout=(TableLayout)getView().findViewById(R.id.SchLayout);
+        slayout=(TableLayout)v.findViewById(R.id.SchLayout);
         LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableRow nodeLayout=(TableRow) inflater.inflate(R.layout.schedule_node,null,true);
         nodeLayout.setBackgroundColor(Color.argb(255, colorR,colorG,colorB));
@@ -217,7 +219,7 @@ public class ScheduleActivity extends Fragment{
     private void addchildnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
         Log.v("addnode",String.format("Time_String=%s,Name_String=%s, colorR=%d,colorG=%d,colorB=%d",Time_String,Name_String,colorR,colorG,colorB));
         LinearLayout slayout;
-        slayout=(LinearLayout)getView().findViewById(R.id.SchLayout);
+        slayout=(LinearLayout)v.findViewById(R.id.SchLayout);
         LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableRow nodeLayout=(TableRow) inflater.inflate(R.layout.schedule_nodechild,null,true);
         nodeLayout.setBackgroundColor(Color.argb(255, colorR,colorG,colorB));
@@ -323,7 +325,7 @@ public class ScheduleActivity extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.content_schedule, container, false);
+        v=inflater.inflate(R.layout.content_schedule, container, false);
 
         context=getContext();
         Next_btn=(Button)v.findViewById(R.id.btn_next);
