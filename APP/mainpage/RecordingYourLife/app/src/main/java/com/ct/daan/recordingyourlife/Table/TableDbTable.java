@@ -105,13 +105,6 @@ public class TableDbTable {
             insertTableData( name[i],days[i],main[i],schedule_start[i],schedule_end[i],isReplace[i]);
         }
     }
-
-    public Cursor getCursor(){
-        String cmd=String.format("SELECT *  FROM '%s' ",SQLiteTable_Name);
-        Log.v("TableDbTable.getCursor",cmd);
-        return db.rawQuery(cmd,null);
-    }
-
     public Cursor getCursor(int Table_id){
         return getCursor("_id = "+Table_id);
     }
@@ -150,6 +143,23 @@ public class TableDbTable {
         Cursor cursor=getCursor("主要= "+1);
         return cursor;
     }
+
+
+    public Cursor getCursor(){
+        String cmd=String.format("SELECT *  FROM '%s' ",SQLiteTable_Name);
+        Log.v("TableDbTable.getCursor",cmd);
+        return db.rawQuery(cmd,null);
+    }
+
+
+
+
+    public String getTable_name(int id){
+        Cursor cursor=getCursor("_id= "+id);
+        cursor.moveToFirst();
+        return cursor.getString(1);
+    }
+
 
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);

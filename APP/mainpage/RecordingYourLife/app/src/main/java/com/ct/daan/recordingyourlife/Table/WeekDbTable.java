@@ -94,6 +94,11 @@ public class WeekDbTable {
         return db.rawQuery(cmd,null);
     }
 
+
+    public Cursor getCursor(String col,String Where_cmd){
+        return db.rawQuery(String.format("SELECT distinct  %s  FROM '%s' WHERE %s",col,SQLiteTable_Name,Where_cmd),null);
+    }
+
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);
     }

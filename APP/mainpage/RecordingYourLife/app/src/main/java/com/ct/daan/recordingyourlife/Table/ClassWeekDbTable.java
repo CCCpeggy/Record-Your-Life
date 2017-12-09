@@ -140,6 +140,15 @@ public class ClassWeekDbTable {
         }
     }
 
+    public String getByIndex(int ClassWeek_id,int index){
+        Cursor cursor=db.rawQuery(String.format("SELECT *  FROM '%s' WHERE _id=%d",SQLiteTable_Name,ClassWeek_id),null);
+        cursor.moveToFirst();
+        if(cursor.getCount()>0)
+            return cursor.getString(index);
+        return null;
+    }
+
+
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);
     }
