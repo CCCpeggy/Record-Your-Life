@@ -7,12 +7,10 @@ import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -325,7 +323,7 @@ public class ScheduleActivity extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        v=inflater.inflate(R.layout.content_schedule, container, false);
+        v=inflater.inflate(R.layout.schedule_activity, container, false);
 
         context=getContext();
         Next_btn=(Button)v.findViewById(R.id.btn_next);
@@ -368,4 +366,12 @@ public class ScheduleActivity extends Fragment{
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
+
+    Button.OnClickListener AddSchedule_Listener=new Button.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
+    });
 }
