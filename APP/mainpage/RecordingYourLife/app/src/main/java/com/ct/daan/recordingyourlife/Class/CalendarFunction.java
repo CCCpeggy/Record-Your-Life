@@ -8,7 +8,41 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-public class CalenderFunction {
+public class CalendarFunction {
+
+    public String getTodayDate(){
+        Calendar cal=Calendar.getInstance();
+        return getDateString(cal);
+    }
+
+    public int getDayOfWeek(String date){
+        Calendar cal=DateTextToCalendarType(date);
+        int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK)-1;
+        Log.v(date,"星期"+dayOfWeek);
+        return dayOfWeek;
+    }
+
+    public String getTheDayAfter(String date){
+        Calendar calendar=DateTextToCalendarType(date);
+        calendar=getTheDayAfter(calendar);
+        return getDateString(calendar);
+    }
+
+    public String getTheDayBefore(String date){
+        Calendar calendar=DateTextToCalendarType(date);
+        calendar=getTheDayBefore(calendar);
+        return getDateString(calendar);
+    }
+
+    public Calendar getTheDayBefore(Calendar calendar){
+        calendar.add(Calendar.DAY_OF_MONTH,-1);
+        return calendar;
+    }
+
+    public Calendar getTheDayAfter(Calendar calendar){
+        calendar.add(Calendar.DAY_OF_MONTH,1);
+        return calendar;
+    }
 
     public Calendar DateTimeTextToCalendarType (String date, String time ){
         return DateTimeTextToCalendarType(date+" "+time);
@@ -18,12 +52,12 @@ public class CalenderFunction {
         return toCalendarType("yyyy-MM-dd HH:mm",datetime);
     }
 
-    public Calendar DateTextToCalendarType (String date ){
+    public Calendar DateTextToCalendarType (String date){
         return toCalendarType("yyyy-MM-dd",date);
     }
 
     public Calendar TimeTextToCalendarType ( String time){
-        return toCalendarType("yyyy-MM-dd HH:mm",time);
+        return toCalendarType("hh:mm",time);
     }
 
     public boolean CompareDateTime(String BeforeDate,String BeforeTime,String AfterDate,String AfterTime ){
@@ -47,6 +81,7 @@ public class CalenderFunction {
     public boolean CompareTime(String BeforeTime,String AfterTime ){
         Calendar BeforeCal=TimeTextToCalendarType(BeforeTime);
         Calendar AfterCal=TimeTextToCalendarType(AfterTime);
+
         return CompareCalendar(BeforeCal,AfterCal);
     }
 
@@ -63,7 +98,7 @@ public class CalenderFunction {
     }
 
     public Calendar TimeTextToCalendarType ( String time, Context context){
-        return toCalendarType("yyyy-MM-dd HH:mm",time,context);
+        return toCalendarType("hh:mm",time,context);
     }
 
     public boolean CompareDateTime(String BeforeDate,String BeforeTime,String AfterDate,String AfterTime,Context context){
@@ -98,54 +133,58 @@ public class CalenderFunction {
 
     private Calendar toCalendarType (String format, String text, Context context){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format, Locale.TAIWAN);
-        android.icu.util.Calendar Calendar= android.icu.util.Calendar.getInstance();
+        Calendar calendar= Calendar.getInstance();
         try{
-            Calendar.setTime(simpleDateFormat.parse(text));
+            calendar.setTime(simpleDateFormat.parse(text));
         }catch (Exception e){
             Toast.makeText(context,"格式不符合"+format,Toast.LENGTH_SHORT).show();
             Log.v("格式不符合：",format+" By: "+text);
             return null;
         }
-        return Calendar;
+        return calendar;
     }
 
     private Calendar toCalendarType (String format, String text){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format, Locale.TAIWAN);
-        android.icu.util.Calendar Calendar= android.icu.util.Calendar.getInstance();
+        Calendar calendar= Calendar.getInstance();
         try{
-            Calendar.setTime(simpleDateFormat.parse(text));
+            calendar.setTime(simpleDateFormat.parse(text));
         }catch (Exception e){
             Log.v("格式不符合：",format+" By: "+text);
             return null;
         }
-        return Calendar;
+        return calendar;
     }
 
     public String getString(Calendar calendar,String format){
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat(format);
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat(format, Locale.TAIWAN);
         String Cal_String=simpleDateFormat.format(calendar);
         return Cal_String;
     }
 
-    public String getDate(Calendar calendar,String format){
+    public String getDateString(Calendar calendar){
         return getString(calendar,"yyyy-MM-dd");
     }
 
-    public String getTime(Calendar calendar,String format){
+    public String getTimeString(Calendar calendar){
         return getString(calendar,"HH:mm");
     }
 
+    public String getDateTimeString(Calendar calendar){
+        return getString(calendar,"yyyy-MM-dd HH:mm");
+    }
+
     public void LogDate(String Title,String StringFormatText,Calendar calendar){
-        Log.v(Title,String.format(StringFormatText,calendar.YEAR,calendar.MONTH,calendar.DAY_OF_MONTH));
+        Log.v(Title,String.format(StringFormatText,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)));
     }
 
     public void LogTime(String Title,String StringFormatText,Calendar calendar){
-        Log.v(Title,String.format(StringFormatText,calendar.HOUR_OF_DAY,calendar.MINUTE));
+        Log.v(Title,String.format(StringFormatText,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE)));
     }
 
     public void LogDateTime(String Title,String StringFormatText,Calendar calendar){
         Log.v(Title,String.format(StringFormatText
-                ,calendar.YEAR,calendar.MONTH,calendar.DAY_OF_MONTH,calendar.HOUR_OF_DAY,calendar.MINUTE));
+                ,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH),calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE)));
     }
 
 }

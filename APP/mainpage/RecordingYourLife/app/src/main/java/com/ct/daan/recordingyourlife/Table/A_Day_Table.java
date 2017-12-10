@@ -6,6 +6,7 @@ import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.util.Log;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.Class.Table.Table;
 import com.ct.daan.recordingyourlife.Class.Table.TablesClass;
 import com.ct.daan.recordingyourlife.Class.Table.Class;
@@ -24,12 +25,13 @@ public class A_Day_Table  extends WeekDbTable{
     SubjectDbTable SubjectDb;
     ClassWeekDbTable ClassWeekDb;
     TableDbTable TableDb;
+    CalendarFunction calFunction;
     private int DayOfWeek /*星期幾*/;
     private List<Integer> weekIds;
 
     public A_Day_Table(String path, SQLiteDatabase Database, String date) {
         super(path,Database);
-
+        calFunction=new CalendarFunction();
         initAllDb(path,Database);
         AddTableData();
         setDays(date);
@@ -68,7 +70,7 @@ public class A_Day_Table  extends WeekDbTable{
     }
 
     public void setDays(String date){
-        setDays(DayOfWeek(date));
+        setDays(calFunction.getDayOfWeek(date));
     }
 
     public Cursor getWeek_cursor(){
@@ -116,45 +118,11 @@ public class A_Day_Table  extends WeekDbTable{
         }
     }
 
-    private int DayOfWeek(String date){
-        Calendar cal=StringtoCalendar(date);
-        int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK)-1;
-        Log.v("星期幾",dayOfWeek+"");
-        return dayOfWeek;
-    }
 
     private int getDays(Cursor cursor, int index){
-        int days=DayOfWeek-DayOfWeek(cursor.getString(index))+1;
+        int days=DayOfWeek-calFunction.getDayOfWeek(cursor.getString(index))+1;
         Log.v("第幾天",days+"");
         return days;
-    }
-
-    private int Date_to_Days(String Start_date, String date){
-        int days=DayOfWeek(date)-DayOfWeek(Start_date)+1;
-        Log.v("第幾天",days+"");
-        return days;
-    }
-
-    private Calendar StringtoCalendar(String date){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf.parse(date));
-        }catch (Exception e){
-            Log.v("日期格式不符合",date);
-        }
-        return Calendar;
-    }
-
-    private Calendar StringtoCalendarByTime(String time){
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf.parse(time));
-        }catch (Exception e){
-            Log.v("時間格式不符合",time);
-        }
-        return Calendar;
     }
 
     //多個課表
@@ -169,7 +137,7 @@ public class A_Day_Table  extends WeekDbTable{
         for(i=0;i<Tables.length-1;i++){
             for(int j=i+1;j<Tables.length;j++){
                 Log.v("Date", String.format("date1=%s,date2=%s", Tables[i][0][1],Tables[j][0][1]));
-                if(!compareTime( Tables[i][0][1],Tables[j][0][1])){
+                if(!calFunction.CompareTime( Tables[i][0][1],Tables[j][0][1])){
                     String[][] tmp_array=Tables[i];
                     Tables[i]=Tables[j];
                     Tables[j]=tmp_array;
@@ -210,12 +178,11 @@ public class A_Day_Table  extends WeekDbTable{
             Tables.Tables[i]=getClass(id);
             i++;
         }
-        Log.v("123121","1");
         //排序課表
         for(i=0;i<Tables.Tables.length-1;i++){
             for(int j=i+1;j<Tables.Tables.length;j++){
                 Log.v("Date", String.format("date1=%s,date2=%s", Tables.Tables[i].classes[0].start_time,Tables.Tables[j].classes[0].start_time));
-                if(!compareTime( Tables.Tables[i].classes[0].start_time,Tables.Tables[j].classes[0].start_time)){
+                if(!calFunction.CompareTime( Tables.Tables[i].classes[0].start_time,Tables.Tables[j].classes[0].start_time)){
                     Table tmp_Table=Tables.Tables[i];
                     Tables.Tables[i]=Tables.Tables[j];
                     Tables.Tables[j]=tmp_Table;
@@ -243,19 +210,6 @@ public class A_Day_Table  extends WeekDbTable{
 
         return table;
     }
-
-    //date2>date1 is true
-    private boolean compareTime(String time1, String time2){
-        Calendar cal=StringtoCalendarByTime(time1);
-        Calendar cal2=StringtoCalendarByTime(time2);
-        if (cal.equals("")||cal2.equals(""))return false;
-            Log.v("傳入日期", String.format("HOUR=%d/%d,MINUTE=%d/%d",cal.get(Calendar.HOUR_OF_DAY),cal2.get(Calendar.HOUR_OF_DAY)
-                ,cal.get(Calendar.MINUTE),cal2.get(Calendar.MINUTE)));
-        if(cal.get(Calendar.HOUR_OF_DAY)>cal2.get(Calendar.HOUR_OF_DAY))return false;
-        if(cal.get(Calendar.HOUR_OF_DAY)<cal2.get(Calendar.HOUR_OF_DAY))return true;
-        return !(cal.get(Calendar.MINUTE)>cal2.get(Calendar.MINUTE));
-    }
-
 
     public String getTableName(int week_id){
         String Ids_string="";

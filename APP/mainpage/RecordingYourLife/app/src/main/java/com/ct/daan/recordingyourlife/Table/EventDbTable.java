@@ -8,11 +8,14 @@ import android.icu.util.Calendar;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
+
 import java.util.Locale;
 
 public class EventDbTable {
 
-    private  String SQLiteDB_Path = null;
+    private CalendarFunction calFunction;
+    private String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
     public String SQLiteTable_Name= "日子"; //資料表的名字
     private String CREATE_NOTE_TABLE="CREATE TABLE if not exists '"+SQLiteTable_Name+"'(" +
@@ -112,7 +115,7 @@ public class EventDbTable {
     }
 
     public Cursor getCursorByDay(String Day){
-        Calendar cal=StringtoCalendar(Day);
+        Calendar cal=calFunction.DateTextToCalendarType(Day);
         int year=cal.get(Calendar.YEAR);
         int month=cal.get(Calendar.MONTH)+1;
         int date=cal.get(Calendar.DAY_OF_MONTH);
@@ -150,16 +153,6 @@ public class EventDbTable {
         Log.v(SQLiteTable_Name+"_EventCurosr", String.format("%s=%s,%s=%s,%s=%s,%s=%s,%s=%s", "id",cursor_row.getInt(0),"日子名稱", cursor_row.getString(1),"日期開始", cursor_row.getString(2),"日期結束", cursor_row.getString(3),"備註", cursor_row.getString(4)));
     }
 
-    private Calendar StringtoCalendar(String date){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf.parse(date));
-        }catch (Exception e){
-            Log.v("日期格式不符合",date);
-        }
-        return Calendar;
-    }
 
 
 }

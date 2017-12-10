@@ -18,6 +18,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.Class.Table.Class;
 import com.ct.daan.recordingyourlife.Class.Schedule.ScheduleClass;
 import com.ct.daan.recordingyourlife.Class.Table.Table;
@@ -31,14 +32,14 @@ import java.util.Locale;
 
 //行程畫面
 
-public class ScheduleActivity extends Fragment{
+public class ScheduleActivity extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
 
-
+    CalendarFunction calFunction;
     private SQLiteDatabase db=null;
     private String SQLiteDB_Path="student_project.db";
     int Week_id;
@@ -93,16 +94,14 @@ public class ScheduleActivity extends Fragment{
     Button.OnClickListener onClickListener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Calendar calendar=StringtoCalendar(Now_date);
             switch (v.getId()){
                 case R.id.btn_next:
-                    calendar.add(Calendar.DAY_OF_MONTH,1);
+                    ChangeDate(calFunction.getTheDayAfter(Now_date));
                     break;
                 case R.id.btn_previous:
-                    calendar.add(Calendar.DAY_OF_MONTH,-1);
+                    ChangeDate(calFunction.getTheDayBefore(Now_date));
                     break;
             }
-            ChangeDate(DatetoString(calendar));
         }
     };
 
@@ -118,10 +117,8 @@ public class ScheduleActivity extends Fragment{
     }
 
     public void updateView(){
-        Log.v("123121","2");
         LinearLayout slayout;
         slayout=(LinearLayout)v.findViewById(R.id.SchLayout);
-        Log.v("123121","3");
         slayout.removeAllViewsInLayout();
         viewScheduleAndTables(tablesClass,Schedules);
     }
@@ -135,8 +132,7 @@ public class ScheduleActivity extends Fragment{
 
             String table_time=table.classes[0].start_time;
             String schedule_time=Schedule_item.Time;
-            if( compareTime(table_time,schedule_time)){
-                Log.v("i",i+"");
+            if( calFunction.CompareTime(table_time,schedule_time)){
                 j=viewScheduleAndTable(i,table,Schedule,j);
                 i++;
             }
@@ -165,7 +161,7 @@ public class ScheduleActivity extends Fragment{
             item Schedule_item=Schedule.items[Schedule_position];
             String table_time=Oneclass.start_time;
             String schedule_time=Schedule_item.Time;
-            if( compareTime(table_time,schedule_time)){
+            if( calFunction.CompareTime(table_time,schedule_time)){
                 addchildnode(table_time,Oneclass.Subject,table.colorR,table.colorG,table.colorB);
                 i++;
             }
@@ -276,60 +272,20 @@ public class ScheduleActivity extends Fragment{
         }
     };
     //date2>date1 is true
-    private boolean compareTime(String time1,String time2){
-        Calendar cal=StringtoCalendarByTime(time1);
-        Calendar cal2=StringtoCalendarByTime(time2);
-        if (cal.equals("")||cal2.equals(""))return false;
-        Log.v("傳入日期",String.format("HOUR=%d/%d,MINUTE=%d/%d",cal.get(Calendar.HOUR_OF_DAY),cal2.get(Calendar.HOUR_OF_DAY)
-                ,cal.get(Calendar.MINUTE),cal2.get(Calendar.MINUTE)));
-        if(cal.get(Calendar.HOUR_OF_DAY)>cal2.get(Calendar.HOUR_OF_DAY))return false;
-        if(cal.get(Calendar.HOUR_OF_DAY)<cal2.get(Calendar.HOUR_OF_DAY))return true;
-        return !(cal.get(Calendar.MINUTE)>cal2.get(Calendar.MINUTE));
-    }
 
-    private Calendar StringtoCalendarByTime(String time){
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf.parse(time));
-        }catch (Exception e){
-            Log.v("時間格式不符合",time);
-        }
-        return Calendar;
-    }
-
-    private Calendar StringtoCalendar(String date){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf.parse(date));
-        }catch (Exception e){
-            Log.v("日期格式不符合",date);
-        }
-        return Calendar;
-    }
-
-    private String TodayDate(){
-        Calendar cal=Calendar.getInstance();
-        return DatetoString(cal);
-    }
-
-    private String DatetoString(Calendar cal){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
-        return sdf.format(cal);
-    }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         v=inflater.inflate(R.layout.schedule_activity, container, false);
 
+        calFunction=new CalendarFunction();
         context=getContext();
         Next_btn=(Button)v.findViewById(R.id.btn_next);
         Pre_btn=(Button)v.findViewById(R.id.btn_previous);
         Next_btn.setOnClickListener(onClickListener);
         Pre_btn.setOnClickListener(onClickListener);
-        Now_date= TodayDate();
+        Now_date= calFunction.getTodayDate();
         date_tv=(TextView)v.findViewById(R.id.date_tv);
         date_tv.setText(Now_date);
 
