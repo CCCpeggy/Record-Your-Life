@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Note.NoteActivity" />
+        <activity android:name=".Note.NotePageActivity" />
+        <activity android:name=".Note.NewNotePageActivity" />
+        <activity android:name=".Note.RemindersActivityByNew" />
+        <activity android:name=".Note.AddReminderActivityByNew" />
+        <activity android:name=".Note.ReminderActivity" />
+        <activity android:name=".Note.RemindersActivity" />
+        <receiver android:name=".Reminder.AlarmReceiver">
+            <intent-filter>
+                <action android:name="net.macdidi.broadcast01.action.MYBROADCAST01" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

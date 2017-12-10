@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.example.info.note.Table.Note_Reminder_DbTable;
+import com.example.info.note.Table.ReminderDbTable;
+
 import java.util.ArrayList;
 
 /**

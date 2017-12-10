@@ -1,4 +1,4 @@
-package com.ct.daan.recordingyourlife.Table;
+package com.example.info.note.Table;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -17,6 +17,7 @@ public class ReminderDbTable {
             "CREATE TABLE if not exists '"+SQLiteTable_Name+"'(" +
                     "_id INTEGER  PRIMARY KEY NOT NULL," +
                     "'提醒日期' TEXT NOT NULL,"+
+                    "'提醒時間' TEXT NOT NULL,"+
                     "'重複' INTEGER NOT NULL,"+
                     "'重複單位' INTEGER NOT NULL)";
     public ReminderDbTable(String path, SQLiteDatabase Database) {
@@ -34,27 +35,29 @@ public class ReminderDbTable {
         }
     }
 
-    public void insertReminderData(String date,int isReplace,int ReplaceType){
+    public void insertReminderData(String date,String time,int isReplace,int ReplaceType){
         try {
             ContentValues row = new ContentValues();
             row.put("提醒日期", date);
+            row.put("提醒時間", time);
             row.put("重複", isReplace);
             row.put("重複單位", ReplaceType);
             db.insert(SQLiteTable_Name, null, row);
-            Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s,%s=%s,%s=%s", SQLiteTable_Name,"提醒日期", date,"重複", isReplace,"重複單位", ReplaceType));
+            Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s,%s=%s,%s=%s,%s=%s", SQLiteTable_Name,"提醒日期", date,"提醒時間", time,"重複", isReplace,"重複單位", ReplaceType));
         } catch (Exception e) {
             Log.e("#003", "資料列新增失敗");
         }
     }
 
-    public void updateReminderData(int id,String date,int isReplace,int ReplaceType){
+    public void updateReminderData(int id,String date,String time,int isReplace,int ReplaceType){
         try {
             ContentValues row = new ContentValues();
             row.put("提醒日期", date);
+            row.put("提醒時間", time);
             row.put("重複", isReplace);
             row.put("重複單位", ReplaceType);
             db.update(SQLiteTable_Name, row, "_id=" + id, null);
-            Log.v("更新資料列", String.format("在%s更新一筆資料：%s=%s,%s=%s,%s=%s", SQLiteTable_Name,"提醒日期", date,"重複", isReplace,"重複單位", ReplaceType));
+            Log.v("更新資料列", String.format("在%s更新一筆資料：%s=%s,%s=%ss,%s=%s,%s=%s", SQLiteTable_Name,"提醒日期", date,"提醒時間", time,"重複", isReplace,"重複單位", ReplaceType));
         } catch (Exception e) {
             Log.e("#004", "資料列更新失敗");
         }
@@ -71,10 +74,11 @@ public class ReminderDbTable {
 
     public void AddReminderData(){
         String date[]={"2017-10-16","2017-10-17","2017-10-18","2017-10-19","2017-10-20","2017-10-21","2017-10-22","2017-10-23","2017-10-24","2017-10-25","2017-10-26","2017-10-27","2017-10-28","2017-10-29","2017-10-30","2017-10-31","2017-11-01","2017-11-02","2017-11-03"};
-        int isReplace[]={1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,1};
-        int ReplaceType[]={0,0,1,2,1,0,0,3,1,0,0,0,0,0,2,3,2,0,1};
+        String time[]={"02:08","21:26","05:52","06:29","05:28","12:16","17:59","05:15","09:38","22:07","04:15","07:01","01:02","06:27","03:13","14:04","06:46","09:00","05:56"};
+        int isReplace[]={1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,0,1,0};
+        int ReplaceType[]={0,0,1,2,1,0,0,3,1,0,0,0,0,0,2,3,2,0,1,2};
         for(int i=0;i< date.length ;i++){
-            insertReminderData(date[i],isReplace[i],ReplaceType[i]);
+            insertReminderData(date[i],time[i],isReplace[i],ReplaceType[i]);
         }
     }
 
@@ -86,6 +90,12 @@ public class ReminderDbTable {
         String cmd=String.format("SELECT *  FROM '%s' WHERE %s",SQLiteTable_Name,Where_cmd);
         Log.v("ClassWeekDb.getCursor",cmd);
         return db.rawQuery(cmd,null);
+    }
+
+    public String getRemindDateCursor(int Reminder_id){
+        Cursor cursor=getCursor("_id = "+Reminder_id);
+        cursor.moveToFirst();
+        return cursor.getString(1);
     }
 
     public Cursor getCursor(int id){
@@ -108,6 +118,12 @@ public class ReminderDbTable {
 
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);
+    }
+
+    public void deleteRows(String Where_cmd){
+        String cmd=String.format("DELETE * FROM '%s' WHERE %s",SQLiteTable_Name,Where_cmd);
+        Log.v("DeleteRow",cmd);
+        db.execSQL(cmd);
     }
 
 

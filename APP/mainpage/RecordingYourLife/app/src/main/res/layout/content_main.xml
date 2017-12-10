@@ -29,7 +29,7 @@
                 android:paddingVertical="5dp">
 
                 <Button
-                    android:id="@+id/button1"
+                    android:id="@+id/calendar_btn"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_marginLeft="15dp"
@@ -41,7 +41,7 @@
 
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/note_btn"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_marginLeft="15dp"
@@ -51,7 +51,7 @@
                     android:paddingTop="20dp" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/diary_btn"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_marginLeft="15dp"
@@ -104,7 +104,7 @@
                 android:paddingVertical="5dp">
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/test_btn"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_marginLeft="35dp"
@@ -114,7 +114,7 @@
                     android:paddingTop="20dp" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/table_btn"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:layout_marginLeft="35dp"

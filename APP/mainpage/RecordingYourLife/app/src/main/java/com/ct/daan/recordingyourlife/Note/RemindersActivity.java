@@ -1,4 +1,4 @@
-package com.example.info.note;
+package com.ct.daan.recordingyourlife.Note;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,8 +12,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import com.example.info.note.Table.Note_Reminder_DbTable;
-import com.example.info.note.Table.ReminderDbTable;
+import com.ct.daan.recordingyourlife.R;
+import com.ct.daan.recordingyourlife.Table.Note_Reminder_DbTable;
+import com.ct.daan.recordingyourlife.Table.ReminderDbTable;
 
 /**
  * Created by info on 2017/12/2.
@@ -32,7 +33,7 @@ public class RemindersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reminders);
+        setContentView(R.layout.reminder_content);
         initView();
 
         intent=getIntent();
@@ -85,7 +86,7 @@ public class RemindersActivity extends AppCompatActivity {
                 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{"提醒日期"}, new int[]{android.R.id.text1}, 0);
                 listView01.setAdapter(adapter);
                 listView01.setOnItemClickListener(ListViewListener);
-                Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
+                Log.v("UpdateAdapter_Note", String.format("UpdateAdapter_Note() 更新成功"));
             }
         }catch (Exception e){
             Log.e("#004","清單更新失敗");
@@ -105,7 +106,7 @@ public class RemindersActivity extends AppCompatActivity {
     Button.OnClickListener Add_btn_Listener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent  = new Intent(RemindersActivity.this,AddReminderActivity.class);
+            Intent intent  = new Intent(RemindersActivity.this,AddReminderActivityByNew.class);
             Log.v("NOTEID",id+"");
             intent.putExtra("NOTEID",id);
             startActivityForResult (intent,ADD_REMINDER);

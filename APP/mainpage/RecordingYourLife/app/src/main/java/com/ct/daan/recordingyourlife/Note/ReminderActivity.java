@@ -1,13 +1,13 @@
-package com.example.info.note;
+package com.ct.daan.recordingyourlife.Note;
 
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +15,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 
-import com.example.info.note.Table.ReminderDbTable;
+import com.ct.daan.recordingyourlife.R;
+import com.ct.daan.recordingyourlife.Table.Note_Reminder_DbTable;
+import com.ct.daan.recordingyourlife.Table.ReminderDbTable;
 
 public class ReminderActivity extends AppCompatActivity {
     Intent intent;
@@ -31,7 +33,7 @@ public class ReminderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reminder);
+        setContentView(R.layout.reminder_page);
 
         intent=getIntent();
         Bundle extra=intent.getExtras();

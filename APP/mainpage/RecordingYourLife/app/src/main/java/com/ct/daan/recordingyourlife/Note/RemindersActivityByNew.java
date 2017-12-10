@@ -1,4 +1,4 @@
-package com.example.info.note;
+package com.ct.daan.recordingyourlife.Note;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,15 +12,18 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import com.example.info.note.Table.Note_Reminder_DbTable;
-import com.example.info.note.Table.ReminderDbTable;
+import com.ct.daan.recordingyourlife.R;
+import com.ct.daan.recordingyourlife.Table.Note_Reminder_DbTable;
+import com.ct.daan.recordingyourlife.Table.ReminderDbTable;
+
+import java.util.ArrayList;
 
 /**
  * Created by info on 2017/12/2.
  */
-public class RemindersActivity extends AppCompatActivity {
+public class RemindersActivityByNew extends AppCompatActivity {
     Intent intent;
-    int id;
+    ArrayList<Integer> reminder_ids;
     Cursor cursor;
     Note_Reminder_DbTable NoteReminderDb;
     ReminderDbTable ReminderDb;
@@ -32,19 +35,35 @@ public class RemindersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reminders);
+        setContentView(R.layout.reminder_content);
         initView();
 
         intent=getIntent();
         Bundle extra=intent.getExtras();
-        id=extra.getInt("NOTEID");
+        reminder_ids=extra.getIntegerArrayList("REMINDERIDS");
+        intent.putExtra("REMINDERIDS",reminder_ids);
+        setResult(RESULT_OK,intent);
 
         UpdateAdapter_Note();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode==RESULT_OK){
+        if(resultCode==RESULT_OK) {
+            switch (requestCode){
+            case ADD_REMINDER:
+                Bundle extra= data.getExtras();
+                int newReminder_id=extra.getInt("REMINDERID");
+                reminder_ids.add(newReminder_id);
+                intent.putExtra("REMINDERIDS",reminder_ids);
+                Log.v("reminder_ids.size()",reminder_ids.size()+"");
+                for (int Reminder_id:reminder_ids){
+                    Log.v("Reminder_id",Reminder_id+"");
+                }
+
+                break;
+            }
+
             UpdateAdapter_Note();
         }
     }
@@ -79,13 +98,19 @@ public class RemindersActivity extends AppCompatActivity {
 
     public void UpdateAdapter_Note(){
         try{
-            Cursor NoteReminder_Cursor=NoteReminderDb.getCursorByNoteID(id);
-            cursor=ReminderDb.getCursor(NoteReminder_Cursor);
+            String reminder_ids_string="";
+            boolean isStart=true;
+            for(int i:reminder_ids){
+                if(!isStart)reminder_ids_string+=",";
+                reminder_ids_string += i+"" ;
+                isStart=false;
+            }
+            cursor=ReminderDb.getCursor(String.format("_id IN (%s)",reminder_ids_string));
             if(cursor !=  null && cursor.getCount()>0){
                 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{"提醒日期"}, new int[]{android.R.id.text1}, 0);
                 listView01.setAdapter(adapter);
                 listView01.setOnItemClickListener(ListViewListener);
-                Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
+                Log.v("UpdateAdapter_Note", String.format("UpdateAdapter_Note() 更新成功"));
             }
         }catch (Exception e){
             Log.e("#004","清單更新失敗");
@@ -96,7 +121,7 @@ public class RemindersActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             cursor.moveToPosition(position);
-            Intent intent  = new Intent(RemindersActivity.this,ReminderActivity.class);
+            Intent intent  = new Intent(RemindersActivityByNew.this,ReminderActivity.class);
             intent.putExtra("REMINDERID",cursor.getInt(0));
             startActivityForResult(intent,UPDATE_REMINDE);
         }
@@ -105,9 +130,7 @@ public class RemindersActivity extends AppCompatActivity {
     Button.OnClickListener Add_btn_Listener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent  = new Intent(RemindersActivity.this,AddReminderActivity.class);
-            Log.v("NOTEID",id+"");
-            intent.putExtra("NOTEID",id);
+            Intent intent  = new Intent(RemindersActivityByNew.this,AddReminderActivityByNew.class);
             startActivityForResult (intent,ADD_REMINDER);
         }
     };

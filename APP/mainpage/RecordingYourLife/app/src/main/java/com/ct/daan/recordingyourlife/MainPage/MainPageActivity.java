@@ -1,13 +1,17 @@
 package com.ct.daan.recordingyourlife.MainPage;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.ct.daan.recordingyourlife.Note.NoteActivity;
 import com.ct.daan.recordingyourlife.R;
 
 /**
@@ -46,8 +50,40 @@ public class MainPageActivity extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.content_main, container, false);
+        View v=inflater.inflate(R.layout.content_main, container, false);
+        Button Calendar_btn=v.findViewById(R.id.calendar_btn);
+        Button Note_btn=v.findViewById(R.id.note_btn);
+        Button Diary_btn=v.findViewById(R.id.diary_btn);
+        Button Test_btn=v.findViewById(R.id.test_btn);
+        Button Table_btn=v.findViewById(R.id.table_btn);
+        
+        Calendar_btn.setOnClickListener(btn_listener);
+        Note_btn.setOnClickListener(btn_listener);
+        Diary_btn.setOnClickListener(btn_listener);
+        Test_btn.setOnClickListener(btn_listener);
+        Table_btn.setOnClickListener(btn_listener);
+        return v;
     }
+    Button.OnClickListener btn_listener= new Button.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent;
+            switch (view.getId()){
+                case R.id.calendar_btn:
+                    break;
+                case R.id.note_btn:
+                    intent=new Intent(getContext(),NoteActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.diary_btn:
+                    break;
+                case R.id.test_btn:
+                    break;
+                case R.id.table_btn:
+                    break;
+            }
+        }
+    } ;
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

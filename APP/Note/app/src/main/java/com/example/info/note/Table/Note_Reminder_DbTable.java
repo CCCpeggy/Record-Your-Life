@@ -1,4 +1,4 @@
-package com.example.info.note;
+package com.example.info.note.Table;
 
 import android.content.ContentValues;
 import android.database.Cursor;
