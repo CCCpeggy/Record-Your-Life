@@ -11,6 +11,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.R;
 
 import java.util.Locale;
@@ -33,24 +34,14 @@ public class AlarmReceiver extends BroadcastReceiver {
                 .setContentText(content)
                 .setAutoCancel(true)
                 .setSubText("便條提醒")
-                .setOngoing(true)
+                .setOngoing(false)
                 .setWhen(System.currentTimeMillis());
         NotificationManager notificationManager=(NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(reminderID,mBuilder.build());
     }
-    private long getTimeMillis(String date, String time, Context context){
-        Calendar cal=StringtoCalendar(date, time,context);
-        Calendar cal2= Calendar.getInstance();
-        return (cal.getTime().getTime()-cal2.getTime().getTime());
-    }
+
     private Calendar StringtoCalendar(String date, String time, Context context){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddhh:mm", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf.parse(date+time));
-        }catch (Exception e){
-            Toast.makeText(context,"yyyy-MM-ddhh:mm", Toast.LENGTH_SHORT).show();
-        }
-        return Calendar;
+        CalendarFunction calFunction=new CalendarFunction();
+        return calFunction.DateTimeTextToCalendarType(date, time, context);
     }
 }

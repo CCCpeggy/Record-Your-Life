@@ -19,6 +19,8 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.Table.NoteDbTable;
 import com.ct.daan.recordingyourlife.Table.Note_Reminder_DbTable;
@@ -38,13 +40,16 @@ public class NoteActivity extends AppCompatActivity {
     ReminderDbTable ReminderDb;
     NoteDbTable NoteDb;
     ListView listView01;
+    CalendarFunction calFunction;
+    OthersFunction othersFunction;
     FloatingActionButton btnAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_activity);
-
+        calFunction=new CalendarFunction();
+        othersFunction=new OthersFunction();
         initView();
 
         //其餘動作
@@ -81,8 +86,6 @@ public class NoteActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode,int resultCode,Intent data){
         if(resultCode==RESULT_DELETE){
             Bundle extra= data.getExtras();
-            String Changed_title ;
-            String Changed_content;
             int Selected_id = extra.getInt("SELECTED_ID");
             NoteDb.deleteNoteData(Selected_id);
             UpdateAdapter_Note();
@@ -119,34 +122,13 @@ public class NoteActivity extends AppCompatActivity {
                         int Note_id=Note_cursor.getInt(0);
                         for (int Reminder_id:reminder_ids){
                             NoteReminderDb.insertNoteReminderData(Reminder_id,Note_id);
-                            setReminder(NoteActivity.this,ReminderDb.getRemindDateCursor(Reminder_id),"04:13",Changed_title,Changed_content,Reminder_id);
+                            othersFunction.setReminder(NoteActivity.this,ReminderDb.getCursor(Reminder_id),Reminder_id,Changed_title,Changed_content);
                         }
                         break;
                 }
                 UpdateAdapter_Note();
             }
         }
-    }
-    private void setReminder(Context context, String date, String time, String tilte, String content, int reminderId){
-        Calendar cal=StringtoCalendar(date,time);
-        String BROADCAST_ACTION="net.macdidi.broadcast01.action.MYBROADCAST01";
-        Intent intent=new Intent(BROADCAST_ACTION);
-        intent.putExtra("REMINDERID",reminderId);
-        intent.putExtra("TITLE",tilte);
-        intent.putExtra("CONTENT",content);
-        PendingIntent sender= PendingIntent.getBroadcast(context,0,intent,0);
-        AlarmManager alarm= (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis()+5000,3000,sender);
-    }
-    private Calendar StringtoCalendar(String date, String time){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddhh:mm", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf.parse(date+time));
-        }catch (Exception e){
-            Toast.makeText(NoteActivity.this,"yyyy-MM-ddhh:mm", Toast.LENGTH_SHORT).show();
-        }
-        return Calendar;
     }
 
     //打開或新增資料庫

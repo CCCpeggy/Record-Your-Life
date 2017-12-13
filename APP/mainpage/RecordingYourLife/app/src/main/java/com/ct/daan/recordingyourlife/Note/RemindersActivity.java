@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
+import com.ct.daan.recordingyourlife.Table.NoteDbTable;
 import com.ct.daan.recordingyourlife.Table.Note_Reminder_DbTable;
 import com.ct.daan.recordingyourlife.Table.ReminderDbTable;
 
@@ -26,6 +28,7 @@ public class RemindersActivity extends AppCompatActivity {
     Cursor cursor;
     Note_Reminder_DbTable NoteReminderDb;
     ReminderDbTable ReminderDb;
+    NoteDbTable NoteDb;
     ListView listView01;
     FloatingActionButton Add_btn;
     private SQLiteDatabase db=null;
@@ -49,6 +52,15 @@ public class RemindersActivity extends AppCompatActivity {
         if(resultCode==RESULT_OK){
             UpdateAdapter_Note();
         }
+        if (resultCode == UPDATE_REMINDE && resultCode==RESULT_OK) {
+            Bundle extra = data.getExtras();
+            int Reminder_id = extra.getInt("REMINDER_ID");
+            OthersFunction othersFunction=new OthersFunction();
+            Cursor cursor=NoteDb.getCursor(id);
+            cursor.moveToFirst();
+            othersFunction.setReminder(RemindersActivity.this,ReminderDb.getCursor(Reminder_id),Reminder_id,cursor.getString(1),cursor.getString(2));
+            UpdateAdapter_Note();
+        }
     }
 
     private void initView(){
@@ -65,8 +77,9 @@ public class RemindersActivity extends AppCompatActivity {
 
         ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
         ReminderDb.OpenOrCreateTb();
-        //ReminderDb.deleteAllRow();
-        //ReminderDb.AddReminderData();
+
+        NoteDb=new NoteDbTable(SQLiteDB_Path,db);
+        NoteDb.OpenOrCreateTb();
     }
     //打開或新增資料庫
     private void OpOrCrDb(){
@@ -113,7 +126,6 @@ public class RemindersActivity extends AppCompatActivity {
             startActivityForResult (intent,ADD_REMINDER);
         }
     };
-
 
 
 
