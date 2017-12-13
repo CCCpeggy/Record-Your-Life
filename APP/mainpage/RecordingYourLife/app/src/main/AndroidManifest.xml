@@ -21,6 +21,7 @@
         <activity android:name=".Note.NewNotePageActivity" />
         <activity android:name=".Note.RemindersActivityByNew" />
         <activity android:name=".Note.AddReminderActivityByNew" />
+        <activity android:name=".Note.AddReminderActivity" />
         <activity android:name=".Note.ReminderActivity" />
         <activity android:name=".Note.RemindersActivity" />
         <receiver android:name=".Reminder.AlarmReceiver">

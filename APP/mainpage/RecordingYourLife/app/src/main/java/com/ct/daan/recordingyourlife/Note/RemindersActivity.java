@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -26,14 +27,14 @@ public class RemindersActivity extends AppCompatActivity {
     Note_Reminder_DbTable NoteReminderDb;
     ReminderDbTable ReminderDb;
     ListView listView01;
-    Button Add_btn;
+    FloatingActionButton Add_btn;
     private SQLiteDatabase db=null;
     private String SQLiteDB_Path="student_project.db";
     final static private int ADD_REMINDER=1684,UPDATE_REMINDE=25646;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reminder_content);
+        setContentView(R.layout.reminder_activity);
         initView();
 
         intent=getIntent();
@@ -52,7 +53,7 @@ public class RemindersActivity extends AppCompatActivity {
 
     private void initView(){
 
-        Add_btn=(Button)findViewById(R.id.btn_add);
+        Add_btn=(FloatingActionButton)findViewById(R.id.fab);
         Add_btn.setOnClickListener(Add_btn_Listener);
         listView01=(ListView)findViewById(R.id.reminder_lv);
         OpOrCrDb();
@@ -103,10 +104,10 @@ public class RemindersActivity extends AppCompatActivity {
         }
     };
 
-    Button.OnClickListener Add_btn_Listener= new Button.OnClickListener() {
+    FloatingActionButton.OnClickListener Add_btn_Listener= new FloatingActionButton.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent  = new Intent(RemindersActivity.this,AddReminderActivityByNew.class);
+            Intent intent  = new Intent(RemindersActivity.this,AddReminderActivity.class);
             Log.v("NOTEID",id+"");
             intent.putExtra("NOTEID",id);
             startActivityForResult (intent,ADD_REMINDER);

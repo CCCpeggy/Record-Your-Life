@@ -12,7 +12,7 @@ import android.util.Log;
 public class Note_Reminder_DbTable {
     private String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    public String SQLiteTable_Name= "便條_提醒_清單2"; //資料表的名字
+    public String SQLiteTable_Name= "便條_提醒_清單"; //資料表的名字
     private String CREATE_Dairy_TABLE=
             "CREATE TABLE if not exists '"+SQLiteTable_Name+"'(" +
                     "_id INTEGER  PRIMARY KEY NOT NULL," +
@@ -75,7 +75,7 @@ public class Note_Reminder_DbTable {
 
 
     public void AddNoteReminderData(){
-        int reminder[]={2,3,4,5,6, 8,9,10,12,13, 15,16,17,18,20, 21,25,26,27,28};
+        int reminder[]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
         int note[]={18,11,6,10,7 ,5,16,7,10,8 ,2,19,17,16,8 ,9,3,7,1};
         for(int i=0;i< note.length ;i++){
             insertNoteReminderData(reminder[i],note[i]);

@@ -79,6 +79,9 @@ public class NoteDbTable {
         return db.rawQuery(String.format("SELECT *  FROM '%s'",SQLiteTable_Name),null);
     }
 
+    public Cursor getCursor(int Note_id){
+        return db.rawQuery(String.format("SELECT *  FROM '%s' WHERE _id = "+Note_id,SQLiteTable_Name),null);
+    }
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);
     }

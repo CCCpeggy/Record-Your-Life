@@ -9,14 +9,6 @@
     android:stretchColumns="0,1"
     tools:context=".MainActivity">
 
-
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_span="2"
-        android:text="新增" />
-
     <ListView
         android:id="@+id/reminder_lv"
         android:layout_width="match_parent"

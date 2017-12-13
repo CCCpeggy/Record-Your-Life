@@ -68,14 +68,6 @@ public class ReminderActivity extends AppCompatActivity {
             Log.e("#001","資料庫載入錯誤");
         }
     }
-    private void ClickMe(){
-        NotificationCompat.Builder mBuilder=(NotificationCompat.Builder)new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Test")
-                .setContentText("This is test");
-        NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0,mBuilder.build());
-    }
 
     Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
         @Override
