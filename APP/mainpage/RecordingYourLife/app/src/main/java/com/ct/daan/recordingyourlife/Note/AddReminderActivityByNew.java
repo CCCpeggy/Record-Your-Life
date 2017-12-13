@@ -24,7 +24,7 @@ public class AddReminderActivityByNew extends AppCompatActivity {
     Note_Reminder_DbTable NoteReminderDb;
     private SQLiteDatabase db=null;
     private String SQLiteDB_Path="student_project.db";
-    EditText date;
+    EditText date,time;
     Switch isReplace;
     Spinner ReplaceType;
     Button Complete_btn;
@@ -38,6 +38,7 @@ public class AddReminderActivityByNew extends AppCompatActivity {
     }
     private void initView(){
         date=(EditText)findViewById(R.id.date_et);
+        time=(EditText)findViewById(R.id.time_et);
         isReplace=(Switch)findViewById(R.id.isreplace_sw);
         ReplaceType=(Spinner) findViewById(R.id.replacetype_sp);
         Complete_btn=(Button)findViewById(R.id.btn_Complete2);
@@ -62,7 +63,7 @@ public class AddReminderActivityByNew extends AppCompatActivity {
     Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ReminderDb.insertReminderData(date.getText().toString(),isReplace.isChecked()?1:0 ,ReplaceType.getSelectedItemPosition());
+            ReminderDb.insertReminderData(date.getText().toString(),time.getText().toString(),isReplace.isChecked()?1:0 ,ReplaceType.getSelectedItemPosition());
             Cursor cursor=ReminderDb.getCursor();
             cursor.moveToLast();
             intent.putExtra("REMINDERID",cursor.getInt(0));

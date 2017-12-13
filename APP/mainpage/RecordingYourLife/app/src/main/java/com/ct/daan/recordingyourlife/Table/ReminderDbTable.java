@@ -1,4 +1,4 @@
-package com.example.info.note.Table;
+package com.ct.daan.recordingyourlife.Table;
 
 import android.content.ContentValues;
 import android.database.Cursor;
