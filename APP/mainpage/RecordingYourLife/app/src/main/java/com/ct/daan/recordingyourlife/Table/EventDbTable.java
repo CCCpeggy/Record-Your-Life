@@ -6,15 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 
 import java.util.Locale;
 
 public class EventDbTable {
 
-    private CalendarFunction calFunction;
     private String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
     public String SQLiteTable_Name= "日子"; //資料表的名字
@@ -40,7 +36,7 @@ public class EventDbTable {
         }
     }
 
-    public void insertEventData(String Name,String Start_day,String End_day,String Remark){
+    public void insertEventData(String Name, String Start_day, String End_day, String Remark){
         try {
             ContentValues row = new ContentValues();
             row.put("日子名稱", Name);
@@ -54,7 +50,7 @@ public class EventDbTable {
         }
     }
 
-    public void updateEventData(int id,String Name,String Start_day,String End_day,String Remark){
+    public void updateEventData(int id, String Name, String Start_day, String End_day, String Remark){
         try {
             ContentValues row = new ContentValues();
             row.put("_id", id);
@@ -79,10 +75,10 @@ public class EventDbTable {
     }
 
     public void AddEventData(){
-        String  Name[]={"光棍節","中秋節","第二次段考","第二次模擬考","端午節","運動會","國慶四天連假","教師節"};
-        String  Start_day[]={"2017-11-11","2017-10-04","2017-11-28","2017-12-19","2017-05-30","2017-10-27","2017-10-07","2017-09-28"};
-        String  End_day[]=  {"2017-11-11","2017-10-04","2017-11-29","2017-12-20","2017-05-30","2017-10-27","2017-10-10","2017-09-28"};
-        String  Remark[]={"Noooo","約個烤肉","範圍：","範圍：","訂了粽子","比自由式","準備考試","約同學會"};
+        String Name[]={"光棍節","中秋節","第二次段考","第二次模擬考","端午節","運動會","國慶四天連假","教師節"};
+        String Start_day[]={"2017-11-11","2017-10-04","2017-11-28","2017-12-19","2017-05-30","2017-10-27","2017-10-07","2017-09-28"};
+        String End_day[]=  {"2017-11-11","2017-10-04","2017-11-29","2017-12-20","2017-05-30","2017-10-27","2017-10-10","2017-09-28"};
+        String Remark[]={"Noooo","約個烤肉","範圍：","範圍：","訂了粽子","比自由式","準備考試","約同學會"};
         for(int i=0;i<Name.length;i++){
             insertEventData(Name[i],Start_day[i],End_day[i],Remark[i]);
         }
@@ -95,7 +91,7 @@ public class EventDbTable {
     }
 
     public Cursor getCursor(String Where_cmd){
-        String cmd=String.format("SELECT *  FROM '%s' WHERE %s",SQLiteTable_Name,Where_cmd);
+        String cmd= String.format("SELECT *  FROM '%s' WHERE %s",SQLiteTable_Name,Where_cmd);
         Log.v(SQLiteTable_Name+"_cmd",cmd);
         Cursor cursor=db.rawQuery(cmd,null);
         cursor.moveToFirst();
@@ -115,18 +111,18 @@ public class EventDbTable {
     }
 
     public Cursor getCursorByDay(String Day){
-        Calendar cal=calFunction.DateTextToCalendarType(Day);
+        Calendar cal=StringtoCalendar(Day);
         int year=cal.get(Calendar.YEAR);
         int month=cal.get(Calendar.MONTH)+1;
         int date=cal.get(Calendar.DAY_OF_MONTH);
 
-        String cmd=String.format("((YEAR < '%04d') OR ",year,month,date);
-        cmd +=String.format("(YEAR = '%04d' AND MONTH < '%02d') OR ",year,month,date);
-        cmd +=String.format("(YEAR = '%04d' AND MONTH = '%02d' AND  DATE <= '%02d')) AND ",year,month,date);
+        String cmd= String.format("((YEAR < '%04d') OR ",year,month,date);
+        cmd += String.format("(YEAR = '%04d' AND MONTH < '%02d') OR ",year,month,date);
+        cmd += String.format("(YEAR = '%04d' AND MONTH = '%02d' AND  DATE <= '%02d')) AND ",year,month,date);
 
-        cmd +=String.format("((END_YEAR > '%04d') OR ",year,month,date);
-        cmd +=String.format("(END_YEAR = '%04d' AND END_MONTH > '%02d') OR ",year,month,date);
-        cmd +=String.format("(END_YEAR = '%04d' AND END_MONTH = '%02d' AND  END_DATE >= '%02d'))",year,month,date);
+        cmd += String.format("((END_YEAR > '%04d') OR ",year,month,date);
+        cmd += String.format("(END_YEAR = '%04d' AND END_MONTH > '%02d') OR ",year,month,date);
+        cmd += String.format("(END_YEAR = '%04d' AND END_MONTH = '%02d' AND  END_DATE >= '%02d'))",year,month,date);
         //String cmd=String.format("YEAR <= '%d'",year,month,date);
         Log.v(SQLiteTable_Name+"_cmd",cmd);
         return getCursorHasDay(cmd);
@@ -134,9 +130,9 @@ public class EventDbTable {
 
     public Cursor getCursorHasDay(String Where_cmd){
         String cmd="SELECT ";
-        cmd+=String.format("%s AS '%s',%s AS '%s',%s AS '%s',%s AS '%s',","_id","_id","日子名稱","日子名稱","日期開始","日期開始","日期結束","日期結束");
-        cmd+=String.format("%s AS %s,%s AS %s,%s AS %s,","strftime('%Y',日期開始)","YEAR","strftime('%m',日期開始) ","MONTH"," strftime('%d',日期開始) ","DATE");
-        cmd+=String.format("%s AS %s,%s AS %s,%s AS %s ","strftime('%Y',日期結束)","END_YEAR","strftime('%m',日期結束) ","END_MONTH"," strftime('%d',日期結束) ","END_DATE");
+        cmd+= String.format("%s AS '%s',%s AS '%s',%s AS '%s',%s AS '%s',","_id","_id","日子名稱","日子名稱","日期開始","日期開始","日期結束","日期結束");
+        cmd+= String.format("%s AS %s,%s AS %s,%s AS %s,","strftime('%Y',日期開始)","YEAR","strftime('%m',日期開始) ","MONTH"," strftime('%d',日期開始) ","DATE");
+        cmd+= String.format("%s AS %s,%s AS %s,%s AS %s ","strftime('%Y',日期結束)","END_YEAR","strftime('%m',日期結束) ","END_MONTH"," strftime('%d',日期結束) ","END_DATE");
         cmd+="FROM '"+SQLiteTable_Name+"' WHERE "+Where_cmd;
         Log.v(SQLiteTable_Name+"_cmd",cmd);
         Cursor cursor=db.rawQuery(cmd,null);
@@ -153,6 +149,16 @@ public class EventDbTable {
         Log.v(SQLiteTable_Name+"_EventCurosr", String.format("%s=%s,%s=%s,%s=%s,%s=%s,%s=%s", "id",cursor_row.getInt(0),"日子名稱", cursor_row.getString(1),"日期開始", cursor_row.getString(2),"日期結束", cursor_row.getString(3),"備註", cursor_row.getString(4)));
     }
 
+    private Calendar StringtoCalendar(String date){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
+        Calendar Calendar= android.icu.util.Calendar.getInstance();
+        try{
+            Calendar.setTime(sdf.parse(date));
+        }catch (Exception e){
+            Log.v("日期格式不符合",date);
+        }
+        return Calendar;
+    }
 
 
 }
