@@ -46,8 +46,4 @@ public class OthersFunction {
         }
         alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() ,Reminder_type, sender);
     }
-
-
-
-
 }

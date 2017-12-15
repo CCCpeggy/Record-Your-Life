@@ -20,24 +20,23 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.Table.ClassDbTable;
 import com.ct.daan.recordingyourlife.Table.ClassWeekDbTable;
+import com.ct.daan.recordingyourlife.Table.ExamDbTable;
 import com.ct.daan.recordingyourlife.Table.SubjectDbTable;
 import com.ct.daan.recordingyourlife.Table.TableDbTable;
 import com.ct.daan.recordingyourlife.Table.WeekDbTable;
 
 import java.util.Locale;
 
-/**
- * Created by info on 2017/10/31.
- */
 public class ExamPageActivity extends AppCompatActivity {
     private final static String SQLiteDB_Path="student_project.db";
     private SQLiteDatabase db=null;
     Spinner Subject_sp,Class_sp,Table_sp;
     EditText Name_et,Date_et,Content_et,Score_et;
-    Button Complete_btn,Delete_btn;
+    Button Complete_btn;
     Intent intent;
     int days;
     private final static int UPDATEPAGE_EXAMPAGE=0,ADD_EXAMPAGE=1,RESULT_DELETE=100;
@@ -47,15 +46,13 @@ public class ExamPageActivity extends AppCompatActivity {
     WeekDbTable WeekDb;
     ClassWeekDbTable ClassWeekDb;
     ClassDbTable ClassDb;
-    boolean init_ClassWeek=false;
+    ExamDbTable ExamDb;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exam_page);
 
         initView();
-
-
-
     }
 
     //打開或新增資料庫
@@ -67,57 +64,20 @@ public class ExamPageActivity extends AppCompatActivity {
             Log.e("#001","資料庫載入錯誤");
         }
     }
-    private void initView(){
-        Subject_sp=(Spinner) findViewById(R.id.Subject_sp);
-        Table_sp=(Spinner)findViewById(R.id.Table_sp);
-        Class_sp=(Spinner) findViewById(R.id.Class_sp);
-        Name_et=(EditText) findViewById(R.id.Name_et);
-        Date_et=(EditText) findViewById(R.id.Date_et);
-        Content_et=(EditText) findViewById(R.id.Content_et);
-        Score_et=(EditText) findViewById(R.id.Score_et);
-        Complete_btn=(Button)findViewById(R.id.btn_Complete);
-        Delete_btn=(Button)findViewById(R.id.btn_Delete);
-
-        Date_et.setInputType(InputType.TYPE_NULL);
-
-        Date_et.setOnClickListener(DatePick_Listener);
-        Complete_btn.setOnClickListener(Complete_btn_Listener);
-        Delete_btn.setOnClickListener(Delete_btn_Listener);
-
-        //TableDb資料庫建立
+    private void initDataBase(){
         OpOrCrDb();
         TableDb= new TableDbTable(SQLiteDB_Path,db);
         TableDb.OpenOrCreateTb();
         TableDb.deleteAllRow();
         TableDb.AddTalbeData();
 
-        //加入Table_sp資料
-        Cursor Table_cursor=TableDb.getCursor();
-        if(Table_cursor.getCount()>0) {
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_dropdown_item, Table_cursor, new String[]{"課表名稱"}, new int[]{android.R.id.text1}, 0);
-            Table_sp.setAdapter(adapter);
-            Table_sp.setOnItemSelectedListener(Table_Listener);
-        }
-
-        //SubjectDb資料庫建立
         SubjectDb=new SubjectDbTable(SQLiteDB_Path,db);
         SubjectDb.OpenOrCreateTb();
         SubjectDb.deleteAllRow();
         SubjectDb.AddSubjectData();
 
-        //加入Subject_sp資料
-        Cursor cursor=SubjectDb.getCursor();
-        if(cursor.getCount()>0) {
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_dropdown_item, cursor, new String[]{"科目名稱"}, new int[]{android.R.id.text1}, 0);
-            Subject_sp.setAdapter(adapter);
-            Subject_sp.setOnItemSelectedListener(Subject_Listener);
-        }
-
-        //ClassDb資料庫建立
         ClassDb=new ClassDbTable(SQLiteDB_Path,db);
         ClassDb.OpenOrCreateTb();
-        //ClassDb.deleteAllRow();
-        //ClassDb.AddClassData();
 
         WeekDb=new WeekDbTable(SQLiteDB_Path,db);
         WeekDb.OpenOrCreateTb();
@@ -129,36 +89,73 @@ public class ExamPageActivity extends AppCompatActivity {
         ClassWeekDb.deleteAllRow();
         ClassWeekDb.AddClassWeekData();
 
+        ExamDb=new ExamDbTable(SQLiteDB_Path,db);
+        ExamDb.OpenOrCreateTb();
+        ExamDb.deleteAllRow();
+        ExamDb.AddExamData();
+    }
+    private void putValue(){
+        //加入Table_sp資料
+        Cursor Table_cursor=TableDb.getCursor();
+        if(Table_cursor.getCount()>0) {
+            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_dropdown_item, Table_cursor, new String[]{"課表名稱"}, new int[]{android.R.id.text1}, 0);
+            Table_sp.setAdapter(adapter);
+            Table_sp.setOnItemSelectedListener(Table_Listener);
+        }
+
+        //加入Subject_sp資料
+        Cursor cursor=SubjectDb.getCursor();
+        if(cursor.getCount()>0) {
+            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_dropdown_item, cursor, new String[]{"科目名稱"}, new int[]{android.R.id.text1}, 0);
+            Subject_sp.setAdapter(adapter);
+            Subject_sp.setOnItemSelectedListener(Subject_Listener);
+        }
+
         //放入資料
         intent=getIntent();
         Bundle extra=intent.getExtras();
-        switch (extra.getInt("TYPE")){
-            case UPDATEPAGE_EXAMPAGE:
-                Exam_id=extra.getInt("SELECTED_ID");
-                Date_et.setText(extra.getString("SELECTED_DATE"));
-                ClassWeek_id=extra.getInt("SELECTED_CLASS");
-                Table_id=ClassWeekDb.getTable_id(ClassWeek_id) ;
-                Log.v("Table_id",Table_id+"");
-                Content_et.setText(extra.getString("SELECTED_CONTENT"));
-                Score_et.setText(extra.getInt("SELECTED_SCORE")+"");
-                Name_et.setText(extra.getString("SELECTED_NAME"));
-                try {
-                    setSpinnerByValue(Table_sp, Table_id, TableDb.getCursor(), 0);
-                    setSpinnerByValue(Class_sp, ClassWeek_id, ClassWeekDb.getCursor(Table_id), 0);
-                    setSpinnerByValue(Subject_sp, extra.getInt("SELECTED_SUBJECT"), cursor, 0);
 
-                }catch (Exception e){
+        Exam_id=extra.getInt("SELECTED_ID");
+        Date_et.setText(extra.getString("SELECTED_DATE"));
+        ClassWeek_id=extra.getInt("SELECTED_CLASS");
+        Table_id=ClassWeekDb.getTable_id(ClassWeek_id) ;
+        Content_et.setText(extra.getString("SELECTED_CONTENT"));
+        Score_et.setText(extra.getInt("SELECTED_SCORE")==-100?"":extra.getInt("SELECTED_SCORE")+"");
+        Name_et.setText(extra.getString("SELECTED_NAME"));
 
-                }
-                //setSpinnerByValue(Class_sp);
-                //Date_et.setText(extra.getString("SELECTED_DATE").equals("")?"日期":extra.getString("SELECTED_DATE"));
-                //et2.setText(extra.getString("SELECTED_CONTENT"));
-                //Score_Enabled(Date_et.getText().toString());
-                break;
-            case ADD_EXAMPAGE:
-                Delete_btn.setEnabled(false);
-                break;
+        Log.v("傳入Table_id",Table_id+"");
+
+        try {
+            setSpinnerByValue(Table_sp, Table_id, TableDb.getCursor(), 0);
+            setSpinnerByValue(Class_sp, ClassWeek_id, ClassWeekDb.getCursor(Table_id), 0);
+            setSpinnerByValue(Subject_sp, extra.getInt("SELECTED_SUBJECT"), cursor, 0);
+
+        }catch (Exception e){
+
         }
+    }
+    private void initView(){
+        Subject_sp=(Spinner) findViewById(R.id.Subject_sp);
+        Table_sp=(Spinner)findViewById(R.id.Table_sp);
+        Class_sp=(Spinner) findViewById(R.id.Class_sp);
+        Name_et=(EditText) findViewById(R.id.Name_et);
+        Date_et=(EditText) findViewById(R.id.Date_et);
+        Content_et=(EditText) findViewById(R.id.Content_et);
+        Score_et=(EditText) findViewById(R.id.Score_et);
+        Complete_btn=(Button)findViewById(R.id.btn_Complete);
+
+        Date_et.setInputType(InputType.TYPE_NULL);
+
+        Date_et.setOnClickListener(DatePick_Listener);
+        Complete_btn.setOnClickListener(Complete_btn_Listener);
+
+        initDataBase();
+
+        putValue();
+        //setSpinnerByValue(Class_sp);
+        //Date_et.setText(extra.getString("SELECTED_DATE").equals("")?"日期":extra.getString("SELECTED_DATE"));
+        //et2.setText(extra.getString("SELECTED_CONTENT"));
+        //Score_Enabled(Date_et.getText().toString());
     }
     String tmp_Subject="";
     private Spinner.OnItemSelectedListener Subject_Listener=new Spinner.OnItemSelectedListener(){
@@ -370,23 +367,14 @@ public class ExamPageActivity extends AppCompatActivity {
     private Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Log.e("1111","1");
-            //if(!Isformat())return;
-            intent.putExtra("SELECTED_ID",Exam_id);
-            intent.putExtra("CHANGED_CLASS",ClassWeek_id);
-            intent.putExtra("CHANGED_SUBJECT",Subject_id);
-            intent.putExtra("CHANGED_DATE",Date_et.getText().toString());
-            intent.putExtra("CHANGED_NAME",Name_et.getText().toString());
-            Log.e("1111","1");
-            intent.putExtra("CHANGED_CONTENT",Content_et.getText().toString());
-            Log.e("11","1");
-            intent.putExtra("CHANGED_SCORE",100);
-            //Score_et.getText().toString();
-
-            Log.v("回傳資料", String.format("回傳資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s","SELECTED_ID",Exam_id,"CHANGED_CLASS",Class_sp.getSelectedItem().toString(),"CHANGED_SUBJECT",Subject_id,"CHANGED_DATE",Date_et.getText().toString(),"CHANGED_NAME",Name_et.getText().toString(),"CHANGED_CONTENT",Content_et.getText().toString(),"CHANGED_SCORE", Integer.parseInt(Score_et.getText().toString())));
+            String score= Score_et.getText().toString();
+            /*if(score.equals("")){
+                OthersFunction othersFunction=new OthersFunction();
+                othersFunction.setReminder(ExamPageActivity.this,);
+            }*/
+            ExamDb.updateExamData(Exam_id,ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
             setResult(RESULT_OK,intent);
             finish();
-
         }
     };
 

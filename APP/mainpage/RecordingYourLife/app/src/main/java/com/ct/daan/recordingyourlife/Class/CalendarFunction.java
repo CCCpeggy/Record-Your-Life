@@ -15,6 +15,11 @@ public class CalendarFunction {
         return getDateString(cal);
     }
 
+    public Calendar getTodayCalendar(){
+        Calendar cal=Calendar.getInstance();
+        return cal;
+    }
+
     public int getDayOfWeek(String date){
         Calendar cal=DateTextToCalendarType(date);
         int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK)-1;
