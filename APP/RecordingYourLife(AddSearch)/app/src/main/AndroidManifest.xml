@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ct.daan.recordingyourlife">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Note.NoteActivity" />
+        <activity android:name=".Note.NotePageActivity" />
+        <activity android:name=".Note.NewNotePageActivity" />
+        <activity android:name=".Note.RemindersActivityByNew" />
+        <activity android:name=".Note.AddReminderActivityByNew" />
+        <activity android:name=".Note.AddReminderActivity" />
+        <activity android:name=".Note.ReminderActivity" />
+        <activity android:name=".Note.RemindersActivity" />
+        <receiver android:name=".Reminder.AlarmReceiver">
+            <intent-filter>
+                <action android:name="net.macdidi.broadcast01.action.MYBROADCAST01" />
+            </intent-filter>
+        </receiver>
+        <activity android:name=".Event.AddEventActivity"></activity>
+        <activity android:name=".Event.ChangEventActivity"></activity>
+        <activity android:name=".Event.EventActivity"></activity>
+        <activity android:name=".Diary.DiaryActivity"></activity>
+        <activity android:name=".Diary.DiaryPageActivity"></activity>
+        <activity android:name=".Diary.AddDiaryPageActivity"></activity>
+    </application>
+
+</manifest>
