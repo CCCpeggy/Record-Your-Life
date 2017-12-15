@@ -2,11 +2,10 @@ package com.ct.daan.recordingyourlife.Diary;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -14,30 +13,46 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
+import com.ct.daan.recordingyourlife.Table.DiaryDbTable;
 
 import java.util.Locale;
 
-@RequiresApi(api = Build.VERSION_CODES.N)
-public class DiaryPageActivity extends AppCompatActivity {
+public class AddDiaryPageActivity extends AppCompatActivity {
 
     EditText et2;
     Button btn_Complete,btn_Date;
     Intent intent;
+    DiaryDbTable DiaryDb;
     int id;
+
+    private SQLiteDatabase db=null;
+    private String SQLiteDB_Path="student_project.db";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diary_page);
 
         initView();
-
         intent=getIntent();
-        Bundle extra=intent.getExtras();
-        extra.getInt("TYPE");
-        id=extra.getInt("SELECTED_ID");
-        btn_Date.setText(extra.getString("SELECTED_DATE").equals("")?"日期":extra.getString("SELECTED_DATE"));
-        et2.setText(extra.getString("SELECTED_CONTENT"));
+        btn_Date.setText("日期");
+        et2.setText("");
+
+        OpOrCrDb();
+        DiaryDb=new DiaryDbTable(SQLiteDB_Path,db);
+        DiaryDb.OpenOrCreateTb();
+    }
+
+
+    //打開或新增資料庫
+    private void OpOrCrDb(){
+        try{
+            db=openOrCreateDatabase(SQLiteDB_Path,MODE_PRIVATE,null);
+            Log.v("資料庫","資料庫載入成功");
+        }catch (Exception ex){
+            Log.e("#001","資料庫載入錯誤");
+        }
     }
 
     public void initView(){
@@ -52,10 +67,7 @@ public class DiaryPageActivity extends AppCompatActivity {
     private Button.OnClickListener btn_Complete_Listener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            intent.putExtra("SELECTED_ID",id);
-            intent.putExtra("CHANGED_DATE",btn_Date.getText().toString());
-            intent.putExtra("CHANGED_CONTENT",et2.getText().toString());
-            Log.v("回傳資料", String.format("回傳資料：%s=%d,%s=%s,%s=%s","SELECTED_ID",id,"CHANGED_DATE",btn_Date.getText(),"CHANGED_CONTENT",et2.getText()));
+            DiaryDb.insertDiaryData(btn_Date.getText().toString(),et2.getText().toString());
             setResult(RESULT_OK,intent);
             finish();
         }
@@ -65,7 +77,7 @@ public class DiaryPageActivity extends AppCompatActivity {
     private Button.OnClickListener btn_Date_Listener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            DatePickerDialog dataPick=new DatePickerDialog(DiaryPageActivity.this,datepicker,
+            DatePickerDialog dataPick=new DatePickerDialog(AddDiaryPageActivity.this,datepicker,
                     m_Calendar.get(Calendar.YEAR),
                     m_Calendar.get(Calendar.MONTH),
                     m_Calendar.get(Calendar.DAY_OF_MONTH));

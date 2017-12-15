@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
 import android.util.Log;
 
@@ -45,4 +46,8 @@ public class OthersFunction {
         }
         alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() ,Reminder_type, sender);
     }
+
+
+
+
 }

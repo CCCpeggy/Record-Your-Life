@@ -34,6 +34,7 @@
         <activity android:name=".Event.EventActivity"></activity>
         <activity android:name=".Diary.DiaryActivity"></activity>
         <activity android:name=".Diary.DiaryPageActivity"></activity>
+        <activity android:name=".Diary.AddDiaryPageActivity"></activity>
     </application>
 
 </manifest>

@@ -12,9 +12,9 @@ import android.util.Log;
 public class DiaryDbTable {
     private  String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    private final static String SQLiteTable_Name="日記";
-    private final static String CREATE_Diary_TABLE=
-            "CREATE TABLE if not exists '日記'(" +
+    private final static String SQLiteTable_Name="日記3";
+    private final static String CREATE_DIARY_TABLE=
+            "CREATE TABLE if not exists '"+SQLiteTable_Name+"'(" +
                     "_id INTEGER  PRIMARY KEY NOT NULL," +
                     "'日期' INTEGER NOT NULL," +
                     "'日記內容' TEXT)";
@@ -26,7 +26,7 @@ public class DiaryDbTable {
     //打開或新增資料表
     public void OpenOrCreateTb(){
         try{
-            db.execSQL(CREATE_Diary_TABLE);
+            db.execSQL(CREATE_DIARY_TABLE);
             Log.v("資料表","資料表建立或開啟成功");
         }catch (Exception ex){
             Log.e("#002","資料表建立或開啟錯誤");

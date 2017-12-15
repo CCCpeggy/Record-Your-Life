@@ -17,13 +17,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.ct.daan.recordingyourlife.Event.AddEventActivity;
+import com.ct.daan.recordingyourlife.Event.EventActivity;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.Table.DiaryDbTable;
 
 public class DiaryActivity extends AppCompatActivity {
 
     private SQLiteDatabase db=null;
-    private final static int LISTPAGE_QAQQ=0,NEWLISTPAGE_QAQQ=1,UPDATE_TYPE=0,ADD_TYPE=1,DELETE_TYPE=2;
+    private final static int UPDATE_DIARYPAGE=1546,ADD_DIARYPAGE=781,DELETE_TYPE=2;
     private String SQLiteDB_Path="student_project.db";
     DiaryDbTable DiaryDb;
     ListView listView01;
@@ -65,41 +67,21 @@ public class DiaryActivity extends AppCompatActivity {
 
     public void onActivityResult(int requestCode,int resultCode,Intent data){
         if(resultCode==RESULT_OK) {
-            Bundle extra= data.getExtras();
-            Integer RETURN_TYPE ;
-            String Changed_date ;
-            String Changed_content;
-
-            if (!extra.isEmpty()) {
-                switch (requestCode) {
-                    case LISTPAGE_QAQQ:
+            switch (requestCode) {
+                case UPDATE_DIARYPAGE:
+                    Bundle extra= data.getExtras();
+                    if (!extra.isEmpty()) {
+                        String Changed_date;
+                        String Changed_content;
                         int Selected_id = extra.getInt("SELECTED_ID");
-                        RETURN_TYPE = extra.getInt("TYPE");
-                        if(RETURN_TYPE==DELETE_TYPE){
-                            DiaryDb.deleteDiaryData(Selected_id);
-                            UpdateAdapter_Note();
-                            return;
-                        }
                         Changed_date = extra.getString("CHANGED_DATE");
                         Changed_content = extra.getString("CHANGED_CONTENT");
-
-                        DiaryDb.updateDiaryData(Selected_id,Changed_date,Changed_content);
-
-                        break;
-                    case NEWLISTPAGE_QAQQ:
-                        RETURN_TYPE = extra.getInt("TYPE");
-                        if(RETURN_TYPE==DELETE_TYPE){
-                            return;
-                        }
-                        Changed_date = extra.getString("CHANGED_DATE");
-                        Changed_content = extra.getString("CHANGED_CONTENT");
-
-                        DiaryDb.insertDiaryData(Changed_date,Changed_content);
-                        break;
-                }
-                UpdateAdapter_Note();
+                        DiaryDb.updateDiaryData(Selected_id, Changed_date, Changed_content);
+                    }
+                    break;
             }
         }
+        UpdateAdapter_Note();
     }
 
     //打開或新增資料庫
@@ -112,25 +94,14 @@ public class DiaryActivity extends AppCompatActivity {
         }
     }
 
-    //打開或新增資料表
-    private void OpOrCrTb(String cmd){
-        try{
-            db.execSQL(cmd);
-            Log.v("資料表","資料表建立或開啟成功");
-        }catch (Exception ex){
-            Log.e("#002","資料表建立或開啟錯誤");
-        }
-    }
-
 
     private FloatingActionButton.OnClickListener btnAddClick=new FloatingActionButton.OnClickListener(){
 
         int n=0;
         @Override
         public void onClick(View v) {
-            Intent intent  = new Intent(DiaryActivity.this,DiaryPageActivity.class);
-            intent.putExtra("TYPE",ADD_TYPE);
-            startActivityForResult(intent,NEWLISTPAGE_QAQQ);
+            Intent intent  = new Intent(DiaryActivity.this,AddDiaryPageActivity.class);
+            startActivityForResult(intent,ADD_DIARYPAGE);
         }
 
     };
@@ -151,17 +122,15 @@ public class DiaryActivity extends AppCompatActivity {
 
     }
     private ListView.OnItemClickListener List_listener=new ListView.OnItemClickListener(){
-
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             cursor.moveToPosition(position);
             int Selected_ID=cursor.getInt(0);
             Intent intent  = new Intent(DiaryActivity.this,DiaryPageActivity.class);
-            intent.putExtra("TYPE",UPDATE_TYPE);
             intent.putExtra("SELECTED_ID",Selected_ID);
             intent.putExtra("SELECTED_DATE",cursor.getString(1));
             intent.putExtra("SELECTED_CONTENT",cursor.getString(2));
-            startActivityForResult(intent,LISTPAGE_QAQQ);
+            startActivityForResult(intent,UPDATE_DIARYPAGE);
         }
     };
 
