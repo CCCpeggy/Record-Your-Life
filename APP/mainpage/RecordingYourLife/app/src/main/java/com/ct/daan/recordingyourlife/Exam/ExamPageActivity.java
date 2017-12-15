@@ -1,4 +1,4 @@
-package com.example.info.examactivity;
+package com.ct.daan.recordingyourlife.Exam;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -19,11 +19,13 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.info.examactivity.Table.ClassDbTable;
-import com.example.info.examactivity.Table.ClassWeekDbTable;
-import com.example.info.examactivity.Table.SubjectDbTable;
-import com.example.info.examactivity.Table.TableDbTable;
-import com.example.info.examactivity.Table.WeekDbTable;
+
+import com.ct.daan.recordingyourlife.R;
+import com.ct.daan.recordingyourlife.Table.ClassDbTable;
+import com.ct.daan.recordingyourlife.Table.ClassWeekDbTable;
+import com.ct.daan.recordingyourlife.Table.SubjectDbTable;
+import com.ct.daan.recordingyourlife.Table.TableDbTable;
+import com.ct.daan.recordingyourlife.Table.WeekDbTable;
 
 import java.util.Locale;
 
@@ -48,7 +50,7 @@ public class ExamPageActivity extends AppCompatActivity {
     boolean init_ClassWeek=false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.exampage);
+        setContentView(R.layout.exam_page);
 
         initView();
 
@@ -191,7 +193,7 @@ public class ExamPageActivity extends AppCompatActivity {
 
             cal=StringtoCalendar(Table_cursor.getString(4));
             int Start_dayOfWeek=cal.get(Calendar.DAY_OF_WEEK)-1;//課表開始星期
-            Log.v("星期",String.format("今天：%s,課表開始%s",Test_dayOfWeek,Start_dayOfWeek));
+            Log.v("星期", String.format("今天：%s,課表開始%s",Test_dayOfWeek,Start_dayOfWeek));
 
             int days=Test_dayOfWeek-Start_dayOfWeek+1;
             days+=days<0?7:0;
@@ -253,7 +255,7 @@ public class ExamPageActivity extends AppCompatActivity {
             Cursor cursor=(Cursor)parent.getSelectedItem();
             ClassWeek_id=cursor.getInt(0);
 
-            Calendar cal=Calendar.getInstance();
+            Calendar cal= Calendar.getInstance();
 
             //String cmd=String.format("SELECT S._id  FROM '%s' AS C,'%s' AS S WHERE  C.星期ID = %s AND C._id = %s AND C.科目ID = S._id ",ClassDb.SQLiteTable_Name,SubjectDb.SQLiteTable_Name,Week_id,ClassWeek_id);
             //Log.v("db.rawQuery",cmd);
@@ -308,11 +310,11 @@ public class ExamPageActivity extends AppCompatActivity {
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
             Date_et.setText(sdf.format(m_Calendar.getTime()));
 
-            Calendar today=Calendar.getInstance();
+            Calendar today= Calendar.getInstance();
             myFormat = "yyyyMMdd";
             sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
 
-            if(Integer.parseInt(sdf.format(m_Calendar.getTime()))>Integer.parseInt(sdf.format(today.getTime()))){
+            if(Integer.parseInt(sdf.format(m_Calendar.getTime()))> Integer.parseInt(sdf.format(today.getTime()))){
                 Score_et.setText("");
                 Score_et.setEnabled(false);
             }
@@ -325,10 +327,10 @@ public class ExamPageActivity extends AppCompatActivity {
     };
 
     private void Score_Enabled(Calendar Calendar){
-        Calendar today=Calendar.getInstance();
+        android.icu.util.Calendar today=Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.TAIWAN);
 
-        if(Integer.parseInt(sdf.format(Calendar.getTime()))>Integer.parseInt(sdf.format(today.getTime()))){
+        if(Integer.parseInt(sdf.format(Calendar.getTime()))> Integer.parseInt(sdf.format(today.getTime()))){
             Score_et.setText("");
             Score_et.setEnabled(false);
         }
@@ -347,7 +349,7 @@ public class ExamPageActivity extends AppCompatActivity {
         try{
             Calendar.setTime(sdf2.parse(date));
         }catch (Exception e){
-            Toast.makeText(ExamPageActivity.this,"日期格式不符合 yyyy-MM-dd",Toast.LENGTH_SHORT);
+            Toast.makeText(ExamPageActivity.this,"日期格式不符合 yyyy-MM-dd", Toast.LENGTH_SHORT);
         }
         return Calendar;
     }
@@ -381,7 +383,7 @@ public class ExamPageActivity extends AppCompatActivity {
             intent.putExtra("CHANGED_SCORE",100);
             //Score_et.getText().toString();
 
-            Log.v("回傳資料",String.format("回傳資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s","SELECTED_ID",Exam_id,"CHANGED_CLASS",Class_sp.getSelectedItem().toString(),"CHANGED_SUBJECT",Subject_id,"CHANGED_DATE",Date_et.getText().toString(),"CHANGED_NAME",Name_et.getText().toString(),"CHANGED_CONTENT",Content_et.getText().toString(),"CHANGED_SCORE", Integer.parseInt(Score_et.getText().toString())));
+            Log.v("回傳資料", String.format("回傳資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s","SELECTED_ID",Exam_id,"CHANGED_CLASS",Class_sp.getSelectedItem().toString(),"CHANGED_SUBJECT",Subject_id,"CHANGED_DATE",Date_et.getText().toString(),"CHANGED_NAME",Name_et.getText().toString(),"CHANGED_CONTENT",Content_et.getText().toString(),"CHANGED_SCORE", Integer.parseInt(Score_et.getText().toString())));
             setResult(RESULT_OK,intent);
             finish();
 
@@ -422,17 +424,17 @@ public class ExamPageActivity extends AppCompatActivity {
 
     private boolean Isformat(){
         if(!IsStringtoCalendar(Date_et.getText().toString())){
-            Toast.makeText(ExamPageActivity.this,"日期格式錯誤 yyyy-MM-dd",Toast.LENGTH_SHORT).show();
+            Toast.makeText(ExamPageActivity.this,"日期格式錯誤 yyyy-MM-dd", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
     }
 
-    public void setSpinnerByValue(Spinner spinner,int value,Cursor cursor,int Col){
+    public void setSpinnerByValue(Spinner spinner, int value, Cursor cursor, int Col){
         if(cursor==null|| cursor.getCount()<=0)return;
         cursor.moveToFirst();
         do{
-            Log.v("比對資料",String.format("%s=%s,%s=%s,%s=%s",cursor.getColumnName(0),cursor.getInt(0),cursor.getColumnName(1),cursor.getString(1),"value",value));
+            Log.v("比對資料", String.format("%s=%s,%s=%s,%s=%s",cursor.getColumnName(0),cursor.getInt(0),cursor.getColumnName(1),cursor.getString(1),"value",value));
             if (value==cursor.getInt(Col)) {
                 spinner.setSelection(cursor.getPosition(), true);
                 break;

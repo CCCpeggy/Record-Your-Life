@@ -25,7 +25,7 @@ import com.ct.daan.recordingyourlife.Table.DiaryDbTable;
 public class DiaryActivity extends AppCompatActivity {
 
     private SQLiteDatabase db=null;
-    private final static int UPDATE_DIARYPAGE=1546,ADD_DIARYPAGE=781,DELETE_TYPE=2;
+    private final static int UPDATE_DIARYPAGE=1546,ADD_DIARYPAGE=781;
     private String SQLiteDB_Path="student_project.db";
     DiaryDbTable DiaryDb;
     ListView listView01;
@@ -113,7 +113,6 @@ public class DiaryActivity extends AppCompatActivity {
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"日期", "日記內容"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
             listView01.setAdapter(adapter);
             listView01.setOnItemClickListener(List_listener);
-            //listView01.setOnItemLongClickListener(List_Long_Listener);
             Log.v("UpdateAdapter_Note", String.format("UpdateAdapter_Note() 更新成功"));
 
         }catch (Exception e){
@@ -134,13 +133,4 @@ public class DiaryActivity extends AppCompatActivity {
         }
     };
 
-    private ListView.OnItemLongClickListener List_Long_Listener = new ListView.OnItemLongClickListener() {
-        @Override
-        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-            cursor.moveToPosition(position);
-            int Click_ID=cursor.getInt(0);
-            DiaryDb.deleteDiaryData(Click_ID);
-            return false;
-        }
-    };
 }

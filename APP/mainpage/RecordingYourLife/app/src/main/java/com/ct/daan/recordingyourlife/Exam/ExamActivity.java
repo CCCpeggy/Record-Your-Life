@@ -1,4 +1,5 @@
-package com.example.info.examactivity;
+package com.ct.daan.recordingyourlife.Exam;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,19 +8,20 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-import com.example.info.examactivity.Table.ExamDbTable;
+import com.ct.daan.recordingyourlife.R;
+import com.ct.daan.recordingyourlife.Table.ExamDbTable;
 
 
 public class ExamActivity extends AppCompatActivity {
 
-    private  SQLiteDatabase db=null;
+    private SQLiteDatabase db=null;
     private final static int UPDATEPAGE_EXAMPAGE=0,ADD_EXAMPAGE=1,RESULT_DELETE=100;
     private final static String SQLiteDB_Path="student_project.db";
     ExamDbTable ExamDb;
@@ -28,9 +30,7 @@ public class ExamActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exam);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.exam_activity);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(FloatingButton);
@@ -106,18 +106,6 @@ public class ExamActivity extends AppCompatActivity {
         }
     }
 
-    public void onDestroy(){
-        db.close();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_exam, menu);
-        return true;
-    }
-
     //打開或新增資料庫
     private void OpOrCrDb(){
         try{
@@ -144,7 +132,7 @@ public class ExamActivity extends AppCompatActivity {
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"考試日期", "考試名稱"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
             listView01.setAdapter(adapter);
             listView01.setOnItemClickListener(List_listener);
-            Log.v("UpdateAdapter_Exam",String.format("UpdateAdapter_Exam() 更新成功"));
+            Log.v("UpdateAdapter_Exam", String.format("UpdateAdapter_Exam() 更新成功"));
 
         }catch (Exception e){
             Log.e("#004","清單更新失敗");
@@ -179,19 +167,4 @@ public class ExamActivity extends AppCompatActivity {
             return false;
         }
     };*/
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

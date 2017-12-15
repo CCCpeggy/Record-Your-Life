@@ -35,6 +35,9 @@
         <activity android:name=".Diary.DiaryActivity"></activity>
         <activity android:name=".Diary.DiaryPageActivity"></activity>
         <activity android:name=".Diary.AddDiaryPageActivity"></activity>
+        <activity android:name=".Exam.ExamActivity"></activity>
+        <activity android:name=".Exam.ExamPageActivity"></activity>
+
     </application>
 
 </manifest>
