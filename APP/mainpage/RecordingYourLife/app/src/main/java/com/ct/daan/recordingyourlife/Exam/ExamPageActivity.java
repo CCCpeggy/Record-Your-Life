@@ -67,31 +67,31 @@ public class ExamPageActivity extends AppCompatActivity {
         OpOrCrDb();
         TableDb= new TableDbTable(SQLiteDB_Path,db);
         TableDb.OpenOrCreateTb();
-        TableDb.deleteAllRow();
-        TableDb.AddTalbeData();
+        //TableDb.deleteAllRow();
+        //TableDb.AddTalbeData();
 
         SubjectDb=new SubjectDbTable(SQLiteDB_Path,db);
         SubjectDb.OpenOrCreateTb();
-        SubjectDb.deleteAllRow();
-        SubjectDb.AddSubjectData();
+        //SubjectDb.deleteAllRow();
+        //SubjectDb.AddSubjectData();
 
         ClassDb=new ClassDbTable(SQLiteDB_Path,db);
         ClassDb.OpenOrCreateTb();
 
         WeekDb=new WeekDbTable(SQLiteDB_Path,db);
         WeekDb.OpenOrCreateTb();
-        WeekDb.deleteAllRow();
-        WeekDb.AddWeekData();
+        //WeekDb.deleteAllRow();
+        //WeekDb.AddWeekData();
 
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
         ClassWeekDb.OpenOrCreateTb();
-        ClassWeekDb.deleteAllRow();
-        ClassWeekDb.AddClassWeekData();
+        //ClassWeekDb.deleteAllRow();
+        //ClassWeekDb.AddClassWeekData();
 
         ExamDb=new ExamDbTable(SQLiteDB_Path,db);
         ExamDb.OpenOrCreateTb();
-        ExamDb.deleteAllRow();
-        ExamDb.AddExamData();
+        //ExamDb.deleteAllRow();
+        //ExamDb.AddExamData();
     }
     private void putValue(){
         //加入Table_sp資料

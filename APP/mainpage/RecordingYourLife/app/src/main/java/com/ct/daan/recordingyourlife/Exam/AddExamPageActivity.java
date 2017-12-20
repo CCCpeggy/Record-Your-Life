@@ -97,25 +97,25 @@ public class AddExamPageActivity extends AppCompatActivity {
         OpOrCrDb();
         TableDb= new TableDbTable(SQLiteDB_Path,db);
         TableDb.OpenOrCreateTb();
-        TableDb.deleteAllRow();
-        TableDb.AddTalbeData();
+        //TableDb.deleteAllRow();
+        //TableDb.AddTalbeData();
 
         //SubjectDb資料庫建立
         SubjectDb=new SubjectDbTable(SQLiteDB_Path,db);
         SubjectDb.OpenOrCreateTb();
-        SubjectDb.deleteAllRow();
-        SubjectDb.AddSubjectData();
+        //SubjectDb.deleteAllRow();
+        //SubjectDb.AddSubjectData();
 
         //ClassDb資料庫建立
         ClassDb=new ClassDbTable(SQLiteDB_Path,db);
         ClassDb.OpenOrCreateTb();
-        ClassDb.deleteAllRow();
-        ClassDb.AddClassData();
+        //ClassDb.deleteAllRow();
+        //ClassDb.AddClassData();
 
         WeekDb=new WeekDbTable(SQLiteDB_Path,db);
         WeekDb.OpenOrCreateTb();
-        WeekDb.deleteAllRow();
-        WeekDb.AddWeekData();
+        //WeekDb.deleteAllRow();
+        //WeekDb.AddWeekData();
 
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
         ClassWeekDb.OpenOrCreateTb();
