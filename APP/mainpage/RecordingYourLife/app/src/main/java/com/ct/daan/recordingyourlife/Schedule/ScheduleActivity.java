@@ -1,10 +1,12 @@
-package com.ct.daan.recordingyourlife.MainPage;
+package com.ct.daan.recordingyourlife.Schedule;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,7 +33,7 @@ import com.ct.daan.recordingyourlife.DbTable.ScheduleDbTable;
 public class ScheduleActivity extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final int NEWSCHEDULE = 564;
     private String mParam1;
     private String mParam2;
 
@@ -47,9 +49,10 @@ public class ScheduleActivity extends Fragment {
     String Now_date;
     TextView date_tv;
     Button Next_btn,Pre_btn;
+    FloatingActionButton btnAdd;
     Context context;
     View v;
-    private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
+    private static final int PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
 
     private OnFragmentInteractionListener mListener;
 
@@ -148,9 +151,22 @@ public class ScheduleActivity extends Fragment {
         }
     }
 
+
+    private FloatingActionButton.OnClickListener btnAddClick=new FloatingActionButton.OnClickListener(){
+        int n=0;
+        @Override
+        public void onClick(View v) {
+            Intent intent  = new Intent(context,NewSchedulePageActivity.class);
+            startActivityForResult(intent,NEWSCHEDULE);
+        }
+    };
+
     private int viewScheduleAndTable(int table_index, Table table, ScheduleClass Schedule, int Schedule_position){
+        if(!table.isOpen){
+            addnode(table.classes[0].start_time, table.Name,table_index+"",table.colorR,table.colorG,table.colorB);
+            return Schedule_position;
+        }
         addnode(table.classes[0].start_time, table.Name,table_index+"",table.colorR,table.colorG,table.colorB);
-        if(!table.isOpen)return Schedule_position;
         int i;
         for(i=0;i<table.classes.length && Schedule_position<Schedule.items.length;){
             Class Oneclass=table.classes[i];
@@ -162,7 +178,7 @@ public class ScheduleActivity extends Fragment {
                 i++;
             }
             else{
-                addnode(schedule_time,Schedule_item.Name,table.colorR,table.colorG,table.colorB);
+                addnode(schedule_time,Schedule_item.Name);
                 Schedule_position++;
             }
         }
@@ -199,6 +215,9 @@ public class ScheduleActivity extends Fragment {
         name.setText(Name_String);
         slayout.addView(nodeLayout);
     }
+    private void addnode(String Time_String,String Name_String,String Table_index){
+        addnode(Time_String, Name_String, Table_index, 255,255,255);
+    }
 
     private void addnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
         addnode( Time_String,Name_String,"",colorR,colorG,colorB);
@@ -219,6 +238,10 @@ public class ScheduleActivity extends Fragment {
         slayout.addView(nodeLayout);
     }
 
+    public void onActivityResult(int requestCode,int resultCode,Intent data) {
+        ChangeDate(Now_date);
+    }
+
     private void initDateBase(){
         OpOrCrDb(getContext());
         TableClass=new A_Day_Table(SQLiteDB_Path,db,Now_date);
@@ -227,8 +250,10 @@ public class ScheduleActivity extends Fragment {
 
         ScheduleDb=new ScheduleDbTable(SQLiteDB_Path,db);
         ScheduleDb.OpenOrCreateTb();
-        ScheduleDb.deleteAllRow();
-        ScheduleDb.AddScheduleData();
+        //ScheduleDb.deleteAllRow();
+        //ScheduleDb.AddScheduleData();
+
+        btnAdd.setOnClickListener(btnAddClick);
     }
 
     //打開或新增資料庫
@@ -279,6 +304,7 @@ public class ScheduleActivity extends Fragment {
         context=getContext();
         Next_btn=(Button)v.findViewById(R.id.btn_next);
         Pre_btn=(Button)v.findViewById(R.id.btn_previous);
+        btnAdd=(FloatingActionButton)v.findViewById(R.id.fab);
         Next_btn.setOnClickListener(onClickListener);
         Pre_btn.setOnClickListener(onClickListener);
         Now_date= calFunction.getTodayDate();

@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.ct.daan.recordingyourlife.MainPage.MainPageActivity;
 import com.ct.daan.recordingyourlife.MainPage.PagerAdapter;
-import com.ct.daan.recordingyourlife.MainPage.ScheduleActivity;
+import com.ct.daan.recordingyourlife.Schedule.ScheduleActivity;
 
 public class MainActivity extends AppCompatActivity  implements MainPageActivity.OnFragmentInteractionListener,ScheduleActivity.OnFragmentInteractionListener{
 

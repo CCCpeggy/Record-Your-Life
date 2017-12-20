@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.ct.daan.recordingyourlife.Schedule.ScheduleActivity;
+
 //首頁Tab更新
 
 public class PagerAdapter extends FragmentStatePagerAdapter {

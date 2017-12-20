@@ -24,6 +24,7 @@
         <activity android:name=".Note.AddReminderActivity" />
         <activity android:name=".Note.ReminderActivity" />
         <activity android:name=".Note.RemindersActivity" />
+        <activity android:name=".Schedule.NewSchedulePageActivity" />
         <receiver android:name=".Reminder.AlarmReceiver">
             <intent-filter>
                 <action android:name="net.macdidi.broadcast01.action.MYBROADCAST01" />
