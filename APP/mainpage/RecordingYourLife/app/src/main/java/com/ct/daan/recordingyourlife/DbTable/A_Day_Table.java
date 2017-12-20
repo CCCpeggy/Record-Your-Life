@@ -1,9 +1,7 @@
-package com.ct.daan.recordingyourlife.Table;
+package com.ct.daan.recordingyourlife.DbTable;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
 import android.util.Log;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
@@ -13,7 +11,6 @@ import com.ct.daan.recordingyourlife.Class.Table.Class;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by info on 2017/11/17.

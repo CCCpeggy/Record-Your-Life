@@ -1,4 +1,4 @@
-package com.ct.daan.recordingyourlife.Table;
+package com.ct.daan.recordingyourlife.DbTable;
 
 import android.content.ContentValues;
 import android.database.Cursor;

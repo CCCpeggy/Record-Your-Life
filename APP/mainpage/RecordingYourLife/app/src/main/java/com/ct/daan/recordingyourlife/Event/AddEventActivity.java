@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.EventDbTable;
+import com.ct.daan.recordingyourlife.DbTable.EventDbTable;
 
 import java.util.Locale;
 

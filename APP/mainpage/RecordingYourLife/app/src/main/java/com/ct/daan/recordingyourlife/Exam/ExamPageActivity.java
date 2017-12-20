@@ -20,14 +20,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
-import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.ClassDbTable;
-import com.ct.daan.recordingyourlife.Table.ClassWeekDbTable;
-import com.ct.daan.recordingyourlife.Table.ExamDbTable;
-import com.ct.daan.recordingyourlife.Table.SubjectDbTable;
-import com.ct.daan.recordingyourlife.Table.TableDbTable;
-import com.ct.daan.recordingyourlife.Table.WeekDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ClassDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ClassWeekDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ExamDbTable;
+import com.ct.daan.recordingyourlife.DbTable.SubjectDbTable;
+import com.ct.daan.recordingyourlife.DbTable.TableDbTable;
+import com.ct.daan.recordingyourlife.DbTable.WeekDbTable;
 
 import java.util.Locale;
 

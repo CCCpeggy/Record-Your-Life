@@ -38,6 +38,10 @@
         <activity android:name=".Exam.ExamActivity"></activity>
         <activity android:name=".Exam.ExamPageActivity"></activity>
         <activity android:name=".Exam.AddExamPageActivity"></activity>
+        <activity android:name=".Table.AddSubjectTableActivity"></activity>
+        <activity android:name=".Table.AddTableSettingsActivity"></activity>
+        <activity android:name=".Table.TableActivity"></activity>
+        <activity android:name=".Table.TableSettingsActivity"></activity>
 
     </application>
 

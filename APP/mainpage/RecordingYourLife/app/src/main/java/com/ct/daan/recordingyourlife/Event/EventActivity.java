@@ -3,7 +3,6 @@ package com.ct.daan.recordingyourlife.Event;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,9 +17,7 @@ import android.widget.SimpleCursorAdapter;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.EventDbTable;
-
-import java.util.Locale;
+import com.ct.daan.recordingyourlife.DbTable.EventDbTable;
 
 public class EventActivity extends AppCompatActivity {
     private SQLiteDatabase db=null;

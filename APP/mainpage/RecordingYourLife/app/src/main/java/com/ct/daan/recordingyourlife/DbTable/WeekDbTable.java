@@ -1,4 +1,4 @@
-package com.ct.daan.recordingyourlife.Table;
+package com.ct.daan.recordingyourlife.DbTable;
 
 /**
  * Created by info on 2017/11/5.

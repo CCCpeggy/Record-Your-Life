@@ -1,4 +1,4 @@
-package com.ct.daan.recordingyourlife.Table;
+package com.ct.daan.recordingyourlife.DbTable;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

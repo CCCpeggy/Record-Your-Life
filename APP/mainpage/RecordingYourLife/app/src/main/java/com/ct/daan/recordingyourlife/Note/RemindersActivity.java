@@ -9,15 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.NoteDbTable;
-import com.ct.daan.recordingyourlife.Table.Note_Reminder_DbTable;
-import com.ct.daan.recordingyourlife.Table.ReminderDbTable;
+import com.ct.daan.recordingyourlife.DbTable.NoteDbTable;
+import com.ct.daan.recordingyourlife.DbTable.Note_Reminder_DbTable;
+import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 
 /**
  * Created by info on 2017/12/2.

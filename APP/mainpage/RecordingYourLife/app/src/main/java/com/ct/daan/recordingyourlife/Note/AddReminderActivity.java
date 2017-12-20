@@ -1,13 +1,9 @@
 package com.ct.daan.recordingyourlife.Note;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,16 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.NoteDbTable;
-import com.ct.daan.recordingyourlife.Table.Note_Reminder_DbTable;
-import com.ct.daan.recordingyourlife.Table.ReminderDbTable;
-
-import java.util.Locale;
+import com.ct.daan.recordingyourlife.DbTable.NoteDbTable;
+import com.ct.daan.recordingyourlife.DbTable.Note_Reminder_DbTable;
+import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 
 
 public class AddReminderActivity extends AppCompatActivity {

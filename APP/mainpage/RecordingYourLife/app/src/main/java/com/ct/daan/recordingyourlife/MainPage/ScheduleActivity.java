@@ -3,8 +3,6 @@ package com.ct.daan.recordingyourlife.MainPage;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,10 +23,8 @@ import com.ct.daan.recordingyourlife.Class.Table.Table;
 import com.ct.daan.recordingyourlife.Class.Table.TablesClass;
 import com.ct.daan.recordingyourlife.Class.Schedule.item;
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.A_Day_Table;
-import com.ct.daan.recordingyourlife.Table.ScheduleDbTable;
-
-import java.util.Locale;
+import com.ct.daan.recordingyourlife.DbTable.A_Day_Table;
+import com.ct.daan.recordingyourlife.DbTable.ScheduleDbTable;
 
 //行程畫面
 
