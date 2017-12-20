@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/Note.iml" filepath="$PROJECT_DIR$/Note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../Note/Note.iml" filepath="$PROJECT_DIR$/../../../Note/Note.iml" />
-=======
-      <module fileurl="file://C:\Users\info\Desktop\Note\Note.iml" filepath="C:\Users\info\Desktop\Note\Note.iml" />
->>>>>>> 317e6ee0bcef08d96939fcd38b2c43f9b2d318e8
       <module fileurl="file://$PROJECT_DIR$/Search.iml" filepath="$PROJECT_DIR$/Search.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../Note/app/app.iml" filepath="$PROJECT_DIR$/../../../Note/app/app.iml" />
     </modules>
   </component>
 </project>

@@ -29,6 +29,16 @@
                 <action android:name="net.macdidi.broadcast01.action.MYBROADCAST01" />
             </intent-filter>
         </receiver>
+        <activity android:name=".Event.AddEventActivity"></activity>
+        <activity android:name=".Event.ChangEventActivity"></activity>
+        <activity android:name=".Event.EventActivity"></activity>
+        <activity android:name=".Diary.DiaryActivity"></activity>
+        <activity android:name=".Diary.DiaryPageActivity"></activity>
+        <activity android:name=".Diary.AddDiaryPageActivity"></activity>
+        <activity android:name=".Exam.ExamActivity"></activity>
+        <activity android:name=".Exam.ExamPageActivity"></activity>
+        <activity android:name=".Exam.AddExamPageActivity"></activity>
+
     </application>
 
 </manifest>

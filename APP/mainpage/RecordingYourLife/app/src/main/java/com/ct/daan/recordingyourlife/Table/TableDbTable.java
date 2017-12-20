@@ -151,7 +151,12 @@ public class TableDbTable {
         return db.rawQuery(cmd,null);
     }
 
-
+    public Cursor getCursorBydate(String date){
+        String cmd=String.format("SELECT *  FROM '%s'  WHERE " +
+                "AND( 課表開始日 < '%s' , 課表結束日 > '%s' ) ",SQLiteTable_Name,date,date);
+        Log.v("TableDbTable.getCursor",cmd);
+        return db.rawQuery(cmd,null);
+    }
 
 
     public String getTable_name(int id){

@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.ct.daan.recordingyourlife.Diary.DiaryActivity;
+import com.ct.daan.recordingyourlife.Event.EventActivity;
+import com.ct.daan.recordingyourlife.Exam.ExamActivity;
 import com.ct.daan.recordingyourlife.Note.NoteActivity;
 import com.ct.daan.recordingyourlife.R;
 
@@ -70,16 +73,24 @@ public class MainPageActivity extends Fragment {
             Intent intent;
             switch (view.getId()){
                 case R.id.calendar_btn:
+                    intent=new Intent(getContext(),EventActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.note_btn:
                     intent=new Intent(getContext(),NoteActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.diary_btn:
+                    intent=new Intent(getContext(),DiaryActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.test_btn:
+                    intent=new Intent(getContext(),ExamActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.table_btn:
+                    /*intent=new Intent(getContext(),DiaryActivity.class);
+                    startActivity(intent);*/
                     break;
             }
         }

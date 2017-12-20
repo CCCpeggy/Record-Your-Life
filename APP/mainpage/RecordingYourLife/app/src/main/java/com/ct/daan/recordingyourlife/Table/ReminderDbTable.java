@@ -97,9 +97,20 @@ public class ReminderDbTable {
         cursor.moveToFirst();
         return cursor.getString(1);
     }
-
+    public String getRemindTimeCursor(int Reminder_id){
+        Cursor cursor=getCursor("_id = "+Reminder_id);
+        cursor.moveToFirst();
+        return cursor.getString(2);
+    }
+    public String getRemindTypeCursor(int Reminder_id){
+        Cursor cursor=getCursor("_id = "+Reminder_id);
+        cursor.moveToFirst();
+        return cursor.getString(4);
+    }
     public Cursor getCursor(int id){
-        return getCursor("_id = "+id);
+        Cursor cursor=getCursor("_id = "+id);
+        cursor.moveToFirst();
+        return cursor;
     }
 
     public Cursor getCursor(Cursor cursor) {

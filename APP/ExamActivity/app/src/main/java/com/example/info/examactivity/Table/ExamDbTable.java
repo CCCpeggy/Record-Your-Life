@@ -1,4 +1,4 @@
-package com.example.info.examactivity;
+package com.example.info.examactivity.Table;
 
 import android.content.ContentValues;
 import android.database.Cursor;

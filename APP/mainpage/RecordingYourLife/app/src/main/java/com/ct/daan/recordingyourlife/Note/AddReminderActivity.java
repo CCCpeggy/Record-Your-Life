@@ -18,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.Table.NoteDbTable;
 import com.ct.daan.recordingyourlife.Table.Note_Reminder_DbTable;
@@ -38,29 +40,19 @@ public class AddReminderActivity extends AppCompatActivity {
     Spinner ReplaceType;
     Button Complete_btn;
     NoteDbTable NoteDb;
+    CalendarFunction calFunction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reminder_page);
-
+        calFunction=new CalendarFunction();
         intent = getIntent();
         Bundle extra = intent.getExtras();
         id = extra.getInt("NOTEID");
         Log.v("NOTEID", id + "");
 
         initView();
-    }
-
-    private Calendar StringtoCalendar(String date, String time) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddhh:mm", Locale.TAIWAN);
-        Calendar Calendar = android.icu.util.Calendar.getInstance();
-        try {
-            Calendar.setTime(sdf.parse(date + time));
-        } catch (Exception e) {
-            Toast.makeText(AddReminderActivity.this, "yyyy-MM-ddhh:mm", Toast.LENGTH_SHORT).show();
-        }
-        return Calendar;
     }
 
     private void initView() {
@@ -90,18 +82,11 @@ public class AddReminderActivity extends AppCompatActivity {
         }
     }
 
-    private void setReminder(Context context, String date, String time, int reminderId) {
-        Calendar cal = StringtoCalendar(date, time);
-        String BROADCAST_ACTION = "net.macdidi.broadcast01.action.MYBROADCAST01";
+    private void setReminder(Context context,Cursor cursor, int reminderId) {
+        OthersFunction othersFunction=new OthersFunction();
         Cursor Note_cursor = NoteDb.getCursor(id);
         Note_cursor.moveToFirst();
-        Intent intent = new Intent(BROADCAST_ACTION);
-        intent.putExtra("REMINDERID", reminderId);
-        intent.putExtra("TITLE", Note_cursor.getString(1));
-        intent.putExtra("CONTENT", Note_cursor.getString(2));
-        PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
-        AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis() + 5000, 3000, sender);
+        othersFunction.setReminder(context,cursor,reminderId,Note_cursor.getString(1),Note_cursor.getString(2));
     }
 
     Button.OnClickListener Complete_btn_Listener = new Button.OnClickListener() {
@@ -111,7 +96,7 @@ public class AddReminderActivity extends AppCompatActivity {
             Cursor cursor = ReminderDb.getCursor();
             cursor.moveToLast();
             NoteReminderDb.insertNoteReminderData(cursor.getInt(0), id);
-            setReminder(AddReminderActivity.this, date.getText().toString(), "08:00", cursor.getInt(0));
+            setReminder(AddReminderActivity.this,cursor, cursor.getInt(0));
             setResult(RESULT_OK, intent);
             finish();
         }

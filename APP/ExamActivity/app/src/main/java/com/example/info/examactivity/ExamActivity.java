@@ -14,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.example.info.examactivity.Table.ExamDbTable;
+
 
 public class ExamActivity extends AppCompatActivity {
 

@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.Table.Note_Reminder_DbTable;
 import com.ct.daan.recordingyourlife.Table.ReminderDbTable;
@@ -73,6 +74,7 @@ public class ReminderActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             ReminderDb.updateReminderData(id,date.getText().toString(),time.getText().toString(),isReplace.isChecked()?1:0 ,ReplaceType.getSelectedItemPosition());
+            intent.putExtra("REMINDER_ID",id);
             setResult(RESULT_OK,intent);
             finish();
         }
