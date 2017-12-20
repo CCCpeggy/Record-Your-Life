@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -289,18 +292,34 @@ public class AddExamPageActivity extends AppCompatActivity {
     private Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String score= Score_et.getText().toString();
+            /*String score= Score_et.getText().toString();
             ExamDb.insertExamData(ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
             setResult(RESULT_OK,intent);
-            finish();
+            finish();*/
         }
     };
 
-    private Button.OnClickListener Delete_btn_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            setResult(RESULT_DELETE,intent);
-            finish();
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.done_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                String score= Score_et.getText().toString();
+                ExamDb.insertExamData(ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
+                setResult(RESULT_OK,intent);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-    };
+    }
 }
