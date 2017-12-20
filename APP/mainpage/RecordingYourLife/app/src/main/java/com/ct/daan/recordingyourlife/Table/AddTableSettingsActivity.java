@@ -14,6 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -54,7 +57,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
     Cursor cursor;
     int Table_id=-100;
     List<Map<String,String>> Time;
-    Button Addbtn,Completebtn;
+    Button Addbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +74,6 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         isMain=(Switch)findViewById(R.id.ismain_sw);
         ClassTime =(ListView)findViewById(R.id.classtime_lv);
         Addbtn=(Button)findViewById(R.id.button);
-        Completebtn=(Button)findViewById(R.id.button2);
 
         Start_date.setInputType(InputType.TYPE_NULL);
         End_date.setInputType(InputType.TYPE_NULL);
@@ -80,7 +82,6 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         End_date.setOnClickListener(DatePick_Listener);
         Addbtn.setOnClickListener(Button_Listener);
         ClassTime.setOnItemClickListener(List_listener);
-        Completebtn.setOnClickListener(Completebtn_Listener);
 
         OpOrCrDb();
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
@@ -444,14 +445,29 @@ public class AddTableSettingsActivity extends AppCompatActivity {
             WeekDb.insertWeekData(Table_id,dayOfWeek+i);
         }
     }
-    private Button.OnClickListener Completebtn_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (!check())return;
-            saveValue();
-            openSubjectSettings();
-            finish();
+
+
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.done_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                if (!check())return true;
+                saveValue();
+                openSubjectSettings();
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-    };
+    }
 
 }

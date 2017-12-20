@@ -13,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -42,7 +45,6 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     int Table_id;
     TableLayout layout;
     int col,row;
-    Button Complete_btn;
     WeekDbTable WeekDb;
     ClassDbTable ClassDb;
     ClassWeekDbTable ClassWeekDb;
@@ -56,8 +58,6 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(FloatingButton);
 
-        Complete_btn=(Button)findViewById(R.id.Complete_btn);
-        Complete_btn.setOnClickListener(Complete_btn_Listener);
 
         OpOrCrDb();
         ClassDb=new ClassDbTable(SQLiteDB_Path,db);
@@ -142,26 +142,6 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         }
     };
 
-    private Button.OnClickListener Complete_btn_Listener=new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Cursor ClassWeek_cursor= ClassWeekDb.getCursor(Table_id);
-            ClassWeek_cursor.moveToFirst();
-            Cursor Week_cursor=WeekDb.getCursor("課表ID = "+Table_id);
-            int row=0,col;
-            do{
-                col=0;
-                Week_cursor.moveToFirst();
-                do {
-                    int Week_id=Week_cursor.getInt(0) , ClassWeek_id=ClassWeek_cursor.getInt(0),Subject_id=SubjectDb.getSubjectID(TableSuject[row][col++]);
-                    ClassDb.insertClassData(ClassWeek_id,Week_id,Subject_id);
-                }while (Week_cursor.moveToNext());
-                row++;
-            }while (ClassWeek_cursor.moveToNext());
-            finish();
-        }
-    };
-
     private void AddSubjectDialogEvent(Context context) {
         final View item = LayoutInflater.from(context).inflate(R.layout.table_item_layout, null);
         new AlertDialog.Builder(context)
@@ -234,6 +214,40 @@ public class AddSubjectTableActivity extends AppCompatActivity {
             Log.v("選擇了",tmp_Subject_name);
         }
     };
+
+
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.done_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                Cursor ClassWeek_cursor= ClassWeekDb.getCursor(Table_id);
+                ClassWeek_cursor.moveToFirst();
+                Cursor Week_cursor=WeekDb.getCursor("課表ID = "+Table_id);
+                int row=0,col;
+                do{
+                    col=0;
+                    Week_cursor.moveToFirst();
+                    do {
+                        int Week_id=Week_cursor.getInt(0) , ClassWeek_id=ClassWeek_cursor.getInt(0),Subject_id=SubjectDb.getSubjectID(TableSuject[row][col++]);
+                        ClassDb.insertClassData(ClassWeek_id,Week_id,Subject_id);
+                    }while (Week_cursor.moveToNext());
+                    row++;
+                }while (ClassWeek_cursor.moveToNext());
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 
 

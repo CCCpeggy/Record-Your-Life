@@ -5,12 +5,6 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/Complete_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="完成" />
-
 
     <ScrollView
         android:layout_width="match_parent"
