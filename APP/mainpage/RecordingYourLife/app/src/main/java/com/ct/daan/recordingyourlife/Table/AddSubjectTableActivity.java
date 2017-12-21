@@ -68,8 +68,6 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         getIntentData();
         TableSuject=new String[row][];
         viewTable(row,col);
-
-
     }
 
     private void OpOrCrDb(){

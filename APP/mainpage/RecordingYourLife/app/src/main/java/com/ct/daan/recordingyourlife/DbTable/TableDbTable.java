@@ -13,15 +13,14 @@ public class TableDbTable {
 
     private  String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    private final static String SQLiteTable_Name= "課表"; //資料表的名字
-    private final static String CREATE_Table_TABLE= "CREATE TABLE if not exists '課表'(" +
+    private final static String SQLiteTable_Name= "課表2"; //資料表的名字
+    private final static String CREATE_Table_TABLE= "CREATE TABLE if not exists '課表2'(" +
             "_id INTEGER  PRIMARY KEY NOT NULL" +
             ",'課表名稱' TEXT" +
             ",'課表天數' INTEGER NOT NULL" +
             ",'主要' INTEGER NOT NULL" +
             ",'課表開始日' TEXT NOT NULL" +
-            ",'課表結束日' TEXT" +
-            ",'時間重複時是否取代' INTEGER NOT NULL )";
+            ",'課表結束日' TEXT )";
     public TableDbTable(String path, SQLiteDatabase Database) {
         SQLiteDB_Path = path;
         db = Database;
@@ -37,7 +36,7 @@ public class TableDbTable {
         }
     }
 
-    public void insertTableData(String name,int days,int isMain,String schedule_start,String schedule_end,int isReplace){ //不用第一的ID
+    public void insertTableData(String name,int days,int isMain,String schedule_start,String schedule_end){ //不用第一的ID
         try {
             ContentValues row = new ContentValues();
             row.put("課表名稱", name);
@@ -45,15 +44,14 @@ public class TableDbTable {
             row.put("主要", isMain);
             row.put("課表開始日", schedule_start);
             row.put("課表結束日", schedule_end);
-            row.put("時間重複時是否取代", isReplace);
             db.insert(SQLiteTable_Name, null, row);
-            Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s", SQLiteTable_Name, "課表名稱", name, "課表天數", days,"主要", isMain,"課表開始日2", schedule_start,"課表結束日2", schedule_end,"時間重複時是否取代", isReplace));
+            Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s", SQLiteTable_Name, "課表名稱", name, "課表天數", days,"主要", isMain,"課表開始日2", schedule_start,"課表結束日", schedule_end));
         } catch (Exception e) {
             Log.e("#003", "資料列新增失敗");
         }
     }
 
-    public void insertTableData(String name,String days,int isMain,String schedule_start,String schedule_end,int isReplace){ //不用第一的ID
+    public void insertTableData(String name,String days,int isMain,String schedule_start,String schedule_end){ //不用第一的ID
         try {
             ContentValues row = new ContentValues();
             row.put("課表名稱", name);
@@ -61,15 +59,14 @@ public class TableDbTable {
             row.put("主要", isMain);
             row.put("課表開始日", schedule_start);
             row.put("課表結束日", schedule_end);
-            row.put("時間重複時是否取代", isReplace);
             db.insert(SQLiteTable_Name, null, row);
-            Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s", SQLiteTable_Name, "課表名稱", name, "課表天數", days,"主要", isMain,"課表開始日2", schedule_start,"課表結束日2", schedule_end,"時間重複時是否取代", isReplace));
+            Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s", SQLiteTable_Name, "課表名稱", name, "課表天數", days,"主要", isMain,"課表開始日", schedule_start,"課表結束日", schedule_end));
         } catch (Exception e) {
             Log.e("#003", "資料列新增失敗");
         }
     }
 
-    public void updateTableData(int id,String name,String days,int isMain,String schedule_start,String schedule_end,int isReplace){
+    public void updateTableData(int id,String name,String days,int isMain,String schedule_start,String schedule_end){
         try {
             ContentValues row = new ContentValues();
             row.put("課表名稱", name);
@@ -77,9 +74,8 @@ public class TableDbTable {
             row.put("主要", isMain);
             row.put("課表開始日", schedule_start);
             row.put("課表結束日", schedule_end);
-            row.put("時間重複時是否取代", isReplace);
             db.update(SQLiteTable_Name, row, "_id=" + id, null);
-            Log.v("更新資料列", String.format("在%s更新一筆資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s", SQLiteTable_Name,"課表名稱",name,"課表天數",days,"主要",isMain,"課表開始日",schedule_start,"課表結束日",schedule_end,"時間重複時是否取代",isReplace));
+            Log.v("更新資料列", String.format("在%s更新一筆資料：%s=%s,%s=%s,%s=%s,%s=%s,%s=%s,%s=%s", SQLiteTable_Name,"課表名稱",name,"課表天數",days,"主要",isMain,"課表開始日",schedule_start,"課表結束日",schedule_end));
         } catch (Exception e) {
             Log.e("#004", "資料列更新失敗");
         }
@@ -100,9 +96,8 @@ public class TableDbTable {
         int  main[]={1,0,0};
         String  schedule_start[]={"2017-09-04","2017-07-04","2017-07-08"};
         String  schedule_end[]={"2018-01-26","2018-02-07","2018-02-13"};
-        int  isReplace[]={0,0,0};
         for(int i=0;i< days.length&&i<name.length;i++){
-            insertTableData( name[i],days[i],main[i],schedule_start[i],schedule_end[i],isReplace[i]);
+            insertTableData( name[i],days[i],main[i],schedule_start[i],schedule_end[i]);
         }
     }
     public Cursor getCursor(int Table_id){
@@ -130,7 +125,7 @@ public class TableDbTable {
     public void updateMain_id(){
         Cursor cursor=getMain();
         cursor.moveToFirst();
-        updateTableData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),0,cursor.getString(4),cursor.getString(5),cursor.getInt(6));
+        updateTableData(cursor.getInt(0),cursor.getString(1),cursor.getString(2),0,cursor.getString(4),cursor.getString(5));
     }
 
     public String getMain_Name(){

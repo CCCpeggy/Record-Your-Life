@@ -34,17 +34,17 @@ public class All_Table extends TableDbTable {
 
         setTable(getMain_id());
     }
-    public All_Table(String path, SQLiteDatabase Database,String TableName,int days,int isMain,String schedule_start,String schedule_end,int isReplace,String[][] subject,String time_start[],String time_end[]) {
+    public All_Table(String path, SQLiteDatabase Database,String TableName,int days,int isMain,String schedule_start,String schedule_end,String[][] subject,String time_start[],String time_end[]) {
         super(path, Database);
         initAllTable(path,Database);
         AddTableData();
-        int table_id=newTable(TableName,days,isMain,schedule_start,schedule_end,isReplace,subject,time_start,time_end);
+        int table_id=newTable(TableName,days,isMain,schedule_start,schedule_end,subject,time_start,time_end);
         setTable(table_id);
     }
 
 
-    private int newTable(String TableName,int days,int isMain,String schedule_start,String schedule_end,int isReplace,String[][] subject,String time_start[],String time_end[]){
-        super.insertTableData(TableName,days,isMain,schedule_start,schedule_end,isReplace);
+    private int newTable(String TableName,int days,int isMain,String schedule_start,String schedule_end,String[][] subject,String time_start[],String time_end[]){
+        super.insertTableData(TableName,days,isMain,schedule_start,schedule_end);
         int table_id=super.getTable_id(TableName);
         for (int i=0;i<subject[0].length;i++){
             WeekDb.insertWeekData(table_id,i+1);

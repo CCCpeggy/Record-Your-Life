@@ -177,8 +177,7 @@ public class TableSettingsActivity extends AppCompatActivity {
                 ,Days.getSelectedItem().toString()
                 ,(isMain.isChecked()?1:0)
                 ,Start_date.getText().toString()
-                ,End_date.getText().toString()
-                ,isCover.isChecked()?1:0);
+                ,End_date.getText().toString());
     }
 
     private void getValue(){

@@ -29,6 +29,8 @@ import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.DbTable.ClassWeekDbTable;
 import com.ct.daan.recordingyourlife.DbTable.TableDbTable;
 import com.ct.daan.recordingyourlife.DbTable.WeekDbTable;
@@ -49,15 +51,15 @@ public class AddTableSettingsActivity extends AppCompatActivity {
     private String SQLiteDB_Path="student_project.db";
     EditText Start_date,End_date,Name;
     Spinner Days;
-    Switch isCover,isMain;
+    Switch isMain;
     ListView ClassTime;
     TableDbTable TableDb;
     ClassWeekDbTable ClassWeekDb;
     WeekDbTable WeekDb;
-    Cursor cursor;
     int Table_id=-100;
     List<Map<String,String>> Time;
     Button Addbtn;
+    OthersFunction othersFunction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +68,11 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         initView();
     }
     private void initView(){
+        othersFunction=new OthersFunction();
         Start_date = (EditText) findViewById(R.id.startTime_et);
         End_date=(EditText)findViewById(R.id.endTime_et);
         Name=(EditText)findViewById(R.id.name_et);
         Days=(Spinner)findViewById(R.id.days_sp);
-        isCover=(Switch) findViewById(R.id.iscover_sw);
         isMain=(Switch)findViewById(R.id.ismain_sw);
         ClassTime =(ListView)findViewById(R.id.classtime_lv);
         Addbtn=(Button)findViewById(R.id.button);
@@ -212,8 +214,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
                 ,Days.getSelectedItem().toString()
                 ,(isMain.isChecked()?1:0)
                 ,Start_date.getText().toString()
-                ,End_date.getText().toString()
-                ,isCover.isChecked()?1:0);
+                ,End_date.getText().toString());
         Table_id=TableDb.getTable_id(Name.getText().toString());
         insertClassWeeks();
         insertWeek();
@@ -251,31 +252,11 @@ public class AddTableSettingsActivity extends AppCompatActivity {
             Log.w("課表名稱錯誤","課表名稱已存在");
             return false;
         } //補習班 學校
-        if(Name.getText().toString().equals("")){
-            Toast.makeText(AddTableSettingsActivity.this,"課表名稱為空", Toast.LENGTH_LONG).show();
-            Log.w("課表名稱錯誤","課表名稱為空");
-            return false;
-        }
-        if(Start_date.getText().toString().equals("")){
-            Toast.makeText(AddTableSettingsActivity.this,"課表開始日期不可為空", Toast.LENGTH_LONG).show();
-            Log.w("課表開始日期錯誤","課表開始日期不可為空");
-            return false;
-        }
-        if(!IsStringtoCalendar(Start_date.getText().toString())){
-            Toast.makeText(AddTableSettingsActivity.this,"課表開始日期格式錯誤", Toast.LENGTH_LONG).show();
-            Log.w("課表開始日期錯誤","課表開始日期格式錯誤");
-            return false;
-        }
-        if(!End_date.getText().toString().equals("")&&!IsStringtoCalendar(End_date.getText().toString())){
-            Toast.makeText(AddTableSettingsActivity.this,"課表結束日期格式錯誤", Toast.LENGTH_LONG).show();
-            Log.w("課表結束日期錯誤","課表結束日期格式錯誤");
-            return false;
-        }
-        if (!End_date.getText().toString().equals("")&&!compareDate(Start_date.getText().toString(),End_date.getText().toString())){
-            Toast.makeText(AddTableSettingsActivity.this,"課表日期錯誤", Toast.LENGTH_LONG).show();
-            Log.w("課表日期錯誤","課表日期錯誤");
-            return false;
-        }
+        if(!othersFunction.isEdittextNotEmpty(Name,"名稱",AddTableSettingsActivity.this)) return false;
+        if(!othersFunction.isEdittextNotEmpty(Start_date,"開始日期",AddTableSettingsActivity.this)) return false;
+        if(!othersFunction.isEdittextNotEmpty(End_date,"結束日期",AddTableSettingsActivity.this)) return false;
+        if(!othersFunction.isDateType(Start_date,"開始日期",AddTableSettingsActivity.this)) return false;
+        if(!othersFunction.CompareDate(Start_date,End_date,"開始和結束",AddTableSettingsActivity.this)) return false;
         if(isMain.isChecked()&&Table_id!=TableDb.getMain_id()) {
             check_main();
             return false;
@@ -401,30 +382,11 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         return Calendar;
     }
 
-    private boolean compareDate(String startdate, String enddate){
-        Calendar cal=StringtoCalendar(startdate);
-        Calendar cal2=StringtoCalendar(enddate);
-        Log.v("傳入日期", String.format("YEAR=%d/%d,MONTH=%d/%d,DATE=%d/%d",cal.get(Calendar.YEAR),cal2.get(Calendar.YEAR)
-                ,cal.get(Calendar.MONTH),cal2.get(Calendar.MONTH)
-                ,cal.get(Calendar.DATE),cal2.get(Calendar.DATE)));
-        return !cal2.before(cal);
-    }
-
-    private boolean compareTime(String starttime, String endtime){
-        Calendar cal=StringtoTCalendar(starttime);
-        Calendar cal2=StringtoTCalendar(endtime);
-        Log.v("傳入日期", String.format("HOUR=%d/%d,MINUTE=%d/%d"
-                ,cal.get(Calendar.HOUR_OF_DAY),cal2.get(Calendar.HOUR_OF_DAY)
-                ,cal.get(Calendar.MINUTE),cal2.get(Calendar.MINUTE)));
-
-        return !cal2.before(cal);
-    }
-
     private boolean check_time(){
         String tmp_endTime="00:00";
         for (Map<String, String> item:Time) {
-            if(!compareTime(item.get("start_time"),item.get("end_time"))) return false;
-            if(!compareTime(tmp_endTime,item.get("start_time")))return false;
+            if(!othersFunction.CompareTime(item.get("start_time"),item.get("end_time"))) return false;
+            if(!othersFunction.CompareTime(tmp_endTime,item.get("start_time")))return false;
             tmp_endTime=item.get("end_time");
         }
         return true;
