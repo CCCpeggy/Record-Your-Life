@@ -10,8 +10,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,9 +32,11 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Class.Table.Table;
 import com.ct.daan.recordingyourlife.DbTable.ClassDbTable;
 import com.ct.daan.recordingyourlife.DbTable.ClassWeekDbTable;
 import com.ct.daan.recordingyourlife.DbTable.SubjectDbTable;
+import com.ct.daan.recordingyourlife.DbTable.TableDbTable;
 import com.ct.daan.recordingyourlife.DbTable.WeekDbTable;
 import com.ct.daan.recordingyourlife.R;
 
@@ -48,8 +53,10 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     WeekDbTable WeekDb;
     ClassDbTable ClassDb;
     ClassWeekDbTable ClassWeekDb;
+    TableDbTable TableDb;
     SubjectDbTable SubjectDb;
     String TableSuject[][];
+    Intent intent;
     private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,16 +65,19 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(FloatingButton);
 
+        intent=getIntent();
 
         OpOrCrDb();
         ClassDb=new ClassDbTable(SQLiteDB_Path,db);
         WeekDb=new WeekDbTable(SQLiteDB_Path,db);
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
         SubjectDb=new SubjectDbTable(SQLiteDB_Path,db);
+        TableDb=new TableDbTable(SQLiteDB_Path,db);
 
         getIntentData();
         TableSuject=new String[row][];
         viewTable(row,col);
+
     }
 
     private void OpOrCrDb(){
@@ -107,6 +117,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
             tr.setGravity(16);
             layout.addView(tr,new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
             for (int j=0;j<col;j++){
+                TableSuject[i][j]="";
                 Log.v("subject",i+""+j);
                 LinearLayout tw_ly=new LinearLayout(this);
                 tw_ly.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -192,7 +203,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     public void UpdateAdapter(ListView listView) {
         try {
             Cursor cursor=SubjectDb.getCursor();
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{"科目名稱"}, new int[]{android.R.id.text1}, 0);
+            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_checked, cursor, new String[]{"科目名稱"}, new int[]{android.R.id.text1}, 0);
             listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(List_listener);
@@ -212,7 +223,21 @@ public class AddSubjectTableActivity extends AppCompatActivity {
             Log.v("選擇了",tmp_Subject_name);
         }
     };
-
+/*
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
+        Cursor cursor=SubjectDb.getCursor();
+        if (cursor.getCount()<=0){
+            Toast.makeText(getApplicationContext(),"尚未有科目，請先新增",Toast.LENGTH_LONG);
+            return;
+        }
+        cursor.moveToFirst();
+        for(int i=0;cursor.moveToLast();i++){
+            menu.add(cursor.getCount(),Menu.FIRST+i,Menu.NONE,cursor.getString(1));
+        }
+        super.onCreateContextMenu(menu, view, menuInfo);
+    }
+*/
 
     //增加動作按鈕到工具列
     @Override
@@ -235,18 +260,29 @@ public class AddSubjectTableActivity extends AppCompatActivity {
                     col=0;
                     Week_cursor.moveToFirst();
                     do {
-                        int Week_id=Week_cursor.getInt(0) , ClassWeek_id=ClassWeek_cursor.getInt(0),Subject_id=SubjectDb.getSubjectID(TableSuject[row][col++]);
-                        ClassDb.insertClassData(ClassWeek_id,Week_id,Subject_id);
+                        Log.v("課表",TableSuject[row][col]);
+                        if(SubjectDb.isSubjectExist((TableSuject[row][col]))) {
+                            int Week_id = Week_cursor.getInt(0), ClassWeek_id = ClassWeek_cursor.getInt(0), Subject_id = SubjectDb.getSubjectID(TableSuject[row][col]);
+                            Log.v(TableSuject[row][col]+"課表",Subject_id+"");
+                            ClassDb.insertClassData(ClassWeek_id, Week_id, Subject_id);
+                        }
+                        col++;
                     }while (Week_cursor.moveToNext());
                     row++;
                 }while (ClassWeek_cursor.moveToNext());
+                setResult(RESULT_OK,intent);
+                finish();
+                return true;
+            case android.R.id.home:
+                setResult(RESULT_CANCELED,intent);
                 finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
 
+
+    }
 
 
 }

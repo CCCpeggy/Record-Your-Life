@@ -296,12 +296,21 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         return true;
     }
 
+    public void onActivityResult(int requestCode,int resultCode,Intent data) {
+        if(! (resultCode==RESULT_OK)) {
+            TableDb.deleteTableData(Table_id);
+            WeekDb.deleteWeekDataByTable_id(Table_id);
+            ClassWeekDb.deleteClassWeekData(Table_id);
+        }
+        finish();
+    }
+
     private void openSubjectSettings(){
         Intent intent=new Intent(AddTableSettingsActivity.this,AddSubjectTableActivity.class);
         intent.putExtra("ROW",Time.size());
         intent.putExtra("COL", Integer.parseInt( Days.getSelectedItem().toString()));
         intent.putExtra("TABLE_ID",Table_id);
-        startActivity(intent);
+        startActivityForResult(intent,45);
     }
 
     Calendar m_Calendar = Calendar.getInstance();
@@ -400,11 +409,11 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         }
     }
     private void insertWeek(){
-        Calendar cal=StringtoCalendar(Start_date.getText().toString());
-        int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK)-1;
+        /*Calendar cal=StringtoCalendar(Start_date.getText().toString());
+        int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK)-1;*/
         for(int i = 0; i< Integer.parseInt(Days.getSelectedItem().toString()); i++){
 
-            WeekDb.insertWeekData(Table_id,dayOfWeek+i);
+            WeekDb.insertWeekData(Table_id,i);
         }
     }
 
@@ -425,7 +434,6 @@ public class AddTableSettingsActivity extends AppCompatActivity {
                 if (!check())return true;
                 saveValue();
                 openSubjectSettings();
-                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -57,10 +57,19 @@ public class WeekDbTable {
         }
     }
 
-    public void deleteWeekData(int Delete_id) { //不用改
+    public void deleteWeekData(int Delete_id) {
         try {
             db.delete(SQLiteTable_Name, "_id=" + Delete_id, null);
             Log.v("刪除資料列", String.format("在%s刪除一筆資料：%s=%d", SQLiteTable_Name, "_id", Delete_id));
+        } catch (Exception ex) {
+            Log.e("#005", "刪除資料列錯誤");
+        }
+    }
+
+    public void deleteWeekDataByTable_id(int Table_id) { //不用改
+        try {
+            db.delete(SQLiteTable_Name, "課表ID=" + Table_id, null);
+            Log.v("刪除資料列", String.format("在%s刪除資料：%s=%d", SQLiteTable_Name, "課表ID", Table_id));
         } catch (Exception ex) {
             Log.e("#005", "刪除資料列錯誤");
         }

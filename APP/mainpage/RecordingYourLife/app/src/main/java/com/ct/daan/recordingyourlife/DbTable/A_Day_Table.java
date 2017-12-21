@@ -115,7 +115,6 @@ public class A_Day_Table  extends WeekDbTable{
         }
     }
 
-
     private int getDays(Cursor cursor, int index){
         int days=DayOfWeek-calFunction.getDayOfWeek(cursor.getString(index))+1;
         Log.v("第幾天",days+"");
@@ -217,8 +216,6 @@ public class A_Day_Table  extends WeekDbTable{
         tmp_cursor.moveToFirst();
         return TableDb.getTable_name(tmp_cursor.getInt(0));
     }
-
-
 
     public String getClassSubject(int ClassWeek_id, int Week_id){
         Cursor ClassCursor=getClassCursor(ClassWeek_id,Week_id);

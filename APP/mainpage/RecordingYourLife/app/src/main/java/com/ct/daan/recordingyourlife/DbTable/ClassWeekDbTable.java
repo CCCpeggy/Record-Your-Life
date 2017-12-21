@@ -90,6 +90,15 @@ public class ClassWeekDbTable {
         }
     }
 
+    public void deleteClassWeekDataByTable_id(int Table_id) { //不用改
+        try {
+            db.delete(SQLiteTable_Name, "課表ID=" + Table_id, null);
+            Log.v("刪除資料列", String.format("在%s刪除資料：%s=%d", SQLiteTable_Name, "課表ID", Table_id));
+        } catch (Exception ex) {
+            Log.e("#005", "刪除資料列錯誤");
+        }
+    }
+
     public void AddClassWeekData(){
         int table_id[]={1,1,1,1,1,1,1,2,2,3,3,3};
         String time_start[]={"08:20","09:20","10:20","11:20","13:10","14:10","15:10","18:20","20:10","17:00","18:00","19:00"};

@@ -72,7 +72,12 @@
                 android:value=".Table.AddSubjectTableActivity" />
         </activity>
         <activity android:name=".Table.TableActivity"
-            android:label="@string/table"/>
+            android:label="@string/table"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Table.TableActivity" />
+        </activity>
         <activity android:name=".Table.TableSettingsActivity"
             android:label="@string/table"/>
 

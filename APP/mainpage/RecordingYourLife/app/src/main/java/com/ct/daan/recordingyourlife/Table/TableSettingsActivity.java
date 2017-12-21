@@ -120,7 +120,6 @@ public class TableSettingsActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Cursor ClassWeek_cursor=ClassWeekDb.getCursor(Table_id);
-            Log.v("13", ClassWeek_cursor.getCount()+"");
             ClassWeek_cursor.moveToPosition(position);
             ClassWeek_id=ClassWeek_cursor.getInt(0);
 
@@ -189,7 +188,6 @@ public class TableSettingsActivity extends AppCompatActivity {
         Name.setText(cursor.getString(1));
         Days.setSelection(cursor.getInt(2)-1);
         isMain.setChecked(cursor.getInt(3)==1);
-        isCover.setChecked(cursor.getInt(6)==1);
 
     }
 

@@ -48,6 +48,7 @@ public class ClassDbTable {
         }
     }
 
+
     public void updateClassData(int ClassWeek_id,int week_id,int subject_id){
         try {
             ContentValues row = new ContentValues();
@@ -63,6 +64,16 @@ public class ClassDbTable {
         try {
             db.delete(SQLiteTable_Name, "_id=" + ClassWeek_id +"AND 星期ID = "+ week_id, null);
             Log.v("刪除資料列", String.format("在%s刪除一筆資料：%s=%d,%s=%d", SQLiteTable_Name, "_id", ClassWeek_id,"星期ID",week_id));
+        } catch (Exception ex) {
+            Log.e("#005", "刪除資料列錯誤");
+        }
+    }
+
+    public void deleteClassData(String ClassWeek_ids) {
+        try {
+            String cmd="_id IN (" + ClassWeek_ids +")";
+            db.execSQL("DELETE FROM "+SQLiteTable_Name+" WHERE "+cmd);
+            Log.v("刪除資料列", String.format("在%s刪除一筆資料：%s=%s", SQLiteTable_Name, "_id", ClassWeek_ids));
         } catch (Exception ex) {
             Log.e("#005", "刪除資料列錯誤");
         }

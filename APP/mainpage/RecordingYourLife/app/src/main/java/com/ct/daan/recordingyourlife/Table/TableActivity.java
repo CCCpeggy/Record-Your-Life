@@ -55,7 +55,8 @@ public class TableActivity extends AppCompatActivity {
 
         updateSpinner();
 
-        Table_id=Table.getMain_id();
+        Table_id=Table.getTableId();
+        
         setSpinnerByValue(name,Table_id,Table.getAllTableCursors(),0);
 
     }
@@ -183,5 +184,37 @@ public class TableActivity extends AppCompatActivity {
         }
     };
 
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.edit_delete_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_edit:
+                /*Intent intent=new Intent(AddTableSettingsActivity.this,AddSubjectTableActivity.class);
+                intent.putExtra("ROW",Time.size());
+                intent.putExtra("COL", Integer.parseInt( Days.getSelectedItem().toString()));
+                intent.putExtra("TABLE_ID",Table_id);
+                startActivityForResult(intent,45);*/
+                return true;
+            case R.id.action_delete:
+                Log.v("刪除課表",Table_id+"");
+                Table.deleteAllTable();
+                Table=new All_Table(SQLiteDB_Path,db);
+
+                updateSpinner();
+                Table_id=Table.getMain_id();
+                setSpinnerByValue(name,Table_id,Table.getAllTableCursors(),0);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     
 }

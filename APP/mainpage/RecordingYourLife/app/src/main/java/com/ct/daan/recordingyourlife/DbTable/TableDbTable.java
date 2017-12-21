@@ -13,8 +13,8 @@ public class TableDbTable {
 
     private  String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    private final static String SQLiteTable_Name= "課表2"; //資料表的名字
-    private final static String CREATE_Table_TABLE= "CREATE TABLE if not exists '課表2'(" +
+    private final static String SQLiteTable_Name= "課表3"; //資料表的名字
+    private final static String CREATE_Table_TABLE= "CREATE TABLE if not exists '課表3'(" +
             "_id INTEGER  PRIMARY KEY NOT NULL" +
             ",'課表名稱' TEXT" +
             ",'課表天數' INTEGER NOT NULL" +
@@ -118,6 +118,8 @@ public class TableDbTable {
 
     public int getMain_id(){
         Cursor cursor=getMain();
+        if(cursor.getCount()<=0) cursor=getCursor();
+        if(cursor.getCount()<=0) return 0;
         cursor.moveToFirst();
         return cursor.getInt(0);
     }

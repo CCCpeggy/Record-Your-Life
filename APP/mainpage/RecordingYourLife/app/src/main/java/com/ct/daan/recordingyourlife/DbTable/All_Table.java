@@ -4,18 +4,20 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.ct.daan.recordingyourlife.Class.Table.Table;
+
 /**
  * Created by info on 2017/11/5.
  */
 
 public class All_Table extends TableDbTable {
-    private SQLiteDatabase db = null;
     ClassDbTable ClassDb;
     SubjectDbTable SubjectDb;
     ClassWeekDbTable ClassWeekDb;
     WeekDbTable WeekDb;
     Cursor cursor;
     private int Table_id;
+
 
     public All_Table(String path, SQLiteDatabase Database,int id) {
         super(path, Database);
@@ -33,6 +35,9 @@ public class All_Table extends TableDbTable {
         AddTableData();
 
         setTable(getMain_id());
+    }
+    public int getTableId(){
+        return Table_id;
     }
     public All_Table(String path, SQLiteDatabase Database,String TableName,int days,int isMain,String schedule_start,String schedule_end,String[][] subject,String time_start[],String time_end[]) {
         super(path, Database);
@@ -108,6 +113,7 @@ public class All_Table extends TableDbTable {
 
     public String getClassSubject(int ClassWeek_id,int Week_id){
         Cursor ClassCursor=getClassCursor(ClassWeek_id,Week_id);
+        if(ClassCursor.getCount()<=0) return null;
         ClassCursor.moveToFirst();
         return SubjectDb.getSubjectName(ClassCursor.getInt(2));
     }
@@ -187,6 +193,19 @@ public class All_Table extends TableDbTable {
         return Tables;
     }
 
+    private String ClassWeeIds(){
+        String ids="";
+        Cursor cursor= ClassWeekDb.getCursor(Table_id);
+        if (cursor.getCount()<=0)return "";
+        cursor.moveToFirst();
+        boolean b=false;
+        do{
+            if(b) ids+=",";
+            b=true;
+            ids+=cursor.getInt(0);
+        }while (cursor.moveToNext());
+        return ids;
+    }
 
     public Cursor getClassWeekCursor(){
         return ClassWeekDb.getCursor("課表ID = "+Table_id);
@@ -209,11 +228,11 @@ public class All_Table extends TableDbTable {
         ClassDb.updateClassData(ClassWeek_id,week_id,subject_id);
     }
 
-    /*private int days(){
-        Calendar cal=Calendar.getInstance();
-
-        return ;
-    }*/
-
+    public void deleteAllTable(){
+        ClassDb.deleteClassData(ClassWeeIds());
+        ClassWeekDb.deleteClassWeekDataByTable_id(Table_id);
+        WeekDb.deleteWeekDataByTable_id(Table_id);
+        deleteTableData(Table_id);
+    }
 
 }

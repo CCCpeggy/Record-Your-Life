@@ -71,13 +71,13 @@ public class OthersFunction {
     }
     
     public boolean isDateType(EditText et){
-        if(!calendarFunction.isCalendarType(et.getText().toString(),"yyyy-MM-dd")) return true;
+        if(calendarFunction.isCalendarType(et.getText().toString(),"yyyy-MM-dd")) return true;
         Log.w("EditText 日期格式錯誤",et.getText().toString()+"日期格式錯誤");
         return false;
     }
 
     public boolean isDateType(EditText et,String EditName, Context context){
-        if(!isDateType(et)) return true;
+        if(isDateType(et)) return true;
         Toast.makeText(context,EditName+"內容格式錯誤", Toast.LENGTH_LONG).show();
         return false;
     }

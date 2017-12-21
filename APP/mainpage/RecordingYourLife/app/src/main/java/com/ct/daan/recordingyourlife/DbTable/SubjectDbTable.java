@@ -93,6 +93,10 @@ public class SubjectDbTable {
         return cursor.getInt(0);
     }
 
+    public boolean isSubjectExist(String Subject_Name){
+        Cursor cursor =db.rawQuery(String.format("SELECT *  FROM '%s' WHERE 科目名稱='%s'",SQLiteTable_Name,Subject_Name),null);
+        return cursor.getCount()>0;
+    }
 
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);
