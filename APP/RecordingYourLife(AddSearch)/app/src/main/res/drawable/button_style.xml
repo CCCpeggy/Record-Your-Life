@@ -8,7 +8,7 @@
             <!--設定圓角，當設置的圓角半徑很大，就可變成弧形邊了-->
             <corners android:radius="20dip" />
             <!--漸層顏色-->
-            <gradient android:type="radial" android:gradientRadius="170" android:angle="-90" android:startColor="#0099CC" android:endColor="#017DAB"  />
+            <gradient android:type="radial" android:gradientRadius="170" android:angle="-90" android:startColor="@color/colorButtonStart" android:endColor="@color/colorButtoEnd"  />
 
         </shape>
         <padding

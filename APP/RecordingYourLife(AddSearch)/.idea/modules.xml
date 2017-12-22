@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RecordingYourLife.iml" filepath="$PROJECT_DIR$/RecordingYourLife.iml" />
+      <module fileurl="file://C:\Users\info\Documents\GitHub\Record-Your-Life\APP\RecordingYourLife(AddSearch)\RecordingYourLife.iml" filepath="C:\Users\info\Documents\GitHub\Record-Your-Life\APP\RecordingYourLife(AddSearch)\RecordingYourLife.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecordingYourLife(AddSearch).iml" filepath="$PROJECT_DIR$/RecordingYourLife(AddSearch).iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
