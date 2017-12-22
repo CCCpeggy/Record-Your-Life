@@ -16,6 +16,7 @@ import com.ct.daan.recordingyourlife.Event.EventActivity;
 import com.ct.daan.recordingyourlife.Exam.ExamActivity;
 import com.ct.daan.recordingyourlife.Note.NoteActivity;
 import com.ct.daan.recordingyourlife.R;
+import com.ct.daan.recordingyourlife.Table.TableActivity;
 
 /**
  * Created by info on 2017/12/8.
@@ -89,8 +90,8 @@ public class MainPageActivity extends Fragment {
                     startActivity(intent);
                     break;
                 case R.id.table_btn:
-                    /*intent=new Intent(getContext(),DiaryActivity.class);
-                    startActivity(intent);*/
+                    intent=new Intent(getContext(),TableActivity.class);
+                    startActivity(intent);
                     break;
             }
         }

@@ -16,29 +16,81 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Note.NoteActivity" />
-        <activity android:name=".Note.NotePageActivity" />
-        <activity android:name=".Note.NewNotePageActivity" />
-        <activity android:name=".Note.RemindersActivityByNew" />
-        <activity android:name=".Note.AddReminderActivityByNew" />
-        <activity android:name=".Note.AddReminderActivity" />
-        <activity android:name=".Note.ReminderActivity" />
-        <activity android:name=".Note.RemindersActivity" />
+        <activity android:name=".Note.NoteActivity"
+            android:label="@string/note"/>
+        <activity android:name=".Note.NotePageActivity"
+            android:label="@string/note"/>
+        <activity android:name=".Note.NewNotePageActivity"
+            android:label="@string/note"/>
+        <activity android:name=".Note.RemindersActivityByNew"
+            android:label="@string/note"/>
+        <activity android:name=".Note.AddReminderActivityByNew"
+            android:label="@string/note"/>
+        <activity android:name=".Note.AddReminderActivity"
+            android:label="@string/note"/>
+        <activity android:name=".Note.ReminderActivity"
+            android:label="@string/note"/>
+        <activity android:name=".Note.RemindersActivity"
+            android:label="@string/note"/>
+        <activity android:name=".Schedule.NewSchedulePageActivity"
+            android:label="@string/schedule"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Schedule.NewSchedulePageActivity" />
+        </activity>
+        <activity android:name=".Event.AddEventActivity"
+            android:label="@string/event"/>
+        <activity android:name=".Event.ChangEventActivity"
+            android:label="@string/event"/>
+        <activity android:name=".Event.EventActivity"
+            android:label="@string/event"/>
+        <activity android:name=".Diary.DiaryActivity"
+            android:label="@string/diary"/>
+        <activity android:name=".Diary.DiaryPageActivity"
+            android:label="@string/diary"/>
+        <activity android:name=".Diary.AddDiaryPageActivity"
+            android:label="@string/diary"/>
+        <activity android:name=".Exam.ExamActivity"
+            android:label="@string/exam"/>
+        <activity android:name=".Exam.ExamPageActivity"
+            android:label="@string/exam"/>
+        <activity android:name=".Exam.AddExamPageActivity"
+            android:label="@string/exam"/>
+        <activity android:name=".Table.AddSubjectTableActivity"
+            android:label="@string/table"
+            android:parentActivityName=".Table.TableActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Table.AddSubjectTableActivity" />
+        </activity>
+        <activity android:name=".Table.AddTableSettingsActivity"
+            android:label="@string/table"
+            android:parentActivityName=".Table.TableActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Table.AddSubjectTableActivity" />
+        </activity>
+        <activity android:name=".Table.TableActivity"
+            android:label="@string/table"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Table.TableActivity" />
+        </activity>
+        <activity android:name=".Table.SubjectTableActivity"
+            android:label="@string/table"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Table.SubjectTableActivity" />
+        </activity>
+
         <receiver android:name=".Reminder.AlarmReceiver">
             <intent-filter>
                 <action android:name="net.macdidi.broadcast01.action.MYBROADCAST01" />
             </intent-filter>
         </receiver>
-        <activity android:name=".Event.AddEventActivity"></activity>
-        <activity android:name=".Event.ChangEventActivity"></activity>
-        <activity android:name=".Event.EventActivity"></activity>
-        <activity android:name=".Diary.DiaryActivity"></activity>
-        <activity android:name=".Diary.DiaryPageActivity"></activity>
-        <activity android:name=".Diary.AddDiaryPageActivity"></activity>
-        <activity android:name=".Exam.ExamActivity"></activity>
-        <activity android:name=".Exam.ExamPageActivity"></activity>
-        <activity android:name=".Exam.AddExamPageActivity"></activity>
-
     </application>
 
 </manifest>

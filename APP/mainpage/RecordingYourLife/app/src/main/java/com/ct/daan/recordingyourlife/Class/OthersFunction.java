@@ -7,10 +7,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.ct.daan.recordingyourlife.Table.AddTableSettingsActivity;
+
+import java.util.Locale;
 
 public class OthersFunction {
+    CalendarFunction calendarFunction;
+    public OthersFunction(){
+        calendarFunction=new CalendarFunction();
+    }
     public void setReminder(Context context,Cursor Reminder_cursor, int id,String title,String content) {
 
         Log.v("setReminder",String.format("context:%s,reminder_id:%s,title:%s,content:%s,date:%s,time:%s,type:%d"
@@ -45,5 +56,63 @@ public class OthersFunction {
                 break;
         }
         alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() ,Reminder_type, sender);
+    }
+
+    public boolean isEdittextNotEmpty(EditText et){
+        if(!et.getText().toString().isEmpty()) return true;
+        Log.w("EditText 為空",et.getText().toString()+"內容為空");
+        return false;
+    }
+
+    public boolean isEdittextNotEmpty(EditText et,String EditName, Context context){
+        if(isEdittextNotEmpty(et)) return true;
+        Toast.makeText(context,EditName+"內容不可為空", Toast.LENGTH_LONG).show();
+        return false;
+    }
+    
+    public boolean isDateType(EditText et){
+        if(calendarFunction.isCalendarType(et.getText().toString(),"yyyy-MM-dd")) return true;
+        Log.w("EditText 日期格式錯誤",et.getText().toString()+"日期格式錯誤");
+        return false;
+    }
+
+    public boolean isDateType(EditText et,String EditName, Context context){
+        if(isDateType(et)) return true;
+        Toast.makeText(context,EditName+"內容格式錯誤", Toast.LENGTH_LONG).show();
+        return false;
+    }
+    
+    public boolean CompareDate(EditText BeforeDate,EditText AfterDate ) {
+        if(calendarFunction.CompareDate(BeforeDate.getText().toString(),AfterDate.getText().toString())) return true;
+        Log.w("EditText 日期順序錯誤",String.format("Before:%s / After:%s,日期格式錯誤",BeforeDate.getText().toString(),AfterDate.getText().toString()));
+        return false;
+    }
+
+    public boolean CompareDate(EditText BeforeDate,EditText AfterDate,String EditName, Context context) {
+        if(!CompareDate(BeforeDate,AfterDate)){
+            Toast.makeText(context,EditName+"日期不合", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean CompareTime(String BeforeTime,String AfterTime ) {
+        if(calendarFunction.CompareTime(BeforeTime,AfterTime)) return true;
+        Log.w("時間順序錯誤",String.format("Before:%s / After:%s,時間格式錯誤",BeforeTime,AfterTime));
+        return false;
+    }
+
+    public boolean CompareTime(EditText BeforeTime,EditText AfterTime ) {
+        if(calendarFunction.CompareTime(BeforeTime.getText().toString(),AfterTime.getText().toString())) return true;
+        Log.w("EditText 時間順序錯誤",String.format("Before:%s / After:%s,時間格式錯誤",BeforeTime.getText().toString(),AfterTime.getText().toString()));
+        return false;
+    }
+
+    public boolean CompareTime(EditText BeforeTime,EditText AfterTime,String EditName, Context context) {
+        if(!CompareTime(BeforeTime,AfterTime)){
+            Toast.makeText(context,EditName+"時間不合", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
     }
 }

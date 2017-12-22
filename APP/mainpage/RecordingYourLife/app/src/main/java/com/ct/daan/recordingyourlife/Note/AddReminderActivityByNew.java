@@ -13,8 +13,8 @@ import android.widget.Spinner;
 import android.widget.Switch;
 
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.Note_Reminder_DbTable;
-import com.ct.daan.recordingyourlife.Table.ReminderDbTable;
+import com.ct.daan.recordingyourlife.DbTable.Note_Reminder_DbTable;
+import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 
 
 public class AddReminderActivityByNew extends AppCompatActivity {

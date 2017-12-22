@@ -161,6 +161,17 @@ public class CalendarFunction {
         return calendar;
     }
 
+    public boolean isCalendarType(String text,String format){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format, Locale.TAIWAN);
+        Calendar calendar= Calendar.getInstance();
+        try{
+            calendar.setTime(simpleDateFormat.parse(text));
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
     public String getString(Calendar calendar,String format){
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat(format, Locale.TAIWAN);
         String Cal_String=simpleDateFormat.format(calendar);

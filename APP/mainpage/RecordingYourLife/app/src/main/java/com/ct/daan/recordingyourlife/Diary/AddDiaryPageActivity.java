@@ -13,9 +13,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.DiaryDbTable;
+import com.ct.daan.recordingyourlife.DbTable.DiaryDbTable;
 
 import java.util.Locale;
 

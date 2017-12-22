@@ -6,17 +6,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.ExamDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ExamDbTable;
 
 
 public class ExamActivity extends AppCompatActivity {
@@ -41,8 +38,8 @@ public class ExamActivity extends AppCompatActivity {
         OpOrCrDb();
         ExamDb = new ExamDbTable(SQLiteDB_Path,db);
         ExamDb.OpenOrCreateTb();
-        ExamDb.deleteAllRow();
-        ExamDb.AddExamData();
+        //ExamDb.deleteAllRow();
+        //ExamDb.AddExamData();
         UpdateAdapter_Exam();
     }
 

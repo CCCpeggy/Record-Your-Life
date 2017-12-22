@@ -6,4 +6,29 @@
         <item>月</item>
         <item>年</item>
     </string-array>
+    <string name="action_settings">Settings</string>
+    <string-array name="pref_table_days">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string name="custom_dialog">客製化對話框</string>
+    <string name="ok">確定</string>
+    <string name="input_ur_name">請輸入科目</string>
+    <string name="input_title">請輸選擇科目</string>
+    <string name="hi">老師是</string>
+    <string name="sub">科目是</string>
+    <string name="note">便條</string>
+    <string name="exam">考試</string>
+    <string name="event">日曆</string>
+    <string name="diary">日記</string>
+    <string name="schedule">行程</string>
+    <string name="table">課表</string>
+    <string name="search">搜尋</string>
+    <string name="edit">編輯</string>
+    <string name="delete">刪除</string>
 </resources>

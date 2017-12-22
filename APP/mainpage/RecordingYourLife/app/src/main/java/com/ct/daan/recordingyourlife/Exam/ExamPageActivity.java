@@ -20,14 +20,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
-import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.ClassDbTable;
-import com.ct.daan.recordingyourlife.Table.ClassWeekDbTable;
-import com.ct.daan.recordingyourlife.Table.ExamDbTable;
-import com.ct.daan.recordingyourlife.Table.SubjectDbTable;
-import com.ct.daan.recordingyourlife.Table.TableDbTable;
-import com.ct.daan.recordingyourlife.Table.WeekDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ClassDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ClassWeekDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ExamDbTable;
+import com.ct.daan.recordingyourlife.DbTable.SubjectDbTable;
+import com.ct.daan.recordingyourlife.DbTable.TableDbTable;
+import com.ct.daan.recordingyourlife.DbTable.WeekDbTable;
 
 import java.util.Locale;
 
@@ -68,31 +67,31 @@ public class ExamPageActivity extends AppCompatActivity {
         OpOrCrDb();
         TableDb= new TableDbTable(SQLiteDB_Path,db);
         TableDb.OpenOrCreateTb();
-        TableDb.deleteAllRow();
-        TableDb.AddTalbeData();
+        //TableDb.deleteAllRow();
+        //TableDb.AddTalbeData();
 
         SubjectDb=new SubjectDbTable(SQLiteDB_Path,db);
         SubjectDb.OpenOrCreateTb();
-        SubjectDb.deleteAllRow();
-        SubjectDb.AddSubjectData();
+        //SubjectDb.deleteAllRow();
+        //SubjectDb.AddSubjectData();
 
         ClassDb=new ClassDbTable(SQLiteDB_Path,db);
         ClassDb.OpenOrCreateTb();
 
         WeekDb=new WeekDbTable(SQLiteDB_Path,db);
         WeekDb.OpenOrCreateTb();
-        WeekDb.deleteAllRow();
-        WeekDb.AddWeekData();
+        //WeekDb.deleteAllRow();
+        //WeekDb.AddWeekData();
 
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
         ClassWeekDb.OpenOrCreateTb();
-        ClassWeekDb.deleteAllRow();
-        ClassWeekDb.AddClassWeekData();
+        //ClassWeekDb.deleteAllRow();
+        //ClassWeekDb.AddClassWeekData();
 
         ExamDb=new ExamDbTable(SQLiteDB_Path,db);
         ExamDb.OpenOrCreateTb();
-        ExamDb.deleteAllRow();
-        ExamDb.AddExamData();
+        //ExamDb.deleteAllRow();
+        //ExamDb.AddExamData();
     }
     private void putValue(){
         //加入Table_sp資料

@@ -3,7 +3,6 @@ package com.ct.daan.recordingyourlife.Event;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,10 +15,9 @@ import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.EventDbTable;
-
-import java.util.Locale;
+import com.ct.daan.recordingyourlife.DbTable.EventDbTable;
 
 public class EventActivity extends AppCompatActivity {
     private SQLiteDatabase db=null;
@@ -54,6 +52,7 @@ public class EventActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent intent  = new Intent(EventActivity.this,AddEventActivity.class);
+            intent.putExtra("DATE",calView.getDate());
             startActivityForResult(intent,ADDEVENTPAGE);
         }
     };
@@ -102,6 +101,9 @@ public class EventActivity extends AppCompatActivity {
             return;
         }
         try {
+            CalendarFunction calendarFunction=new CalendarFunction();
+            Calendar calendar=calendarFunction.DateTextToCalendarType(date);
+            calView.setDate(calendar.getTimeInMillis());
             Cursor Event_Cursor=EventDb.getCursorByDay(date);
             SimpleCursorAdapter adapter=new SimpleCursorAdapter(EventActivity.this,android.R.layout.simple_list_item_1,Event_Cursor,new String[]{"日子名稱"},new int[]{android.R.id.text1},0);
             EventList.setAdapter(adapter);
@@ -122,17 +124,6 @@ public class EventActivity extends AppCompatActivity {
             UpdateAdapter(date);
         }
     };
-
-    private Calendar StringtoCalendar(String date){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf.parse(date));
-        }catch (Exception e){
-            Log.v("日期格式不符合",date);
-        }
-        return Calendar;
-    }
 
 
     private void OpOrCrDb(){

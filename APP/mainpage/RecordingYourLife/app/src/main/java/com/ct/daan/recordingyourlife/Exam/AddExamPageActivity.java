@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -20,14 +23,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
-import com.ct.daan.recordingyourlife.Diary.AddDiaryPageActivity;
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.ClassDbTable;
-import com.ct.daan.recordingyourlife.Table.ClassWeekDbTable;
-import com.ct.daan.recordingyourlife.Table.ExamDbTable;
-import com.ct.daan.recordingyourlife.Table.SubjectDbTable;
-import com.ct.daan.recordingyourlife.Table.TableDbTable;
-import com.ct.daan.recordingyourlife.Table.WeekDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ClassDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ClassWeekDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ExamDbTable;
+import com.ct.daan.recordingyourlife.DbTable.SubjectDbTable;
+import com.ct.daan.recordingyourlife.DbTable.TableDbTable;
+import com.ct.daan.recordingyourlife.DbTable.WeekDbTable;
 
 import java.util.Locale;
 
@@ -98,25 +100,25 @@ public class AddExamPageActivity extends AppCompatActivity {
         OpOrCrDb();
         TableDb= new TableDbTable(SQLiteDB_Path,db);
         TableDb.OpenOrCreateTb();
-        TableDb.deleteAllRow();
-        TableDb.AddTalbeData();
+        //TableDb.deleteAllRow();
+        //TableDb.AddTalbeData();
 
         //SubjectDb資料庫建立
         SubjectDb=new SubjectDbTable(SQLiteDB_Path,db);
         SubjectDb.OpenOrCreateTb();
-        SubjectDb.deleteAllRow();
-        SubjectDb.AddSubjectData();
+        //SubjectDb.deleteAllRow();
+        //SubjectDb.AddSubjectData();
 
         //ClassDb資料庫建立
         ClassDb=new ClassDbTable(SQLiteDB_Path,db);
         ClassDb.OpenOrCreateTb();
-        ClassDb.deleteAllRow();
-        ClassDb.AddClassData();
+        //ClassDb.deleteAllRow();
+        //ClassDb.AddClassData();
 
         WeekDb=new WeekDbTable(SQLiteDB_Path,db);
         WeekDb.OpenOrCreateTb();
-        WeekDb.deleteAllRow();
-        WeekDb.AddWeekData();
+        //WeekDb.deleteAllRow();
+        //WeekDb.AddWeekData();
 
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
         ClassWeekDb.OpenOrCreateTb();
@@ -290,18 +292,34 @@ public class AddExamPageActivity extends AppCompatActivity {
     private Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String score= Score_et.getText().toString();
+            /*String score= Score_et.getText().toString();
             ExamDb.insertExamData(ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
             setResult(RESULT_OK,intent);
-            finish();
+            finish();*/
         }
     };
 
-    private Button.OnClickListener Delete_btn_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            setResult(RESULT_DELETE,intent);
-            finish();
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.done_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                String score= Score_et.getText().toString();
+                ExamDb.insertExamData(ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
+                setResult(RESULT_OK,intent);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-    };
+    }
 }
