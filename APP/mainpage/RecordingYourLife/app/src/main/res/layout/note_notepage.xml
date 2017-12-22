@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <EditText
         android:id="@+id/et"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_weight="1"
         android:ems="10"
         android:inputType="textPersonName"
@@ -15,40 +16,15 @@
         android:text="Name"
         android:textStyle="bold" />
 
-
     <EditText
         android:id="@+id/et2"
         android:layout_width="match_parent"
-        android:layout_height="296dp"
+        android:layout_height="455dp"
         android:ems="10"
         android:gravity="top|left"
+        android:inputType="textMultiLine"
         android:linksClickable="false"
         android:longClickable="false"
-        android:inputType="textMultiLine"
         android:text="Name" />
-
-    <Button
-        android:id="@+id/btn_reminder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:minHeight="177dp"
-        android:text="提醒" />
-
-    <Button
-        android:id="@+id/btn_Complete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:minHeight="177dp"
-        android:text="完成" />
-
-    <Button
-        android:id="@+id/btn_Delete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:minHeight="177dp"
-        android:text="刪除" />
 
 </LinearLayout>

@@ -1,22 +1,36 @@
 package com.ct.daan.recordingyourlife.Note;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TimePicker;
 
 import com.ct.daan.recordingyourlife.Class.OthersFunction;
+import com.ct.daan.recordingyourlife.DbTable.All_Table;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.NoteDbTable;
 import com.ct.daan.recordingyourlife.DbTable.Note_Reminder_DbTable;
 import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
+import com.ct.daan.recordingyourlife.Schedule.NewSchedulePageActivity;
+
+import java.util.Locale;
 
 /**
  * Created by info on 2017/12/2.
@@ -66,6 +80,7 @@ public class RemindersActivity extends AppCompatActivity {
 
         Add_btn=(FloatingActionButton)findViewById(R.id.fab);
         Add_btn.setOnClickListener(Add_btn_Listener);
+        Add_btn.setImageResource(R.drawable.icon_add);
         listView01=(ListView)findViewById(R.id.reminder_lv);
         OpOrCrDb();
 

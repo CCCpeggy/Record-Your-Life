@@ -54,6 +54,7 @@ public class DiaryActivity extends AppCompatActivity {
         //變數指定物件
         listView01=(ListView)findViewById(R.id.listv);
         btnAdd=(FloatingActionButton)findViewById(R.id.fab);
+        btnAdd.setImageResource(R.drawable.icon_add);
 
         //監控事件
         btnAdd.setOnClickListener(btnAddClick);

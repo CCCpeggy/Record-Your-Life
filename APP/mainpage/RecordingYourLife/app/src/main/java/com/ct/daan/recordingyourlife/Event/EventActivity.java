@@ -33,6 +33,7 @@ public class EventActivity extends AppCompatActivity {
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(onClickListener);
+        fab.setImageResource(R.drawable.icon_add);
 
         OpOrCrDb();
         EventDb=new EventDbTable(SQLiteDB_Path,db);

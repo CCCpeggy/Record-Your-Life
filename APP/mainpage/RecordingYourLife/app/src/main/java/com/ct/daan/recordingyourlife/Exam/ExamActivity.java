@@ -31,6 +31,7 @@ public class ExamActivity extends AppCompatActivity {
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(FloatingButton);
+        fab.setImageResource(R.drawable.icon_add);
 
         initView();
 

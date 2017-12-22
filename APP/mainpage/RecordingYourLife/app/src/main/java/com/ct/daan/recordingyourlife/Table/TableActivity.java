@@ -1,6 +1,9 @@
 package com.ct.daan.recordingyourlife.Table;
 
+import android.app.AlertDialog;
 import android.app.SearchManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,7 +13,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
@@ -209,12 +215,22 @@ public class TableActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_delete:
                 Log.v("刪除課表",Table_id+"");
-                Table.deleteAllTable();
-                Table=new All_Table(SQLiteDB_Path,db);
+                new AlertDialog.Builder(TableActivity.this)
+                        .setMessage(R.string.delete_content)
+                        .setTitle(R.string.delete_tilte)
+                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Table.deleteAllTable();
+                                Table=new All_Table(SQLiteDB_Path,db);
 
-                updateSpinner();
-                Table_id=Table.getMain_id();
-                setSpinnerByValue(name,Table_id,Table.getAllTableCursors(),0);
+                                updateSpinner();
+                                Table_id=Table.getMain_id();
+                                setSpinnerByValue(name,Table_id,Table.getAllTableCursors(),0);
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

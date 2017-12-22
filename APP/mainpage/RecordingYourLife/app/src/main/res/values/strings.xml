@@ -20,6 +20,10 @@
     <string name="ok">確定</string>
     <string name="input_ur_name">請輸入科目</string>
     <string name="input_title">請輸選擇科目</string>
+    <string name="leave_tilte">離開確認</string>
+    <string name="leave_content">確認要離開嗎</string>
+    <string name="delete_tilte">刪除確認</string>
+    <string name="delete_content">確認要刪除嗎</string>
     <string name="hi">老師是</string>
     <string name="sub">科目是</string>
     <string name="note">便條</string>
@@ -31,4 +35,6 @@
     <string name="search">搜尋</string>
     <string name="edit">編輯</string>
     <string name="delete">刪除</string>
+    <string name="remind">提醒</string>
+    <string name="done">完成</string>
 </resources>

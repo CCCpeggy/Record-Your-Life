@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +22,6 @@ import java.util.ArrayList;
 
 public class NewNotePageActivity extends AppCompatActivity {
     EditText et,et2;
-    Button btn_Complete,btn_Delete,btn_Reminder;
     Intent intent;
     ArrayList<Integer> reminder_ids;
     final static private int REMINDERSPAGE=4651;
@@ -31,12 +33,6 @@ public class NewNotePageActivity extends AppCompatActivity {
 
         et=(EditText) findViewById(R.id.et);
         et2=(EditText) findViewById(R.id.et2);
-        btn_Complete=(Button)findViewById(R.id.btn_Complete) ;
-        btn_Delete=(Button)findViewById(R.id.btn_Delete);
-        btn_Reminder=(Button)findViewById(R.id.btn_reminder);
-        btn_Delete.setEnabled(false);
-        btn_Complete.setOnClickListener(btn_Complete_Listener);
-        btn_Reminder.setOnClickListener(btn_Reminder_Listener);
 
         intent=getIntent();
         intent.putExtra("REMINDERIDS",reminder_ids);
@@ -46,17 +42,14 @@ public class NewNotePageActivity extends AppCompatActivity {
         et2.setText("");
     }
 
-    private Button.OnClickListener btn_Complete_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+    void Complete() {
             intent.putExtra("CHANGED_TITLE",et.getText().toString());
             intent.putExtra("CHANGED_CONTENT",et2.getText().toString());
             intent.putExtra("REMINDERIDS",reminder_ids);
             Log.v("回傳資料", String.format("回傳資料：%s=%s,%s=%s","CHANGED_TITLE",et.getText(),"CHANGED_CONTENT",et2.getText()));
             setResult(RESULT_OK,intent);
             finish();
-        }
-    };
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -75,12 +68,33 @@ public class NewNotePageActivity extends AppCompatActivity {
     }
 
 
-    private Button.OnClickListener btn_Reminder_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent  = new Intent(NewNotePageActivity.this,RemindersActivityByNew.class);
-            intent.putExtra("REMINDERIDS",reminder_ids);
-            startActivityForResult(intent,REMINDERSPAGE);
+    void Reminder(){
+        Intent intent  = new Intent(NewNotePageActivity.this,RemindersActivityByNew.class);
+        intent.putExtra("REMINDERIDS",reminder_ids);
+        startActivityForResult(intent,REMINDERSPAGE);
+    }
+
+
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.remind_delete_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_reminder:
+                Reminder();
+                return true;
+            case R.id.action_done:
+                Complete();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-    };
+    }
 }

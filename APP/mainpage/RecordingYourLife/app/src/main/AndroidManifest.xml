@@ -19,19 +19,54 @@
         <activity android:name=".Note.NoteActivity"
             android:label="@string/note"/>
         <activity android:name=".Note.NotePageActivity"
-            android:label="@string/note"/>
+            android:label="@string/note"
+            android:parentActivityName=".Note.NoteActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Note.NotePageActivity" />
+        </activity>
         <activity android:name=".Note.NewNotePageActivity"
-            android:label="@string/note"/>
+            android:label="@string/note"
+            android:parentActivityName=".Note.NoteActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Note.NewNotePageActivity" />
+        </activity>
         <activity android:name=".Note.RemindersActivityByNew"
-            android:label="@string/note"/>
+            android:label="@string/remind"
+            android:parentActivityName=".Note.NoteActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Note.RemindersActivityByNew" />
+        </activity>
         <activity android:name=".Note.AddReminderActivityByNew"
-            android:label="@string/note"/>
+            android:label="@string/remind"
+            android:parentActivityName=".Note.NoteActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Note.AddReminderActivityByNew" />
+        </activity>
         <activity android:name=".Note.AddReminderActivity"
-            android:label="@string/note"/>
+            android:label="@string/remind"
+            android:parentActivityName=".Note.ReminderActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Note.AddReminderActivity" />
+        </activity>
         <activity android:name=".Note.ReminderActivity"
-            android:label="@string/note"/>
+            android:label="@string/remind"
+            android:parentActivityName=".Note.ReminderActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Note.ReminderActivity" />
+        </activity>
         <activity android:name=".Note.RemindersActivity"
-            android:label="@string/note"/>
+            android:label="@string/remind"
+            android:parentActivityName=".Note.ReminderActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Note.RemindersActivity" />
+        </activity>
         <activity android:name=".Schedule.NewSchedulePageActivity"
             android:label="@string/schedule"
             android:parentActivityName=".MainActivity" >

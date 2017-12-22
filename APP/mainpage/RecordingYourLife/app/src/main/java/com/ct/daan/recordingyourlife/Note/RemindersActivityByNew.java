@@ -72,6 +72,7 @@ public class RemindersActivityByNew extends AppCompatActivity {
 
         Add_btn=(FloatingActionButton)findViewById(R.id.fab);
         Add_btn.setOnClickListener(Add_btn_Listener);
+        Add_btn.setImageResource(R.drawable.icon_add);
         listView01=(ListView)findViewById(R.id.reminder_lv);
         OpOrCrDb();
 
