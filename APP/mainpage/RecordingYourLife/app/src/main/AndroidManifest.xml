@@ -80,23 +80,63 @@
                 android:value=".Schedule.NewSchedulePageActivity" />
         </activity>
         <activity android:name=".Event.AddEventActivity"
-            android:label="@string/event"/>
+            android:label="@string/event"
+            android:parentActivityName=".Event.EventActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Event.AddEventActivity" />
+        </activity>
         <activity android:name=".Event.ChangEventActivity"
-            android:label="@string/event"/>
+            android:label="@string/event"
+            android:parentActivityName=".Event.EventActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Event.AddEventActivity" />
+        </activity>
         <activity android:name=".Event.EventActivity"
-            android:label="@string/event"/>
+            android:label="@string/event"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Exam.ExamActivity" />
+        </activity>
         <activity android:name=".Diary.DiaryActivity"
-            android:label="@string/diary"/>
+            android:label="@string/diary"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Diary.DiaryActivity" />
+        </activity>
         <activity android:name=".Diary.DiaryPageActivity"
-            android:label="@string/diary"/>
+            android:label="@string/diary"
+            android:parentActivityName=".Diary.DiaryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Diary.DiaryPageActivity" />
+        </activity>
         <activity android:name=".Diary.AddDiaryPageActivity"
             android:label="@string/diary"/>
         <activity android:name=".Exam.ExamActivity"
-            android:label="@string/exam"/>
+            android:label="@string/exam"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Exam.ExamActivity" />
+        </activity>
         <activity android:name=".Exam.ExamPageActivity"
-            android:label="@string/exam"/>
+            android:label="@string/exam"
+            android:parentActivityName=".Exam.ExamActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Exam.ExamPageActivity" />
+        </activity>
         <activity android:name=".Exam.AddExamPageActivity"
-            android:label="@string/exam"/>
+            android:label="@string/exam"
+            android:parentActivityName=".Exam.ExamActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Exam.AddExamPageActivity" />
+        </activity>
         <activity android:name=".Table.AddSubjectTableActivity"
             android:label="@string/table"
             android:parentActivityName=".Table.TableActivity" >

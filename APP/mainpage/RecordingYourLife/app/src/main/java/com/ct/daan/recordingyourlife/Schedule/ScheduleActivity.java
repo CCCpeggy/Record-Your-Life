@@ -46,15 +46,13 @@ public class ScheduleActivity extends Fragment {
     CalendarFunction calFunction;
     private SQLiteDatabase db=null;
     private String SQLiteDB_Path="student_project.db";
-    int Week_id;
-    TableLayout layout;
     A_Day_Table TableClass;
     ScheduleDbTable ScheduleDb;
     TablesClass tablesClass;
     ScheduleClass Schedules;
     String Now_date;
     TextView date_tv;
-    Button Next_btn,Pre_btn;
+    ImageButton Next_btn,Pre_btn;
     FloatingActionButton btnAdd;
     Context context;
     View v;
@@ -99,7 +97,7 @@ public class ScheduleActivity extends Fragment {
         }
     };
 
-    Button.OnClickListener onClickListener= new Button.OnClickListener() {
+    ImageButton.OnClickListener onClickListener= new ImageButton.OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
@@ -342,8 +340,10 @@ public class ScheduleActivity extends Fragment {
         Resources resources=ScheduleActivity.this.getResources();
         calFunction=new CalendarFunction();
         context=getContext();
-        Next_btn=(Button)v.findViewById(R.id.btn_next);
-        Pre_btn=(Button)v.findViewById(R.id.btn_previous);
+        Next_btn=(ImageButton)v.findViewById(R.id.btn_next);
+        Pre_btn=(ImageButton)v.findViewById(R.id.btn_previous);
+        Next_btn.setImageResource(R.drawable.icon_after);
+        Pre_btn.setImageResource(R.drawable.icon_before);
         btnAdd=(FloatingActionButton)v.findViewById(R.id.fab);
         Next_btn.setOnClickListener(onClickListener);
         Pre_btn.setOnClickListener(onClickListener);

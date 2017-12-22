@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.ct.daan.recordingyourlife.Diary.DiaryActivity;
 import com.ct.daan.recordingyourlife.Event.EventActivity;
@@ -60,7 +61,7 @@ public class MainPageActivity extends Fragment {
         Button Diary_btn=v.findViewById(R.id.diary_btn);
         Button Test_btn=v.findViewById(R.id.test_btn);
         Button Table_btn=v.findViewById(R.id.table_btn);
-        
+
         Calendar_btn.setOnClickListener(btn_listener);
         Note_btn.setOnClickListener(btn_listener);
         Diary_btn.setOnClickListener(btn_listener);

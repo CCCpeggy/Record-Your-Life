@@ -112,7 +112,7 @@ public class TableDbTable {
         int  main[]={1,0,0};
         String  schedule_start[]={"2017-09-04","2017-07-04","2017-07-08"};
         String  schedule_end[]={"2018-01-26","2018-02-07","2018-02-13"};
-        int color[]={Color.parseColor("#f94141"),Color.parseColor("#5bdfd6"),Color.parseColor("#c8f941")};
+        int color[]={Color.parseColor("#f94141"),Color.parseColor("#20b1a7"),Color.parseColor("#95b63c")};
         for(int i=0;i< days.length&&i<name.length;i++){
             insertTableData( name[i],days[i],main[i],schedule_start[i],schedule_end[i],color[i]);
         }

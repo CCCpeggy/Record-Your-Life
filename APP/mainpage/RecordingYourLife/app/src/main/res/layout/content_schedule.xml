@@ -11,10 +11,10 @@
         android:gravity="center"
         tools:style="@style/Animation.AppCompat.Dialog">
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_previous"
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="0.32"
             android:drawableTop="@drawable/icon_before" />
 
@@ -26,13 +26,12 @@
             android:gravity="center_horizontal"
             android:text="TextView" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_next"
             android:layout_width="1dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="0.32"
-            android:drawableTop="@drawable/icon_after"
-            />
+            android:drawableTop="@drawable/icon_after" />
     </LinearLayout>
 
     <ScrollView
