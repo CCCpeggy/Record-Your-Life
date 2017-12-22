@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="181dp"
+        android:text="Name"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/et2"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:ems="10"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:linksClickable="false"
+        android:longClickable="false"
+        android:text="Name" />
+
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TableRow android:layout_width="wrap_content">
+
+            <Button
+                android:id="@+id/btn_reminder"
+                android:layout_width="126dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:minHeight="177dp"
+                android:text="提醒" />
+
+            <Button
+                android:id="@+id/btn_Complete"
+                android:layout_width="114dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:minHeight="177dp"
+                android:text="完成" />
+
+            <Button
+                android:id="@+id/btn_Delete"
+                android:layout_width="144dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:minHeight="177dp"
+                android:text="刪除" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</LinearLayout>

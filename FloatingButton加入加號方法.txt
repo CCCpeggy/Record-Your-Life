@@ -1,0 +1,23 @@
+layout下的..._activity.xml加入
+
+<android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:backgroundTint="@color/colorPrimary"
+        android:scaleType="center"
+        />
+
+(以Note為例)
+Note下的NoteActivity.java改為
+
+private void initView() {
+        //變數指定物件
+        listView01=(ListView)findViewById(R.id.listv);
+        btnAdd=(FloatingActionButton)findViewById(R.id.fab);
+        btnAdd.setImageResource(R.drawable.add1); <<這行!
+        //監控事件
+        btnAdd.setOnClickListener(btnAddClick);
+    }
