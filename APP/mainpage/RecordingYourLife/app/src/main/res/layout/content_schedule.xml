@@ -16,7 +16,7 @@
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.32"
-            android:text="V" />
+            android:drawableTop="@drawable/icon_before" />
 
         <TextView
             android:id="@+id/date_tv"
@@ -31,7 +31,8 @@
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.32"
-            android:text="V" />
+            android:drawableTop="@drawable/icon_after"
+            />
     </LinearLayout>
 
     <ScrollView

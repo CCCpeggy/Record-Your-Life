@@ -4,15 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -53,6 +57,7 @@ public class ScheduleActivity extends Fragment {
     Context context;
     View v;
     private static final int PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
+    private static final int TABLEICON=4651,CALENDARICON=1468;
 
     private OnFragmentInteractionListener mListener;
 
@@ -75,8 +80,10 @@ public class ScheduleActivity extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
         }
+
+
+
     }
 
     TableRow.OnClickListener TableClick= new TableRow.OnClickListener() {
@@ -136,7 +143,7 @@ public class ScheduleActivity extends Fragment {
                 i++;
             }
             else{
-                addnode(schedule_time,Schedule_item.Name);
+                addnode(schedule_time,Schedule_item.Name,CALENDARICON);
                 j++;
             }
         }
@@ -147,7 +154,7 @@ public class ScheduleActivity extends Fragment {
         for(;j<Schedule.items.length;j++) {
             item Schedule_item=Schedule.items[j];
             String schedule_time=Schedule_item.Time;
-            addnode(schedule_time,Schedule_item.Name);
+            addnode(schedule_time,Schedule_item.Name,CALENDARICON);
         }
     }
 
@@ -163,10 +170,10 @@ public class ScheduleActivity extends Fragment {
 
     private int viewScheduleAndTable(int table_index, Table table, ScheduleClass Schedule, int Schedule_position){
         if(!table.isOpen){
-            addnode(table.classes[0].start_time, table.Name,table_index+"",table.colorR,table.colorG,table.colorB);
+            addnode(table.classes[0].start_time, table.Name,table_index+"",table.colorR,table.colorG,table.colorB,TABLEICON);
             return Schedule_position;
         }
-        addnode(table.classes[0].start_time, table.Name,table_index+"",table.colorR,table.colorG,table.colorB);
+        addnode(table.classes[0].start_time, table.Name,table_index+"",table.colorR,table.colorG,table.colorB,TABLEICON);
         int i;
         for(i=0;i<table.classes.length && Schedule_position<Schedule.items.length;){
             Class Oneclass=table.classes[i];
@@ -178,7 +185,7 @@ public class ScheduleActivity extends Fragment {
                 i++;
             }
             else{
-                addnode(schedule_time,Schedule_item.Name);
+                addnode(schedule_time,Schedule_item.Name,CALENDARICON);
                 Schedule_position++;
             }
         }
@@ -190,15 +197,15 @@ public class ScheduleActivity extends Fragment {
         return Schedule_position;
     }
 
-    private void addnode(String Time_String,String Name_String){
-        addnode( Time_String,Name_String,"",255,255,255);
+    private void addnode(String Time_String,String Name_String,int image){
+        addnode( Time_String,Name_String,"",255,255,255,image);
     }
 
     private void addchildnode(String Time_String,String Name_String,Context context){
         addchildnode( Time_String,Name_String,255,255,255);
     }
 
-    private void addnode(String Time_String,String Name_String,String Table_index,int colorR,int colorG,int colorB){
+    private void addnode(String Time_String,String Name_String,String Table_index,int colorR,int colorG,int colorB,int image){
         Log.v("addnode",String.format("Time_String=%s,Name_String=%s, colorR=%d,colorG=%d,colorB=%d",Time_String,Name_String,colorR,colorG,colorB));
         TableLayout slayout;
         slayout=(TableLayout)v.findViewById(R.id.SchLayout);
@@ -212,16 +219,19 @@ public class ScheduleActivity extends Fragment {
         nodeLayout.setOnClickListener(TableClick);
         Button btn2= (Button) nodeLayout.findViewById(R.id.bt2);
         btn2.setText(Table_index);
+        ImageButton btn= (ImageButton) nodeLayout.findViewById(R.id.bt);
+        GetFirstFruit(btn,image);
         name.setText(Name_String);
         slayout.addView(nodeLayout);
     }
-    private void addnode(String Time_String,String Name_String,String Table_index){
-        addnode(Time_String, Name_String, Table_index, 255,255,255);
+    private void addnode(Spanned span,String Time_String,String Name_String,String Table_index,int image){
+        addnode(Time_String, Name_String, Table_index, 255,255,255,image);
     }
 
-    private void addnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
-        addnode( Time_String,Name_String,"",colorR,colorG,colorB);
+    private void addnode(String Time_String,String Name_String,int colorR,int colorG,int colorB,int image){
+        addnode(Time_String,Name_String,"",colorR,colorG,colorB,image);
     }
+
 
 
     private void addchildnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
@@ -236,6 +246,26 @@ public class ScheduleActivity extends Fragment {
         TextView name = (TextView) nodeLayout.findViewById(R.id.name_tv);
         name.setText(Name_String);
         slayout.addView(nodeLayout);
+    }
+
+    private void GetFirstFruit(ImageButton btn,int i){
+        String uri;
+        switch (i){
+            case TABLEICON:
+                uri="icon_table";
+                break;
+            case CALENDARICON:
+                uri="icon_calendar";
+                break;
+            default:
+                return;
+        }
+        uri = "@drawable/" + uri; //圖片路徑和名稱
+
+        int imageResource = getResources().getIdentifier(uri, null, context.getPackageName());
+
+        btn.setImageResource(imageResource);
+
     }
 
     public void onActivityResult(int requestCode,int resultCode,Intent data) {
@@ -265,8 +295,6 @@ public class ScheduleActivity extends Fragment {
             Log.e("#001","資料庫載入錯誤");
         }
     }
-
-
 
 
     public Button AddButton(String text, int id, boolean color){
@@ -310,6 +338,19 @@ public class ScheduleActivity extends Fragment {
         Now_date= calFunction.getTodayDate();
         date_tv=(TextView)v.findViewById(R.id.date_tv);
         date_tv.setText(Now_date);
+        btnAdd.setImageResource(R.drawable.icon_add);
+
+
+        Html.ImageGetter imgGetter = new Html.ImageGetter() {
+            @Override
+            public Drawable getDrawable(String source) {
+                Drawable drawable = null;
+                drawable = ScheduleActivity.this.getResources().getDrawable(Integer.parseInt(source));
+                drawable.setBounds(0, 0, drawable.getIntrinsicWidth(),
+                        drawable.getIntrinsicHeight());
+                return drawable;
+            }
+        };
 
         initDateBase();
 
