@@ -49,18 +49,12 @@ public class NoteActivity extends AppCompatActivity {
         OpOrCrDb();
         NoteDb=new NoteDbTable(SQLiteDB_Path,db);
         NoteDb.OpenOrCreateTb();
-        NoteDb.deleteAllRow();
-        NoteDb.AddNoteData();
 
         NoteReminderDb=new Note_Reminder_DbTable(SQLiteDB_Path,db);
         NoteReminderDb.OpenOrCreateTb();
-        NoteReminderDb.deleteAllRow();
-        NoteReminderDb.AddNoteReminderData();
 
         ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
         ReminderDb.OpenOrCreateTb();
-        ReminderDb.deleteAllRow();
-        ReminderDb.AddReminderData();
 
         UpdateAdapter_Note();
 
@@ -135,23 +129,6 @@ public class NoteActivity extends AppCompatActivity {
         }
     }
 
-    //打開或新增資料表
-    private void OpOrCrTb(String cmd){
-        try{
-            db.execSQL(cmd);
-            Log.v("資料表","資料表建立或開啟成功");
-        }catch (Exception ex){
-            Log.e("#002","資料表建立或開啟錯誤");
-        }
-    }
-
-    private Button.OnClickListener btnUpdateClick=new Button.OnClickListener(){
-
-        @Override
-        public void onClick(View v) {
-
-        }
-    };
 
     private FloatingActionButton.OnClickListener btnAddClick=new FloatingActionButton.OnClickListener(){
         int n=0;

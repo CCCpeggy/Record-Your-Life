@@ -38,8 +38,8 @@ public class EventActivity extends AppCompatActivity {
         OpOrCrDb();
         EventDb=new EventDbTable(SQLiteDB_Path,db);
         EventDb.OpenOrCreateTb();
-        EventDb.deleteAllRow();
-        EventDb.AddEventData();
+        //EventDb.deleteAllRow();
+        //EventDb.AddEventData();
 
         EventList =(ListView)findViewById(R.id.Event);
         calView = (CalendarView)findViewById(R.id.calendarView);

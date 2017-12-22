@@ -30,7 +30,7 @@ public class A_Day_Table  extends WeekDbTable{
         super(path,Database);
         calFunction=new CalendarFunction();
         initAllDb(path,Database);
-        AddTableData();
+        //AddTableData();
         setDays(date);
     }
 
@@ -110,6 +110,7 @@ public class A_Day_Table  extends WeekDbTable{
     }
 
     public void outputAllWeekIds(){
+        if(weekIds==null)return;
         for (int i : weekIds){
             Log.v("List<Integer> WeekIds",i+"");
         }
@@ -166,9 +167,9 @@ public class A_Day_Table  extends WeekDbTable{
 
     //取得多個課表
     public TablesClass getTablesClass(){
+        if(weekIds==null||weekIds.size()<=0)return new TablesClass(0);
         Log.v("weekIds.size()",weekIds.size()+"");
         TablesClass Tables=new TablesClass(weekIds.size());
-        if(weekIds.size()<=0)return Tables;
         int i=0;
         for (int id:weekIds){
             Tables.Tables[i]=getClass(id);

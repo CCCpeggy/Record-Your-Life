@@ -1,21 +1,40 @@
 package com.ct.daan.recordingyourlife;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.ct.daan.recordingyourlife.DbTable.ClassDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ClassWeekDbTable;
+import com.ct.daan.recordingyourlife.DbTable.DiaryDbTable;
+import com.ct.daan.recordingyourlife.DbTable.EventDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ExamDbTable;
+import com.ct.daan.recordingyourlife.DbTable.NoteDbTable;
+import com.ct.daan.recordingyourlife.DbTable.NoteScheduleDbTable;
+import com.ct.daan.recordingyourlife.DbTable.Note_Reminder_DbTable;
+import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
+import com.ct.daan.recordingyourlife.DbTable.ScheduleDbTable;
+import com.ct.daan.recordingyourlife.DbTable.SubjectDbTable;
+import com.ct.daan.recordingyourlife.DbTable.TableDbTable;
+import com.ct.daan.recordingyourlife.DbTable.WeekDbTable;
+import com.ct.daan.recordingyourlife.Diary.DiaryActivity;
 import com.ct.daan.recordingyourlife.MainPage.MainPageActivity;
 import com.ct.daan.recordingyourlife.MainPage.PagerAdapter;
 import com.ct.daan.recordingyourlife.Schedule.ScheduleActivity;
 
 public class MainActivity extends AppCompatActivity  implements MainPageActivity.OnFragmentInteractionListener,ScheduleActivity.OnFragmentInteractionListener{
-
+    private SQLiteDatabase db=null;
+    private String SQLiteDB_Path="student_project.db";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //deleteAllData();
+        AddAllData();
 
         TabLayout tabLayout=(TabLayout)findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText("主畫面"));
@@ -44,6 +63,95 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
             }
         });
 
+    }
+    
+    ClassDbTable classDbTable;
+    ClassWeekDbTable classWeekDbTable;
+    DiaryDbTable diaryDbTable;
+    EventDbTable eventDbTable;
+    ExamDbTable examDbTable;
+    Note_Reminder_DbTable note_reminder_dbTable;
+    NoteDbTable noteDbTable;
+    NoteScheduleDbTable noteScheduleDbTable;
+    ReminderDbTable reminderDbTable;
+    ScheduleDbTable scheduleDbTable;
+    SubjectDbTable subjectDbTable;
+    TableDbTable tableDbTable;
+    WeekDbTable weekDbTable;
+    
+    private void initDateBase(){
+        OpOrCrDb();
+        classDbTable=new ClassDbTable(SQLiteDB_Path,db);
+        classWeekDbTable=new ClassWeekDbTable(SQLiteDB_Path,db);
+        diaryDbTable=new DiaryDbTable(SQLiteDB_Path,db);
+        eventDbTable=new EventDbTable(SQLiteDB_Path,db);
+        examDbTable=new ExamDbTable(SQLiteDB_Path,db);
+        note_reminder_dbTable=new Note_Reminder_DbTable(SQLiteDB_Path,db);
+        noteDbTable=new NoteDbTable(SQLiteDB_Path,db);
+        noteScheduleDbTable=new NoteScheduleDbTable(SQLiteDB_Path,db);
+        reminderDbTable=new ReminderDbTable(SQLiteDB_Path,db);
+        scheduleDbTable=new ScheduleDbTable(SQLiteDB_Path,db);
+        subjectDbTable=new SubjectDbTable(SQLiteDB_Path,db);
+        tableDbTable=new TableDbTable(SQLiteDB_Path,db);
+        weekDbTable=new WeekDbTable(SQLiteDB_Path,db);
+
+        classDbTable.OpenOrCreateTb();
+        classWeekDbTable.OpenOrCreateTb();
+        diaryDbTable.OpenOrCreateTb();
+        eventDbTable.OpenOrCreateTb();
+        examDbTable.OpenOrCreateTb();
+        note_reminder_dbTable.OpenOrCreateTb();
+        noteDbTable.OpenOrCreateTb();
+        noteScheduleDbTable.OpenOrCreateTb();
+        reminderDbTable.OpenOrCreateTb();
+        scheduleDbTable.OpenOrCreateTb();
+        subjectDbTable.OpenOrCreateTb();
+        tableDbTable.OpenOrCreateTb();
+        weekDbTable.OpenOrCreateTb();
+    }
+    
+    private void deleteAllData(){
+        initDateBase();
+        classDbTable.deleteAllRow();
+        classWeekDbTable.deleteAllRow();
+        diaryDbTable.deleteAllRow();
+        eventDbTable.deleteAllRow();
+        examDbTable.deleteAllRow();
+        note_reminder_dbTable.deleteAllRow();
+        noteDbTable.deleteAllRow();
+        noteScheduleDbTable.deleteAllRow();
+        reminderDbTable.deleteAllRow();
+        scheduleDbTable.deleteAllRow();
+        subjectDbTable.deleteAllRow();
+        tableDbTable.deleteAllRow();
+        weekDbTable.deleteAllRow();
+    }
+    
+    private void AddAllData(){
+        deleteAllData();
+        classDbTable.AddClassData();
+        classWeekDbTable.AddClassWeekData();
+        diaryDbTable.AddDiaryData();
+        eventDbTable.AddEventData();
+        examDbTable.AddExamData();
+        note_reminder_dbTable.AddNoteReminderData();
+        noteDbTable.AddNoteData();
+        noteScheduleDbTable.AddNoteScheduleData();
+        reminderDbTable.AddReminderData();
+        scheduleDbTable.AddScheduleData();
+        subjectDbTable.AddSubjectData();
+        tableDbTable.AddTalbeData();
+        weekDbTable.AddWeekData();
+    }
+
+    //打開或新增資料庫
+    private void OpOrCrDb(){
+        try{
+            db=openOrCreateDatabase(SQLiteDB_Path,MODE_PRIVATE,null);
+            Log.v("資料庫","資料庫載入成功");
+        }catch (Exception ex){
+            Log.e("#001","資料庫載入錯誤");
+        }
     }
 
     @Override

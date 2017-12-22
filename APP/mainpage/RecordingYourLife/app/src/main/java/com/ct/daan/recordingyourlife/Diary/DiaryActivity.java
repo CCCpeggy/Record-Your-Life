@@ -44,8 +44,8 @@ public class DiaryActivity extends AppCompatActivity {
         OpOrCrDb();
         DiaryDb=new DiaryDbTable(SQLiteDB_Path,db);
         DiaryDb.OpenOrCreateTb();
-        DiaryDb.deleteAllRow();
-        DiaryDb.AddDiaryData();
+        //DiaryDb.deleteAllRow();
+        //DiaryDb.AddDiaryData();
 
         UpdateAdapter_Note();
     }

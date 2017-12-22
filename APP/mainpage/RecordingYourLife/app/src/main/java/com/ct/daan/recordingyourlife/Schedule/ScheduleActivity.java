@@ -115,23 +115,31 @@ public class ScheduleActivity extends Fragment {
         Now_date=s;
         date_tv.setText(s);
         Schedules=null;
+        Log.v("123","1");
         Schedules= ScheduleDb.getScheduleClass(Now_date);
         TableClass.setDays(Now_date);
         tablesClass=null;
+        Log.v("123","2");
         tablesClass=TableClass.getTablesClass();
+        Log.v("123","3");
         updateView();
     }
 
     public void updateView(){
         LinearLayout slayout;
+        Log.v("123","4");
         slayout=(LinearLayout)v.findViewById(R.id.SchLayout);
+        Log.v("123","5");
         slayout.removeAllViewsInLayout();
+        Log.v("123","6");
         viewScheduleAndTables(tablesClass,Schedules);
     }
 
     private void viewScheduleAndTables(TablesClass Tables,ScheduleClass Schedule){
         //i is Table's positioin ,j is Schedul's position
         int i,j;
+
+        Log.v("123","4");
         for(i=0,j=0;i<Tables.Tables.length&&j<Schedule.items.length;){
             Table table=Tables.Tables[i];
             item Schedule_item=Schedule.items[j];
@@ -156,6 +164,8 @@ public class ScheduleActivity extends Fragment {
             String schedule_time=Schedule_item.Time;
             addnode(schedule_time,Schedule_item.Name,CALENDARICON);
         }
+
+        Log.v("123","5");
     }
 
 
@@ -274,12 +284,13 @@ public class ScheduleActivity extends Fragment {
 
     private void initDateBase(){
         OpOrCrDb(getContext());
+
         TableClass=new A_Day_Table(SQLiteDB_Path,db,Now_date);
         //Cursor Week_cursor=Table.getWeek_cursor();
         TableClass.outputAllWeekIds();
-
         ScheduleDb=new ScheduleDbTable(SQLiteDB_Path,db);
         ScheduleDb.OpenOrCreateTb();
+
         //ScheduleDb.deleteAllRow();
         //ScheduleDb.AddScheduleData();
 
