@@ -78,8 +78,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Table.TableActivity" />
         </activity>
-        <activity android:name=".Table.TableSettingsActivity"
-            android:label="@string/table"/>
+        <activity android:name=".Table.SubjectTableActivity"
+            android:label="@string/table"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Table.SubjectTableActivity" />
+        </activity>
 
         <receiver android:name=".Reminder.AlarmReceiver">
             <intent-filter>

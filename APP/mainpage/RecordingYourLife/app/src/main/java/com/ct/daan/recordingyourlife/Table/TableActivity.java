@@ -48,6 +48,7 @@ public class TableActivity extends AppCompatActivity {
         name=(Spinner)findViewById(R.id.Table_name);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setImageResource(R.drawable.icon_add);
         fab.setOnClickListener(FloatingButton);
 
         OpOrCrDb();
@@ -55,10 +56,8 @@ public class TableActivity extends AppCompatActivity {
 
         updateSpinner();
 
-        Table_id=Table.getTableId();
-        
+        Table_id=Table.getMain_id();
         setSpinnerByValue(name,Table_id,Table.getAllTableCursors(),0);
-
     }
 
     @Override
@@ -87,7 +86,10 @@ public class TableActivity extends AppCompatActivity {
     }
 
     public void setSpinnerByValue(Spinner spinner, int value, Cursor cursor, int Col){
-        if(cursor==null|| cursor.getCount()<=0)return;
+        if(cursor==null|| cursor.getCount()<=0){
+            viewTableNull();
+            return;
+        }
         cursor.moveToFirst();
         do{
             Log.v("比對資料", String.format("%s=%s,%s=%s,%s=%s",cursor.getColumnName(0),cursor.getInt(0),cursor.getColumnName(1),cursor.getString(1),"value",value));
@@ -109,13 +111,17 @@ public class TableActivity extends AppCompatActivity {
             Table=new All_Table(SQLiteDB_Path,db);
             Table_id= Table.getTable_id(TableName);
             Table.setTable(Table_id);
+            if(TableName.isEmpty()) {
+                viewTableNull();
+                return;
+            }
             String[][] Class=Table.ClassInTable();
             viewTable(Table.getClassWeekCount(),Table.getDayCount(),Class);
         }
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
-
+            viewTableNull();
         }
 
     };
@@ -124,6 +130,11 @@ public class TableActivity extends AppCompatActivity {
     public void viewTable(String[][] subject) {
 
         viewTable(subject.length,subject[0].length,subject);
+    }
+
+    public void viewTableNull() {
+        layout = (TableLayout) findViewById(R.id.Ly);
+        layout.removeAllViewsInLayout();
     }
 
     public void viewTable(int row,int col, String[][] subject){
@@ -188,7 +199,7 @@ public class TableActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.edit_delete_actions, menu);
+        inflater.inflate(R.menu.delete_actions, menu);
         return true;
     }
 
@@ -196,13 +207,6 @@ public class TableActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_edit:
-                /*Intent intent=new Intent(AddTableSettingsActivity.this,AddSubjectTableActivity.class);
-                intent.putExtra("ROW",Time.size());
-                intent.putExtra("COL", Integer.parseInt( Days.getSelectedItem().toString()));
-                intent.putExtra("TABLE_ID",Table_id);
-                startActivityForResult(intent,45);*/
-                return true;
             case R.id.action_delete:
                 Log.v("刪除課表",Table_id+"");
                 Table.deleteAllTable();

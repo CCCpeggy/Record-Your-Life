@@ -10,11 +10,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,7 +29,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ct.daan.recordingyourlife.Class.Table.Table;
 import com.ct.daan.recordingyourlife.DbTable.ClassDbTable;
 import com.ct.daan.recordingyourlife.DbTable.ClassWeekDbTable;
 import com.ct.daan.recordingyourlife.DbTable.SubjectDbTable;
@@ -44,7 +40,7 @@ import com.ct.daan.recordingyourlife.R;
  * Created by info on 2017/11/10.
  */
 
-public class AddSubjectTableActivity extends AppCompatActivity {
+public class SubjectTableActivity extends AppCompatActivity {
     private SQLiteDatabase db=null;
     private String SQLiteDB_Path="student_project.db";
     int Table_id;
@@ -101,7 +97,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     private View.OnClickListener FloatingButton= new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            AddSubjectDialogEvent(AddSubjectTableActivity.this);
+            AddSubjectDialogEvent(SubjectTableActivity.this);
         }
     };
 
@@ -148,7 +144,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
             tmp_row=tmp_btn.getId()/10;
             tmp_col=tmp_btn.getId()%10;
             Log.v("點了Table", String.format("row=%d,col=%d",tmp_row,tmp_col));
-            SelectSubjectDialogEvent(AddSubjectTableActivity.this);
+            SelectSubjectDialogEvent(SubjectTableActivity.this);
         }
     };
 
