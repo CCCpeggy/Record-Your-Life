@@ -7,9 +7,9 @@ import android.util.Log;
 
 public class NoteScheduleDbTable {private String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    private final static String SQLiteTable_Name= "便條_提醒_清單"; //資料表的名字
+    private final static String SQLiteTable_Name= "便條_行程_清單"; //資料表的名字
     private final static String CREATE_Dairy_TABLE=
-            "CREATE TABLE if not exists '課表'(" +
+            "CREATE TABLE if not exists '便條_行程_清單'(" +
                     "_id INTEGER  PRIMARY KEY NOT NULL," +
                     "'課表' INTEGER NOT NULL," +
                     "'日記內容' TEXT)";
@@ -32,7 +32,7 @@ public class NoteScheduleDbTable {private String SQLiteDB_Path = null;
     public void insertNoteScheduleData(int note){ //不用第一的ID
         try {
             ContentValues row = new ContentValues();
-            row.put("提醒ID", note);
+            row.put("_id", note);
             db.insert(SQLiteTable_Name, null, row);
             Log.v("新增資料列", String.format("在%s新增一筆資料：%s=%s,%s=%s", SQLiteTable_Name,"便條ID",note));
         } catch (Exception e) {

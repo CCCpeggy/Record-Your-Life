@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
         examDbTable.deleteAllRow();
         note_reminder_dbTable.deleteAllRow();
         noteDbTable.deleteAllRow();
-        noteScheduleDbTable.deleteAllRow();
+        //noteScheduleDbTable.deleteAllRow();
         reminderDbTable.deleteAllRow();
         scheduleDbTable.deleteAllRow();
         subjectDbTable.deleteAllRow();
@@ -136,11 +136,11 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
         examDbTable.AddExamData();
         note_reminder_dbTable.AddNoteReminderData();
         noteDbTable.AddNoteData();
-        noteScheduleDbTable.AddNoteScheduleData();
+        //noteScheduleDbTable.AddNoteScheduleData();
         reminderDbTable.AddReminderData();
         scheduleDbTable.AddScheduleData();
         subjectDbTable.AddSubjectData();
-        tableDbTable.AddTalbeData();
+        tableDbTable.AddTableData();
         weekDbTable.AddWeekData();
     }
 

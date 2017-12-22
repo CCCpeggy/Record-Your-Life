@@ -4,8 +4,10 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
@@ -50,7 +52,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
     private SQLiteDatabase db=null;
     private String SQLiteDB_Path="student_project.db";
     EditText Start_date,End_date,Name;
-    Spinner Days;
+    Spinner Days,Color;
     Switch isMain;
     ListView ClassTime;
     TableDbTable TableDb;
@@ -73,6 +75,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         End_date=(EditText)findViewById(R.id.endTime_et);
         Name=(EditText)findViewById(R.id.name_et);
         Days=(Spinner)findViewById(R.id.days_sp);
+        Color=(Spinner)findViewById(R.id.color_sp);
         isMain=(Switch)findViewById(R.id.ismain_sw);
         ClassTime =(ListView)findViewById(R.id.classtime_lv);
         Addbtn=(Button)findViewById(R.id.button);
@@ -209,12 +212,31 @@ public class AddTableSettingsActivity extends AppCompatActivity {
     }
 
     private void saveValue(){
+        int color;
+        Resources resources=getResources();
+        Log.v("Color.getSelectedItem",Color.getSelectedItem().toString());
+        switch (Color.getSelectedItem().toString()){
+            case "red":
+                //Log.v("color",String.format("red:%s,green:%s,blue:%s",getColor(R.color.red),getColor(R.color.green),getColor(R.color.blue)));
+                color=resources.getColor(R.color.red);
+                break;
+            case "green":
+                color=resources.getColor(R.color.green);
+                break;
+            case "blue":
+                color=resources.getColor(R.color.blue);
+                break;
+            default:
+                color=resources.getColor(R.color.gray);
+        }
+        Log.v("color",String.format(color+""));
         TableDb.insertTableData(
                 Name.getText().toString()
                 ,Days.getSelectedItem().toString()
                 ,(isMain.isChecked()?1:0)
                 ,Start_date.getText().toString()
-                ,End_date.getText().toString());
+                ,End_date.getText().toString()
+                ,color);
         Table_id=TableDb.getTable_id(Name.getText().toString());
         insertClassWeeks();
         insertWeek();

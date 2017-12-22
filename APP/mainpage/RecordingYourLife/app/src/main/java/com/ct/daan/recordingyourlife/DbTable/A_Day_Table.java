@@ -57,7 +57,7 @@ public class A_Day_Table  extends WeekDbTable{
         super.deleteAllRow();
         super.AddWeekData();
         TableDb.deleteAllRow();
-        TableDb.AddTalbeData();
+        //TableDb.AddTableData();
     }
 
     public void setDays(int days){
@@ -196,7 +196,10 @@ public class A_Day_Table  extends WeekDbTable{
         Cursor ClassCursor = ClassDb.getCursor("星期ID = "+Week_id);
         if(ClassCursor.getCount()<=0)return null;
         Log.v("ClassCursor.getCount()",ClassCursor.getCount()+"");
-        Table table=new Table(ClassCursor.getCount(),getTableName(Week_id));
+        String Table_Name=getTableName(Week_id);
+        int Table_id=TableDb.getTable_id(Table_Name);
+        Cursor Table_cursor=TableDb.getCursor(Table_id);
+        Table table=new Table(ClassCursor.getCount(),Table_Name,Table_cursor.getInt(6));
         ClassCursor.moveToFirst();
         int i=0;
         do{

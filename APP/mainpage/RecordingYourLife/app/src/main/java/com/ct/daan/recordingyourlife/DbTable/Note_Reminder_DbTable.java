@@ -12,7 +12,7 @@ import android.util.Log;
 public class Note_Reminder_DbTable {
     private String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    public String SQLiteTable_Name= "便條_提醒_清單"; //資料表的名字
+    public String SQLiteTable_Name= "便條_提醒_清單1"; //資料表的名字
     private String CREATE_Dairy_TABLE=
             "CREATE TABLE if not exists '"+SQLiteTable_Name+"'(" +
                     "_id INTEGER  PRIMARY KEY NOT NULL," +

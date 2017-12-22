@@ -39,7 +39,7 @@ public class All_Table extends TableDbTable {
     public int getTableId(){
         return Table_id;
     }
-    public All_Table(String path, SQLiteDatabase Database,String TableName,int days,int isMain,String schedule_start,String schedule_end,String[][] subject,String time_start[],String time_end[]) {
+    /*public All_Table(String path, SQLiteDatabase Database,String TableName,int days,int isMain,String schedule_start,String schedule_end,String[][] subject,String time_start[],String time_end[]) {
         super(path, Database);
         initAllTable(path,Database);
         AddTableData();
@@ -64,7 +64,7 @@ public class All_Table extends TableDbTable {
         }
 
         return table_id;
-    }
+    }*/
 
     public void setTable(int id){
         Table_id=id;

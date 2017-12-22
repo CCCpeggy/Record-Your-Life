@@ -170,13 +170,28 @@ public class TableSettingsActivity extends AppCompatActivity {
     }
 
     private void saveValue(){
+        int color;
+        switch (Days.getSelectedItem().toString()){
+            case "red":
+                color=R.color.red;
+                break;
+            case "green":
+                color=R.color.green;
+                break;
+            case "blue":
+                color=R.color.blue;
+                break;
+            default:
+                color=R.color.white;
+        }
         TableDb.updateTableData(
                 Table_id
                 ,Name.getText().toString()
                 ,Days.getSelectedItem().toString()
                 ,(isMain.isChecked()?1:0)
                 ,Start_date.getText().toString()
-                ,End_date.getText().toString());
+                ,End_date.getText().toString()
+                ,color);
     }
 
     private void getValue(){

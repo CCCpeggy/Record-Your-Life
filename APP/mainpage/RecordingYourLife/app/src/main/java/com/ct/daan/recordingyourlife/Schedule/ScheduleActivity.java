@@ -2,6 +2,7 @@ package com.ct.daan.recordingyourlife.Schedule;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -31,6 +32,7 @@ import com.ct.daan.recordingyourlife.Class.Schedule.item;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.A_Day_Table;
 import com.ct.daan.recordingyourlife.DbTable.ScheduleDbTable;
+import com.ct.daan.recordingyourlife.Table.AddTableSettingsActivity;
 
 //行程畫面
 
@@ -115,23 +117,17 @@ public class ScheduleActivity extends Fragment {
         Now_date=s;
         date_tv.setText(s);
         Schedules=null;
-        Log.v("123","1");
         Schedules= ScheduleDb.getScheduleClass(Now_date);
         TableClass.setDays(Now_date);
         tablesClass=null;
-        Log.v("123","2");
         tablesClass=TableClass.getTablesClass();
-        Log.v("123","3");
         updateView();
     }
 
     public void updateView(){
         LinearLayout slayout;
-        Log.v("123","4");
         slayout=(LinearLayout)v.findViewById(R.id.SchLayout);
-        Log.v("123","5");
         slayout.removeAllViewsInLayout();
-        Log.v("123","6");
         viewScheduleAndTables(tablesClass,Schedules);
     }
 
@@ -139,7 +135,6 @@ public class ScheduleActivity extends Fragment {
         //i is Table's positioin ,j is Schedul's position
         int i,j;
 
-        Log.v("123","4");
         for(i=0,j=0;i<Tables.Tables.length&&j<Schedule.items.length;){
             Table table=Tables.Tables[i];
             item Schedule_item=Schedule.items[j];
@@ -165,7 +160,6 @@ public class ScheduleActivity extends Fragment {
             addnode(schedule_time,Schedule_item.Name,CALENDARICON);
         }
 
-        Log.v("123","5");
     }
 
 
@@ -180,10 +174,10 @@ public class ScheduleActivity extends Fragment {
 
     private int viewScheduleAndTable(int table_index, Table table, ScheduleClass Schedule, int Schedule_position){
         if(!table.isOpen){
-            addnode(table.classes[0].start_time, table.Name,table_index+"",table.colorR,table.colorG,table.colorB,TABLEICON);
+            addnode(table.classes[0].start_time, table.Name,table_index+"",table.color,TABLEICON);
             return Schedule_position;
         }
-        addnode(table.classes[0].start_time, table.Name,table_index+"",table.colorR,table.colorG,table.colorB,TABLEICON);
+        addnode(table.classes[0].start_time, table.Name,table_index+"",table.color,TABLEICON,true);
         int i;
         for(i=0;i<table.classes.length && Schedule_position<Schedule.items.length;){
             Class Oneclass=table.classes[i];
@@ -191,7 +185,7 @@ public class ScheduleActivity extends Fragment {
             String table_time=Oneclass.start_time;
             String schedule_time=Schedule_item.Time;
             if( calFunction.CompareTime(table_time,schedule_time)){
-                addchildnode(table_time,Oneclass.Subject,table.colorR,table.colorG,table.colorB);
+                addchildnode(table_time,Oneclass.Subject,table.color);
                 i++;
             }
             else{
@@ -202,26 +196,26 @@ public class ScheduleActivity extends Fragment {
         for(;i<table.classes.length ;i++){
             Class Oneclass=table.classes[i];
             String table_time=Oneclass.start_time;
-            addchildnode(table_time,Oneclass.Subject,table.colorR,table.colorG,table.colorB);
+            addchildnode(table_time,Oneclass.Subject,table.color);
         }
         return Schedule_position;
     }
 
     private void addnode(String Time_String,String Name_String,int image){
-        addnode( Time_String,Name_String,"",255,255,255,image);
+        addnode( Time_String,Name_String,"",R.color.white,image);
     }
 
     private void addchildnode(String Time_String,String Name_String,Context context){
-        addchildnode( Time_String,Name_String,255,255,255);
+        addchildnode( Time_String,Name_String,R.color.white);
     }
 
-    private void addnode(String Time_String,String Name_String,String Table_index,int colorR,int colorG,int colorB,int image){
-        Log.v("addnode",String.format("Time_String=%s,Name_String=%s, colorR=%d,colorG=%d,colorB=%d",Time_String,Name_String,colorR,colorG,colorB));
+    private void addnode(String Time_String,String Name_String,String Table_index,int color,int image,boolean hasbackground){
+        Log.v("addnode",String.format("Time_String=%s,Name_String=%s, color=%d",Time_String,Name_String,color));
         TableLayout slayout;
         slayout=(TableLayout)v.findViewById(R.id.SchLayout);
         LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableRow nodeLayout=(TableRow) inflater.inflate(R.layout.schedule_node,null,true);
-        nodeLayout.setBackgroundColor(Color.argb(255, colorR,colorG,colorB));
+        if(hasbackground)nodeLayout.setBackgroundColor(Color.argb(255,200,200,200));
         TextView time = (TextView) nodeLayout.findViewById(R.id.time_tv);
         time.setText(Time_String);
         TextView name = (TextView) nodeLayout.findViewById(R.id.name_tv);
@@ -230,35 +224,42 @@ public class ScheduleActivity extends Fragment {
         Button btn2= (Button) nodeLayout.findViewById(R.id.bt2);
         btn2.setText(Table_index);
         ImageButton btn= (ImageButton) nodeLayout.findViewById(R.id.bt);
-        GetFirstFruit(btn,image);
+        PutIcon(btn,image);
+        btn.setBackgroundColor(color);
         name.setText(Name_String);
         slayout.addView(nodeLayout);
     }
+    private void addnode(String Time_String,String Name_String,String Table_index,int color,int image){
+        addnode(Time_String, Name_String,Table_index, color, image,false);
+    }
+
     private void addnode(Spanned span,String Time_String,String Name_String,String Table_index,int image){
-        addnode(Time_String, Name_String, Table_index, 255,255,255,image);
+        addnode(Time_String, Name_String, Table_index, R.color.white,image);
     }
 
-    private void addnode(String Time_String,String Name_String,int colorR,int colorG,int colorB,int image){
-        addnode(Time_String,Name_String,"",colorR,colorG,colorB,image);
+    private void addnode(String Time_String,String Name_String,int color,int image){
+        addnode(Time_String,Name_String,"",color,image);
     }
 
 
 
-    private void addchildnode(String Time_String,String Name_String,int colorR,int colorG,int colorB){
-        Log.v("addnode",String.format("Time_String=%s,Name_String=%s, colorR=%d,colorG=%d,colorB=%d",Time_String,Name_String,colorR,colorG,colorB));
+    private void addchildnode(String Time_String,String Name_String,int color){
+        Log.v("addnode",String.format("Time_String=%s,Name_String=%s, color",Time_String,Name_String,color));
         LinearLayout slayout;
         slayout=(LinearLayout)v.findViewById(R.id.SchLayout);
         LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TableRow nodeLayout=(TableRow) inflater.inflate(R.layout.schedule_nodechild,null,true);
-        nodeLayout.setBackgroundColor(Color.argb(255, colorR,colorG,colorB));
+        nodeLayout.setBackgroundColor(Color.argb(255,200,200,200));
         TextView time = (TextView) nodeLayout.findViewById(R.id.time_tv);
         time.setText(Time_String);
         TextView name = (TextView) nodeLayout.findViewById(R.id.name_tv);
         name.setText(Name_String);
+        Button button=(Button)nodeLayout.findViewById(R.id.bt);
+        button.setBackgroundColor(color);
         slayout.addView(nodeLayout);
     }
 
-    private void GetFirstFruit(ImageButton btn,int i){
+    private void PutIcon(ImageButton btn,int i){
         String uri;
         switch (i){
             case TABLEICON:
@@ -338,7 +339,7 @@ public class ScheduleActivity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         v=inflater.inflate(R.layout.schedule_activity, container, false);
-
+        Resources resources=ScheduleActivity.this.getResources();
         calFunction=new CalendarFunction();
         context=getContext();
         Next_btn=(Button)v.findViewById(R.id.btn_next);

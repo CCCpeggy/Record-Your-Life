@@ -16,6 +16,11 @@
         <item>6</item>
         <item>7</item>
     </string-array>
+    <string-array name="color_name">
+        <item>red</item>
+        <item>green</item>
+        <item>blue</item>
+    </string-array>
     <string name="custom_dialog">客製化對話框</string>
     <string name="ok">確定</string>
     <string name="input_ur_name">請輸入科目</string>
