@@ -75,7 +75,8 @@ public class ExamActivity extends AppCompatActivity {
         public void UpdateAdapter_Exam(){
         try{
             cursor=ExamDb.getCursor();
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"考試日期", "考試名稱"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
+            //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"考試日期", "考試名稱"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
+            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.exam_listview_item_layout, cursor, new String[]{"考試日期", "考試名稱","考試成績"}, new int[]{R.id.text1,R.id.text2,R.id.text3}, 0);
             listView01.setAdapter(adapter);
             listView01.setOnItemClickListener(List_listener);
             Log.v("UpdateAdapter_Exam", String.format("UpdateAdapter_Exam() 更新成功"));
