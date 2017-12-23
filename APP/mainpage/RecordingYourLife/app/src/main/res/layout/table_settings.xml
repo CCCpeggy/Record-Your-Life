@@ -132,8 +132,8 @@
                     android:id="@+id/color_sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/color_name"
-                    android:entryValues="@array/color_name" />
+                    android:entries="@array/color"
+                    android:entryValues="@array/color" />
 
             </TableRow>
 

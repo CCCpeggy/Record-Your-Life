@@ -293,7 +293,6 @@ public class ScheduleActivity extends Fragment {
         //ScheduleDb.deleteAllRow();
         //ScheduleDb.AddScheduleData();
 
-        btnAdd.setOnClickListener(btnAddClick);
     }
 
     //打開或新增資料庫
@@ -352,6 +351,7 @@ public class ScheduleActivity extends Fragment {
         date_tv.setText(Now_date);
         btnAdd.setImageResource(R.drawable.icon_add);
 
+        btnAdd.setOnClickListener(btnAddClick);
 
         Html.ImageGetter imgGetter = new Html.ImageGetter() {
             @Override

@@ -184,6 +184,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     private void SelectSubjectDialogEvent(Context context) {
         final View item = LayoutInflater.from(context).inflate(R.layout.table_listview_layout, null);
         ListView list = (ListView) item.findViewById(R.id.listview);
+        tmp_Subject_name="";
         UpdateAdapter(list);
         new AlertDialog.Builder(context)
                 .setTitle(R.string.input_title)

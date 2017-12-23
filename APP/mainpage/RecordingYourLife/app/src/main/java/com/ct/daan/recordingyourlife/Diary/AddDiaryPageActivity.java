@@ -8,6 +8,9 @@ import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -21,7 +24,7 @@ import java.util.Locale;
 public class AddDiaryPageActivity extends AppCompatActivity {
 
     EditText et2;
-    Button btn_Complete,btn_Date;
+    Button btn_Date;
     Intent intent;
     DiaryDbTable DiaryDb;
     int id;
@@ -56,21 +59,16 @@ public class AddDiaryPageActivity extends AppCompatActivity {
 
     public void initView(){
         et2=(EditText) findViewById(R.id.et2);
-        btn_Complete=(Button)findViewById(R.id.btn_Complete) ;
         btn_Date=(Button)findViewById(R.id.Selected_Date);
 
-        btn_Complete.setOnClickListener(btn_Complete_Listener);
         btn_Date.setOnClickListener(btn_Date_Listener);
     }
 
-    private Button.OnClickListener btn_Complete_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            DiaryDb.insertDiaryData(btn_Date.getText().toString(),et2.getText().toString());
-            setResult(RESULT_OK,intent);
-            finish();
-        }
-    };
+    private void Complete() {
+        DiaryDb.insertDiaryData(btn_Date.getText().toString(),et2.getText().toString());
+        setResult(RESULT_OK,intent);
+        finish();
+    }
 
     Calendar m_Calendar = Calendar.getInstance();
     private Button.OnClickListener btn_Date_Listener= new Button.OnClickListener() {
@@ -97,4 +95,26 @@ public class AddDiaryPageActivity extends AppCompatActivity {
             btn_Date.setText(sdf.format(m_Calendar.getTime()));
         }
     };
+
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.done_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                Complete();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+
+    }
 }

@@ -215,9 +215,17 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         int color;
         Resources resources=getResources();
         Log.v("Color.getSelectedItem",Color.getSelectedItem().toString());
+        String uri = "@color/" + Color.getSelectedItem().toString(); //圖片路徑和名稱
+        Log.v("color",uri);
+        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+        try{
+            color=resources.getColor(imageResource);
+        }catch (Exception ex){
+            color=resources.getColor(R.color.gray);
+        }
+        /*
         switch (Color.getSelectedItem().toString()){
             case "red":
-                //Log.v("color",String.format("red:%s,green:%s,blue:%s",getColor(R.color.red),getColor(R.color.green),getColor(R.color.blue)));
                 color=resources.getColor(R.color.red);
                 break;
             case "green":
@@ -226,9 +234,20 @@ public class AddTableSettingsActivity extends AppCompatActivity {
             case "blue":
                 color=resources.getColor(R.color.blue);
                 break;
+            case "gray":
+                color=resources.getColor(R.color.blue);
+                break;
+            case "purple":
+                color=resources.getColor(R.color.blue);
+                break;
+            case "orange":
+                color=resources.getColor(R.color.blue);
+                break;
             default:
                 color=resources.getColor(R.color.gray);
-        }
+        }*/
+
+
         Log.v("color",String.format(color+""));
         TableDb.insertTableData(
                 Name.getText().toString()

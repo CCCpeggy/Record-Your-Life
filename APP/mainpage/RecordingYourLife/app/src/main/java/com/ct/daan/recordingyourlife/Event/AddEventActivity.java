@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -26,7 +29,6 @@ public class AddEventActivity extends AppCompatActivity {
     private String SQLiteDB_Path="student_project.db";
     EventDbTable EventDb;
     EditText Start_date,End_date,Name,Remark;
-    Button btn_Complete;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,6 @@ public class AddEventActivity extends AppCompatActivity {
         End_date=(EditText)findViewById(R.id.endTime_et);
         Name=(EditText)findViewById(R.id.name_et);
         Remark=(EditText)findViewById(R.id.remark_et);
-        btn_Complete=(Button)findViewById(R.id.btn_Complete) ;
 
         Start_date.setInputType(InputType.TYPE_NULL);
         End_date.setInputType(InputType.TYPE_NULL);
@@ -53,7 +54,6 @@ public class AddEventActivity extends AppCompatActivity {
         EventDb=new EventDbTable(SQLiteDB_Path,db);
         EventDb.OpenOrCreateTb();
 
-        btn_Complete.setOnClickListener(btn_Complete_Listener);
     }
     private void OpOrCrDb(){
         try{
@@ -119,20 +119,18 @@ public class AddEventActivity extends AppCompatActivity {
         }
     };
 
-    private Button.OnClickListener btn_Complete_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if(!compareDate(Start_date.getText().toString(),End_date.getText().toString()))return;
-            intent.putExtra("NAME",Name.getText().toString());
-            intent.putExtra("STARTDATE",Start_date.getText().toString());
-            intent.putExtra("ENDDATE",End_date.getText().toString());
-            intent.putExtra("REMARK",Remark.getText().toString());
-            Log.v("回傳資料", String.format("回傳資料：%s=%s,%s=%s,%s=%s,%s=%s","NAME",Name.getText().toString(),"STARTDATE",Start_date.getText().toString(),"ENDDATE",End_date.getText().toString(),"REMARK",Remark.getText().toString()));
-            setResult(RESULT_OK,intent);
-            finish();
+    private void Complete() {
+        if(!compareDate(Start_date.getText().toString(),End_date.getText().toString()))return;
+        intent.putExtra("NAME",Name.getText().toString());
+        intent.putExtra("STARTDATE",Start_date.getText().toString());
+        intent.putExtra("ENDDATE",End_date.getText().toString());
+        intent.putExtra("REMARK",Remark.getText().toString());
+        Log.v("回傳資料", String.format("回傳資料：%s=%s,%s=%s,%s=%s,%s=%s","NAME",Name.getText().toString(),"STARTDATE",Start_date.getText().toString(),"ENDDATE",End_date.getText().toString(),"REMARK",Remark.getText().toString()));
+        setResult(RESULT_OK,intent);
+        finish();
 
-        }
-    };
+    }
+
     private boolean compareDate(String startdate, String enddate){
         Calendar cal=StringtoCalendar(startdate);
         Calendar cal2=StringtoCalendar(enddate);
@@ -157,4 +155,24 @@ public class AddEventActivity extends AppCompatActivity {
         return Calendar;
     }
 
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.done_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                Complete();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

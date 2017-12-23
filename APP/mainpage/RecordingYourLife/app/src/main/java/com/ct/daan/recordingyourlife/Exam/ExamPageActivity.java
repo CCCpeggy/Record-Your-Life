@@ -132,7 +132,7 @@ public class ExamPageActivity extends AppCompatActivity {
         Log.v("傳入Table_id",Table_id+"");
 
         try {
-            setSpinnerByValue(Table_sp, Table_id, TableDb.getCursor(), 0);
+            setSpinnerByValue(Table_sp, Table_id, TableDb.getCursorBydate(Date_et.getText().toString(),calendarFunction.getDayOfWeek(Date_et.getText().toString())), 0);
             setSpinnerByValue(Class_sp, ClassWeek_id, ClassWeekDb.getCursor(Table_id), 0);
             setSpinnerByValue(Subject_sp, extra.getInt("SELECTED_SUBJECT"), cursor, 0);
 
@@ -349,7 +349,6 @@ public class ExamPageActivity extends AppCompatActivity {
                 break;
             }
         }while(cursor.moveToNext());
-        cursor.moveToFirst();
     }
     private void setDate(Calendar calendar) {
         Score_Enabled(calendar);

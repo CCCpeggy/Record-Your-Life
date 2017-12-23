@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -17,7 +20,9 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 
 
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.DbTable.ScheduleDbTable;
+import com.ct.daan.recordingyourlife.Exam.AddExamPageActivity;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.Table.TableSettingsActivity;
 
@@ -27,7 +32,6 @@ public class NewSchedulePageActivity extends AppCompatActivity {
     private final static String SQLiteDB_Path="student_project.db";
     private SQLiteDatabase db=null;
     EditText Name_et,Date_et,Time_et;
-    Button Complete_btn;
     Intent intent;
     ScheduleDbTable ScheduleDb;
 
@@ -57,12 +61,10 @@ public class NewSchedulePageActivity extends AppCompatActivity {
         Name_et=(EditText) findViewById(R.id.Name_et);
         Date_et=(EditText) findViewById(R.id.Date_et);
         Time_et=(EditText) findViewById(R.id.Time_et);
-        Complete_btn=(Button)findViewById(R.id.btn_Complete);
 
         Date_et.setInputType(InputType.TYPE_NULL);
         Time_et.setInputType(InputType.TYPE_NULL);
 
-        Complete_btn.setOnClickListener(Complete_btn_Listener);
         Date_et.setOnClickListener(DatePick_Listener);
         Time_et.setOnClickListener(TimePick_Listener);
         initDataBase();
@@ -115,14 +117,32 @@ public class NewSchedulePageActivity extends AppCompatActivity {
     };
 
 
-    private Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            ScheduleDb.insertScheduleData(Name_et.getText().toString(),Time_et.getText().toString(),Date_et.getText().toString());
-            setResult(RESULT_OK,intent);
-            finish();
-        }
-    };
+    private void Complete() {
+        ScheduleDb.insertScheduleData(Name_et.getText().toString(),Time_et.getText().toString(),Date_et.getText().toString());
+        setResult(RESULT_OK,intent);
+        finish();
+    }
 
+
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.done_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                Complete();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }
