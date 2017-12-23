@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.icu.util.Calendar;
 import android.util.Log;
 
 import com.ct.daan.recordingyourlife.R;
@@ -167,9 +168,11 @@ public class TableDbTable {
         return db.rawQuery(cmd,null);
     }
 
-    public Cursor getCursorBydate(String date){
-        String cmd=String.format("SELECT *  FROM '%s'  WHERE " +
-                "AND( 課表開始日 < '%s' , 課表結束日 > '%s' ) ",SQLiteTable_Name,date,date);
+    public Cursor getCursorBydate(String date,int DayOfWeek){
+        //String cmd=String.format("SELECT *  FROM '%s'  WHERE AND( 課表開始日 < '%s' , 課表結束日 > '%s' ,(DAYOFWEEK(課表開始日)+1-%d)<=課表天數) ",SQLiteTable_Name,date,date,DayOfWeek);
+        //String cmd=String.format("SELECT *  FROM '%s'  WHERE AND( 課表開始日 < '%s' , (%d-STRFTIME('%s',課表開始日)+1)<=課表天數) ",SQLiteTable_Name,date,DayOfWeek,"%w");
+        String cmd=String.format("SELECT *  FROM '%s'  WHERE  課表開始日 <= '%s'  AND 課表結束日 >= '%s'  AND 課表天數>= (%d-STRFTIME('%s',課表開始日)+1) AND  (%d-STRFTIME('%s',課表開始日)+1)>0",SQLiteTable_Name,date,date,DayOfWeek,"%w",DayOfWeek,"%w");
+
         Log.v("TableDbTable.getCursor",cmd);
         return db.rawQuery(cmd,null);
     }

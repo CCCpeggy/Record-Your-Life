@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.ClassDbTable;
 import com.ct.daan.recordingyourlife.DbTable.ClassWeekDbTable;
@@ -41,9 +42,7 @@ public class AddExamPageActivity extends AppCompatActivity {
     private SQLiteDatabase db=null;
     Spinner Subject_sp,Class_sp,Table_sp;
     EditText Name_et,Date_et,Content_et,Score_et;
-    Button Complete_btn;
     Intent intent;
-    private final static int UPDATEPAGE_EXAMPAGE=0,ADD_EXAMPAGE=1,RESULT_DELETE=100;
     int Subject_id,ClassWeek_id,Week_id;
     SubjectDbTable SubjectDb;
     TableDbTable TableDb;
@@ -78,11 +77,9 @@ public class AddExamPageActivity extends AppCompatActivity {
         Date_et=(EditText) findViewById(R.id.Date_et);
         Content_et=(EditText) findViewById(R.id.Content_et);
         Score_et=(EditText) findViewById(R.id.Score_et);
-        Complete_btn=(Button)findViewById(R.id.btn_Complete);
 
         Date_et.setInputType(InputType.TYPE_NULL);
         Date_et.setOnClickListener(DatePick_Listener);
-        Complete_btn.setOnClickListener(Complete_btn_Listener);
 
         initDateBase();
 
@@ -223,17 +220,17 @@ public class AddExamPageActivity extends AppCompatActivity {
 
     private void setDate(Calendar calendar) {
         Score_Enabled(calendar);
-        calendarFunction.getDateString(calendar);
+        String Date=calendarFunction.getDateString(calendar);
         //加入Table_sp資料
-        Cursor Table_cursor=TableDb.getCursor();
+        Cursor Table_cursor=TableDb.getCursorBydate(Date,calendarFunction.getDayOfWeek(Date));
         if(Table_cursor.getCount()>0) {
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_dropdown_item, Table_cursor, new String[]{"課表名稱"}, new int[]{android.R.id.text1}, 0);
             Table_sp.setAdapter(adapter);
             Table_sp.setOnItemSelectedListener(Table_Listener);
+        }else{
+            Table_sp.setAdapter(null);
+            Class_sp.setAdapter(null);
         }
-
-
-
     }
 
     Calendar m_Calendar = Calendar.getInstance();
@@ -256,6 +253,8 @@ public class AddExamPageActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
         {
+            m_Calendar = Calendar.getInstance();
+            if(!Date_et.getText().toString().isEmpty()) m_Calendar=calendarFunction.DateTextToCalendarType(Date_et.getText().toString());
             m_Calendar.set(Calendar.YEAR, year);
             m_Calendar.set(Calendar.MONTH, monthOfYear);
             m_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -313,6 +312,8 @@ public class AddExamPageActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_done:
+                OthersFunction othersFunction=new OthersFunction();
+                if(!othersFunction.isEdittextNotEmpty(Date_et,"日期",AddExamPageActivity.this))return true;
                 String score= Score_et.getText().toString();
                 ExamDb.insertExamData(ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
                 setResult(RESULT_OK,intent);

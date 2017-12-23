@@ -116,6 +116,10 @@ public class ClassWeekDbTable {
         return db.rawQuery(String.format("SELECT *  FROM '%s' WHERE 課表ID=%s",SQLiteTable_Name,Table_id),null);
     }
 
+    public Cursor getCursorNull(){
+        return db.rawQuery(String.format("SELECT *  FROM '%s' WHERE  1=0",SQLiteTable_Name),null);
+    }
+
     public Cursor getCursor(String where_cmd){
         String cmd=String.format("SELECT *  FROM '%s' WHERE %s ",SQLiteTable_Name,where_cmd);
         Log.v("ClassWeekDb.getCursor",cmd);
