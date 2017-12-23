@@ -1,17 +1,24 @@
 package com.ct.daan.recordingyourlife.Note;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.Class.OthersFunction;
@@ -158,6 +165,22 @@ public class NoteActivity extends AppCompatActivity {
 
     }
 
+    public void UpdateAdapter_Note(String Search_word){
+        try{
+            cursor=NoteDb.getCursor(" 便條標題 LIKE '%"+Search_word+"%'");
+            if(cursor !=  null && cursor.getCount()>0){
+                SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"便條標題", "便條內容"}, new int[]{android. R.id.text1,android.R.id.text2}, 0);
+                listView01.setAdapter(adapter);
+                listView01.setOnItemLongClickListener(List_Long_Listener);
+                listView01.setOnItemClickListener(List_listener);
+                Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
+            }
+        }catch (Exception e){
+            Log.e("#004","清單更新失敗");
+        }
+
+    }
+
     private ListView.OnItemClickListener List_listener=new ListView.OnItemClickListener(){
 
         @Override
@@ -186,5 +209,54 @@ public class NoteActivity extends AppCompatActivity {
             return false;
         }
     };
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_actions, menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(NoteActivity.this,query,Toast.LENGTH_SHORT).show();
+                UpdateAdapter_Note(query);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                UpdateAdapter_Note(newText);
+                return false;
+            }
+        });
+
+        // 顯示完成鈕
+        //searchView.setSubmitButtonEnabled(true);
+
+
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                Toast toast１ =Toast.makeText(this,"Search",Toast.LENGTH_LONG);
+
+
+                toast１.show();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

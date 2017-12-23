@@ -76,7 +76,7 @@ public class DiaryDbTable {
     }
 
     public Cursor getCursor(){
-        return db.rawQuery(String.format("SELECT *  FROM '%s'  ORDER BY 日期",SQLiteTable_Name),null);
+        return db.rawQuery(String.format("SELECT *  FROM '%s'  ORDER BY 日期 DESC",SQLiteTable_Name),null);
     }
 
     public void deleteAllRow(){

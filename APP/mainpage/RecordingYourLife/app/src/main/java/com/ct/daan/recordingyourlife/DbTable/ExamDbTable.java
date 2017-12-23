@@ -94,11 +94,11 @@ public class ExamDbTable {
     }
 
     public Cursor getCursor(){
-        return db.rawQuery(String.format("SELECT *  FROM '%s' ORDER BY 考試日期,考試科目ID",SQLiteTable_Name),null);
+        return db.rawQuery(String.format("SELECT *  FROM '%s' ORDER BY 考試日期 DESC,考試科目ID",SQLiteTable_Name),null);
     }
 
     public Cursor getCursor(int Subject_id){
-        return db.rawQuery(String.format("SELECT *  FROM '%s WHERE 考試科目ID=%s ORDER BY 考試日期", SQLiteTable_Name,Subject_id+""),null);
+        return db.rawQuery(String.format("SELECT *  FROM '%s WHERE 考試科目ID=%s ORDER BY 考試日期 DESC", SQLiteTable_Name,Subject_id+""),null);
     }
 
 
