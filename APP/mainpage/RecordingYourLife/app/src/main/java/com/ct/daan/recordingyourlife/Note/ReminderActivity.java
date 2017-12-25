@@ -10,6 +10,9 @@ import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -18,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TimePicker;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 
@@ -33,7 +37,8 @@ public class ReminderActivity extends AppCompatActivity {
     EditText date,time;
     Switch isReplace;
     Spinner ReplaceType;
-    Button Complete_btn;
+
+    CalendarFunction calFunction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +51,11 @@ public class ReminderActivity extends AppCompatActivity {
         initView();
     }
     private void initView(){
+        calFunction=new CalendarFunction();
         date=(EditText)findViewById(R.id.date_et);
         time=(EditText)findViewById(R.id.time_et);
         isReplace=(Switch)findViewById(R.id.isreplace_sw);
         ReplaceType=(Spinner) findViewById(R.id.replacetype_sp);
-        Complete_btn=(Button)findViewById(R.id.btn_Complete2);
         date.setOnClickListener(DatePick_Listener);
         time.setOnClickListener(TimePick_Listener);
 
@@ -63,7 +68,6 @@ public class ReminderActivity extends AppCompatActivity {
         time.setText(cursor.getString(2));
         isReplace.setChecked(cursor.getInt(3)==1);
         ReplaceType.setSelection(cursor.getInt(4));
-        Complete_btn.setOnClickListener(Complete_btn_Listener);
     }
     //打開或新增資料庫
     private void OpOrCrDb(){
@@ -75,15 +79,12 @@ public class ReminderActivity extends AppCompatActivity {
         }
     }
 
-    Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            ReminderDb.updateReminderData(id,date.getText().toString(),time.getText().toString(),isReplace.isChecked()?1:0 ,ReplaceType.getSelectedItemPosition());
-            intent.putExtra("REMINDER_ID",id);
-            setResult(RESULT_OK,intent);
-            finish();
-        }
-    };
+    void Complete() {
+        ReminderDb.updateReminderData(id,date.getText().toString(),time.getText().toString(),isReplace.isChecked()?1:0 ,ReplaceType.getSelectedItemPosition());
+        intent.putExtra("REMINDER_ID",id);
+        setResult(RESULT_OK,intent);
+        finish();
+    }
 
 
 
@@ -91,6 +92,10 @@ public class ReminderActivity extends AppCompatActivity {
     private EditText.OnClickListener DatePick_Listener= new EditText.OnClickListener() {
         @Override
         public void onClick(View v) {
+            EditText et=(EditText)v;
+            String date=et.getText().toString();
+            if(!date.isEmpty())
+                m_Calendar=calFunction.DateTextToCalendarType(date);
             DatePickerDialog dataPick=new DatePickerDialog(ReminderActivity.this,datepicker,
                     m_Calendar.get(Calendar.YEAR),
                     m_Calendar.get(Calendar.MONTH),
@@ -102,6 +107,10 @@ public class ReminderActivity extends AppCompatActivity {
     private EditText.OnClickListener TimePick_Listener= new EditText.OnClickListener() {
         @Override
         public void onClick(View v) {
+            EditText et=(EditText)v;
+            String time=et.getText().toString();
+            if(!time.isEmpty())
+                m_Calendar=calFunction.TimeTextToCalendarType(time);
             android.app.TimePickerDialog dataPick=new TimePickerDialog(ReminderActivity.this,TimePickerDialog,
                     m_Calendar.get(Calendar.HOUR_OF_DAY),
                     m_Calendar.get(Calendar.MINUTE),true);
@@ -134,4 +143,25 @@ public class ReminderActivity extends AppCompatActivity {
             time.setText(sdf.format(m_Calendar.getTime()));
         }
     };
+
+
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.done_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                Complete();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

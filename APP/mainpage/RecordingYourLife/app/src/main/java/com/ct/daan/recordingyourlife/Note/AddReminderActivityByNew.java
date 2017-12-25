@@ -22,6 +22,7 @@ import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.Exam.InputScoreActivity;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.Note_Reminder_DbTable;
