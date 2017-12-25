@@ -16,181 +16,158 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Note.NoteActivity"
+        <activity android:name=".Note.NoteActivity"
             android:label="@string/note"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Note.NoteActivity" />
         </activity>
-        <activity
-            android:name=".Note.NotePageActivity"
+        <activity android:name=".Note.NotePageActivity"
             android:label="@string/note"
-            android:parentActivityName=".Note.NoteActivity">
+            android:parentActivityName=".Note.NoteActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Note.NotePageActivity" />
         </activity>
-        <activity
-            android:name=".Note.NewNotePageActivity"
+        <activity android:name=".Note.NewNotePageActivity"
             android:label="@string/note"
-            android:parentActivityName=".Note.NoteActivity">
+            android:parentActivityName=".Note.NoteActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Note.NewNotePageActivity" />
         </activity>
-        <activity
-            android:name=".Note.RemindersActivityByNew"
+        <activity android:name=".Note.RemindersActivityByNew"
             android:label="@string/remind"
-            android:parentActivityName=".Note.NoteActivity">
+            android:parentActivityName=".Note.NoteActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Note.RemindersActivityByNew" />
         </activity>
-        <activity
-            android:name=".Note.AddReminderActivityByNew"
+        <activity android:name=".Note.AddReminderActivityByNew"
             android:label="@string/remind"
-            android:parentActivityName=".Note.NoteActivity">
+            android:parentActivityName=".Note.NoteActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Note.AddReminderActivityByNew" />
         </activity>
-        <activity
-            android:name=".Note.AddReminderActivity"
+        <activity android:name=".Note.AddReminderActivity"
             android:label="@string/remind"
-            android:parentActivityName=".Note.ReminderActivity">
+            android:parentActivityName=".Note.ReminderActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Note.AddReminderActivity" />
         </activity>
-        <activity
-            android:name=".Note.ReminderActivity"
+        <activity android:name=".Note.ReminderActivity"
             android:label="@string/remind"
-            android:parentActivityName=".Note.ReminderActivity">
+            android:parentActivityName=".Note.ReminderActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Note.ReminderActivity" />
         </activity>
-        <activity
-            android:name=".Note.RemindersActivity"
+        <activity android:name=".Note.RemindersActivity"
             android:label="@string/remind"
-            android:parentActivityName=".Note.ReminderActivity">
+            android:parentActivityName=".Note.ReminderActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Note.RemindersActivity" />
         </activity>
-        <activity
-            android:name=".Schedule.NewSchedulePageActivity"
+        <activity android:name=".Schedule.NewSchedulePageActivity"
             android:label="@string/schedule"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Schedule.NewSchedulePageActivity" />
         </activity>
-        <activity
-            android:name=".Event.AddEventActivity"
+        <activity android:name=".Event.AddEventActivity"
             android:label="@string/event"
-            android:parentActivityName=".Event.EventActivity">
+            android:parentActivityName=".Event.EventActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Event.AddEventActivity" />
         </activity>
-        <activity
-            android:name=".Event.ChangEventActivity"
+        <activity android:name=".Event.ChangEventActivity"
             android:label="@string/event"
-            android:parentActivityName=".Event.EventActivity">
+            android:parentActivityName=".Event.EventActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Event.AddEventActivity" />
         </activity>
-        <activity
-            android:name=".Event.EventActivity"
+        <activity android:name=".Event.EventActivity"
             android:label="@string/event"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Exam.ExamActivity" />
         </activity>
-        <activity
-            android:name=".Diary.DiaryActivity"
+        <activity android:name=".Diary.DiaryActivity"
             android:label="@string/diary"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Diary.DiaryActivity" />
         </activity>
-        <activity
-            android:name=".Diary.DiaryPageActivity"
+        <activity android:name=".Diary.DiaryPageActivity"
             android:label="@string/diary"
-            android:parentActivityName=".Diary.DiaryActivity">
+            android:parentActivityName=".Diary.DiaryActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Diary.DiaryPageActivity" />
         </activity>
-        <activity
-            android:name=".Diary.AddDiaryPageActivity"
-            android:label="@string/diary" />
-        <activity
-            android:name=".Exam.ExamActivity"
+        <activity android:name=".Diary.AddDiaryPageActivity"
+            android:label="@string/diary"/>
+        <activity android:name=".Exam.ExamActivity"
             android:label="@string/exam"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Exam.ExamActivity" />
         </activity>
-        <activity
-            android:name=".Exam.ExamPageActivity"
+        <activity android:name=".Exam.ExamPageActivity"
             android:label="@string/exam"
-            android:parentActivityName=".Exam.ExamActivity">
+            android:parentActivityName=".Exam.ExamActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Exam.ExamPageActivity" />
         </activity>
-        <activity
-            android:name=".Exam.AddExamPageActivity"
+        <activity android:name=".Exam.AddExamPageActivity"
             android:label="@string/exam"
-            android:parentActivityName=".Exam.ExamActivity">
+            android:parentActivityName=".Exam.ExamActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Exam.AddExamPageActivity" />
         </activity>
-        <activity
-            android:name=".Exam.InputScoreActivity"
+        <activity android:name=".Exam.InputScoreActivity"
             android:label="@string/exam"
-            android:parentActivityName=".">
+            android:parentActivityName="." >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Exam.InputScoreActivity" />
         </activity>
-        <activity
-            android:name=".Table.AddSubjectTableActivity"
+        <activity android:name=".Table.AddSubjectTableActivity"
             android:label="@string/table"
-            android:parentActivityName=".Table.TableActivity">
+            android:parentActivityName=".Table.TableActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Table.AddSubjectTableActivity" />
         </activity>
-        <activity
-            android:name=".Table.AddTableSettingsActivity"
+        <activity android:name=".Table.AddTableSettingsActivity"
             android:label="@string/table"
-            android:parentActivityName=".Table.TableActivity">
+            android:parentActivityName=".Table.TableActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Table.AddSubjectTableActivity" />
         </activity>
-        <activity
-            android:name=".Table.TableActivity"
+        <activity android:name=".Table.TableActivity"
             android:label="@string/table"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Table.TableActivity" />
         </activity>
-        <activity
-            android:name=".Table.SubjectTableActivity"
+        <activity android:name=".Table.SubjectTableActivity"
             android:label="@string/table"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Table.SubjectTableActivity" />
@@ -206,21 +183,6 @@
                 <action android:name="net.macdidi.broadcast01.action.MYBROADCAST01" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".NoteAppWidget">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/note_app_widget_info" />
-        </receiver>
-
-        <activity android:name=".NoteAppWidgetConfigureActivity">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
