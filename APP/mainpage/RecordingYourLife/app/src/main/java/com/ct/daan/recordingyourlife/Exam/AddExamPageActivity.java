@@ -1,6 +1,7 @@
 package com.ct.daan.recordingyourlife.Exam;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -294,6 +295,15 @@ public class AddExamPageActivity extends AppCompatActivity {
         return true;
     }
 
+/*
+    private void setReminder(Context context, Cursor cursor, int reminderId) {
+        OthersFunction othersFunction=new OthersFunction();
+        Cursor Reminder_cursor=ReminderDb.getCursor(reminderId);
+        Reminder_cursor.moveToFirst();
+        othersFunction.setReminder(context,Reminder_cursor,reminderId,ExamID,);
+    }
+*/
+
     //動作按鈕回應
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -303,10 +313,13 @@ public class AddExamPageActivity extends AppCompatActivity {
                 if(!othersFunction.isEdittextNotEmpty(Date_et,"日期",AddExamPageActivity.this))return true;
                 String score= Score_et.getText().toString();
                 ExamDb.insertExamData(ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
-                ReminderDb.insertReminderData(Date_et.getText().toString(),"06:11",0,0);
+                Cursor cursor=ExamDb.getCursorOrderById();
+                cursor.moveToLast();
+                int ExamId=cursor.getInt(0);
+                ReminderDb.insertReminderData(Date_et.getText().toString(),"19:46",0,0);
                 Cursor Reminder_cursor=ReminderDb.getCursor();
                 Reminder_cursor.moveToLast();
-                othersFunction.setReminderByInput(AddExamPageActivity.this,Reminder_cursor,Reminder_cursor.getInt(0),Name_et.getText().toString()+"考試成績","請點擊輸入"+Name_et.getText().toString()+"考試成績");
+                othersFunction.setReminderByInput(AddExamPageActivity.this,Reminder_cursor,Reminder_cursor.getInt(0),ExamId,Name_et.getText().toString(),SubjectDb.getSubjectName(Subject_id));
                 setResult(RESULT_OK,intent);
                 finish();
                 return true;

@@ -33,6 +33,8 @@ public class AlarmReceiverByInput extends BroadcastReceiver {
 
         Intent intent1=new Intent(context,InputScoreActivity.class);
         intent1.putExtra("EXAMID",ExamID);
+        intent1.putExtra("NAME",name);
+        intent1.putExtra("SUBJECT",Subject);
         PendingIntent contentIntent=PendingIntent.getActivity(context,0,intent1,PendingIntent.FLAG_UPDATE_CURRENT);
         Notification.Builder mBuilder=(Notification.Builder)new Notification.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher)

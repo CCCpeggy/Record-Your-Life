@@ -1,5 +1,6 @@
 package com.ct.daan.recordingyourlife.Exam;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,8 +11,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.DbTable.ExamDbTable;
 import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 import com.ct.daan.recordingyourlife.R;
@@ -27,6 +30,8 @@ public class InputScoreActivity extends AppCompatActivity{
     Intent intent;
     int ExamID;
     ExamDbTable ExamDb;
+    TextView tv;
+    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +42,15 @@ public class InputScoreActivity extends AppCompatActivity{
         ExamID=extra.getInt("EXAMID",0);
         Log.v("ExamID",ExamID+"");
 
+        name=extra.getString("NAME","");
+
+
         initView();
     }
 
     void initView(){
+        tv=(TextView)findViewById(R.id.text) ;
+        tv.setText("請輸入"+name+"的成績");
         OpOrCrDb();
         ExamDb=new ExamDbTable(SQLiteDB_Path,db);
         ExamDb.OpenOrCreateTb();

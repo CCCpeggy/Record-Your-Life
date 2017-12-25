@@ -104,6 +104,10 @@ public class ExamDbTable {
         }
     }
 
+    public Cursor getCursorOrderById(){
+        return db.rawQuery(String.format("SELECT *  FROM '%s' ORDER BY _id",SQLiteTable_Name),null);
+    }
+
     public Cursor getCursor(){
         return db.rawQuery(String.format("SELECT *  FROM '%s' ORDER BY 考試日期 DESC,考試科目ID",SQLiteTable_Name),null);
     }

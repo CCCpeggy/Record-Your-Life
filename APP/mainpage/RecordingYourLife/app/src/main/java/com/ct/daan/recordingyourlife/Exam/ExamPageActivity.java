@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.Class.Table.Class;
+import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.ClassDbTable;
 import com.ct.daan.recordingyourlife.DbTable.ClassWeekDbTable;
@@ -50,6 +51,7 @@ public class ExamPageActivity extends AppCompatActivity {
     ClassWeekDbTable ClassWeekDb;
     ClassDbTable ClassDb;
     ExamDbTable ExamDb;
+    ReminderDbTable ReminderDb;
     CalendarFunction calendarFunction;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,10 +158,9 @@ public class ExamPageActivity extends AppCompatActivity {
         initDataBase();
 
         putValue();
-        //setSpinnerByValue(Class_sp);
-        //Date_et.setText(extra.getString("SELECTED_DATE").equals("")?"日期":extra.getString("SELECTED_DATE"));
-        //et2.setText(extra.getString("SELECTED_CONTENT"));
-        //Score_Enabled(Date_et.getText().toString());
+
+        ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
+        ReminderDb.OpenOrCreateTb();
     }
     String tmp_Subject="";
     private Spinner.OnItemSelectedListener Subject_Listener=new Spinner.OnItemSelectedListener(){
@@ -335,6 +336,10 @@ public class ExamPageActivity extends AppCompatActivity {
         if(!othersFunction.isEdittextNotEmpty(Date_et,"日期",ExamPageActivity.this))return;
         String score= Score_et.getText().toString();
         ExamDb.updateExamData(Exam_id,ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
+        ReminderDb.insertReminderData(Date_et.getText().toString(),"19:50",0,0);
+        Cursor Reminder_cursor=ReminderDb.getCursor();
+        Reminder_cursor.moveToLast();
+        othersFunction.setReminderByInput(ExamPageActivity.this,Reminder_cursor,Reminder_cursor.getInt(0),Exam_id,Name_et.getText().toString(),SubjectDb.getSubjectName(Subject_id));
         setResult(RESULT_OK,intent);
         finish();
     }

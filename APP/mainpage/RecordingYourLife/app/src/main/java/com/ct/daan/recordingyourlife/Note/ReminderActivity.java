@@ -2,6 +2,7 @@ package com.ct.daan.recordingyourlife.Note;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,6 +23,8 @@ import android.widget.Switch;
 import android.widget.TimePicker;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
+import com.ct.daan.recordingyourlife.DbTable.NoteDbTable;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 
@@ -38,6 +41,7 @@ public class ReminderActivity extends AppCompatActivity {
     Switch isReplace;
     Spinner ReplaceType;
 
+    NoteDbTable NoteDb;
     CalendarFunction calFunction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +72,8 @@ public class ReminderActivity extends AppCompatActivity {
         time.setText(cursor.getString(2));
         isReplace.setChecked(cursor.getInt(3)==1);
         ReplaceType.setSelection(cursor.getInt(4));
+        NoteDb = new NoteDbTable(SQLiteDB_Path, db);
+        NoteDb.OpenOrCreateTb();
     }
     //打開或新增資料庫
     private void OpOrCrDb(){
@@ -82,10 +88,17 @@ public class ReminderActivity extends AppCompatActivity {
     void Complete() {
         ReminderDb.updateReminderData(id,date.getText().toString(),time.getText().toString(),isReplace.isChecked()?1:0 ,ReplaceType.getSelectedItemPosition());
         intent.putExtra("REMINDER_ID",id);
+        setReminder(ReminderActivity.this,cursor, cursor.getInt(0));
         setResult(RESULT_OK,intent);
         finish();
     }
 
+    private void setReminder(Context context, Cursor cursor, int reminderId) {
+        OthersFunction othersFunction=new OthersFunction();
+        Cursor Note_cursor = NoteDb.getCursor(id);
+        Note_cursor.moveToFirst();
+        othersFunction.setReminder(context,cursor,reminderId,Note_cursor.getString(1),Note_cursor.getString(2));
+    }
 
 
     Calendar m_Calendar = Calendar.getInstance();
