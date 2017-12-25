@@ -24,7 +24,7 @@ public class All_Table extends TableDbTable {
 
 
         initAllTable(path,Database);
-        AddTableData();
+        //AddTableData();
         setTable(id);
     }
 
@@ -32,7 +32,7 @@ public class All_Table extends TableDbTable {
         super(path, Database);
 
         initAllTable(path,Database);
-        AddTableData();
+        //AddTableData();
 
         setTable(getMain_id());
     }
@@ -83,20 +83,6 @@ public class All_Table extends TableDbTable {
         ClassWeekDb.OpenOrCreateTb();
         WeekDb.OpenOrCreateTb();
         super.OpenOrCreateTb();
-    }
-
-
-    public void AddTableData(){
-        /*ClassDb.deleteAllRow();
-        ClassDb.AddClassData();
-        SubjectDb.deleteAllRow();
-        SubjectDb.AddSubjectData();
-        ClassWeekDb.deleteAllRow();
-        ClassWeekDb.AddClassWeekData();
-        WeekDb.deleteAllRow();
-        WeekDb.AddWeekData();
-        super.deleteAllRow();
-        super.AddTalbeData();*/
     }
 
     public Cursor getAllTableCursors() {
@@ -155,10 +141,26 @@ public class All_Table extends TableDbTable {
         return Tables;
     }
 
+    public String[] ClassInOneWeek(int ClassWeek_id,boolean b){
+        int days=getDayCount();
+        if(days<=0) return null;
+        String Tables[]=new String[days+1];
+        Cursor WeekCursor=getWeekCursor();
+        int Week_id;
+        WeekCursor.moveToFirst();
+
+        Week_id=WeekCursor.getInt(0);
+        Tables[0]="第"+week_name[0]+"天";
+        for(int i=1;WeekCursor.moveToNext();i++){
+            Tables[i]="第"+week_name[i]+"天";
+        }
+        return Tables;
+    }
+    final static String week_name[]={"一","二","三","四","五","六","日"};
     public String[] ClassInOneWeek(int ClassWeek_id){
         int days=getDayCount();
         if(days<=0) return null;
-        String Tables[]=new String[days];
+        String Tables[]=new String[days+1];
         Cursor WeekCursor=getWeekCursor();
         int Week_id;
         WeekCursor.moveToFirst();
@@ -177,15 +179,16 @@ public class All_Table extends TableDbTable {
     public String[][] ClassInTable(){
         int ClassWeek_count=getClassWeekCount();
         if(ClassWeek_count<=0) return null;
-        String Tables[][]=new String[ClassWeek_count][];
+        String Tables[][]=new String[ClassWeek_count+1][];
         Cursor ClassWeekCursor=getClassWeekCursor();
         int ClassWeek_id;
         ClassWeekCursor.moveToFirst();
 
         ClassWeek_id=ClassWeekCursor.getInt(0);
         Log.v("ClassWeek_id",ClassWeek_id+"");
-        Tables[0]=ClassInOneWeek(ClassWeek_id);
-        for(int i=1;ClassWeekCursor.moveToNext();i++){
+        Tables[0]=ClassInOneWeek(ClassWeek_id,true);
+        Tables[1]=ClassInOneWeek(ClassWeek_id);
+        for(int i=2;ClassWeekCursor.moveToNext();i++){
             ClassWeek_id=ClassWeekCursor.getInt(0);
             Log.v("ClassWeek_id",ClassWeek_id+"");
             Tables[i]=ClassInOneWeek(ClassWeek_id);

@@ -122,7 +122,7 @@ public class TableActivity extends AppCompatActivity {
                 return;
             }
             String[][] Class=Table.ClassInTable();
-            viewTable(Table.getClassWeekCount(),Table.getDayCount(),Class);
+            viewTable(Table.getClassWeekCount()+1,Table.getDayCount(),Class);
         }
 
         @Override
@@ -163,6 +163,7 @@ public class TableActivity extends AppCompatActivity {
                 LinearLayout tw_ly=new LinearLayout(this);
                 tw_ly.setBackgroundColor(Color.parseColor("#FFFFFF"));
                 tw_ly.setPadding(MARGIN,0,MARGIN,0);
+                if(i==0)tw_ly.setPadding(MARGIN,5,MARGIN,5);
                 tr.addView(tw_ly);
                 tw_ly.addView(AddButton(subject[i][j],i*10+j,i%2==0),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             }
