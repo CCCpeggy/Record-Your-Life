@@ -137,6 +137,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Exam.AddExamPageActivity" />
         </activity>
+        <activity android:name=".Exam.InputScoreActivity"
+            android:label="@string/exam"
+            android:parentActivityName="." >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Exam.InputScoreActivity" />
+        </activity>
         <activity android:name=".Table.AddSubjectTableActivity"
             android:label="@string/table"
             android:parentActivityName=".Table.TableActivity" >
@@ -167,6 +174,11 @@
         </activity>
 
         <receiver android:name=".Reminder.AlarmReceiver">
+            <intent-filter>
+                <action android:name="net.macdidi.broadcast01.action.MYBROADCAST01" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".Reminder.AlarmReceiverByInput">
             <intent-filter>
                 <action android:name="net.macdidi.broadcast01.action.MYBROADCAST01" />
             </intent-filter>

@@ -167,7 +167,7 @@ public class NoteActivity extends AppCompatActivity {
 
     public void UpdateAdapter_Note(String Search_word){
         try{
-            cursor=NoteDb.getCursor(" 便條標題 LIKE '%"+Search_word+"%'");
+            cursor=NoteDb.getCursor(" 便條標題 LIKE '%"+Search_word+"%' OR  便條內容 LIKE '%"+Search_word+"%'");
             if(cursor !=  null && cursor.getCount()>0){
                 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"便條標題", "便條內容"}, new int[]{android. R.id.text1,android.R.id.text2}, 0);
                 listView01.setAdapter(adapter);

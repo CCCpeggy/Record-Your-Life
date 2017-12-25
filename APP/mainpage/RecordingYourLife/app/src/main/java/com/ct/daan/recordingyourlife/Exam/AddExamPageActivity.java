@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.Class.OthersFunction;
+import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.ClassDbTable;
 import com.ct.daan.recordingyourlife.DbTable.ClassWeekDbTable;
@@ -50,6 +51,7 @@ public class AddExamPageActivity extends AppCompatActivity {
     ClassWeekDbTable ClassWeekDb;
     ClassDbTable ClassDb;
     ExamDbTable ExamDb;
+    ReminderDbTable ReminderDb;
     CalendarFunction calendarFunction;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,25 +99,17 @@ public class AddExamPageActivity extends AppCompatActivity {
         OpOrCrDb();
         TableDb= new TableDbTable(SQLiteDB_Path,db);
         TableDb.OpenOrCreateTb();
-        //TableDb.deleteAllRow();
-        //TableDb.AddTalbeData();
 
         //SubjectDb資料庫建立
         SubjectDb=new SubjectDbTable(SQLiteDB_Path,db);
         SubjectDb.OpenOrCreateTb();
-        //SubjectDb.deleteAllRow();
-        //SubjectDb.AddSubjectData();
 
         //ClassDb資料庫建立
         ClassDb=new ClassDbTable(SQLiteDB_Path,db);
         ClassDb.OpenOrCreateTb();
-        //ClassDb.deleteAllRow();
-        //ClassDb.AddClassData();
 
         WeekDb=new WeekDbTable(SQLiteDB_Path,db);
         WeekDb.OpenOrCreateTb();
-        //WeekDb.deleteAllRow();
-        //WeekDb.AddWeekData();
 
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
         ClassWeekDb.OpenOrCreateTb();
@@ -123,6 +117,8 @@ public class AddExamPageActivity extends AppCompatActivity {
         ExamDb=new ExamDbTable(SQLiteDB_Path,db);
         ExamDb.OpenOrCreateTb();
 
+        ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
+        ReminderDb.OpenOrCreateTb();
     }
     String tmp_Subject="";
     private Spinner.OnItemSelectedListener Subject_Listener=new Spinner.OnItemSelectedListener(){
@@ -288,15 +284,6 @@ public class AddExamPageActivity extends AppCompatActivity {
         return Calendar;
     }
 
-    private Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            /*String score= Score_et.getText().toString();
-            ExamDb.insertExamData(ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
-            setResult(RESULT_OK,intent);
-            finish();*/
-        }
-    };
 
     //增加動作按鈕到工具列
     @Override
@@ -316,6 +303,10 @@ public class AddExamPageActivity extends AppCompatActivity {
                 if(!othersFunction.isEdittextNotEmpty(Date_et,"日期",AddExamPageActivity.this))return true;
                 String score= Score_et.getText().toString();
                 ExamDb.insertExamData(ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
+                ReminderDb.insertReminderData(Date_et.getText().toString(),"06:11",0,0);
+                Cursor Reminder_cursor=ReminderDb.getCursor();
+                Reminder_cursor.moveToLast();
+                othersFunction.setReminderByInput(AddExamPageActivity.this,Reminder_cursor,Reminder_cursor.getInt(0),Name_et.getText().toString()+"考試成績","請點擊輸入"+Name_et.getText().toString()+"考試成績");
                 setResult(RESULT_OK,intent);
                 finish();
                 return true;

@@ -1,5 +1,10 @@
 package com.ct.daan.recordingyourlife;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
@@ -21,7 +26,7 @@ import com.ct.daan.recordingyourlife.DbTable.ScheduleDbTable;
 import com.ct.daan.recordingyourlife.DbTable.SubjectDbTable;
 import com.ct.daan.recordingyourlife.DbTable.TableDbTable;
 import com.ct.daan.recordingyourlife.DbTable.WeekDbTable;
-import com.ct.daan.recordingyourlife.Diary.DiaryActivity;
+import com.ct.daan.recordingyourlife.Exam.InputScoreActivity;
 import com.ct.daan.recordingyourlife.MainPage.MainPageActivity;
 import com.ct.daan.recordingyourlife.MainPage.PagerAdapter;
 import com.ct.daan.recordingyourlife.Schedule.ScheduleActivity;
@@ -35,7 +40,7 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
         setContentView(R.layout.activity_main);
         //deleteAllData();
         //AddAllData();
-
+        Test(MainActivity.this);
         TabLayout tabLayout=(TabLayout)findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText("主畫面"));
         tabLayout.addTab(tabLayout.newTab().setText("行程"));
@@ -157,5 +162,27 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+    void Test(Context context){
+        int reminderID=1;
+        String name="全真模擬卷";
+        String Subject="國文";
+        if(reminderID==0)return;
+        Log.v("currentTimeMillis", System.currentTimeMillis()+"");
+
+        Intent intent1=new Intent(context,InputScoreActivity.class);
+        intent1.putExtra("EXAMID",1);
+        PendingIntent contentIntent=PendingIntent.getActivity(context,0,intent1,PendingIntent.FLAG_UPDATE_CURRENT);
+        Notification.Builder mBuilder=(Notification.Builder)new Notification.Builder(context)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(Subject+"考試成績")
+                .setContentText("請點擊記錄"+name+"考試成績")
+                .setAutoCancel(true)
+                .setSubText("考試成績登記提醒")
+                .setOngoing(false)
+                .setContentIntent(contentIntent)
+                .setWhen(System.currentTimeMillis());
+        NotificationManager notificationManager=(NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(reminderID,mBuilder.build());
     }
 }

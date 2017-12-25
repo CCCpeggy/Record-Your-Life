@@ -10,6 +10,9 @@ import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -17,7 +20,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Exam.InputScoreActivity;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.Note_Reminder_DbTable;
 import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
@@ -35,7 +40,6 @@ public class AddReminderActivityByNew extends AppCompatActivity {
     EditText date,time;
     Switch isReplace;
     Spinner ReplaceType;
-    Button Complete_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +53,6 @@ public class AddReminderActivityByNew extends AppCompatActivity {
         time=(EditText)findViewById(R.id.time_et);
         isReplace=(Switch)findViewById(R.id.isreplace_sw);
         ReplaceType=(Spinner) findViewById(R.id.replacetype_sp);
-        Complete_btn=(Button)findViewById(R.id.btn_Complete2);
         date.setOnClickListener(DatePick_Listener);
         time.setOnClickListener(TimePick_Listener);
 
@@ -58,7 +61,6 @@ public class AddReminderActivityByNew extends AppCompatActivity {
         NoteReminderDb.OpenOrCreateTb();
         ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
         ReminderDb.OpenOrCreateTb();
-        Complete_btn.setOnClickListener(Complete_btn_Listener);
     }
     //打開或新增資料庫
     private void OpOrCrDb(){
@@ -70,17 +72,14 @@ public class AddReminderActivityByNew extends AppCompatActivity {
         }
     }
 
-    Button.OnClickListener Complete_btn_Listener= new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            ReminderDb.insertReminderData(date.getText().toString(),time.getText().toString(),isReplace.isChecked()?1:0 ,ReplaceType.getSelectedItemPosition());
-            Cursor cursor=ReminderDb.getCursor();
-            cursor.moveToLast();
-            intent.putExtra("REMINDERID",cursor.getInt(0));
-            setResult(RESULT_OK,intent);
-            finish();
-        }
-    };
+    void Complete() {
+        ReminderDb.insertReminderData(date.getText().toString(),time.getText().toString(),isReplace.isChecked()?1:0 ,ReplaceType.getSelectedItemPosition());
+        Cursor cursor=ReminderDb.getCursor();
+        cursor.moveToLast();
+        intent.putExtra("REMINDERID",cursor.getInt(0));
+        setResult(RESULT_OK,intent);
+        finish();
+    }
 
 
     Calendar m_Calendar = Calendar.getInstance();
@@ -130,4 +129,26 @@ public class AddReminderActivityByNew extends AppCompatActivity {
             time.setText(sdf.format(m_Calendar.getTime()));
         }
     };
+
+
+
+    //增加動作按鈕到工具列
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.done_actions, menu);
+        return true;
+    }
+
+    //動作按鈕回應
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_done:
+                Complete();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
