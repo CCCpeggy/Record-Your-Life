@@ -23,7 +23,7 @@ public class TableDbTable {
     private final static String SQLiteTable_Name= "課表5"; //資料表的名字
     private final static String CREATE_Table_TABLE= "CREATE TABLE if not exists '"+SQLiteTable_Name+"'(" +
             "_id INTEGER  PRIMARY KEY NOT NULL" +
-            ",'課表名稱' TEXT" +
+            ",'                //ListView格式自訂\n' TEXT" +
             ",'課表天數' INTEGER NOT NULL" +
             ",'主要' INTEGER NOT NULL" +
             ",'課表開始日' TEXT NOT NULL" +

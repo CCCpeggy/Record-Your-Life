@@ -37,7 +37,7 @@
                     android:background="@drawable/button_style"
                     android:drawableTop="@drawable/calendar"
                     android:elevation="10dp"
-                    android:paddingTop="20dp" />
+                    android:paddingTop="21dp"/>
 
 
                 <Button
@@ -48,7 +48,7 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/button_style"
                     android:drawableTop="@drawable/note"
-                    android:paddingTop="20dp" />
+                    android:paddingTop="21dp"/>
 
                 <Button
                     android:id="@+id/diary_btn"
@@ -58,7 +58,8 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/button_style"
                     android:drawableTop="@drawable/diary"
-                    android:paddingTop="20dp" />
+                    android:paddingTop="21dp"
+                    android:paddingLeft="3dp"/>
             </TableRow>
 
             <TableRow
@@ -107,21 +108,31 @@
                     android:id="@+id/test_btn"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/button_style"
                     android:drawableTop="@drawable/test"
-                    android:paddingTop="20dp" />
+                    android:paddingTop="23dp"
+                    android:paddingLeft="1dp"/>
 
                 <Button
                     android:id="@+id/table_btn"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/button_style"
                     android:drawableTop="@drawable/timetable"
-                    android:paddingTop="20dp" />
+                    android:paddingTop="23dp" />
+                <Button
+                    android:id="@+id/settting_btn"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/button_style"
+                    android:drawableTop="@drawable/icon_settings"
+                    android:paddingTop="23dp" />
             </TableRow>
 
             <TableRow
@@ -144,6 +155,12 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="課表" />
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="設定" />
 
             </TableRow>
 

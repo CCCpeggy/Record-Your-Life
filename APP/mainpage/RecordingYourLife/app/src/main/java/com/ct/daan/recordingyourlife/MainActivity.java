@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
@@ -36,10 +37,11 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
     private String SQLiteDB_Path="student_project.db";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //deleteAllData();
-        AddAllData();
+        //AddAllData();
         Test(MainActivity.this);
         TabLayout tabLayout=(TabLayout)findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText("主畫面"));
@@ -164,6 +166,7 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
 
     }
     void Test(Context context){
+
         int reminderID=1;
         String name="全真模擬卷";
         String Subject="國文";
@@ -185,4 +188,37 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
         NotificationManager notificationManager=(NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(reminderID,mBuilder.build());
     }
+
+    void setTheme(){
+        /*SharedPreferences.Editor pref = getSharedPreferences("RECORDINGYOURLIFE", 0).edit();
+        pref.putInt("THEME_INDEX" ,1);
+        pref.apply();*/
+
+        SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
+        int theme_index = prefs.getInt("THEME_INDEX" ,0);
+        int theme=0;
+        switch (theme_index){
+            case 1:
+                theme=R.style.AppTheme_brown;
+                break;
+            case 2:
+                theme=R.style.AppTheme_orange;
+                break;
+            case 3:
+                theme= R.style.AppTheme_purple;
+                break;
+            case 4:
+                theme=R.style.AppTheme_red;
+                break;
+            case 5:
+                theme=R.style.AppTheme_white;
+                break;
+            case 0:
+            default:
+                theme=R.style.AppTheme;
+                break;
+        }
+        setTheme(theme);
+    }
+
 }

@@ -2,6 +2,7 @@ package com.ct.daan.recordingyourlife.Schedule;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -407,6 +408,4 @@ public class ScheduleActivity extends Fragment {
             ScheduleDb.insertScheduleData(Name,Date,Time);
         }
     };
-
-
 }

@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
@@ -45,6 +46,7 @@ public class ReminderActivity extends AppCompatActivity {
     CalendarFunction calFunction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reminder_page);
 
@@ -176,5 +178,31 @@ public class ReminderActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    void setTheme(){
+        SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
+        int theme_index = prefs.getInt("THEME_INDEX" ,0);
+        int theme=0;
+        switch (theme_index){
+            case 1:
+                theme=R.style.AppTheme_brown;
+                break;
+            case 2:
+                theme=R.style.AppTheme_orange;
+                break;
+            case 3:
+                theme= R.style.AppTheme_purple;
+                break;
+            case 4:
+                theme=R.style.AppTheme_red;
+                break;
+            case 5:
+                break;
+            case 0:
+            default:
+                theme=R.style.AppTheme;
+                break;
+        }
+        setTheme(theme);
     }
 }

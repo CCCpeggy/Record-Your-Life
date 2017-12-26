@@ -3,6 +3,7 @@ package com.ct.daan.recordingyourlife.Note;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ public class NoteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_activity);
         calFunction=new CalendarFunction();
@@ -258,5 +260,30 @@ public class NoteActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
+    void setTheme(){
+        SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
+        int theme_index = prefs.getInt("THEME_INDEX" ,0);
+        int theme=0;
+        switch (theme_index){
+            case 1:
+                theme=R.style.AppTheme_brown;
+                break;
+            case 2:
+                theme=R.style.AppTheme_orange;
+                break;
+            case 3:
+                theme= R.style.AppTheme_purple;
+                break;
+            case 4:
+                theme=R.style.AppTheme_red;
+                break;
+            case 5:
+                break;
+            case 0:
+            default:
+                theme=R.style.AppTheme;
+                break;
+        }
+        setTheme(theme);
+    }
 }

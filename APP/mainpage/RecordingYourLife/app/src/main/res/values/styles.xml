@@ -6,7 +6,53 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+
+    </style>
+
+    <style name="AppTheme_purple" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#5f67a2</item>
+        <item name="colorPrimaryDark">#393e61</item>
+        <item name="colorAccent">#d265c4</item>
+        <item name="android:navigationBarColor">#1b0e50</item>
+    </style>
+
+    <style name="AppTheme_red" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#9d0f18</item>
+        <item name="colorPrimaryDark">#41090c</item>
+        <item name="colorAccent">#cf7c2e</item>
+        <item name="android:navigationBarColor">#1e0410</item>
+    </style>
+
+    <style name="AppTheme_orange" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#c6a321</item>
+        <item name="colorPrimaryDark">#755d05</item>
+        <item name="colorAccent">#ea7f55</item>
+        <item name="android:navigationBarColor">#120704</item>
+    </style>
+
+    <style name="AppTheme_brown" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#6b204e</item>
+        <item name="colorPrimaryDark">#431b34</item>
+        <item name="colorAccent">#d26591</item>
+        <item name="android:navigationBarColor">#3e0e50</item>
+    </style>
+
+    <style name="AppTheme_white" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#999999</item>
+        <item name="colorAccent">#666666</item>
+        <item name="android:navigationBarColor">#333333</item>
+    </style>
+
+
+    <style name="AppTheme3" parent="AppTheme" >
+        <item name="colorPrimary">@android:color/holo_orange_dark</item>
+        <item name="colorPrimaryDark">?android:attr/colorMultiSelectHighlight</item>
     </style>
 
 </resources>

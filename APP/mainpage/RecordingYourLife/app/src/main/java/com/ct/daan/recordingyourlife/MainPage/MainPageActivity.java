@@ -17,6 +17,7 @@ import com.ct.daan.recordingyourlife.Event.EventActivity;
 import com.ct.daan.recordingyourlife.Exam.ExamActivity;
 import com.ct.daan.recordingyourlife.Note.NoteActivity;
 import com.ct.daan.recordingyourlife.R;
+import com.ct.daan.recordingyourlife.Settings.Settings;
 import com.ct.daan.recordingyourlife.Table.TableActivity;
 
 /**
@@ -61,12 +62,14 @@ public class MainPageActivity extends Fragment {
         Button Diary_btn=v.findViewById(R.id.diary_btn);
         Button Test_btn=v.findViewById(R.id.test_btn);
         Button Table_btn=v.findViewById(R.id.table_btn);
+        Button Set_btn=v.findViewById(R.id.settting_btn);
 
         Calendar_btn.setOnClickListener(btn_listener);
         Note_btn.setOnClickListener(btn_listener);
         Diary_btn.setOnClickListener(btn_listener);
         Test_btn.setOnClickListener(btn_listener);
         Table_btn.setOnClickListener(btn_listener);
+        Set_btn.setOnClickListener(btn_listener);
         return v;
     }
     Button.OnClickListener btn_listener= new Button.OnClickListener() {
@@ -92,6 +95,10 @@ public class MainPageActivity extends Fragment {
                     break;
                 case R.id.table_btn:
                     intent=new Intent(getContext(),TableActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.settting_btn:
+                    intent=new Intent(getContext(),Settings.class);
                     startActivity(intent);
                     break;
             }

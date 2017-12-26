@@ -16,6 +16,15 @@
         <item>6</item>
         <item>7</item>
     </string-array>
+    <string-array name="theme">
+
+        <item>green</item>
+        <item>brown</item>
+        <item>orange</item>
+        <item>purple</item>
+        <item>red</item>
+        <item>white</item>
+    </string-array>
     <string-array name="color_name">
         <item>紅</item>
         <item>綠</item>
@@ -40,6 +49,8 @@
     <string name="leave_content">確認要離開嗎</string>
     <string name="delete_tilte">刪除確認</string>
     <string name="delete_content">確認要刪除嗎</string>
+    <string name="theme_tilte">主題確認</string>
+    <string name="theme_change">確認要換主題嗎</string>
     <string name="hi">老師是</string>
     <string name="sub">科目是</string>
     <string name="note">便條</string>
@@ -48,6 +59,7 @@
     <string name="diary">日記</string>
     <string name="schedule">行程</string>
     <string name="table">課表</string>
+    <string name="settings">設定</string>
     <string name="search">搜尋</string>
     <string name="edit">編輯</string>
     <string name="delete">刪除</string>
@@ -56,4 +68,5 @@
     <string name="configure">Configure</string>
     <string name="add_widget">加入桌面</string>
     <string name="note_appwidget_text">便條</string>
+    <string name="appwidget_text">EXAMPLE</string>
 </resources>
