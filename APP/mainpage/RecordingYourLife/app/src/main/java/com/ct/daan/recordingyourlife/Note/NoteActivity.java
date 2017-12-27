@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
@@ -40,7 +41,7 @@ public class NoteActivity extends AppCompatActivity {
     Note_Reminder_DbTable NoteReminderDb;
     ReminderDbTable ReminderDb;
     NoteDbTable NoteDb;
-    ListView listView01;
+    GridView gridView;
     CalendarFunction calFunction;
     OthersFunction othersFunction;
     FloatingActionButton btnAdd;
@@ -71,7 +72,7 @@ public class NoteActivity extends AppCompatActivity {
 
     private void initView() {
         //變數指定物件
-        listView01=(ListView)findViewById(R.id.listv);
+        gridView=(GridView) findViewById(R.id.listv);
         btnAdd=(FloatingActionButton)findViewById(R.id.fab);
         btnAdd.setImageResource(R.drawable.icon_add);
 
@@ -156,9 +157,8 @@ public class NoteActivity extends AppCompatActivity {
                 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.note_listview_item_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{R.id.text1,R.id.text2}, 0);
                 //ListView格式預設
                 //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"便條標題", "便條內容"}, new int[]{android. R.id.text1,android.R.id.text2}, 0);
-                listView01.setAdapter(adapter);
-                listView01.setOnItemLongClickListener(List_Long_Listener);
-                listView01.setOnItemClickListener(List_listener);
+                gridView.setAdapter(adapter);
+                gridView.setOnItemClickListener(List_listener);
                 Log.v("UpdateAdapter_Note", String.format("UpdateAdapter_Note() 更新成功"));
             }
         }catch (Exception e){
@@ -172,9 +172,8 @@ public class NoteActivity extends AppCompatActivity {
             cursor=NoteDb.getCursor(" 便條標題 LIKE '%"+Search_word+"%' OR  便條內容 LIKE '%"+Search_word+"%'");
             if(cursor !=  null && cursor.getCount()>0){
                 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"便條標題", "便條內容"}, new int[]{android. R.id.text1,android.R.id.text2}, 0);
-                listView01.setAdapter(adapter);
-                listView01.setOnItemLongClickListener(List_Long_Listener);
-                listView01.setOnItemClickListener(List_listener);
+                gridView.setAdapter(adapter);
+                gridView.setOnItemClickListener(List_listener);
                 Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
             }
         }catch (Exception e){
@@ -183,7 +182,7 @@ public class NoteActivity extends AppCompatActivity {
 
     }
 
-    private ListView.OnItemClickListener List_listener=new ListView.OnItemClickListener(){
+    private GridView.OnItemClickListener List_listener=new GridView.OnItemClickListener(){
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -196,7 +195,7 @@ public class NoteActivity extends AppCompatActivity {
             startActivityForResult(intent,LISTVIEWPAGE);
         }
     };
-
+/*
     private ListView.OnItemLongClickListener List_Long_Listener = new ListView.OnItemLongClickListener() {
         @Override
         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -211,7 +210,7 @@ public class NoteActivity extends AppCompatActivity {
             return false;
         }
     };
-
+*/
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar

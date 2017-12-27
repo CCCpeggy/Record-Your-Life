@@ -13,12 +13,11 @@
 
     </LinearLayout>
 
-    <ListView
+    <GridView
         android:id="@+id/listv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:numColumns="2"/>
 
 </LinearLayout>
