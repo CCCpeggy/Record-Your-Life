@@ -318,7 +318,7 @@ public class AddExamPageActivity extends AppCompatActivity {
                 Cursor cursor=ExamDb.getCursorOrderById();
                 cursor.moveToLast();
                 int ExamId=cursor.getInt(0);
-                ReminderDb.insertReminderData(Date_et.getText().toString(),"19:46",0,0);
+                ReminderDb.insertReminderData(Date_et.getText().toString(),getRemindTime(),0,0);
                 Cursor Reminder_cursor=ReminderDb.getCursor();
                 Reminder_cursor.moveToLast();
                 othersFunction.setReminderByInput(AddExamPageActivity.this,Reminder_cursor,Reminder_cursor.getInt(0),ExamId,Name_et.getText().toString(),SubjectDb.getSubjectName(Subject_id));
@@ -328,6 +328,11 @@ public class AddExamPageActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    String getRemindTime(){
+        SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
+        String Time = prefs.getString("ExamRemindTime" ,"");
+        return Time;
     }
     void setTheme(){
         SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);

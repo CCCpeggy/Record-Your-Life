@@ -338,12 +338,17 @@ public class ExamPageActivity extends AppCompatActivity {
         if(!othersFunction.isEdittextNotEmpty(Date_et,"日期",ExamPageActivity.this))return;
         String score= Score_et.getText().toString();
         ExamDb.updateExamData(Exam_id,ClassWeek_id,Subject_id,Date_et.getText().toString(),Name_et.getText().toString(),Content_et.getText().toString(),score.equals("")?-100:Integer.parseInt(score));
-        ReminderDb.insertReminderData(Date_et.getText().toString(),"19:50",0,0);
+        ReminderDb.insertReminderData(Date_et.getText().toString(),getRemindTime(),0,0);
         Cursor Reminder_cursor=ReminderDb.getCursor();
         Reminder_cursor.moveToLast();
         othersFunction.setReminderByInput(ExamPageActivity.this,Reminder_cursor,Reminder_cursor.getInt(0),Exam_id,Name_et.getText().toString(),SubjectDb.getSubjectName(Subject_id));
         setResult(RESULT_OK,intent);
         finish();
+    }
+    String getRemindTime(){
+        SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
+        String Time = prefs.getString("ExamRemindTime" ,"");
+        return Time;
     }
 
     public void setSpinnerByValue(Spinner spinner, int value, Cursor cursor, int Col){
