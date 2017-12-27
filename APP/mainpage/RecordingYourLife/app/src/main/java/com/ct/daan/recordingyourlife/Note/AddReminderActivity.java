@@ -91,7 +91,7 @@ public class AddReminderActivity extends AppCompatActivity {
         OthersFunction othersFunction=new OthersFunction();
         Cursor Note_cursor = NoteDb.getCursor(id);
         Note_cursor.moveToFirst();
-        othersFunction.setReminder(context,cursor,reminderId,Note_cursor.getString(1),Note_cursor.getString(2));
+        othersFunction.setReminder(context,cursor,reminderId,id,Note_cursor.getString(1),Note_cursor.getString(2));
     }
 
     void Complete() {

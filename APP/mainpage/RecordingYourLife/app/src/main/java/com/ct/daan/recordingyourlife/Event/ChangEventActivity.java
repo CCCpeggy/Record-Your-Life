@@ -45,6 +45,7 @@ public class ChangEventActivity extends AppCompatActivity {
     }
 
     private void initView() {
+
         Start_date = (EditText) findViewById(R.id.startTime_et);
         End_date=(EditText)findViewById(R.id.endTime_et);
         Name=(EditText)findViewById(R.id.name_et);
@@ -79,9 +80,12 @@ public class ChangEventActivity extends AppCompatActivity {
         Name.setText(cursor.getString(1));
         Start_date.setText(cursor.getString(2));
         End_date.setText(cursor.getString(3));
-        Remark.setText(cursor.getString(4));
+        try {
+            String Remark_str=cursor.getString(4);
+            Remark.setText(Remark_str);
+        }catch (Exception ex){
 
-
+        }
     }
     Calendar m_Calendar = Calendar.getInstance();
     private EditText.OnClickListener DatePick_Listener= new EditText.OnClickListener() {

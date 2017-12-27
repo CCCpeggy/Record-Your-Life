@@ -26,6 +26,7 @@ import android.widget.TimePicker;
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.DbTable.NoteDbTable;
+import com.ct.daan.recordingyourlife.DbTable.Note_Reminder_DbTable;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 
@@ -42,7 +43,11 @@ public class ReminderActivity extends AppCompatActivity {
     Switch isReplace;
     Spinner ReplaceType;
 
+    Calendar Date_Calendar = Calendar.getInstance();
+    Calendar Time_Calendar = Calendar.getInstance();
+
     NoteDbTable NoteDb;
+    Note_Reminder_DbTable NoteReminderDb;
     CalendarFunction calFunction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +73,12 @@ public class ReminderActivity extends AppCompatActivity {
         OpOrCrDb();
         ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
         ReminderDb.OpenOrCreateTb();
+        NoteReminderDb=new Note_Reminder_DbTable(SQLiteDB_Path,db);
+        NoteReminderDb.OpenOrCreateTb();
         Cursor cursor=ReminderDb.getCursor(id);
         cursor.moveToFirst();
+        Date_Calendar=calFunction.DateTextToCalendarType(cursor.getString(1));
+        Time_Calendar=calFunction.TimeTextToCalendarType(cursor.getString(2));
         date.setText(cursor.getString(1));
         time.setText(cursor.getString(2));
         isReplace.setChecked(cursor.getInt(3)==1);
@@ -90,31 +99,30 @@ public class ReminderActivity extends AppCompatActivity {
     void Complete() {
         ReminderDb.updateReminderData(id,date.getText().toString(),time.getText().toString(),isReplace.isChecked()?1:0 ,ReplaceType.getSelectedItemPosition());
         intent.putExtra("REMINDER_ID",id);
-        setReminder(ReminderActivity.this,cursor, cursor.getInt(0));
+        setReminder(ReminderActivity.this);
         setResult(RESULT_OK,intent);
         finish();
     }
 
-    private void setReminder(Context context, Cursor cursor, int reminderId) {
+    private void setReminder(Context context) {
         OthersFunction othersFunction=new OthersFunction();
-        Cursor Note_cursor = NoteDb.getCursor(id);
+        int Note_id=NoteReminderDb.getNoteId(id);
+        Log.v("Note_id",Note_id+"");
+        Cursor Note_cursor = NoteDb.getCursor(Note_id);
         Note_cursor.moveToFirst();
-        othersFunction.setReminder(context,cursor,reminderId,Note_cursor.getString(1),Note_cursor.getString(2));
+        Cursor cursor=ReminderDb.getCursor(id);
+        cursor.moveToFirst();
+        othersFunction.setReminder(context,cursor,id,Note_id,Note_cursor.getString(1),Note_cursor.getString(2));
     }
 
 
-    Calendar m_Calendar = Calendar.getInstance();
     private EditText.OnClickListener DatePick_Listener= new EditText.OnClickListener() {
         @Override
         public void onClick(View v) {
-            EditText et=(EditText)v;
-            String date=et.getText().toString();
-            if(!date.isEmpty())
-                m_Calendar=calFunction.DateTextToCalendarType(date);
             DatePickerDialog dataPick=new DatePickerDialog(ReminderActivity.this,datepicker,
-                    m_Calendar.get(Calendar.YEAR),
-                    m_Calendar.get(Calendar.MONTH),
-                    m_Calendar.get(Calendar.DAY_OF_MONTH));
+                    Date_Calendar.get(Calendar.YEAR),
+                    Date_Calendar.get(Calendar.MONTH),
+                    Date_Calendar.get(Calendar.DAY_OF_MONTH));
             dataPick.show();
         }
     };
@@ -122,13 +130,9 @@ public class ReminderActivity extends AppCompatActivity {
     private EditText.OnClickListener TimePick_Listener= new EditText.OnClickListener() {
         @Override
         public void onClick(View v) {
-            EditText et=(EditText)v;
-            String time=et.getText().toString();
-            if(!time.isEmpty())
-                m_Calendar=calFunction.TimeTextToCalendarType(time);
             android.app.TimePickerDialog dataPick=new TimePickerDialog(ReminderActivity.this,TimePickerDialog,
-                    m_Calendar.get(Calendar.HOUR_OF_DAY),
-                    m_Calendar.get(Calendar.MINUTE),true);
+                    Time_Calendar.get(Calendar.HOUR_OF_DAY),
+                    Time_Calendar.get(Calendar.MINUTE),true);
             dataPick.show();
         }
     };
@@ -138,12 +142,12 @@ public class ReminderActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
         {
-            m_Calendar.set(Calendar.YEAR, year);
-            m_Calendar.set(Calendar.MONTH, monthOfYear);
-            m_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            Date_Calendar.set(Calendar.YEAR, year);
+            Date_Calendar.set(Calendar.MONTH, monthOfYear);
+            Date_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             String myFormat = "yyyy-MM-dd";
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
-            date.setText(sdf.format(m_Calendar.getTime()));
+            date.setText(sdf.format(Date_Calendar.getTime()));
         }
     };
 
@@ -151,11 +155,11 @@ public class ReminderActivity extends AppCompatActivity {
     TimePickerDialog.OnTimeSetListener TimePickerDialog=new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            m_Calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-            m_Calendar.set(Calendar.MINUTE, minute);
+            Time_Calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            Time_Calendar.set(Calendar.MINUTE, minute);
             String myFormat = "HH:mm";
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
-            time.setText(sdf.format(m_Calendar.getTime()));
+            time.setText(sdf.format(Time_Calendar.getTime()));
         }
     };
 

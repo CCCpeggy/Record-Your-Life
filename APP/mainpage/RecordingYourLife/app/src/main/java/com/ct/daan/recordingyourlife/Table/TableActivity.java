@@ -257,6 +257,7 @@ public class TableActivity extends AppCompatActivity {
                 theme=R.style.AppTheme_red;
                 break;
             case 5:
+                theme=R.style.AppTheme_white;
                 break;
             case 0:
             default:

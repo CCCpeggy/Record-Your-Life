@@ -23,15 +23,15 @@ public class OthersFunction {
         calendarFunction=new CalendarFunction();
     }
 
-    public void setReminder(Context context,Cursor Reminder_cursor, int id,String title,String content) {
-
-        Log.v("setReminder",String.format("context:%s,reminder_id:%s,title:%s,content:%s,date:%s,time:%s,type:%d"
-                ,context,id,title,content,Reminder_cursor.getString(1),Reminder_cursor.getString(2),Reminder_cursor.getInt(3)));
+    public void setReminder(Context context,Cursor Reminder_cursor, int Reminder_id,int nodeId ,String title,String content) {
+        Log.v("setReminder",String.format("context:%s,reminder_id:%s,node_id:%s,title:%s,content:%s,date:%s,time:%s,type:%d"
+                ,context,Reminder_id,nodeId,title,content,Reminder_cursor.getString(1),Reminder_cursor.getString(2),Reminder_cursor.getInt(3)));
         CalendarFunction calFunction=new CalendarFunction();
         Calendar calendar=calFunction.DateTimeTextToCalendarType(Reminder_cursor.getString(1),Reminder_cursor.getString(2));
         String BROADCAST_ACTION = "net.macdidi.broadcast01.action.MYBROADCAST01";
         Intent intent = new Intent(BROADCAST_ACTION);
-        intent.putExtra("REMINDERID", id);
+        intent.putExtra("NOTEID", nodeId);
+        intent.putExtra("REMINDERID", Reminder_id);
         intent.putExtra("TITLE",title);
         intent.putExtra("CONTENT", content);
         PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
@@ -59,16 +59,16 @@ public class OthersFunction {
         alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() ,Reminder_type, sender);
     }
 
-    public void setReminderByInput(Context context,Cursor Reminder_cursor,int reminder_id, int id,String name,String subject) {
+    public void setReminderByInput(Context context,Cursor Reminder_cursor,int reminder_id, int Exam_id,String name,String subject) {
 
         Log.v("setReminder",String.format("context:%s,reminder_id:%s,title:%s,content:%s,date:%s,name:%s,subject:%d"
-                ,context,id,name,subject,Reminder_cursor.getString(1),Reminder_cursor.getString(2),Reminder_cursor.getInt(3)));
+                ,context,Exam_id,name,subject,Reminder_cursor.getString(1),Reminder_cursor.getString(2),Reminder_cursor.getInt(3)));
         CalendarFunction calFunction=new CalendarFunction();
         Calendar calendar=calFunction.DateTimeTextToCalendarType(Reminder_cursor.getString(1),Reminder_cursor.getString(2));
         String BROADCAST_ACTION = "net.macdidi.broadcast01.action.MYBROADCAST01";
         Intent intent = new Intent(BROADCAST_ACTION);
         intent.putExtra("REMINDERID", reminder_id);
-        intent.putExtra("EXAMID", id);
+        intent.putExtra("EXAMID", Exam_id);
         intent.putExtra("NAME",name);
         intent.putExtra("SUBJECT", subject);
         PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);

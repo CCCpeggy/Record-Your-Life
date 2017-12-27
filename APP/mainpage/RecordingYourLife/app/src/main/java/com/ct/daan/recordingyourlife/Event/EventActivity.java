@@ -20,8 +20,12 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
+import com.ct.daan.recordingyourlife.Note.NoteActivity;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.EventDbTable;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 public class EventActivity extends AppCompatActivity {
     private SQLiteDatabase db=null;
@@ -29,12 +33,15 @@ public class EventActivity extends AppCompatActivity {
     EventDbTable EventDb;
     ListView EventList;
     CalendarView calView;
+    CalendarFunction calendarFunction;
     private final static int ADDEVENTPAGE=1895,CHANGEEVENTPAGE=1494;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_activity);
+
+        calendarFunction=new CalendarFunction();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(onClickListener);
@@ -43,14 +50,12 @@ public class EventActivity extends AppCompatActivity {
         OpOrCrDb();
         EventDb=new EventDbTable(SQLiteDB_Path,db);
         EventDb.OpenOrCreateTb();
-        //EventDb.deleteAllRow();
-        //EventDb.AddEventData();
 
         EventList =(ListView)findViewById(R.id.Event);
         calView = (CalendarView)findViewById(R.id.calendarView);
         calView.setOnDateChangeListener(CalViewListener);
-        UpdateAdapter();
 
+        UpdateAdapter();
 
     }
 
@@ -78,7 +83,7 @@ public class EventActivity extends AppCompatActivity {
                         End_date= extra.getString("ENDDATE");
                         Remark= extra.getString("REMARK");
                         EventDb.updateEventData( Selected_id,Name ,Start_date,End_date,Remark);
-
+                        UpdateAdapter(Start_date);
                         break;
                     case ADDEVENTPAGE:
                         Name = extra.getString("NAME");
@@ -97,9 +102,8 @@ public class EventActivity extends AppCompatActivity {
 
     public void UpdateAdapter() {
         Calendar cal= Calendar.getInstance();
-        String date= String.format("%04d-%02d-%02d",cal.get(Calendar.YEAR),(cal.get(Calendar.MONTH)+1),cal.get(Calendar.DAY_OF_MONTH));
-        UpdateAdapter(date);
-
+        date_selected=calendarFunction.getDateString(cal);
+        UpdateAdapter(date_selected);
     }
     public void UpdateAdapter(String date) {
         if(date.equals("")){
@@ -141,6 +145,7 @@ public class EventActivity extends AppCompatActivity {
         }
     }
 
+
     private ListView.OnItemClickListener List_listener=new ListView.OnItemClickListener(){
 
         @Override
@@ -155,6 +160,7 @@ public class EventActivity extends AppCompatActivity {
             startActivityForResult(intent,CHANGEEVENTPAGE);
         }
     };
+
     void setTheme(){
         SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
         int theme_index = prefs.getInt("THEME_INDEX" ,0);
