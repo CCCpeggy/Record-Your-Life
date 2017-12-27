@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.ct.daan.recordingyourlife.Exam.*;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.DiaryDbTable;
 
@@ -46,8 +47,6 @@ public class DiaryActivity extends AppCompatActivity {
         OpOrCrDb();
         DiaryDb=new DiaryDbTable(SQLiteDB_Path,db);
         DiaryDb.OpenOrCreateTb();
-        //DiaryDb.deleteAllRow();
-        //DiaryDb.AddDiaryData();
 
         UpdateAdapter_Note();
     }
@@ -107,7 +106,8 @@ public class DiaryActivity extends AppCompatActivity {
     public void UpdateAdapter_Note(){
         try{
             cursor=DiaryDb.getCursor();
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"日期", "日記內容"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
+            CursorAdapter adapter=new CursorAdapter(DiaryActivity.this, android.R.layout.simple_list_item_2 ,cursor, new String[]{"日期", "日記內容"}, new int[]{android.R.id.text1, android.R.id.text2});
+            // SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"日期", "日記內容"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
             listView01.setAdapter(adapter);
             listView01.setOnItemClickListener(List_listener);
             Log.v("UpdateAdapter_Note", String.format("UpdateAdapter_Note() 更新成功"));
