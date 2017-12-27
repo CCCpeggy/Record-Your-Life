@@ -100,6 +100,12 @@ public class Note_Reminder_DbTable {
         return getCursor("便條ID = "+id);
     }
 
+    public int getNoteId(int id){
+        Cursor cursor=getCursor("_id = "+id);
+        cursor.moveToFirst();
+        return cursor.getInt(1);
+    }
+
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);
     }

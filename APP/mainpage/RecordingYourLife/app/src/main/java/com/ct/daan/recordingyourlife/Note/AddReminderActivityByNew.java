@@ -85,14 +85,15 @@ public class AddReminderActivityByNew extends AppCompatActivity {
     }
 
 
-    Calendar m_Calendar = Calendar.getInstance();
+    Calendar Time_Calendar = Calendar.getInstance();
+    Calendar Date_Calendar = Calendar.getInstance();
     private EditText.OnClickListener DatePick_Listener= new EditText.OnClickListener() {
         @Override
         public void onClick(View v) {
             DatePickerDialog dataPick=new DatePickerDialog(AddReminderActivityByNew.this,datepicker,
-                    m_Calendar.get(Calendar.YEAR),
-                    m_Calendar.get(Calendar.MONTH),
-                    m_Calendar.get(Calendar.DAY_OF_MONTH));
+                    Date_Calendar.get(Calendar.YEAR),
+                    Date_Calendar.get(Calendar.MONTH),
+                    Date_Calendar.get(Calendar.DAY_OF_MONTH));
             dataPick.show();
         }
     };
@@ -101,8 +102,8 @@ public class AddReminderActivityByNew extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             android.app.TimePickerDialog dataPick=new TimePickerDialog(AddReminderActivityByNew.this,TimePickerDialog,
-                    m_Calendar.get(Calendar.HOUR_OF_DAY),
-                    m_Calendar.get(Calendar.MINUTE),true);
+                    Time_Calendar.get(Calendar.HOUR_OF_DAY),
+                    Time_Calendar.get(Calendar.MINUTE),true);
             dataPick.show();
         }
     };
@@ -112,12 +113,12 @@ public class AddReminderActivityByNew extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
         {
-            m_Calendar.set(Calendar.YEAR, year);
-            m_Calendar.set(Calendar.MONTH, monthOfYear);
-            m_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            Date_Calendar.set(Calendar.YEAR, year);
+            Date_Calendar.set(Calendar.MONTH, monthOfYear);
+            Date_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             String myFormat = "yyyy-MM-dd";
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
-            date.setText(sdf.format(m_Calendar.getTime()));
+            date.setText(sdf.format(Date_Calendar.getTime()));
         }
     };
 
@@ -125,11 +126,11 @@ public class AddReminderActivityByNew extends AppCompatActivity {
     TimePickerDialog.OnTimeSetListener TimePickerDialog=new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            m_Calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-            m_Calendar.set(Calendar.MINUTE, minute);
+            Time_Calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            Time_Calendar.set(Calendar.MINUTE, minute);
             String myFormat = "HH:mm";
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
-            time.setText(sdf.format(m_Calendar.getTime()));
+            time.setText(sdf.format(Time_Calendar.getTime()));
         }
     };
 

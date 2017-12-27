@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.ct.daan.recordingyourlife.DbTable.All_Table;
+import com.ct.daan.recordingyourlife.DbTable.NoteDbTable;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.Table.TableActivity;
 
@@ -26,6 +29,9 @@ import com.ct.daan.recordingyourlife.Table.TableActivity;
 public class NotePageActivity extends AppCompatActivity {
     EditText et,et2;
     Intent intent;
+    NoteDbTable NoteDb;
+    private SQLiteDatabase db=null;
+    private String SQLiteDB_Path="student_project.db";
     private final static int RESULT_DELETE=200;
     int id;
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,23 +42,40 @@ public class NotePageActivity extends AppCompatActivity {
         et=(EditText) findViewById(R.id.et);
         et2=(EditText) findViewById(R.id.et2);
 
+        OpOrCrDb();
+        NoteDb=new NoteDbTable(SQLiteDB_Path,db);
+        NoteDb.OpenOrCreateTb();
+
         intent=getIntent();
         Bundle extra=intent.getExtras();
         id=extra.getInt("SELECTED_ID");
-        et.setText(extra.getString("SELECTED_TITLE"));
-        et2.setText(extra.getString("SELECTED_CONTENT"));
+        Cursor cursor=NoteDb.getCursor(id);
+        cursor.moveToFirst();
+        et.setText(cursor.getString(1));
+        et2.setText(cursor.getString(2));
+
+
     }
 
     void Complete() {
-        intent.putExtra("SELECTED_ID",id);
+        /*intent.putExtra("SELECTED_ID",id);
         intent.putExtra("CHANGED_TITLE",et.getText().toString());
-        intent.putExtra("CHANGED_CONTENT",et2.getText().toString());
-        Log.v("回傳資料", String.format("回傳資料：%s=%d,%s=%s,%s=%s","SELECTED_ID",id,"CHANGED_TITLE",et.getText(),"CHANGED_CONTENT",et2.getText()));
+        intent.putExtra("CHANGED_CONTENT",et2.getText().toString());*/
+        //Log.v("回傳資料", String.format("回傳資料：%s=%d,%s=%s,%s=%s","SELECTED_ID",id,"CHANGED_TITLE",et.getText(),"CHANGED_CONTENT",et2.getText()));
+        NoteDb.updateNoteData(id,et.getText().toString(),et2.getText().toString());
         setResult(RESULT_OK,intent);
         finish();
     }
 
-
+    //打開或新增資料庫
+    private void OpOrCrDb(){
+        try{
+            db=openOrCreateDatabase(SQLiteDB_Path,MODE_PRIVATE,null);
+            Log.v("資料庫","資料庫載入成功");
+        }catch (Exception ex){
+            Log.e("#001","資料庫載入錯誤");
+        }
+    }
     void Delete() {
         new AlertDialog.Builder(NotePageActivity.this)
                 .setMessage(R.string.delete_content)

@@ -11,9 +11,12 @@
         android:id="@+id/listv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:background="#FFFFFF"
         android:layout_margin="10dp"
         android:layout_weight="1"
+=======
+>>>>>>> 657a2da640207538155be126bb9c5e281fe87e2c
         android:numColumns="2"/>
 
 </LinearLayout>
