@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
         setContentView(R.layout.activity_main);
         //deleteAllData();
         //AddAllData();
-        Test(MainActivity.this);
+        //Test(MainActivity.this);
         TabLayout tabLayout=(TabLayout)findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText("主畫面"));
         tabLayout.addTab(tabLayout.newTab().setText("行程"));

@@ -20,6 +20,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.EventDbTable;
 
@@ -33,6 +35,9 @@ public class ChangEventActivity extends AppCompatActivity {
     EditText Start_date,End_date,Name,Remark;
     Intent intent;
     int Event_id;
+    Calendar Start_Calendar = Calendar.getInstance();
+    Calendar End_Calendar = Calendar.getInstance();
+    CalendarFunction calendarFunction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme();
@@ -45,6 +50,7 @@ public class ChangEventActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        calendarFunction=new CalendarFunction();
 
         Start_date = (EditText) findViewById(R.id.startTime_et);
         End_date=(EditText)findViewById(R.id.endTime_et);
@@ -79,7 +85,9 @@ public class ChangEventActivity extends AppCompatActivity {
         cursor.moveToFirst();
         Name.setText(cursor.getString(1));
         Start_date.setText(cursor.getString(2));
+        Start_Calendar=calendarFunction.DateTextToCalendarType(cursor.getString(2));
         End_date.setText(cursor.getString(3));
+        End_Calendar=calendarFunction.DateTextToCalendarType(cursor.getString(3));
         try {
             String Remark_str=cursor.getString(4);
             Remark.setText(Remark_str);
@@ -87,24 +95,23 @@ public class ChangEventActivity extends AppCompatActivity {
 
         }
     }
-    Calendar m_Calendar = Calendar.getInstance();
+
     private EditText.OnClickListener DatePick_Listener= new EditText.OnClickListener() {
         @Override
         public void onClick(View v) {
-            EditText et=(EditText)v;
             DatePickerDialog dataPick;
             if (v==Start_date){
                 dataPick=new DatePickerDialog(ChangEventActivity.this,datepicker,
-                        m_Calendar.get(Calendar.YEAR),
-                        m_Calendar.get(Calendar.MONTH),
-                        m_Calendar.get(Calendar.DAY_OF_MONTH));
+                        Start_Calendar.get(Calendar.YEAR),
+                        Start_Calendar.get(Calendar.MONTH),
+                        Start_Calendar.get(Calendar.DAY_OF_MONTH));
                 dataPick.show();
             }
             else{
                 dataPick=new DatePickerDialog(ChangEventActivity.this,datepicker2,
-                        m_Calendar.get(Calendar.YEAR),
-                        m_Calendar.get(Calendar.MONTH),
-                        m_Calendar.get(Calendar.DAY_OF_MONTH));
+                        End_Calendar.get(Calendar.YEAR),
+                        End_Calendar.get(Calendar.MONTH),
+                        End_Calendar.get(Calendar.DAY_OF_MONTH));
                 dataPick.show();
             }
 
@@ -119,13 +126,15 @@ public class ChangEventActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
         {
-            m_Calendar.set(Calendar.YEAR, year);
-            m_Calendar.set(Calendar.MONTH, monthOfYear);
-            m_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            Start_Calendar.set(Calendar.YEAR, year);
+            Start_Calendar.set(Calendar.MONTH, monthOfYear);
+            Start_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             String myFormat = "yyyy-MM-dd";
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
-            Start_date.setText(sdf.format(m_Calendar.getTime()));
-            if(End_date.getText().toString().equals(""))End_date.setText(sdf.format(m_Calendar.getTime()));
+            Start_date.setText(sdf.format(Start_Calendar.getTime()));
+            OthersFunction othersFunction=new OthersFunction();
+
+            if(End_date.getText().toString().equals("")||!othersFunction.CompareDate(Start_date,End_date))End_date.setText(sdf.format(Start_Calendar.getTime()));
         }
     };
 
@@ -134,12 +143,12 @@ public class ChangEventActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
         {
-            m_Calendar.set(Calendar.YEAR, year);
-            m_Calendar.set(Calendar.MONTH, monthOfYear);
-            m_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            End_Calendar.set(Calendar.YEAR, year);
+            End_Calendar.set(Calendar.MONTH, monthOfYear);
+            End_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             String myFormat = "yyyy-MM-dd";
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
-            End_date.setText(sdf.format(m_Calendar.getTime()));
+            End_date.setText(sdf.format(End_Calendar.getTime()));
         }
     };
 

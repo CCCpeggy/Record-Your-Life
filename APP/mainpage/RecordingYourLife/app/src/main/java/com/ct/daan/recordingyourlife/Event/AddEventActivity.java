@@ -19,6 +19,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.EventDbTable;
 
@@ -103,7 +104,9 @@ public class AddEventActivity extends AppCompatActivity {
             String myFormat = "yyyy-MM-dd";
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
             Start_date.setText(sdf.format(m_Calendar.getTime()));
-            if(End_date.getText().toString().equals(""))End_date.setText(sdf.format(m_Calendar.getTime()));
+            OthersFunction othersFunction=new OthersFunction();
+
+            if(End_date.getText().toString().equals("")||!othersFunction.CompareDate(Start_date,End_date))End_date.setText(sdf.format(m_Calendar.getTime()));
         }
     };
 
