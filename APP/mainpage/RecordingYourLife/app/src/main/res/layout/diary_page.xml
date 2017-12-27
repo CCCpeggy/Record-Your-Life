@@ -13,7 +13,10 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="日期" />
+        android:text="日期"
+        android:textColor="?attr/colorPrimaryDark"
+        android:background="@drawable/button_style_diary"
+        android:layout_margin="10dp"/>
 
     <EditText
         android:id="@+id/et2"
@@ -25,6 +28,8 @@
         android:inputType="textMultiLine"
         android:linksClickable="false"
         android:longClickable="false"
-        android:text="Name" />
+        android:text="Name"
+        android:layout_margin="5dp"
+        android:hint="請輸入內容..."/>
 
 </LinearLayout>
