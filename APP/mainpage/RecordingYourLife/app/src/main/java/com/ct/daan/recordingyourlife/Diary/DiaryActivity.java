@@ -106,7 +106,7 @@ public class DiaryActivity extends AppCompatActivity {
     public void UpdateAdapter_Note(){
         try{
             cursor=DiaryDb.getCursor();
-            CursorAdapter adapter=new CursorAdapter(DiaryActivity.this, R.layout.style_listview ,cursor, new String[]{"日期", "日記內容"}, new int[]{R.id.tvDate, R.id.tvName});
+            CursorAdapter adapter=new CursorAdapter(DiaryActivity.this, R.layout.diary_listview_style ,cursor, new String[]{"日期", "日記內容"}, new int[]{R.id.tvDate, R.id.tvName});
             //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.style_listview, cursor, new String[]{"日期", "日記內容"}, new int[]{R.id.tvDate, R.id.tvName}, 0);
             listView01.setAdapter(adapter);
             listView01.setOnItemClickListener(List_listener);

@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -151,7 +152,7 @@ public class NoteActivity extends AppCompatActivity {
     Cursor cursor;
     public void UpdateAdapter_Note(){
         try{
-            cursor=NoteDb.getCursor();
+            cursor=NoteDb.getCursorbyDESC();
             if(cursor !=  null && cursor.getCount()>0){
                 //ListView格式自訂
                 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.note_listview_item_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{R.id.text1,R.id.text2}, 0);
@@ -169,9 +170,9 @@ public class NoteActivity extends AppCompatActivity {
 
     public void UpdateAdapter_Note(String Search_word){
         try{
-            cursor=NoteDb.getCursor(" 便條標題 LIKE '%"+Search_word+"%' OR  便條內容 LIKE '%"+Search_word+"%'");
+            cursor=NoteDb.getCursorbyDESC(" 便條標題 LIKE '%"+Search_word+"%' OR  便條內容 LIKE '%"+Search_word+"%'");
             if(cursor !=  null && cursor.getCount()>0){
-                SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"便條標題", "便條內容"}, new int[]{android. R.id.text1,android.R.id.text2}, 0);
+                SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.note_listview_item_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{ R.id.text1,R.id.text2}, 0);
                 gridView.setAdapter(adapter);
                 gridView.setOnItemClickListener(List_listener);
                 Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
@@ -250,11 +251,7 @@ public class NoteActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_search:
                 Toast toast１ =Toast.makeText(this,"Search",Toast.LENGTH_LONG);
-
-
-                toast１.show();
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

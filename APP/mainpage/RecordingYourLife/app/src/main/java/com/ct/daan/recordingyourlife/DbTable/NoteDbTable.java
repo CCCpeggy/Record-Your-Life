@@ -79,16 +79,30 @@ public class NoteDbTable {
         return db.rawQuery(String.format("SELECT *  FROM '%s'",SQLiteTable_Name),null);
     }
 
+    public Cursor getCursorbyDESC(){
+        return db.rawQuery(String.format("SELECT *  FROM '%s' ORDER BY _id DESC",SQLiteTable_Name),null);
+    }
+
     public Cursor getCursor(int Note_id){
         return db.rawQuery(String.format("SELECT *  FROM '%s' WHERE _id = "+Note_id,SQLiteTable_Name),null);
     }
 
+    public Cursor getCursorbyDESC(int Note_id){
+        return db.rawQuery(String.format("SELECT *  FROM '%s' WHERE _id = %s ORDER BY _id DESC",SQLiteTable_Name,Note_id),null);
+    }
 
-    public Cursor getCursor(String Where_cmd){
+       public Cursor getCursor(String Where_cmd){
         String cmd=String.format("SELECT *  FROM '%s' WHERE %s",SQLiteTable_Name,Where_cmd);
         Log.v("cmd",cmd);
         return db.rawQuery(cmd,null);
     }
+
+    public Cursor getCursorbyDESC(String Where_cmd){
+        String cmd=String.format("SELECT *  FROM '%s' WHERE %s ORDER BY _id DESC",SQLiteTable_Name,Where_cmd);
+        Log.v("cmd",cmd);
+        return db.rawQuery(cmd,null);
+    }
+
 
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);
