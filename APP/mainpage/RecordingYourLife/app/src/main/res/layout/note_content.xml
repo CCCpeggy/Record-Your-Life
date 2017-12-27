@@ -17,6 +17,11 @@
         android:id="@+id/listv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+=======
+
+        android:layout_weight="1"
+>>>>>>> 88420368a6848a80a9654b3ceb92f745e9eeccbb
         android:numColumns="2"/>
 
 </LinearLayout>

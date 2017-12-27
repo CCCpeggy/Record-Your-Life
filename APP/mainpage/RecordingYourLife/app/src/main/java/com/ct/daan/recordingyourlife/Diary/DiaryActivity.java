@@ -106,8 +106,8 @@ public class DiaryActivity extends AppCompatActivity {
     public void UpdateAdapter_Note(){
         try{
             cursor=DiaryDb.getCursor();
-            CursorAdapter adapter=new CursorAdapter(DiaryActivity.this, android.R.layout.simple_list_item_2 ,cursor, new String[]{"日期", "日記內容"}, new int[]{android.R.id.text1, android.R.id.text2});
-            // SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"日期", "日記內容"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
+            CursorAdapter adapter=new CursorAdapter(DiaryActivity.this, R.layout.style_listview ,cursor, new String[]{"日期", "日記內容"}, new int[]{R.id.tvDate, R.id.tvName});
+            //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.style_listview, cursor, new String[]{"日期", "日記內容"}, new int[]{R.id.tvDate, R.id.tvName}, 0);
             listView01.setAdapter(adapter);
             listView01.setOnItemClickListener(List_listener);
             Log.v("UpdateAdapter_Note", String.format("UpdateAdapter_Note() 更新成功"));

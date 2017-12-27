@@ -14,7 +14,8 @@
         android:inputType="textPersonName"
         android:minHeight="181dp"
         android:text="Name"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:hint="標題"/>
 
     <EditText
         android:id="@+id/et2"
@@ -25,6 +26,7 @@
         android:inputType="textMultiLine"
         android:linksClickable="false"
         android:longClickable="false"
-        android:text="Name" />
+        android:text="Name"
+        android:hint="內容..."/>
 
 </LinearLayout>
