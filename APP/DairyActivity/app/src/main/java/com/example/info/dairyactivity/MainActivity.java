@@ -1,5 +1,6 @@
 package com.example.info.dairyactivity;
 
+import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,6 +21,10 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 
+import com.example.info.dairyactivity.adapter.ListViewAdapter;
+import com.example.info.mylibrary.swipe.SwipeLayout;
+import com.example.info.mylibrary.swipe.util.Attributes;
+
 public class MainActivity extends AppCompatActivity {
 
     private SQLiteDatabase db=null;
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     DairyDbTable DairyDb;
     ListView listView01;
     Button btnAdd;
+    private ListViewAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,15 +49,21 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
+        Log.v("UpdateAdapter_Note","1");
         initView();
-
+        Log.v("UpdateAdapter_Note","2");
         //其餘動作
         OpOrCrDb();
         DairyDb=new DairyDbTable(SQLiteDB_Path,db);
         DairyDb.OpenOrCreateTb();
-        //DairyDb.deleteAllRow();
-        //DairyDb.AddDairyData();
+        DairyDb.deleteAllRow();
+        DairyDb.AddDairyData();
+
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle("ListView");
+        }
 
         UpdateAdapter_Note();
     }
@@ -60,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         //變數指定物件
         listView01=(ListView)findViewById(R.id.listv);
         btnAdd=(Button)findViewById(R.id.Add);
-
         //監控事件
         btnAdd.setOnClickListener(btnAddClick);
     }
@@ -153,9 +164,10 @@ public class MainActivity extends AppCompatActivity {
     Cursor cursor;
     public void UpdateAdapter_Note(){
         try{
-            cursor=DairyDb.getCursor();
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"日期", "日記內容"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
-            listView01.setAdapter(adapter);
+            Cursor Diary_cursor=DairyDb.getCursor();
+            mAdapter = new ListViewAdapter(this,Diary_cursor);
+            listView01.setAdapter(mAdapter);
+            mAdapter.setMode(Attributes.Mode.Single);
             listView01.setOnItemClickListener(List_listener);
             //listView01.setOnItemLongClickListener(List_Long_Listener);
             Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
@@ -169,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            /*
             cursor.moveToPosition(position);
             int Selected_ID=cursor.getInt(0);
             Intent intent  = new Intent(MainActivity.this,DairyPageActivity.class);
@@ -176,7 +189,9 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("SELECTED_ID",Selected_ID);
             intent.putExtra("SELECTED_DATE",cursor.getString(1));
             intent.putExtra("SELECTED_CONTENT",cursor.getString(2));
-            startActivityForResult(intent,LISTPAGE_QAQQ);
+            startActivityForResult(intent,LISTPAGE_QAQQ);*/
+
+            ((SwipeLayout)(listView01.getChildAt(position - listView01.getFirstVisiblePosition()))).open(true);
         }
     };
 
