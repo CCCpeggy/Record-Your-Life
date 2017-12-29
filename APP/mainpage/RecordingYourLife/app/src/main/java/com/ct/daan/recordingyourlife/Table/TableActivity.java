@@ -45,7 +45,7 @@ public class TableActivity extends AppCompatActivity {
     Spinner name;
     All_Table Table;
     final int ADDTABLEPAGE=5189,SETTINGTABLEPAGE=5947;
-    private static final int MARGIN=5,PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
+    private static final int MARGIN=5,PADDING_TOPBOTTOM=40,PADDING_LEFTRIGHT=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
