@@ -32,6 +32,7 @@ import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NoteActivity extends AppCompatActivity {
 
@@ -42,7 +43,7 @@ public class NoteActivity extends AppCompatActivity {
     Note_Reminder_DbTable NoteReminderDb;
     ReminderDbTable ReminderDb;
     NoteDbTable NoteDb;
-    GridView gridView;
+    ListView gridView;
     CalendarFunction calFunction;
     OthersFunction othersFunction;
     FloatingActionButton btnAdd;
@@ -73,7 +74,7 @@ public class NoteActivity extends AppCompatActivity {
 
     private void initView() {
         //變數指定物件
-        gridView=(GridView) findViewById(R.id.listv);
+        gridView=(ListView) findViewById(R.id.listv);
         btnAdd=(FloatingActionButton)findViewById(R.id.fab);
         btnAdd.setImageResource(R.drawable.icon_add);
 
@@ -157,7 +158,7 @@ public class NoteActivity extends AppCompatActivity {
                 //ListView格式自訂
                 //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.note_listview_item_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{R.id.text1,R.id.text2}, 0);
                 //ListView格式預設
-                SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"便條標題", "便條內容"}, new int[]{android. R.id.text1,android.R.id.text2}, 0);
+                SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.note_listview_item_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{ R.id.text1,R.id.text2}, 0);
                 gridView.setAdapter(adapter);
                 gridView.setOnItemClickListener(List_listener);
                 Log.v("UpdateAdapter_Note", String.format("UpdateAdapter_Note() 更新成功"));
@@ -183,7 +184,7 @@ public class NoteActivity extends AppCompatActivity {
 
     }
 
-    private GridView.OnItemClickListener List_listener=new GridView.OnItemClickListener(){
+    private ListView.OnItemClickListener List_listener=new ListView.OnItemClickListener(){
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.Class.Table.Table;
 
 /**
@@ -17,6 +18,8 @@ public class All_Table extends TableDbTable {
     WeekDbTable WeekDb;
     Cursor cursor;
     private int Table_id;
+    int DayofWeek;
+    CalendarFunction calendarFunction;
 
 
     public All_Table(String path, SQLiteDatabase Database,int id) {
@@ -25,6 +28,7 @@ public class All_Table extends TableDbTable {
 
         initAllTable(path,Database);
         //AddTableData();
+        calendarFunction=new CalendarFunction();
         setTable(id);
     }
 
@@ -33,7 +37,7 @@ public class All_Table extends TableDbTable {
 
         initAllTable(path,Database);
         //AddTableData();
-
+        calendarFunction=new CalendarFunction();
         setTable(getMain_id());
     }
     public int getTableId(){
@@ -70,6 +74,7 @@ public class All_Table extends TableDbTable {
         Table_id=id;
         cursor=super.getCursor("_id = "+id);
         cursor.moveToFirst();
+        DayofWeek=calendarFunction.getDayOfWeek(cursor.getString(4));
     }
 
     public void initAllTable(String path, SQLiteDatabase db){
@@ -146,18 +151,16 @@ public class All_Table extends TableDbTable {
         if(days<=0) return null;
         String Tables[]=new String[days+1];
         Cursor WeekCursor=getWeekCursor();
-        int Week_id;
         WeekCursor.moveToFirst();
 
-        Week_id=WeekCursor.getInt(0);
-        Tables[0]="第"+week_name[0]+"天";
-        for(int i=1;WeekCursor.moveToNext();i++){
-            Tables[i]="第"+week_name[i]+"天";
+        Tables[1]="星期"+week_name[0+DayofWeek-1];
+        for(int i=2;WeekCursor.moveToNext();i++){
+            Tables[i]="星期"+week_name[i-2+DayofWeek];
         }
         return Tables;
     }
     final static String week_name[]={"一","二","三","四","五","六","日"};
-    public String[] ClassInOneWeek(int ClassWeek_id){
+    public String[] ClassInOneWeek(int ClassWeek_id,String Start_Time,String End_Time){
         int days=getDayCount();
         if(days<=0) return null;
         String Tables[]=new String[days+1];
@@ -166,9 +169,10 @@ public class All_Table extends TableDbTable {
         WeekCursor.moveToFirst();
 
         Week_id=WeekCursor.getInt(0);
-        Tables[0]=getClassSubject(ClassWeek_id,Week_id);
+        Tables[0]=Start_Time+"\r\n|\r\n"+End_Time+"\r\n";
+        Tables[1]=getClassSubject(ClassWeek_id,Week_id);
         Log.v("ClassInOneDay",String.format("表格[%d,%d]=%s",ClassWeek_id,Week_id,getClassSubject(ClassWeek_id,Week_id)));
-        for(int i=1;WeekCursor.moveToNext();i++){
+        for(int i=2;WeekCursor.moveToNext();i++){
             Week_id=WeekCursor.getInt(0);
             Tables[i]=getClassSubject(ClassWeek_id,Week_id);
             Log.v("ClassInOneDay",String.format("表格[%d,%d]=%s",ClassWeek_id,Week_id,getClassSubject(ClassWeek_id,Week_id)));
@@ -187,11 +191,11 @@ public class All_Table extends TableDbTable {
         ClassWeek_id=ClassWeekCursor.getInt(0);
         Log.v("ClassWeek_id",ClassWeek_id+"");
         Tables[0]=ClassInOneWeek(ClassWeek_id,true);
-        Tables[1]=ClassInOneWeek(ClassWeek_id);
+        Tables[1]=ClassInOneWeek(ClassWeek_id,ClassWeekCursor.getString(2),ClassWeekCursor.getString(3));
         for(int i=2;ClassWeekCursor.moveToNext();i++){
             ClassWeek_id=ClassWeekCursor.getInt(0);
             Log.v("ClassWeek_id",ClassWeek_id+"");
-            Tables[i]=ClassInOneWeek(ClassWeek_id);
+            Tables[i]=ClassInOneWeek(ClassWeek_id,ClassWeekCursor.getString(2),ClassWeekCursor.getString(3));
         }
         return Tables;
     }

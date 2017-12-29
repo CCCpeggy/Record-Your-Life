@@ -124,7 +124,7 @@ public class TableActivity extends AppCompatActivity {
                 return;
             }
             String[][] Class=Table.ClassInTable();
-            viewTable(Table.getClassWeekCount()+1,Table.getDayCount(),Class);
+            viewTable(Table.getClassWeekCount()+1,Table.getDayCount()+1,Class);
         }
 
         @Override
@@ -167,21 +167,26 @@ public class TableActivity extends AppCompatActivity {
                 tw_ly.setPadding(MARGIN,0,MARGIN,0);
                 if(i==0)tw_ly.setPadding(MARGIN,5,MARGIN,5);
                 tr.addView(tw_ly);
-                tw_ly.addView(AddButton(subject[i][j],i*10+j,i%2==0),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                tw_ly.addView(AddButton(subject[i][j],i*10+j,i==0,i%2==0),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             }
         }
 
     }
 
-    public Button AddButton(String text, int id, boolean color){
+    public Button AddButton(String text, int id, boolean isTiltle, boolean color){
         Button btn=new Button(this);
         btn.setText(text);
         btn.setGravity(17);
+        btn.setLines(3);
         btn.setId(id);
         if(color)
-            btn.setBackgroundColor(Color.parseColor("#CCCCCC"));
+            btn.setBackgroundColor(Color.parseColor("#EFEFEF"));
         else
-            btn.setBackgroundColor(Color.parseColor("#EEEEEE"));
+            btn.setBackgroundColor(Color.parseColor("#E5E5E5"));
+        if(isTiltle){
+            btn.setBackgroundColor(Color.parseColor("#CCCCCC"));
+            btn.setSingleLine();
+        }
         btn.setPadding(PADDING_LEFTRIGHT,PADDING_TOPBOTTOM,PADDING_LEFTRIGHT,PADDING_TOPBOTTOM);
         btn.setOnClickListener(Table_Class_Listener);
         return btn;

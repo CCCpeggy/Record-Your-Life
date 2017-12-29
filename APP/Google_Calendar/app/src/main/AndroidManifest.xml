@@ -15,6 +15,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name="com.example.YourActivityName"
+            android:label="@string/activity_name" >
+            <intent-filter
+                android:label="@string/addon_name"
+                android:icon="@drawable/addon_icon">
+                <action android:name="com.google.android.apps.docs.editors.sheets.ADDON" />
+            </intent-filter>
         </activity>
         <uses-permission android:name="android.permission.READ_CALENDAR"/>
     </application>
