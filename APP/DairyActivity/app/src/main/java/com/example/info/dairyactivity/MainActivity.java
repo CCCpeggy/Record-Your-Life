@@ -49,15 +49,13 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        Log.v("UpdateAdapter_Note","1");
         initView();
-        Log.v("UpdateAdapter_Note","2");
         //其餘動作
         OpOrCrDb();
         DairyDb=new DairyDbTable(SQLiteDB_Path,db);
         DairyDb.OpenOrCreateTb();
-        DairyDb.deleteAllRow();
-        DairyDb.AddDairyData();
+        //DairyDb.deleteAllRow();
+        //DairyDb.AddDairyData();
 
 
         ActionBar actionBar = getActionBar();
@@ -165,11 +163,10 @@ public class MainActivity extends AppCompatActivity {
     public void UpdateAdapter_Note(){
         try{
             Cursor Diary_cursor=DairyDb.getCursor();
-            mAdapter = new ListViewAdapter(this,Diary_cursor);
+            mAdapter = new ListViewAdapter(this,Diary_cursor,DairyDb,listView01,List_listener);
             listView01.setAdapter(mAdapter);
             mAdapter.setMode(Attributes.Mode.Single);
             listView01.setOnItemClickListener(List_listener);
-            //listView01.setOnItemLongClickListener(List_Long_Listener);
             Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));
 
         }catch (Exception e){
@@ -191,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("SELECTED_CONTENT",cursor.getString(2));
             startActivityForResult(intent,LISTPAGE_QAQQ);*/
 
-            ((SwipeLayout)(listView01.getChildAt(position - listView01.getFirstVisiblePosition()))).open(true);
+            //((SwipeLayout)(listView01.getChildAt(position - listView01.getFirstVisiblePosition()))).open(true);
         }
     };
 
