@@ -20,7 +20,7 @@ public class TableDbTable {
 
     private  String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    private final static String SQLiteTable_Name= "課表3"; //資料表的名字
+    private final static String SQLiteTable_Name= "課表"; //資料表的名字
     private final static String CREATE_Table_TABLE= "CREATE TABLE if not exists '"+SQLiteTable_Name+"'(" +
             "_id INTEGER  PRIMARY KEY NOT NULL" +
             ",'課表名稱' TEXT" +

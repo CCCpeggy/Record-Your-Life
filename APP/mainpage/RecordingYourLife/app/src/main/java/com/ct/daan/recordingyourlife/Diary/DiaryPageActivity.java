@@ -1,8 +1,11 @@
 package com.ct.daan.recordingyourlife.Diary;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Build;
@@ -18,6 +21,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.ct.daan.recordingyourlife.DbTable.DiaryDbTable;
+import com.ct.daan.recordingyourlife.Note.NotePageActivity;
 import com.ct.daan.recordingyourlife.R;
 
 import java.util.Locale;
@@ -28,6 +33,9 @@ public class DiaryPageActivity extends AppCompatActivity {
     EditText et2;
     Button btn_Date;
     Intent intent;
+    DiaryDbTable DiaryDb;
+    private SQLiteDatabase db=null;
+    private String SQLiteDB_Path="student_project.db";
     int id;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +44,9 @@ public class DiaryPageActivity extends AppCompatActivity {
         setContentView(R.layout.diary_page);
 
         initView();
+        OpOrCrDb();
+        DiaryDb=new DiaryDbTable(SQLiteDB_Path,db);
+        DiaryDb.OpenOrCreateTb();
 
         intent=getIntent();
         Bundle extra=intent.getExtras();
@@ -43,6 +54,16 @@ public class DiaryPageActivity extends AppCompatActivity {
         id=extra.getInt("SELECTED_ID");
         btn_Date.setText(extra.getString("SELECTED_DATE").equals("")?"日期":extra.getString("SELECTED_DATE"));
         et2.setText(extra.getString("SELECTED_CONTENT"));
+    }
+
+    //打開或新增資料庫
+    private void OpOrCrDb(){
+        try{
+            db=openOrCreateDatabase(SQLiteDB_Path,MODE_PRIVATE,null);
+            Log.v("資料庫","資料庫載入成功");
+        }catch (Exception ex){
+            Log.e("#001","資料庫載入錯誤");
+        }
     }
 
     public void initView(){
@@ -53,10 +74,7 @@ public class DiaryPageActivity extends AppCompatActivity {
     }
 
     private void Complete() {
-        intent.putExtra("SELECTED_ID",id);
-        intent.putExtra("CHANGED_DATE",btn_Date.getText().toString());
-        intent.putExtra("CHANGED_CONTENT",et2.getText().toString());
-        Log.v("回傳資料", String.format("回傳資料：%s=%d,%s=%s,%s=%s","SELECTED_ID",id,"CHANGED_DATE",btn_Date.getText(),"CHANGED_CONTENT",et2.getText()));
+        DiaryDb.updateDiaryData(id,btn_Date.getText().toString(),et2.getText().toString());
         setResult(RESULT_OK,intent);
         finish();
     }
@@ -88,11 +106,29 @@ public class DiaryPageActivity extends AppCompatActivity {
         }
     };
 
+
+    private void Delete() {
+        new AlertDialog.Builder(DiaryPageActivity.this)
+                .setMessage(R.string.delete_content)
+                .setTitle(R.string.theme_tilte)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DiaryDb.deleteDiaryData(id);
+                        setResult(RESULT_OK,intent);
+                        finish();
+                    }
+                })
+                .setNegativeButton("取消", null)
+                .show();
+
+    }
+
     //增加動作按鈕到工具列
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.done_actions, menu);
+        inflater.inflate(R.menu.done_delete_actions, menu);
         return true;
     }
 
@@ -103,12 +139,17 @@ public class DiaryPageActivity extends AppCompatActivity {
             case R.id.action_done:
                 Complete();
                 return true;
+            case R.id.action_delete:
+                Delete();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
 
     }
+
+
     void setTheme(){
         SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
         int theme_index = prefs.getInt("THEME_INDEX" ,0);

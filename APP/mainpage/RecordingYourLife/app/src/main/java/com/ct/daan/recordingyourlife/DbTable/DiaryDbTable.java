@@ -12,7 +12,7 @@ import android.util.Log;
 public class DiaryDbTable {
     private  String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    private final static String SQLiteTable_Name="日記3";
+    private final static String SQLiteTable_Name="日記";
     private final static String CREATE_DIARY_TABLE=
             "CREATE TABLE if not exists '"+SQLiteTable_Name+"'(" +
                     "_id INTEGER  PRIMARY KEY NOT NULL," +

@@ -31,16 +31,6 @@ public class DiaryActivity extends AppCompatActivity {
         setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diary_activity);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         initView();
 
         //其餘動作
@@ -62,21 +52,6 @@ public class DiaryActivity extends AppCompatActivity {
     }
 
     public void onActivityResult(int requestCode,int resultCode,Intent data){
-        if(resultCode==RESULT_OK) {
-            switch (requestCode) {
-                case UPDATE_DIARYPAGE:
-                    Bundle extra= data.getExtras();
-                    if (!extra.isEmpty()) {
-                        String Changed_date;
-                        String Changed_content;
-                        int Selected_id = extra.getInt("SELECTED_ID");
-                        Changed_date = extra.getString("CHANGED_DATE");
-                        Changed_content = extra.getString("CHANGED_CONTENT");
-                        DiaryDb.updateDiaryData(Selected_id, Changed_date, Changed_content);
-                    }
-                    break;
-            }
-        }
         UpdateAdapter_Note();
     }
 

@@ -12,7 +12,7 @@ import android.util.Log;
 public class WeekDbTable {
     private  String SQLiteDB_Path = null;
     private SQLiteDatabase db = null;
-    public  String SQLiteTable_Name= "課表_星期2"; //資料表的名字
+    public  String SQLiteTable_Name= "課表_星期"; //資料表的名字
     public String CREATE_WEEK_TABLE=
             "CREATE TABLE if not exists '"+SQLiteTable_Name+"'" +
                     "(_id INTEGER PRIMARY KEY NOT NULL" +
