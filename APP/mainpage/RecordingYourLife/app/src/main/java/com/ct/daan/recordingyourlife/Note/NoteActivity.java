@@ -43,7 +43,7 @@ public class NoteActivity extends AppCompatActivity {
     Note_Reminder_DbTable NoteReminderDb;
     ReminderDbTable ReminderDb;
     NoteDbTable NoteDb;
-    ListView gridView;
+    GridView gridView;
     CalendarFunction calFunction;
     OthersFunction othersFunction;
     FloatingActionButton btnAdd;
@@ -74,7 +74,7 @@ public class NoteActivity extends AppCompatActivity {
 
     private void initView() {
         //變數指定物件
-        gridView=(ListView) findViewById(R.id.listv);
+        gridView=(GridView) findViewById(R.id.listv);
         btnAdd=(FloatingActionButton)findViewById(R.id.fab);
         btnAdd.setImageResource(R.drawable.icon_add);
 
@@ -184,7 +184,7 @@ public class NoteActivity extends AppCompatActivity {
 
     }
 
-    private ListView.OnItemClickListener List_listener=new ListView.OnItemClickListener(){
+    private GridView.OnItemClickListener List_listener=new ListView.OnItemClickListener(){
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
