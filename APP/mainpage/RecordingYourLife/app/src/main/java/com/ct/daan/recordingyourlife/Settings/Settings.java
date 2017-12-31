@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
+import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 import com.ct.daan.recordingyourlife.Exam.ExamPageActivity;
 import com.ct.daan.recordingyourlife.Note.NotePageActivity;
 import com.ct.daan.recordingyourlife.R;
@@ -34,7 +36,10 @@ public class Settings extends AppCompatActivity{
     Spinner theme_sp;
     EditText Time_et;
     CalendarFunction calendarFunction;
+    ReminderDbTable ReminderDb;
     int theme_this;
+    private final static String SQLiteDB_Path="student_project.db";
+    private SQLiteDatabase db=null;
 
     Calendar m_Calendar = Calendar.getInstance();
     @Override
@@ -53,9 +58,23 @@ public class Settings extends AppCompatActivity{
         Time_et.setOnClickListener(TimePick_Listener);
         calendarFunction=new CalendarFunction();
 
+        OpOrCrDb();
+        ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
+        ReminderDb.OpenOrCreateTb();
+
         SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
         String Time = prefs.getString("ExamRemindTime" ,"");
         Time_et.setText(Time);
+    }
+
+    //打開或新增資料庫
+    private void OpOrCrDb(){
+        try{
+            db=openOrCreateDatabase(SQLiteDB_Path,MODE_PRIVATE,null);
+            Log.v("資料庫","資料庫載入成功");
+        }catch (Exception ex){
+            Log.e("#001","資料庫載入錯誤");
+        }
     }
 
     private EditText.OnClickListener TimePick_Listener= new EditText.OnClickListener() {
@@ -70,7 +89,7 @@ public class Settings extends AppCompatActivity{
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     String Time= String.format("%02d:%02d", hourOfDay, minute);
                     Log.v("選擇時間", String.format("考試填入提醒時間=%s",Time));
-                    saveData("ExamRemindTime",Time);
+                    saveSettingData("ExamRemindTime",Time);
                     Time_et.setText(Time);
                 }
             }, hour, minute, true);
@@ -115,6 +134,12 @@ public class Settings extends AppCompatActivity{
                 .setNegativeButton("取消", null)
                 .show();
     }
+
+    void saveSettingData(String Key,String Value){
+        saveData(Key, Value);
+
+    }
+
     void saveData(String Key,String Value){
         SharedPreferences.Editor pref = getSharedPreferences("RECORDINGYOURLIFE", 0).edit();
         pref.putString(Key , Value);

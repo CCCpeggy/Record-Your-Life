@@ -110,7 +110,7 @@ public class DiaryPageActivity extends AppCompatActivity {
     private void Delete() {
         new AlertDialog.Builder(DiaryPageActivity.this)
                 .setMessage(R.string.delete_content)
-                .setTitle(R.string.theme_tilte)
+                .setTitle(R.string.delete_tilte)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

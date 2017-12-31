@@ -24,10 +24,13 @@ public class OthersFunction {
     }
 
     public void setReminder(Context context,Cursor Reminder_cursor, int Reminder_id,int nodeId ,String title,String content) {
+        String Reminder_date=Reminder_cursor.getString(1);
+        String Reminder_time=Reminder_cursor.getString(2);
+        int Reminder_type=Reminder_cursor.getInt(3);
         Log.v("setReminder",String.format("context:%s,reminder_id:%s,node_id:%s,title:%s,content:%s,date:%s,time:%s,type:%d"
-                ,context,Reminder_id,nodeId,title,content,Reminder_cursor.getString(1),Reminder_cursor.getString(2),Reminder_cursor.getInt(3)));
+                ,context,Reminder_id,nodeId,title,content,Reminder_date,Reminder_time,Reminder_type));
         CalendarFunction calFunction=new CalendarFunction();
-        Calendar calendar=calFunction.DateTimeTextToCalendarType(Reminder_cursor.getString(1),Reminder_cursor.getString(2));
+        Calendar calendar=calFunction.DateTimeTextToCalendarType(Reminder_date,Reminder_time);
         String BROADCAST_ACTION = "net.macdidi.broadcast01.action.MYBROADCAST01";
         Intent intent = new Intent(BROADCAST_ACTION);
         intent.putExtra("NOTEID", nodeId);
@@ -37,35 +40,37 @@ public class OthersFunction {
         PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
         AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-        long Reminder_type=0;
-        if(Reminder_cursor.getInt(3)==0){
+        long Reminder_type_long=0;
+        if(Reminder_type==0){
             alarm.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
             return;
         }
-        switch (Reminder_cursor.getInt(2)){
+        switch (Reminder_type){
             case 0:
-                Reminder_type=AlarmManager.INTERVAL_DAY;
+                Reminder_type_long=AlarmManager.INTERVAL_DAY;
                 break;
             case 1:
-                Reminder_type=AlarmManager.INTERVAL_DAY*7;
+                Reminder_type_long=AlarmManager.INTERVAL_DAY*7;
                 break;
             case 2:
-                Reminder_type=AlarmManager.INTERVAL_DAY*30;
+                Reminder_type_long=AlarmManager.INTERVAL_DAY*30;
                 break;
             case 3:
-                Reminder_type=AlarmManager.INTERVAL_DAY*365;
+                Reminder_type_long=AlarmManager.INTERVAL_DAY*365;
                 break;
         }
-        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() ,Reminder_type, sender);
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() ,Reminder_type_long, sender);
     }
 
     public void setReminderByInput(Context context,Cursor Reminder_cursor,int reminder_id, int Exam_id,String name,String subject) {
-
-        Log.v("setReminder",String.format("context:%s,reminder_id:%s,title:%s,content:%s,date:%s,name:%s,subject:%d"
-                ,context,Exam_id,name,subject,Reminder_cursor.getString(1),Reminder_cursor.getString(2),Reminder_cursor.getInt(3)));
+        String Reminder_date=Reminder_cursor.getString(1);
+        String Reminder_time=Reminder_cursor.getString(2);
+        int Reminder_type=Reminder_cursor.getInt(3);
+        Log.v("setReminder",String.format("context:%s,Exam_id:%d,title:%s,content:%s,reminder_id:%d,date:%s,name:%s"
+                ,context,Exam_id,name,subject,reminder_id,Reminder_date,Reminder_time));
         CalendarFunction calFunction=new CalendarFunction();
-        Calendar calendar=calFunction.DateTimeTextToCalendarType(Reminder_cursor.getString(1),Reminder_cursor.getString(2));
-        String BROADCAST_ACTION = "net.macdidi.broadcast01.action.MYBROADCAST01";
+        Calendar calendar=calFunction.DateTimeTextToCalendarType(Reminder_date,Reminder_time);
+        String BROADCAST_ACTION = "net.macdidi.broadcast01.action.MYBROADCAST02";
         Intent intent = new Intent(BROADCAST_ACTION);
         intent.putExtra("REMINDERID", reminder_id);
         intent.putExtra("EXAMID", Exam_id);

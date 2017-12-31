@@ -79,7 +79,7 @@ public class NotePageActivity extends AppCompatActivity {
     void Delete() {
         new AlertDialog.Builder(NotePageActivity.this)
                 .setMessage(R.string.delete_content)
-                .setTitle(R.string.theme_tilte)
+                .setTitle(R.string.delete_tilte)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

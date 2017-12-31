@@ -331,7 +331,7 @@ public class AddExamPageActivity extends AppCompatActivity {
     }
     String getRemindTime(){
         SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
-        String Time = prefs.getString("ExamRemindTime" ,"");
+        String Time = prefs.getString("ExamRemindTime"  ,"20:00");
         return Time;
     }
     void setTheme(){

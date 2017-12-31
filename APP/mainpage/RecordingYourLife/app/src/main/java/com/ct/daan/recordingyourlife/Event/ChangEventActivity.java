@@ -154,12 +154,8 @@ public class ChangEventActivity extends AppCompatActivity {
 
     private void Complete() {
         if(!compareDate(Start_date.getText().toString(),End_date.getText().toString()))return;
-        intent.putExtra("ID",Event_id);
-        intent.putExtra("NAME",Name.getText().toString());
-        intent.putExtra("STARTDATE",Start_date.getText().toString());
-        intent.putExtra("ENDDATE",End_date.getText().toString());
-        intent.putExtra("REMARK",Remark.getText().toString());
-        Log.v("回傳資料", String.format("回傳資料：%s=%s,%s=%s,%s=%s,%s=%s","NAME",Name.getText().toString(),"STARTDATE",Start_date.getText().toString(),"ENDDATE",End_date.getText().toString(),"REMARK",Remark.getText().toString()));
+        EventDb.updateEventData(Event_id,Name.getText().toString(),Start_date.getText().toString(),End_date.getText().toString(),Remark.getText().toString());
+
         setResult(RESULT_OK,intent);
         finish();
 

@@ -33,8 +33,6 @@ import com.ct.daan.recordingyourlife.Class.Schedule.item;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.A_Day_Table;
 import com.ct.daan.recordingyourlife.DbTable.ScheduleDbTable;
-import com.ct.daan.recordingyourlife.Table.AddTableSettingsActivity;
-import com.ct.daan.recordingyourlife.Table.TableActivity;
 
 //行程畫面
 
@@ -58,6 +56,7 @@ public class ScheduleActivity extends Fragment {
     FloatingActionButton btnAdd;
     Context context;
     View v;
+
     private static final int PADDING_TOPBOTTOM=50,PADDING_LEFTRIGHT=0;
     private static final int TABLEICON=4651,CALENDARICON=1468;
 

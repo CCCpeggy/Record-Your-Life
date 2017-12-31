@@ -29,8 +29,9 @@ public class InputScoreActivity extends AppCompatActivity{
     private final static String SQLiteDB_Path="student_project.db";
     private SQLiteDatabase db=null;
     Intent intent;
-    int ExamID;
+    int ExamID,ReminderID;
     ExamDbTable ExamDb;
+    ReminderDbTable ReminderDb;
     TextView tv;
     String name;
     @Override
@@ -42,7 +43,9 @@ public class InputScoreActivity extends AppCompatActivity{
         intent=getIntent();
         Bundle extra=intent.getExtras();
         ExamID=extra.getInt("EXAMID",0);
+        ReminderID=extra.getInt("REMINDERID",0);
         Log.v("ExamID",ExamID+"");
+        Log.v("ReminderID",ReminderID+"");
 
         name=extra.getString("NAME","");
 
@@ -56,6 +59,10 @@ public class InputScoreActivity extends AppCompatActivity{
         OpOrCrDb();
         ExamDb=new ExamDbTable(SQLiteDB_Path,db);
         ExamDb.OpenOrCreateTb();
+
+        ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
+        ReminderDb.OpenOrCreateTb();
+
     }
     //打開或新增資料庫
     private void OpOrCrDb(){
@@ -82,10 +89,11 @@ public class InputScoreActivity extends AppCompatActivity{
             case R.id.action_done:
                 String score= ((EditText)findViewById(R.id.Score_et)).getText().toString();
                 if(score.isEmpty()){
-                    Toast.makeText(InputScoreActivity.this,"成績不可為空",Toast.LENGTH_LONG);
+                    Toast.makeText(InputScoreActivity.this,"成績不可為空",Toast.LENGTH_LONG).show();
                     return true;
                 }
                 ExamDb.updateExamData(ExamID,score.equals("")?-100:Integer.parseInt(score));
+                ReminderDb.deleteReminderData(ReminderID);
                 finish();
                 return true;
             case android.R.id.home:

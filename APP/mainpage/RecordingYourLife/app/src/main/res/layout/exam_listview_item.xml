@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<com.ct.daan.mylibrary.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:tag="Bottom2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <ImageButton
+            android:id="@+id/delete"
+            android:src="@drawable/icon_delete"
+            android:layout_width="70dp"
+            android:background="@drawable/white"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:layout_height="match_parent" />
+        <ImageButton
+            android:id="@+id/edit"
+            android:src="@drawable/icon_edit"
+            android:layout_width="70dp"
+            android:background="@drawable/white"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="0dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            tools:elevation="0dp">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="5dp"
+                android:text="text1"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:text="text2"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="0.06"
+            android:gravity="center"
+            android:text="text1"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+</com.ct.daan.mylibrary.SwipeLayout>

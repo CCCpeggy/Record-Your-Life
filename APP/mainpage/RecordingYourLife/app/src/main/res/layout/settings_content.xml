@@ -43,7 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="time" />
+            android:inputType="time"
+            android:text="20:00" />
 
 
     </TableRow>

@@ -20,7 +20,7 @@
         <ImageButton
             android:id="@+id/edit"
             android:src="@drawable/icon_edit"
-            android:layout_width="50dp"
+            android:layout_width="70dp"
             android:background="@drawable/white"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"

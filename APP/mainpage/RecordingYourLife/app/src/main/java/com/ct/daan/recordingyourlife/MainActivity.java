@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
         });
 
     }
+
     
     ClassDbTable classDbTable;
     ClassWeekDbTable classWeekDbTable;

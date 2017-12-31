@@ -25,9 +25,13 @@ public class AlarmReceiverByInput extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Bundle extra=intent.getExtras();
+        int ReminderID=extra.getInt("REMINDERID",0);
         int ExamID=extra.getInt("EXAMID",0);
         String name=extra.getString("NAME","");
         String Subject=extra.getString("SUBJECT","");
+        Log.v("setAlarm",String.format("context:%s,reminder_id:%d,Exam_id:%d,title:%s,content:%s"
+                ,context,ReminderID,ExamID,name,Subject));
+
         if(ExamID==0)return;
         Log.v("currentTimeMillis", System.currentTimeMillis()+"");
 
@@ -35,6 +39,7 @@ public class AlarmReceiverByInput extends BroadcastReceiver {
         intent1.putExtra("EXAMID",ExamID);
         intent1.putExtra("NAME",name);
         intent1.putExtra("SUBJECT",Subject);
+        intent1.putExtra("REMINDERID",ReminderID);
         PendingIntent contentIntent=PendingIntent.getActivity(context,0,intent1,PendingIntent.FLAG_UPDATE_CURRENT);
         Notification.Builder mBuilder=(Notification.Builder)new Notification.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -46,7 +51,7 @@ public class AlarmReceiverByInput extends BroadcastReceiver {
                 .setContentIntent(contentIntent)
                 .setWhen(System.currentTimeMillis());
         NotificationManager notificationManager=(NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(ExamID,mBuilder.build());
+        notificationManager.notify(ReminderID,mBuilder.build());
     }
 
     private Calendar StringtoCalendar(String date, String time, Context context){

@@ -342,12 +342,12 @@ public class ExamPageActivity extends AppCompatActivity {
         Cursor Reminder_cursor=ReminderDb.getCursor();
         Reminder_cursor.moveToLast();
         othersFunction.setReminderByInput(ExamPageActivity.this,Reminder_cursor,Reminder_cursor.getInt(0),Exam_id,Name_et.getText().toString(),SubjectDb.getSubjectName(Subject_id));
-        setResult(RESULT_OK,intent);
+        //setResult(RESULT_OK,intent);
         finish();
     }
     String getRemindTime(){
         SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
-        String Time = prefs.getString("ExamRemindTime" ,"");
+        String Time = prefs.getString("ExamRemindTime" ,"20:00");
         return Time;
     }
 
@@ -381,7 +381,7 @@ public class ExamPageActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.done_delete_actions, menu);
+        inflater.inflate(R.menu.done_actions, menu);
         return true;
     }
 
@@ -391,11 +391,6 @@ public class ExamPageActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_done:
                 Complete();
-                return true;
-            case R.id.action_delete:
-                ExamDb.deleteExamData(Exam_id);
-                setResult(RESULT_CANCELED,intent);
-                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

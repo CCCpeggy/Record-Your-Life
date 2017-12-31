@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.ct.daan.mylibrary.SwipeLayout;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.ExamDbTable;
 
@@ -77,7 +78,8 @@ public class ExamActivity extends AppCompatActivity {
             cursor=ExamDb.getCursor();
             //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, cursor, new String[]{"考試日期", "考試名稱"}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
             //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.exam_listview_item_layout, cursor, new String[]{"考試日期", "考試名稱","考試成績"}, new int[]{R.id.text1,R.id.text2,R.id.text3}, 0);
-            CursorAdapter adapter=new CursorAdapter(this, R.layout.exam_listview_item_layout, cursor, new String[]{"考試日期", "考試名稱","考試成績"}, new int[]{R.id.text1,R.id.text2,R.id.text3});
+            //CursorAdapter adapter=new CursorAdapter(this, R.layout.exam_listview_item_layout, cursor, new String[]{"考試日期", "考試名稱","考試成績"}, new int[]{R.id.text1,R.id.text2,R.id.text3});
+            ListViewAdapter adapter=new ListViewAdapter(this, cursor,ExamDb, listView01, List_listener);
             listView01.setAdapter(adapter);
             listView01.setOnItemClickListener(List_listener);
             Log.v("UpdateAdapter_Exam", String.format("UpdateAdapter_Exam() 更新成功"));
@@ -91,18 +93,7 @@ public class ExamActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            cursor.moveToPosition(position);
-            int Selected_ID=cursor.getInt(0);
-            Intent intent  = new Intent(ExamActivity.this,ExamPageActivity.class);
-            intent.putExtra("TYPE",UPDATEPAGE_EXAMPAGE);
-            intent.putExtra("SELECTED_ID",Selected_ID);
-            intent.putExtra("SELECTED_CLASS",cursor.getInt(1));
-            intent.putExtra("SELECTED_SUBJECT",cursor.getInt(2));
-            intent.putExtra("SELECTED_DATE",cursor.getString(3));
-            intent.putExtra("SELECTED_NAME",cursor.getString(4));
-            intent.putExtra("SELECTED_CONTENT",cursor.getString(5));
-            intent.putExtra("SELECTED_SCORE",cursor.getInt(6));
-            startActivityForResult(intent,UPDATEPAGE_EXAMPAGE);
+            ((SwipeLayout)(listView01.getChildAt(position - listView01.getFirstVisiblePosition()))).open(true);
         }
     };
     void setTheme(){

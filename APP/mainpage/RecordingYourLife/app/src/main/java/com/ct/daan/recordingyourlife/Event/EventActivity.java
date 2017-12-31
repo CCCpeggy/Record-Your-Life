@@ -10,22 +10,17 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
+import com.ct.daan.mylibrary.SwipeLayout;
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
-import com.ct.daan.recordingyourlife.Note.NoteActivity;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.EventDbTable;
 
-import java.util.ArrayList;
-import java.util.Date;
 
 public class EventActivity extends AppCompatActivity {
     private SQLiteDatabase db=null;
@@ -68,23 +63,15 @@ public class EventActivity extends AppCompatActivity {
         }
     };
 
-    public void onActivityResult(int requestCode,int resultCode,Intent data){
 
+    public void onActivityResult(int requestCode,int resultCode,Intent data){
+        UpdateAdapter();
         if(resultCode==RESULT_OK) {
             Bundle extra= data.getExtras();
             String Name ,Start_date="",End_date,Remark;
 
             if (!extra.isEmpty()) {
                 switch (requestCode) {
-                    case CHANGEEVENTPAGE:
-                        int Selected_id = extra.getInt("SELECTED_ID");
-                        Name = extra.getString("NAME");
-                        Start_date= extra.getString("STARTDATE");
-                        End_date= extra.getString("ENDDATE");
-                        Remark= extra.getString("REMARK");
-                        EventDb.updateEventData( Selected_id,Name ,Start_date,End_date,Remark);
-                        UpdateAdapter(Start_date);
-                        break;
                     case ADDEVENTPAGE:
                         Name = extra.getString("NAME");
                         Start_date= extra.getString("STARTDATE");
@@ -93,10 +80,12 @@ public class EventActivity extends AppCompatActivity {
                         EventDb.insertEventData(Name ,Start_date,End_date,Remark);
                         UpdateAdapter(Start_date);
                         break;
+
                 }
 
             }
         }
+
     }
 
 
@@ -115,9 +104,9 @@ public class EventActivity extends AppCompatActivity {
             Calendar calendar=calendarFunction.DateTextToCalendarType(date);
             calView.setDate(calendar.getTimeInMillis());
             Cursor Event_Cursor=EventDb.getCursorByDay(date);
-            SimpleCursorAdapter adapter=new SimpleCursorAdapter(EventActivity.this,android.R.layout.simple_list_item_1,Event_Cursor,new String[]{"日子名稱"},new int[]{android.R.id.text1},0);
+            //SimpleCursorAdapter adapter=new SimpleCursorAdapter(EventActivity.this,android.R.layout.simple_list_item_1,Event_Cursor,new String[]{"日子名稱"},new int[]{android.R.id.text1},0);
+            ListViewAdapter adapter=new ListViewAdapter(EventActivity.this,Event_Cursor,EventDb,EventList,List_listener,date);
             EventList.setAdapter(adapter);
-            EventList.setOnItemClickListener(List_listener);
             Log.v("UpdateAdapter", String.format("UpdateAdapter() 更新成功"));
 
         } catch (Exception e) {
@@ -150,14 +139,7 @@ public class EventActivity extends AppCompatActivity {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            Cursor cursor=EventDb.getCursorByDay(date_selected);
-            cursor.moveToPosition(position);
-            int Selected_ID=cursor.getInt(0);
-            Log.v("Selected_ID",cursor.getInt(0)+"");
-            Intent intent  = new Intent(EventActivity.this,ChangEventActivity.class);
-            intent.putExtra("SELECTED_ID",Selected_ID);
-            startActivityForResult(intent,CHANGEEVENTPAGE);
+            ((SwipeLayout)(EventList.getChildAt(position - EventList.getFirstVisiblePosition()))).open(true);
         }
     };
 
