@@ -137,7 +137,6 @@ public class Settings extends AppCompatActivity{
 
     void saveSettingData(String Key,String Value){
         saveData(Key, Value);
-
     }
 
     void saveData(String Key,String Value){

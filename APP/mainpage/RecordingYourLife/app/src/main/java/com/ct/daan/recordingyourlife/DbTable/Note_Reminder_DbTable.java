@@ -100,6 +100,11 @@ public class Note_Reminder_DbTable {
         return getCursor("便條ID = "+id);
     }
 
+    public boolean HasReminderByNoteID(int id){
+        Cursor cursor=getCursorByNoteID(id);
+        return cursor.getCount()>0;
+    }
+
     public int getNoteId(int id){
         Cursor cursor=getCursor("_id = "+id);
         cursor.moveToFirst();

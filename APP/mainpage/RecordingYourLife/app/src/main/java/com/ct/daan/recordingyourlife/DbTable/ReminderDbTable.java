@@ -1,9 +1,12 @@
 package com.ct.daan.recordingyourlife.DbTable;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.ct.daan.recordingyourlife.Class.OthersFunction;
 
 /**
  * Created by info on 2017/11/10.
@@ -126,6 +129,21 @@ public class ReminderDbTable {
         String Where_cmd=String.format(" _id IN (%s)",reminder_ids);
         return  getCursor( Where_cmd);
     }
+/*
+    public void setAllExamReminderTime(Context context, String time,String date){
+        String cmd=String.format("UPDATE '%s'  SET  '提醒時間' = '%s'  WHERE '%s'=-1"
+                ,SQLiteTable_Name,time,"重複");
+        Log.v("ReminderDb.update",cmd);
+        db.execSQL(cmd);
+        cmd=String.format("SELECT *  FROM '%s' WHERE '%s'=-1 AND '提醒日期'>='%s'",SQLiteTable_Name,"重複",date);
+        Log.v("ReminderDb.getCursor",cmd);
+        OthersFunction othersFunction=new OthersFunction();
+        Cursor cursor = db.rawQuery(cmd,null);
+        cursor.moveToFirst();
+        for(int i=0;cursor.moveToNext();i++){
+            othersFunction.setReminderByInput(context,cursor,cursor.getInt(0),0,"","");
+        }
+    }*/
 
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);

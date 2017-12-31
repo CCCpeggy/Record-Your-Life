@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
 import com.ct.daan.recordingyourlife.Class.OthersFunction;
+import com.ct.daan.recordingyourlife.Diary.*;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.NoteDbTable;
 import com.ct.daan.recordingyourlife.DbTable.Note_Reminder_DbTable;
@@ -158,7 +159,8 @@ public class NoteActivity extends AppCompatActivity {
                 //ListView格式自訂
                 //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.note_listview_item_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{R.id.text1,R.id.text2}, 0);
                 //ListView格式預設
-                SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.note_listview_item_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{ R.id.text1,R.id.text2}, 0);
+                //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.note_listview_item_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{ R.id.text1,R.id.text2}, 0);
+                CursorAdapter adapter = new CursorAdapter(this, R.layout.note_listview_item_layout, cursor,NoteReminderDb);
                 gridView.setAdapter(adapter);
                 gridView.setOnItemClickListener(List_listener);
                 Log.v("UpdateAdapter_Note", String.format("UpdateAdapter_Note() 更新成功"));
@@ -173,7 +175,8 @@ public class NoteActivity extends AppCompatActivity {
         try{
             cursor=NoteDb.getCursorbyDESC(" 便條標題 LIKE '%"+Search_word+"%' OR  便條內容 LIKE '%"+Search_word+"%'");
             if(cursor !=  null && cursor.getCount()>0){
-                SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.note_listview_item_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{ R.id.text1,R.id.text2}, 0);
+                //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.note_listview_item_layout, cursor, new String[]{"便條標題", "便條內容"}, new int[]{ R.id.text1,R.id.text2}, 0);
+                CursorAdapter adapter = new CursorAdapter(this, R.layout.note_listview_item_layout, cursor,NoteReminderDb);
                 gridView.setAdapter(adapter);
                 gridView.setOnItemClickListener(List_listener);
                 Log.v("UpdateAdapter_Note",String.format("UpdateAdapter_Note() 更新成功"));

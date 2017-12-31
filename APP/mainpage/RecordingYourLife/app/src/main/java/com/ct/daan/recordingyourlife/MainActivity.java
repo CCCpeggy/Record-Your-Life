@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity  implements MainPageActivity
         setTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //initDateBase();
         //deleteAllData();
         //AddAllData();
         //Test(MainActivity.this);
