@@ -228,6 +228,30 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         }
     };
 
+    void Complete(){
+        Cursor ClassWeek_cursor= ClassWeekDb.getCursor(Table_id);
+        ClassWeek_cursor.moveToFirst();
+        Cursor Week_cursor=WeekDb.getCursor("課表ID = "+Table_id);
+        int row=0,col;
+        do{
+            col=0;
+            Week_cursor.moveToFirst();
+            do {
+                Log.v("課表",TableSuject[row][col]);
+                if(SubjectDb.isSubjectExist((TableSuject[row][col]))) {
+                    int Week_id = Week_cursor.getInt(0), ClassWeek_id = ClassWeek_cursor.getInt(0), Subject_id = SubjectDb.getSubjectID(TableSuject[row][col]);
+                    Log.v(TableSuject[row][col]+"課表",Subject_id+"");
+                    ClassDb.insertClassData(ClassWeek_id, Week_id, Subject_id);
+                }
+                col++;
+            }while (Week_cursor.moveToNext());
+            row++;
+        }while (ClassWeek_cursor.moveToNext());
+        setResult(RESULT_OK,intent);
+        finish();
+    }
+
+
     //增加動作按鈕到工具列
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -241,26 +265,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_done:
-                Cursor ClassWeek_cursor= ClassWeekDb.getCursor(Table_id);
-                ClassWeek_cursor.moveToFirst();
-                Cursor Week_cursor=WeekDb.getCursor("課表ID = "+Table_id);
-                int row=0,col;
-                do{
-                    col=0;
-                    Week_cursor.moveToFirst();
-                    do {
-                        Log.v("課表",TableSuject[row][col]);
-                        if(SubjectDb.isSubjectExist((TableSuject[row][col]))) {
-                            int Week_id = Week_cursor.getInt(0), ClassWeek_id = ClassWeek_cursor.getInt(0), Subject_id = SubjectDb.getSubjectID(TableSuject[row][col]);
-                            Log.v(TableSuject[row][col]+"課表",Subject_id+"");
-                            ClassDb.insertClassData(ClassWeek_id, Week_id, Subject_id);
-                        }
-                        col++;
-                    }while (Week_cursor.moveToNext());
-                    row++;
-                }while (ClassWeek_cursor.moveToNext());
-                setResult(RESULT_OK,intent);
-                finish();
+                Complete();
                 return true;
             case android.R.id.home:
                 setResult(RESULT_CANCELED,intent);
@@ -269,7 +274,6 @@ public class AddSubjectTableActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
 
     }
     void setTheme(){

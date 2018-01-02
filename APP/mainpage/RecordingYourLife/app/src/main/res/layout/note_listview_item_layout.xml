@@ -6,6 +6,7 @@
     android:layout_margin="20dp"
     android:orientation="horizontal"
     android:padding="5dp"
+    android:background="@drawable/default_selector"
     android:paddingBottom="10dp"
     android:paddingTop="10dp">
 

@@ -48,7 +48,7 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/button_style"
                     android:drawableTop="@drawable/note"
-                    android:paddingTop="21dp"/>
+                    android:paddingTop="21dp" />
 
                 <Button
                     android:id="@+id/diary_btn"
@@ -74,21 +74,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="日曆" />
+                    android:text="@string/event" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="便條" />
+                    android:text="@string/note" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="日記" />
+                    android:text="@string/diary" />
             </TableRow>
 
         </TableLayout>
@@ -147,20 +147,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="考試" />
+                    android:text="@string/exam" />
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="課表" />
+                    android:text="@string/table" />
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:text="設定" />
+                    android:text="@string/settings" />
 
             </TableRow>
 

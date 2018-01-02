@@ -1,5 +1,6 @@
 package com.ct.daan.recordingyourlife.Schedule;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +8,7 @@ import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -33,6 +36,7 @@ import com.ct.daan.recordingyourlife.Class.Schedule.item;
 import com.ct.daan.recordingyourlife.R;
 import com.ct.daan.recordingyourlife.DbTable.A_Day_Table;
 import com.ct.daan.recordingyourlife.DbTable.ScheduleDbTable;
+import com.ct.daan.recordingyourlife.Table.AddTableSettingsActivity;
 
 //行程畫面
 
@@ -353,6 +357,7 @@ public class ScheduleActivity extends Fragment {
         btnAdd.setImageResource(R.drawable.icon_add);
 
         btnAdd.setOnClickListener(btnAddClick);
+        date_tv.setOnClickListener(TextListener);
 
         Html.ImageGetter imgGetter = new Html.ImageGetter() {
             @Override
@@ -377,7 +382,17 @@ public class ScheduleActivity extends Fragment {
         }
     }
 
-    @Override
+    TextView.OnClickListener TextListener= new TextView.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            DatePickerDialog dataPick=new DatePickerDialog(context,datepicker,
+                    m_Calendar.get(Calendar.YEAR),
+                    m_Calendar.get(Calendar.MONTH),
+                    m_Calendar.get(Calendar.DAY_OF_MONTH));
+            dataPick.show();
+        }
+    };
+
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
@@ -405,6 +420,18 @@ public class ScheduleActivity extends Fragment {
             String Date="";
             String Time="";
             ScheduleDb.insertScheduleData(Name,Date,Time);
+        }
+    };
+    Calendar m_Calendar = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener datepicker = new DatePickerDialog.OnDateSetListener()
+    {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
+        {
+            m_Calendar.set(Calendar.YEAR, year);
+            m_Calendar.set(Calendar.MONTH, monthOfYear);
+            m_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            ChangeDate(calFunction.getDateString(m_Calendar));
         }
     };
 }

@@ -63,6 +63,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
     List<Map<String,String>> Time;
     Button Addbtn;
     OthersFunction othersFunction;
+    CalendarFunction calendarFunction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme();
@@ -73,6 +74,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
     }
     private void initView(){
         othersFunction=new OthersFunction();
+        calendarFunction=new CalendarFunction();
         Start_date = (EditText) findViewById(R.id.startTime_et);
         End_date=(EditText)findViewById(R.id.endTime_et);
         Name=(EditText)findViewById(R.id.name_et);
@@ -89,6 +91,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         End_date.setOnClickListener(DatePick_Listener);
         Addbtn.setOnClickListener(Button_Listener);
         ClassTime.setOnItemClickListener(List_listener);
+        ClassTime.setOnItemLongClickListener(List_Long_listener);
 
         OpOrCrDb();
         ClassWeekDb=new ClassWeekDbTable(SQLiteDB_Path,db);
@@ -164,7 +167,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             final Map<String,String> item=Time.get(position);
-            Calendar c = StringtoTCalendar(item.get("end_time"));
+            Calendar c = calendarFunction.DateTimeTextToCalendarType(item.get("end_time"));
             int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
             TimePickerDialog timePicker=new TimePickerDialog(AddTableSettingsActivity.this, new TimePickerDialog.OnTimeSetListener() {
@@ -180,7 +183,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
             timePicker.setTitle("結束時間");
             timePicker.show();
 
-            c = StringtoTCalendar(item.get("start_time"));
+            c = calendarFunction.DateTimeTextToCalendarType(item.get("start_time"));
             hour = c.get(Calendar.HOUR_OF_DAY);
             minute = c.get(Calendar.MINUTE);
             // Create a new instance of TimePickerDialog and return it
@@ -199,6 +202,14 @@ public class AddTableSettingsActivity extends AppCompatActivity {
 
             UpdateAdapter();
 
+        }
+    };
+    private ListView.OnItemLongClickListener List_Long_listener=new ListView.OnItemLongClickListener(){
+        @Override
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Time.remove(i);
+            UpdateAdapter();
+            return false;
         }
     };
 
@@ -225,30 +236,6 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         }catch (Exception ex){
             color=resources.getColor(R.color.gray);
         }
-        /*
-        switch (Color.getSelectedItem().toString()){
-            case "red":
-                color=resources.getColor(R.color.red);
-                break;
-            case "green":
-                color=resources.getColor(R.color.green);
-                break;
-            case "blue":
-                color=resources.getColor(R.color.blue);
-                break;
-            case "gray":
-                color=resources.getColor(R.color.blue);
-                break;
-            case "purple":
-                color=resources.getColor(R.color.blue);
-                break;
-            case "orange":
-                color=resources.getColor(R.color.blue);
-                break;
-            default:
-                color=resources.getColor(R.color.gray);
-        }*/
-
 
         Log.v("color",String.format(color+""));
         TableDb.insertTableData(
@@ -319,18 +306,6 @@ public class AddTableSettingsActivity extends AppCompatActivity {
     }
 
 
-    private boolean IsStringtoCalendar(String date){
-        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf2.parse(date));
-        }catch (Exception e){
-            return false;
-        }
-        return true;
-    }
-
-
     public boolean onKeyDown(int KeyCode, KeyEvent event){
 
         if(KeyCode== KeyEvent.KEYCODE_BACK){
@@ -383,7 +358,6 @@ public class AddTableSettingsActivity extends AppCompatActivity {
 
     };
 
-
     DatePickerDialog.OnDateSetListener datepicker = new DatePickerDialog.OnDateSetListener()
     {
         @Override
@@ -392,9 +366,8 @@ public class AddTableSettingsActivity extends AppCompatActivity {
             m_Calendar.set(Calendar.YEAR, year);
             m_Calendar.set(Calendar.MONTH, monthOfYear);
             m_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            String myFormat = "yyyy-MM-dd";
-            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
-            Start_date.setText(sdf.format(m_Calendar.getTime()));
+
+            Start_date.setText(calendarFunction.getDateString(m_Calendar));
         }
     };
 
@@ -406,33 +379,9 @@ public class AddTableSettingsActivity extends AppCompatActivity {
             m_Calendar.set(Calendar.YEAR, year);
             m_Calendar.set(Calendar.MONTH, monthOfYear);
             m_Calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            String myFormat = "yyyy-MM-dd";
-            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.TAIWAN);
-            End_date.setText(sdf.format(m_Calendar.getTime()));
+            End_date.setText(calendarFunction.getDateString(m_Calendar));
         }
     };
-
-    private Calendar StringtoCalendar(String date){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf.parse(date));
-        }catch (Exception e){
-            Toast.makeText(AddTableSettingsActivity.this,"日期格式不符合 yyyy-MM-dd", Toast.LENGTH_SHORT).show();
-        }
-        return Calendar;
-    }
-
-    private Calendar StringtoTCalendar(String date){
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.TAIWAN);
-        Calendar Calendar= android.icu.util.Calendar.getInstance();
-        try{
-            Calendar.setTime(sdf.parse(date));
-        }catch (Exception e){
-            Toast.makeText(AddTableSettingsActivity.this,"時間格式不符合 HH:mm", Toast.LENGTH_SHORT).show();
-        }
-        return Calendar;
-    }
 
     private boolean check_time(){
         String tmp_endTime="00:00";
@@ -452,10 +401,7 @@ public class AddTableSettingsActivity extends AppCompatActivity {
         }
     }
     private void insertWeek(){
-        /*Calendar cal=StringtoCalendar(Start_date.getText().toString());
-        int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK)-1;*/
         for(int i = 0; i< Integer.parseInt(Days.getSelectedItem().toString()); i++){
-
             WeekDb.insertWeekData(Table_id,i);
         }
     }
@@ -477,6 +423,10 @@ public class AddTableSettingsActivity extends AppCompatActivity {
                 if (!check())return true;
                 saveValue();
                 openSubjectSettings();
+                return true;
+            case android.R.id.home:
+                setResult(RESULT_CANCELED);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

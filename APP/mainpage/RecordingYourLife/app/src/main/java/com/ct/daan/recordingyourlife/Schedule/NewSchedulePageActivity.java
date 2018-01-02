@@ -21,11 +21,8 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 
 
-import com.ct.daan.recordingyourlife.Class.OthersFunction;
 import com.ct.daan.recordingyourlife.DbTable.ScheduleDbTable;
-import com.ct.daan.recordingyourlife.Exam.AddExamPageActivity;
 import com.ct.daan.recordingyourlife.R;
-import com.ct.daan.recordingyourlife.Table.TableSettingsActivity;
 
 import java.util.Locale;
 

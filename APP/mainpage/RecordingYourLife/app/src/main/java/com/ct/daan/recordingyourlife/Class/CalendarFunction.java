@@ -62,7 +62,7 @@ public class CalendarFunction {
     }
 
     public Calendar TimeTextToCalendarType ( String time){
-        return toCalendarType("hh:mm",time);
+        return toCalendarType("HH:mm",time);
     }
 
     public boolean CompareDateTime(String BeforeDate,String BeforeTime,String AfterDate,String AfterTime ){
@@ -103,7 +103,7 @@ public class CalendarFunction {
     }
 
     public Calendar TimeTextToCalendarType ( String time, Context context){
-        return toCalendarType("hh:mm",time,context);
+        return toCalendarType("HH:mm",time,context);
     }
 
     public boolean CompareDateTime(String BeforeDate,String BeforeTime,String AfterDate,String AfterTime,Context context){

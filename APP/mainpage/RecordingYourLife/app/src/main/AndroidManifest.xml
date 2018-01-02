@@ -188,14 +188,6 @@
                 android:value=".Table.TableActivity" />
         </activity>
         <activity
-            android:name=".Table.SubjectTableActivity"
-            android:label="@string/table"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Table.SubjectTableActivity" />
-        </activity>
-        <activity
             android:name=".Settings.Settings"
             android:label="@string/settings"
             android:parentActivityName=".MainActivity">
