@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme0">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -204,6 +204,11 @@
         <receiver android:name=".Reminder.AlarmReceiverByInput">
             <intent-filter>
                 <action android:name="net.macdidi.broadcast01.action.MYBROADCAST02" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".Reminder.AlarmReceiverByInputs">
+            <intent-filter>
+                <action android:name="net.macdidi.broadcast01.action.MYBROADCAST03" />
             </intent-filter>
         </receiver>
         <receiver android:name=".NoteAppWidget">

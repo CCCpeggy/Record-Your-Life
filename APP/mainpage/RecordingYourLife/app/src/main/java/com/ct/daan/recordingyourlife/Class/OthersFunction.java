@@ -66,7 +66,7 @@ public class OthersFunction {
         String Reminder_date=Reminder_cursor.getString(1);
         String Reminder_time=Reminder_cursor.getString(2);
         int Reminder_type=Reminder_cursor.getInt(3);
-        Log.v("setReminder",String.format("context:%s,Exam_id:%d,title:%s,content:%s,reminder_id:%d,date:%s,name:%s"
+        Log.v("setReminder",String.format("context:%s,Exam_id:%d,title:%s,content:%s,reminder_id:%d,date:%s,time:%s"
                 ,context,Exam_id,name,subject,reminder_id,Reminder_date,Reminder_time));
         CalendarFunction calFunction=new CalendarFunction();
         Calendar calendar=calFunction.DateTimeTextToCalendarType(Reminder_date,Reminder_time);
@@ -76,7 +76,7 @@ public class OthersFunction {
         intent.putExtra("EXAMID", Exam_id);
         intent.putExtra("NAME",name);
         intent.putExtra("SUBJECT", subject);
-        PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
+        PendingIntent sender = PendingIntent.getBroadcast(context, reminder_id, intent, 0);
         AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         alarm.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
@@ -97,6 +97,18 @@ public class OthersFunction {
     public boolean isDateType(EditText et){
         if(calendarFunction.isCalendarType(et.getText().toString(),"yyyy-MM-dd")) return true;
         Log.w("EditText 日期格式錯誤",et.getText().toString()+"日期格式錯誤");
+        return false;
+    }
+
+    public boolean isTimeType(EditText et,String EditName, Context context){
+        if(isTimeType(et)) return true;
+        Toast.makeText(context,EditName+"內容格式錯誤", Toast.LENGTH_LONG).show();
+        return false;
+    }
+
+    public boolean isTimeType(EditText et){
+        if(calendarFunction.isCalendarType(et.getText().toString(),"HH:mm")) return true;
+        Log.w("EditText 時間格式錯誤",et.getText().toString()+"時間格式錯誤");
         return false;
     }
 

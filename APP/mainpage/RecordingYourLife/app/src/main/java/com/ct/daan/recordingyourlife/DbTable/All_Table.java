@@ -21,16 +21,17 @@ public class All_Table extends TableDbTable {
     int DayofWeek;
     CalendarFunction calendarFunction;
 
-
+/*
     public All_Table(String path, SQLiteDatabase Database,int id) {
         super(path, Database);
-
 
         initAllTable(path,Database);
         //AddTableData();
         calendarFunction=new CalendarFunction();
+        Log.v("123","13");
         setTable(id);
-    }
+        Log.v("123","14");
+    }*/
 
     public All_Table(String path, SQLiteDatabase Database) {
         super(path, Database);
@@ -38,40 +39,16 @@ public class All_Table extends TableDbTable {
         initAllTable(path,Database);
         //AddTableData();
         calendarFunction=new CalendarFunction();
-        setTable(getMain_id());
-    }
-    public int getTableId(){
-        return Table_id;
-    }
-    /*public All_Table(String path, SQLiteDatabase Database,String TableName,int days,int isMain,String schedule_start,String schedule_end,String[][] subject,String time_start[],String time_end[]) {
-        super(path, Database);
-        initAllTable(path,Database);
-        AddTableData();
-        int table_id=newTable(TableName,days,isMain,schedule_start,schedule_end,subject,time_start,time_end);
-        setTable(table_id);
-    }
+        setTable(getMain_id(true));
 
-
-    private int newTable(String TableName,int days,int isMain,String schedule_start,String schedule_end,String[][] subject,String time_start[],String time_end[]){
-        super.insertTableData(TableName,days,isMain,schedule_start,schedule_end);
-        int table_id=super.getTable_id(TableName);
-        for (int i=0;i<subject[0].length;i++){
-            WeekDb.insertWeekData(table_id,i+1);
-        }
-        for (int i=0;i<subject.length;i++){
-            ClassWeekDb.insertClassWeekData(table_id,time_start[i],time_end[i]);
-            int classWeek_id=ClassWeekDb.getClassWeek_id(table_id,time_start[i]);
-            for (int j=0;j<subject[i].length;j++){
-                int week_id=WeekDb.getWeek_id(table_id,j+1);
-                ClassDb.insertClassData(classWeek_id,week_id,SubjectDb.getSubjectID(subject[i][j]));
-            }
-        }
-
-        return table_id;
-    }*/
+    }
 
     public void setTable(int id){
         Table_id=id;
+        if(Table_id==0){
+            DayofWeek=0;
+            return;
+        }
         cursor=super.getCursor("_id = "+id);
         cursor.moveToFirst();
         DayofWeek=calendarFunction.getDayOfWeek(cursor.getString(4));
@@ -101,6 +78,11 @@ public class All_Table extends TableDbTable {
     public Cursor getClassCursor(int ClassWeek_id,int Week_id){
         return ClassDb.getCursor("_id = "+ClassWeek_id+" AND 星期ID ="+Week_id);
     }
+
+    public int getTable_id(){
+        return Table_id;
+    }
+
 
     public String getClassSubject(int ClassWeek_id,int Week_id){
         Cursor ClassCursor=getClassCursor(ClassWeek_id,Week_id);
@@ -153,9 +135,9 @@ public class All_Table extends TableDbTable {
         Cursor WeekCursor=getWeekCursor();
         WeekCursor.moveToFirst();
 
-        Tables[1]="星期"+week_name[0+DayofWeek-1];
+        Tables[1]="星期"+week_name[(0+DayofWeek-1)%7];
         for(int i=2;WeekCursor.moveToNext();i++){
-            Tables[i]="星期"+week_name[i-2+DayofWeek];
+            Tables[i]="星期"+week_name[(i-2+DayofWeek)%7];
         }
         return Tables;
     }

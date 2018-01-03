@@ -136,11 +136,12 @@ public class TableDbTable {
         return cursor.getInt(0);
     }
 
-    public int getMain_id(){
+    public int getMain_id(boolean NoNull){
         Cursor cursor=getMain();
-        if(cursor.getCount()<=0) cursor=getCursor();
+        if(NoNull && cursor.getCount()<=0) cursor=getCursor();
         if(cursor.getCount()<=0) return 0;
         cursor.moveToFirst();
+        Log.v("Main_id",cursor.getInt(0)+"");
         return cursor.getInt(0);
     }
 

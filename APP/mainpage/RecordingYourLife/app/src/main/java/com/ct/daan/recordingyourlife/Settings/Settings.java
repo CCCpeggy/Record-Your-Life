@@ -1,10 +1,14 @@
 package com.ct.daan.recordingyourlife.Settings;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
@@ -20,6 +24,7 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import com.ct.daan.recordingyourlife.Class.CalendarFunction;
+import com.ct.daan.recordingyourlife.DbTable.ExamDbTable;
 import com.ct.daan.recordingyourlife.DbTable.ReminderDbTable;
 import com.ct.daan.recordingyourlife.Exam.ExamPageActivity;
 import com.ct.daan.recordingyourlife.Note.NotePageActivity;
@@ -37,6 +42,7 @@ public class Settings extends AppCompatActivity{
     EditText Time_et;
     CalendarFunction calendarFunction;
     ReminderDbTable ReminderDb;
+    ExamDbTable ExamDb;
     int theme_this;
     private final static String SQLiteDB_Path="student_project.db";
     private SQLiteDatabase db=null;
@@ -61,6 +67,9 @@ public class Settings extends AppCompatActivity{
         OpOrCrDb();
         ReminderDb=new ReminderDbTable(SQLiteDB_Path,db);
         ReminderDb.OpenOrCreateTb();
+
+        ExamDb=new ExamDbTable(SQLiteDB_Path,db);
+        ExamDb.OpenOrCreateTb();
 
         SharedPreferences prefs = getSharedPreferences("RECORDINGYOURLIFE", 0);
         String Time = prefs.getString("ExamRemindTime" ,"");
@@ -121,7 +130,7 @@ public class Settings extends AppCompatActivity{
     void saveTheme(final int theme_index,String theme_str) {
         new android.app.AlertDialog.Builder(Settings.this)
                 .setMessage(String.format("確認要換成%s主題嗎",theme_str))
-                .setTitle(R.string.delete_tilte)
+                .setTitle(R.string.theme_tilte)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -135,8 +144,33 @@ public class Settings extends AppCompatActivity{
                 .show();
     }
 
-    void saveSettingData(String Key,String Value){
+    void saveSettingData(String Key,String Value){/*
         saveData(Key, Value);
+        Cursor cursor=ExamDb.getCursor("'考試日期'>="+calendarFunction.getTodayDate());
+        int[] ExamIDs=new int[cursor.getCount()];
+        String[] Names=new String[cursor.getCount()];
+        String[] Subjects=new String[cursor.getCount()];
+        for (int i=0;i<cursor.getCount();i++){
+            ExamIDs[i]=cursor.getInt(0);
+            Names[i]=cursor.getString(4);
+            Subjects[i]=cursor.getString(0);
+        }
+        String Reminder_time=Reminder_cursor.getString(2);
+        int Reminder_type=Reminder_cursor.getInt(3);
+        Log.v("setReminder",String.format("context:%s,Exam_id:%d,title:%s,content:%s,reminder_id:%d,date:%s,time:%s"
+                ,context,Exam_id,name,subject,reminder_id,Reminder_date,Reminder_time));
+        CalendarFunction calFunction=new CalendarFunction();
+        Calendar calendar=calFunction.DateTimeTextToCalendarType(Reminder_date,Reminder_time);
+        String BROADCAST_ACTION = "net.macdidi.broadcast01.action.MYBROADCAST02";
+        Intent intent = new Intent(BROADCAST_ACTION);
+        intent.putExtra("REMINDERID", reminder_id);
+        intent.putExtra("EXAMID", Exam_id);
+        intent.putExtra("NAME",name);
+        intent.putExtra("SUBJECT", subject);
+        PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
+        AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        alarm.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);*/
     }
 
     void saveData(String Key,String Value){
@@ -157,23 +191,38 @@ public class Settings extends AppCompatActivity{
         int theme;
         switch (theme_this){
             case 1:
-                theme=R.style.AppTheme_brown;
+                theme=R.style.AppTheme1;
                 break;
             case 2:
-                theme=R.style.AppTheme_orange;
+                theme=R.style.AppTheme2;
                 break;
             case 3:
-                theme= R.style.AppTheme_purple;
+                theme= R.style.AppTheme3;
                 break;
             case 4:
-                theme=R.style.AppTheme_red;
+                theme=R.style.AppTheme4;
                 break;
             case 5:
-                theme=R.style.AppTheme_white;
+                theme=R.style.AppTheme5;
+                break;
+            case 6:
+                theme=R.style.AppTheme6;
+                break;
+            case 7:
+                theme=R.style.AppTheme7;
+                break;
+            case 8:
+                theme=R.style.AppTheme8;
+                break;
+            case 9:
+                theme=R.style.AppTheme9;
+                break;
+            case 10:
+                theme=R.style.AppTheme10;
                 break;
             case 0:
             default:
-                theme=R.style.AppTheme;
+                theme=R.style.AppTheme0;
                 break;
         }
         setTheme(theme);

@@ -31,6 +31,7 @@ public class AlarmReceiverByInput extends BroadcastReceiver {
         String Subject=extra.getString("SUBJECT","");
         Log.v("setAlarm",String.format("context:%s,reminder_id:%d,Exam_id:%d,title:%s,content:%s"
                 ,context,ReminderID,ExamID,name,Subject));
+        intent=null;
 
         if(ExamID==0)return;
         Log.v("currentTimeMillis", System.currentTimeMillis()+"");

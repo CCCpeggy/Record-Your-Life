@@ -31,6 +31,7 @@ public class AddEventActivity extends AppCompatActivity {
     private String SQLiteDB_Path="student_project.db";
     EventDbTable EventDb;
     EditText Start_date,End_date,Name,Remark;
+    OthersFunction othersFunction;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class AddEventActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        othersFunction=new OthersFunction();
         Start_date = (EditText) findViewById(R.id.startTime_et);
         End_date=(EditText)findViewById(R.id.endTime_et);
         Name=(EditText)findViewById(R.id.name_et);
@@ -125,7 +127,9 @@ public class AddEventActivity extends AppCompatActivity {
     };
 
     private void Complete() {
-        if(!compareDate(Start_date.getText().toString(),End_date.getText().toString()))return;
+        if(!othersFunction.isDateType(Start_date,"日期",AddEventActivity.this))return;
+        if(!othersFunction.isDateType(End_date,"日期",AddEventActivity.this))return;
+        if(!othersFunction.CompareDate(Start_date,End_date,"日期",AddEventActivity.this))return;
         intent.putExtra("NAME",Name.getText().toString());
         intent.putExtra("STARTDATE",Start_date.getText().toString());
         intent.putExtra("ENDDATE",End_date.getText().toString());
@@ -186,22 +190,38 @@ public class AddEventActivity extends AppCompatActivity {
         int theme=0;
         switch (theme_index){
             case 1:
-                theme=R.style.AppTheme_brown;
+                theme=R.style.AppTheme1;
                 break;
             case 2:
-                theme=R.style.AppTheme_orange;
+                theme=R.style.AppTheme2;
                 break;
             case 3:
-                theme= R.style.AppTheme_purple;
+                theme= R.style.AppTheme3;
                 break;
             case 4:
-                theme=R.style.AppTheme_red;
+                theme=R.style.AppTheme4;
                 break;
             case 5:
+                theme=R.style.AppTheme5;
+                break;
+            case 6:
+                theme=R.style.AppTheme6;
+                break;
+            case 7:
+                theme=R.style.AppTheme7;
+                break;
+            case 8:
+                theme=R.style.AppTheme8;
+                break;
+            case 9:
+                theme=R.style.AppTheme9;
+                break;
+            case 10:
+                theme=R.style.AppTheme10;
                 break;
             case 0:
             default:
-                theme=R.style.AppTheme;
+                theme=R.style.AppTheme0;
                 break;
         }
         setTheme(theme);

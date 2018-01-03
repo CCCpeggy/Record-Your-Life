@@ -44,13 +44,12 @@ public class CursorAdapter extends SimpleCursorAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = new ViewHolder();
-        if(convertView==null) {
             convertView = inflater.inflate(R.layout.note_listview_item_layout, parent, false);
             convertView.setBackgroundResource(R.drawable.default_selector);
-            holder. Tilte = convertView.findViewById(R.id.text1);
-            holder.  Content = convertView.findViewById(R.id.text2);
-            holder.  Layout = convertView.findViewById(R.id.layout);
-            holder.  imageView = convertView.findViewById(R.id.image1);
+            holder.Tilte = convertView.findViewById(R.id.text1);
+            holder.Content = convertView.findViewById(R.id.text2);
+            holder.Layout = convertView.findViewById(R.id.layout);
+            holder.imageView = convertView.findViewById(R.id.image1);
 
             int Tilte_index = cr.getColumnIndexOrThrow("便條標題");
             int Content_index = cr.getColumnIndexOrThrow("便條內容");
@@ -67,7 +66,6 @@ public class CursorAdapter extends SimpleCursorAdapter {
             boolean b=NoteReminderDb.HasReminderByNoteID(cr.getInt(0));
             if(b) holder.imageView.setBackgroundResource(R.drawable.icon_clock);
             else holder.imageView.setBackground(null);
-        }
         return convertView;
     }
 

@@ -251,6 +251,12 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         finish();
     }
 
+    void Delete(){
+        WeekDb.deleteWeekDataByTable_id(Table_id);
+        ClassWeekDb.deleteClassWeekDataByTable_id(Table_id);
+        TableDb.deleteTableData(Table_id);
+    }
+
 
     //增加動作按鈕到工具列
     @Override
@@ -269,6 +275,7 @@ public class AddSubjectTableActivity extends AppCompatActivity {
                 return true;
             case android.R.id.home:
                 setResult(RESULT_CANCELED,intent);
+                Delete();
                 finish();
                 return true;
             default:
@@ -282,25 +289,40 @@ public class AddSubjectTableActivity extends AppCompatActivity {
         int theme=0;
         switch (theme_index){
             case 1:
-                theme=R.style.AppTheme_brown;
+                theme=R.style.AppTheme1;
                 break;
             case 2:
-                theme=R.style.AppTheme_orange;
+                theme=R.style.AppTheme2;
                 break;
             case 3:
-                theme= R.style.AppTheme_purple;
+                theme= R.style.AppTheme3;
                 break;
             case 4:
-                theme=R.style.AppTheme_red;
+                theme=R.style.AppTheme4;
                 break;
             case 5:
+                theme=R.style.AppTheme5;
+                break;
+            case 6:
+                theme=R.style.AppTheme6;
+                break;
+            case 7:
+                theme=R.style.AppTheme7;
+                break;
+            case 8:
+                theme=R.style.AppTheme8;
+                break;
+            case 9:
+                theme=R.style.AppTheme9;
+                break;
+            case 10:
+                theme=R.style.AppTheme10;
                 break;
             case 0:
             default:
-                theme=R.style.AppTheme;
+                theme=R.style.AppTheme0;
                 break;
         }
         setTheme(theme);
     }
-
 }

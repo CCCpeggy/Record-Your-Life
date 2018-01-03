@@ -117,6 +117,10 @@ public class ExamDbTable {
         return db.rawQuery(String.format("SELECT *  FROM '%s WHERE 考試科目ID=%s ORDER BY 考試日期 DESC", SQLiteTable_Name,Subject_id+""),null);
     }
 
+    public Cursor getCursor(String Where_cmd){
+        return db.rawQuery(String.format("SELECT *  FROM '%s WHERE %s ORDER BY 考試日期 DESC", SQLiteTable_Name,Where_cmd),null);
+    }
+
 
     public void deleteAllRow(){
         db.execSQL("DELETE FROM "+SQLiteTable_Name);

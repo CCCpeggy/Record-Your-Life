@@ -38,6 +38,7 @@ public class ChangEventActivity extends AppCompatActivity {
     Calendar Start_Calendar = Calendar.getInstance();
     Calendar End_Calendar = Calendar.getInstance();
     CalendarFunction calendarFunction;
+    OthersFunction othersFunction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme();
@@ -50,6 +51,7 @@ public class ChangEventActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        othersFunction=new OthersFunction();
         calendarFunction=new CalendarFunction();
 
         Start_date = (EditText) findViewById(R.id.startTime_et);
@@ -153,7 +155,9 @@ public class ChangEventActivity extends AppCompatActivity {
     };
 
     private void Complete() {
-        if(!compareDate(Start_date.getText().toString(),End_date.getText().toString()))return;
+        if(!othersFunction.isDateType(Start_date,"日期",ChangEventActivity.this))return;
+        if(!othersFunction.isDateType(End_date,"日期",ChangEventActivity.this))return;
+        if(!othersFunction.CompareDate(Start_date,End_date,"日期",ChangEventActivity.this))return;
         EventDb.updateEventData(Event_id,Name.getText().toString(),Start_date.getText().toString(),End_date.getText().toString(),Remark.getText().toString());
 
         setResult(RESULT_OK,intent);
@@ -213,22 +217,38 @@ public class ChangEventActivity extends AppCompatActivity {
         int theme=0;
         switch (theme_index){
             case 1:
-                theme=R.style.AppTheme_brown;
+                theme=R.style.AppTheme1;
                 break;
             case 2:
-                theme=R.style.AppTheme_orange;
+                theme=R.style.AppTheme2;
                 break;
             case 3:
-                theme= R.style.AppTheme_purple;
+                theme= R.style.AppTheme3;
                 break;
             case 4:
-                theme=R.style.AppTheme_red;
+                theme=R.style.AppTheme4;
                 break;
             case 5:
+                theme=R.style.AppTheme5;
+                break;
+            case 6:
+                theme=R.style.AppTheme6;
+                break;
+            case 7:
+                theme=R.style.AppTheme7;
+                break;
+            case 8:
+                theme=R.style.AppTheme8;
+                break;
+            case 9:
+                theme=R.style.AppTheme9;
+                break;
+            case 10:
+                theme=R.style.AppTheme10;
                 break;
             case 0:
             default:
-                theme=R.style.AppTheme;
+                theme=R.style.AppTheme0;
                 break;
         }
         setTheme(theme);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Recording Your Life</string>
+    <string name="app_name">Record Your Life</string>
     <string-array name="replace_type">
         <item>天</item>
         <item>星期</item>
@@ -17,13 +17,17 @@
         <item>7</item>
     </string-array>
     <string-array name="theme">
-
-        <item>green</item>
-        <item>brown</item>
-        <item>orange</item>
-        <item>purple</item>
-        <item>red</item>
-        <item>white</item>
+        <item>雪青羅蘭</item>
+        <item>緋紅血淚</item>
+        <item>勃艮第紅</item>
+        <item>橙色雛菊</item>
+        <item>燦爛千陽</item>
+        <item>縹緲青璧</item>
+        <item>土耳其玉</item>
+        <item>蔚藍海岸</item>
+        <item>藍寧冰湖</item>
+        <item>群青金石</item>
+        <item>人生寫照</item>
     </string-array>
     <string-array name="color_name">
         <item>紅</item>
